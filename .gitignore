@@ -1,0 +1,23 @@
+# Security: config.json contains YouTube API Key, NEVER push
+config.json
+
+# Raw collection data
+data/raw/
+
+# Page backups
+data/backups/
+
+# Internal project docs (PRD, design, references)
+_??/
+
+# Test files
+test.html
+
+# Python artifacts
+__pycache__/
+*.pyc
+scripts/__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
