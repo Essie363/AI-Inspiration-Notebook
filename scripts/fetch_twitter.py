@@ -1,5 +1,5 @@
 """AI Inspiration Notebook - X/Twitter AI Project Collector (X API v2)"""
-import requests, json, sys, os, re
+import requests, json, sys, os, re, glob
 from datetime import datetime
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -82,6 +82,22 @@ def is_ai_related(text):
               "stable diffusion", "machine learning"]
     return any(kw in text_lower for kw in ai_kws)
 
+def load_previous_tweet_ids():
+    """Load tweet_id set from previous collections for cross-day dedup (PRD 2.4)."""
+    seen = set()
+    raw_glob = os.path.join(RAW_DIR, "*/x.json")
+    for fpath in sorted(glob.glob(raw_glob), reverse=True):
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                for item in json.load(f):
+                    tid = item.get("tweet_id", "")
+                    if tid:
+                        seen.add(tid)
+        except Exception:
+            continue
+    return seen
+
+
 def save_results(tweets):
     os.makedirs(os.path.join(RAW_DIR, TODAY), exist_ok=True)
     path = os.path.join(RAW_DIR, TODAY, "twitter.json")
@@ -102,13 +118,14 @@ def run():
 
     all_tweets = []
     seen_ids = set()
+    previous_ids = load_previous_tweet_ids()
 
     for q in QUERIES:
         print(f"  Searching: {q[:60]}...")
         tweets = search_tweets(bearer_token, q)
         print(f"    -> Found {len(tweets)} tweets")
         for t in tweets:
-            if t["tweet_id"] not in seen_ids:
+            if t["tweet_id"] not in seen_ids and t["tweet_id"] not in previous_ids:
                 seen_ids.add(t["tweet_id"])
                 all_tweets.append(t)
 
@@ -123,6 +140,7 @@ def run():
     save_results(ai_tweets)
 
     print(f"\nTop tweets by likes:")
+    print(f"  [Dedup] Cross-day excluded: {len(previous_ids & seen_ids)}")
     ai_tweets.sort(key=lambda x: x["likes"], reverse=True)
     for i, t in enumerate(ai_tweets[:10], 1):
         print(f"\n  {i}. @{t['author_username']} ({t['author_name']})")
