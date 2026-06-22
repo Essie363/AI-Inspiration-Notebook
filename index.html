@@ -679,7 +679,7 @@ mark {
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-23 02:11</span>
+        <span>2026-06-22 18:25</span>
         <span class="dot">&middot;</span>
         <span>19 projects</span>
       </div>
@@ -689,188 +689,61 @@ mark {
       </div>
     </div>
   </header>
+
   <div class="channel-bar">
-    <button class="channel-btn active" onclick="switchChannel(this, 'notebook')">AI Projects</button>
-    <button class="channel-btn" onclick="switchChannel(this, 'digest')">Builder Digest</button>
+    <button class="channel-btn active" onclick="switchChannel(this, 'inspiration')">AI Projects</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'builder')">Builder Digest</button>
   </div>
-  <div id="tabsRow" class="tabs"><button class="tab active" onclick="filterCategory(this, 'all')">All (19)</button>
-<button class="tab" onclick="filterCategory(this, 'chrome-extension')">Extensions (3)</button>
-<button class="tab" onclick="filterCategory(this, 'creative')">Creative (5)</button>
-<button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (11)</button>
-</div>
-  <main>
-<div class="card-grid">
-<div class="card" data-category="chrome-extension" data-pid="writely-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
+
+  <div id="channel-inspiration" class="channel-content active">
+    <div class="tabs" id="categoryTabs">
+      <button class="tab active" onclick="filterCategory(this, 'all')">All (19)</button>
+      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (3)</button>
+      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (5)</button>
+      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (11)</button>
+    </div>
+    <div class="card-grid">
+<div class="card" data-category="creative" data-pid="browser-use-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Writely</h2>
-  <p class="card-desc">在任意网页输入框里都能用的 AI 写作助手，不限平台。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p><mark>Notion AI</mark> 很好用，但被<mark>锁在 Notion 生态</mark>里。你在飞书、Gmail、GitHub Issue、微信文章编辑器里写作时都用不了。用户需要的不是「Notion 里的 AI」，而是「<mark>任何输入框</mark>里的 AI」。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>LLM 的文本生成能力成熟到可以<mark>无缝嵌入</mark>浏览器的<mark>任何输入框</mark>。不是用户来找 AI，而是 AI 等在那里，你打字它就出现。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。
-1. <mark>借势</mark>：Notion AI 教育了市场「AI 写作助手」是什么，Writely 直接承接这个认知
-2. <mark>差异化</mark>：Notion AI 只能在 Notion 用 → Writely 任何地方都能用
-3. <mark>门槛极低</mark>：安装 Chrome 插件即可，不用切换工具、不用学新操作
-4. 冷启动：靠「Notion AI <mark>平替</mark>」这个关键词在中文社区传播，GitHub 1.3k stars 说明需求真实
-
-变现路径：免费基础版 + 付费高级版（更多模型选择、自定义 prompt）。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>不要做「比 X 更好的 Y」——做「X 的<mark>平替</mark>，但能用在 X 不能用地方」。Notion AI 的锁是它的<mark>围墙</mark>，也是你的<mark>机会</mark>。你之前做视频流媒体产品：有没有某个功能被「锁」在特定平台里，可以做成跨平台的轻量替代？</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/anc95/writely" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="reliable-agents-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
     <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">Reliable agentic AI systems</h2>
-  <p class="card-desc">????? Agentic AI ??????????????????????? Agent ???</p>
+  <h2 class="card-title">Browser Use</h2>
+  <p class="card-desc">???? AI Agent ?????100k stars????? AI ??????????</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    ??????? Agent???????????????????????????? Agent ???????? Agent ??????????????...
+    Browser Use ???? AI ???????? AI Agent ????????? Agent ?????????????100k stars...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To B</span></div>
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">????</span><span class="tag">To B</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>AI Agent ? Demo ??????????? Agent ???????????????? Agent???????????????????????</p>
+  <p>???????????????? AI Agent ???? API ????? Agent ???????? DOM?Cookie?????????????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>Agent ???????? LLM ???????????????? prompt??????????????????????????????????????? AI ???</p>
+  <p>??????????????AI Agent ???????????????????????????+??????+???????? AI ???</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>??????? Agent???????????????????????????? Agent ???????? Agent ??????????????????Agent ????????????</p>
+  <p>Browser Use ???? AI ???????? AI Agent ????????? Agent ?????????????100k stars ???? AI Agent ????????????????Agent ?????? API ?????? Web?</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>???? AI ???????????????????????????????????????????????</p>
+  <p>????????????AI Agent???????????????????????????????????????</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/browser-use/browser-use" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="creative" data-pid="serve-non-tech-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="creative">Creative</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">The REAL AI opportunity: Serve those who don&#39;t love tech!</h2>
-  <p class="card-desc">??? AI ???????????????????????????? AI ???</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    ?????????????? AI ??????????????????????? AI ????????????????? AI ???????????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">To C</span><span class="tag">AI Agent</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI ????????????????????????????????????????????????????prompt engineering???Agent ???????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>AI ????????????????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>?????????????? AI ??????????????????????? AI ????????????????? AI ?????????????????????? AI ???</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>???????????????AI ??????????????????? ARPU ???????????????????????????? AI??????????? AI?????????????</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="cursor-100m-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">How Cursor AI Hit $100M by Focusing on ONE Product</h2>
-  <p class="card-desc">Cursor AI ??????????? 1 ??????????????????</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    Cursor ? 1 ????????????????????????????AI????????????????????? Copilot ??????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">To C &amp; To B</span><span class="tag">????</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI ???????????API?Agent???????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>Cursor ???????????? AI????????? AI ???????????? AI ????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>Cursor ? 1 ????????????????????????????AI????????????????????? Copilot ?????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>??????????????????????????????????????????????Cursor ??????????????????????????</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="paperclip-20260621" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
+<div class="card" data-category="workflow" data-pid="paperclip-20260621" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
   <div class="card-header">
     <span class="source-badge">&#9654; YouTube</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
@@ -889,7 +762,7 @@ mark {
   <div class="card-full">
     <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To B</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
   <p>现在用 AI Agent 的门槛太高了——要写代码、搭框架、调 prompt。企业想用 Agent 但找不到技术人才来做。Paperclip 的切入点：不用写代码，像招聘一样用 Agent。</p>
 </div>
@@ -911,7 +784,6 @@ mark {
   <span class="analysis-label">Transfer</span>
   <p>用用户已有的心智模型去解释新产品。招聘 vs 写代码——选择用户更熟悉的那一个。你之前做视频流媒体：如果对用户说「像选片一样选择 AI 功能」，会不会比「配置 AI 参数」更容易理解？</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
       <a href="https://www.youtube.com/watch?v=C3-4llQYT8o" target="_blank" class="ext-link">&#128279; View Original</a>
@@ -919,7 +791,316 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="openclaw-20260621" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
+<div class="card" data-category="extension" data-pid="writely-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-20</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Writely</h2>
+  <p class="card-desc">在任意网页输入框里都能用的 AI 写作助手，不限平台。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p><mark>Notion AI</mark> 很好用，但被<mark>锁在 Notion 生态</mark>里。你在飞书、Gmail、GitHub Issue、微信文章编辑器里写作时都用不了。用户需要的不是「Notion 里的 AI」，而是「<mark>任何输入框</mark>里的 AI」。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM 的文本生成能力成熟到可以<mark>无缝嵌入</mark>浏览器的<mark>任何输入框</mark>。不是用户来找 AI，而是 AI 等在那里，你打字它就出现。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。%%
+1. <mark>借势</mark>：Notion AI 教育了市场「AI 写作助手」是什么，Writely 直接承接这个认知
+2. <mark>差异化</mark>：Notion AI 只能在 Notion 用 → Writely 任何地方都能用
+3. <mark>门槛极低</mark>：安装 Chrome 插件即可，不用切换工具、不用学新操作
+4. 冷启动：靠「Notion AI <mark>平替</mark>」这个关键词在中文社区传播，GitHub 1.3k stars 说明需求真实
+
+变现路径：免费基础版 + 付费高级版（更多模型选择、自定义 prompt）。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>不要做「比 X 更好的 Y」——做「X 的<mark>平替</mark>，但能用在 X 不能用地方」。Notion AI 的锁是它的<mark>围墙</mark>，也是你的<mark>机会</mark>。你之前做视频流媒体产品：有没有某个功能被「锁」在特定平台里，可以做成跨平台的轻量替代？</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/anc95/writely" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="claude-mem-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Claude Mem</h2>
+  <p class="card-desc">???????????? Agent ???????? Agent ???83k stars?</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    claude-mem ?????? Agent ???????????????????? Agent ????????? Claude ??????? A...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">????</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI Agent ?????????????????? Agent ?????????????????????????????????????????</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>???????????????????????????????????????????????????????+??????????????</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>claude-mem ?????? Agent ???????????????????? Agent ????????? Claude ??????? Agent ???????83k stars ???? Agent ????????????????</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>??????????????????????????????????????????????????????????????????????????</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/thedotmack/claude-mem" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="getspecstory-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-20</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">GetSpecStory</h2>
+  <p class="card-desc">把你和 AI 的聊天记录变成可以复用的技能，而不是扔在那里吃灰。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>每次和 AI 对话都产生大量有价值的对话历史——解决过的问题、写过的代码、调试记录。但这些信息都沉淀在<mark>聊天记录</mark>里，<mark>很难复用</mark>。下次遇到类似问题还得<mark>再问一遍</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM 可以<mark>分析对话模式</mark>、提取关键决策点、总结解决方案。把<mark>非结构化</mark>的聊天记录变成结构化的可复用知识。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。%%
+1. 核心洞察：AI 对话历史不是「垃圾」，是「<mark>未结构化的知识资产</mark>」
+2. 把「chat logs」变成「reusable skills」——<mark>心智模型</mark>的变化
+3. 1.2k stars，说明每个深度用 AI 的人都有「之前问过的又忘了」的痛点
+4. 产品天然有<mark>网络效应</mark>：你用得越多，积累的 Skills 越多
+
+变现：个人版免费 + 团队版（共享 Skills 库）。护城河：用户积累的 Skills 数据。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>AI 每天产生大量「<mark>副产品</mark>」——对话记录、生成内容、修改历史。每个<mark>副产品</mark>都可能是另一个产品的<mark>原材料</mark>。就像 Headroom 是「用 AI 给 AI 省钱」，GetSpecStory 是「用 AI 把 AI 的聊天记录变成资产」。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/specstoryai/getspecstory" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="quick-prompt-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-20</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Quick Prompt</h2>
+  <p class="card-desc">把你常用的 Prompt 存起来，下次一键调用。ChatGPT、Claude、Gemini 都支持。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI 重度用户会<mark>积累大量</mark>高质量 Prompt。每次要用的时候要么靠记忆回想、要么去翻笔记。Prompt 是你和 AI 打交道的「语言」，但没有好的<mark>管理工具</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p><mark>Prompt Engineering</mark> 是 AI 时代的<mark>新技能</mark>。任何<mark>新技能</mark>都需要配套的工具。Quick Prompt 解决的是「Prompt 写好了怎么管理和复用」这个<mark>新问题</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？%%
+1. Prompt 管理是一个全新的产品品类——AI 出现之前不存在
+2. 做<mark><mark>品类第一</mark></mark>比做品类最好更容易——<mark>先占位</mark>
+3. 826 stars 虽然不多，但在 Prompt 管理这个细分领域是头部
+4. 产品逻辑简单清晰：存 Prompt → 分类 → 快速调用，不做过多的 AI 功能
+
+变现：免费。潜在盈利点：Prompt 市场/社区（用户分享和交易 Prompt）。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>AI 创造了很多新需求——Prompt 管理、Token 统计、对话历史管理、Skills 管理。每个「<mark>管理类</mark>」需求都是一个产品机会。而且这些产品<mark>不需要你懂 AI 技术</mark>，只需要你懂用户怎么用 AI。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/wenyuanw/quick-prompt" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="creative" data-pid="dashplayer-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
+    <span class="card-date">2026-06-20</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">DashPlayer</h2>
+  <p class="card-desc">一个看美剧学英语的播放器，AI 给你实时翻译字幕。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">桌面应用</span><span class="tag">To C</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>学英语最有效的方式是沉浸式看剧/看视频，但传统播放器没有针对语言学习做优化。用户需要手动找字幕、查单词、反复回放，<mark>体验断裂</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p><mark>语音识别</mark> + <mark>LLM 翻译</mark> + <mark>NLP</mark> 可以实时生成双语字幕、智能识别生词、根据上下文给出解释。以前需要人工做的工作，现在 AI 全自动。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。%%
+1. 视频播放器是个很老的品类，但 DashPlayer 加了「学英语」这个 AI 层
+2. <mark>不改变用户已有的习惯</mark>（看美剧/看 YouTube），在已有的行为上加 AI 价值
+3. 4k stars 说明「用 AI 改造一个老工具」这个思路本身就成立
+
+变现：免费开源桌面应用。护城河：AI 字幕质量 + 学习数据积累。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>找一个你每天都在用的老工具（播放器、阅读器、笔记软件、日历），加一个「<mark>AI 学习层</mark>」——不是教用户新习惯，而是在<mark>已有习惯</mark>上<mark>叠加 AI 价值</mark>。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/solidSpoon/DashPlayer" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="creative" data-pid="comic-translate-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
+    <span class="card-date">2026-06-20</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Comic Translate</h2>
+  <p class="card-desc">自动翻译漫画里的文字——识别、擦除、翻译、嵌回，一气呵成。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">开源工具</span><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>漫画/动画爱好者想追国外作品，但汉化/翻译组更新慢、质量参差不齐。等翻译的过程很煎熬。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p><mark>OCR</mark> + <mark>图像修复</mark> + 翻译模型 + 图像生成——四步全部可以 AI 自动化。以前需要一个团队做的事情，现在一个人 + AI 就能完成。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。%%
+1. 不做什么「AI 翻译工具」——做「AI 漫画/漫画翻译」
+2. 2.8k stars，说明了「<mark>极度精准的定位</mark>」比「宽泛的定位」更容易传播
+3. 用户画像非常清晰：漫画粉丝、追更党、跨语言阅读者
+4. 解决了从「OCR → 擦除 → 翻译 → 嵌字」的完整 workflow，不是半吊子方案
+
+变现：免费开源。潜在盈利点：付费的高质量翻译模型、云处理服务。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>不要做「<mark>AI 翻译</mark>」这个红海。做「<mark>AI 翻译</mark> + 某个特定领域」。领域越窄，用户越精准，产品越好做。漫画、同人小说、游戏 Mod、食谱——都值得做一个 <mark>AI 翻译</mark><mark>垂直工具</mark>。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/ogkalu2/comic-translate" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="ai-clip-skill-20260623" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.7s">
+  <div class="card-header">
+    <span class="source-badge">&#128279; 小红书</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">AI 自动剪辑 Skill</h2>
+  <p class="card-desc">以 REDSkill 形态分发的 AI 剪辑 Skill，嵌入 Claude Code / Codex 使用。自动剪口误、口癖、静音，越用越懂你的剪辑习惯。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">剪辑</span><span class="tag">To C</span><span class="tag">AI Agent</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>口播创作者反复手动剪口误/口癖/静音——有特定、高频的痛点用户群。做了三年口播的人清楚自己的习惯模式，但剪辑软件不会记住任何一个人的偏好，每期视频都从零开始。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>规则方案用阈值和正则匹配来识别口癖，通用的词能抓到，个性化的长短语抓不到。更根本的问题是：剪辑不止是找到多余的——删掉之后节奏对不对？规则完全判断不了，因为节奏感因人而异。%%AI 把剪辑从"写死规则"变成了"学习个人偏好"，这是规则做不到的。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。%%也没做独立 App——口播创作者已经在 Agent 里写逐字稿了，录完视频的下一步是回到 Agent，不是打开另一个软件。产品形态的选择依据是：用户正在走的那条心理路径在哪里，就在哪里接住。用上二十条视频之后，用户积累的口癖列表和节奏偏好都存在这个 skill 里，换回去意味着丢掉这些数据。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>观察用户每天必须手动重复的具体操作；判断现有规则方案为什么盖不住它（个体差异就是 AI 的切入口）；看用户做这件事的前一个动作在什么工具里——产品就从那里接住。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://www.xiaohongshu.com/explore/..." target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="openclaw-20260621" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.78s">
   <div class="card-header">
     <span class="source-badge">&#9654; YouTube</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
@@ -938,7 +1119,7 @@ mark {
   <div class="card-full">
     <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
   <p>AI 编码工具大多绑定特定平台（GitHub Copilot → VS Code，Cursor → 自家 IDE）。开发者想要一个平台无关的、开源的 AI 编码助手。</p>
 </div>
@@ -960,7 +1141,6 @@ mark {
   <span class="analysis-label">Transfer</span>
   <p>你的产品不一定非要重新发明轮子。有时候「A 平台有的功能，B 平台为什么不能用」就是最好的产品切入点。Cursor 有的 AI 编码功能，为什么 Vim 用户不能用？这就是 OpenClaw 的整个故事。</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
       <a href="https://www.youtube.com/watch?v=ssYt09bCgUY" target="_blank" class="ext-link">&#128279; View Original</a>
@@ -968,101 +1148,7 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="creative" data-pid="comic-translate-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="creative">Creative</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Comic Translate</h2>
-  <p class="card-desc">自动翻译漫画里的文字——识别、擦除、翻译、嵌回，一气呵成。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">开源工具</span><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>漫画/动画爱好者想追国外作品，但汉化/翻译组更新慢、质量参差不齐。等翻译的过程很煎熬。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p><mark>OCR</mark> + <mark>图像修复</mark> + 翻译模型 + 图像生成——四步全部可以 AI 自动化。以前需要一个团队做的事情，现在一个人 + AI 就能完成。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。
-1. 不做什么「AI 翻译工具」——做「AI 漫画/漫画翻译」
-2. 2.8k stars，说明了「<mark>极度精准的定位</mark>」比「宽泛的定位」更容易传播
-3. 用户画像非常清晰：漫画粉丝、追更党、跨语言阅读者
-4. 解决了从「OCR → 擦除 → 翻译 → 嵌字」的完整 workflow，不是半吊子方案
-
-变现：免费开源。潜在盈利点：付费的高质量翻译模型、云处理服务。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>不要做「<mark>AI 翻译</mark>」这个红海。做「<mark>AI 翻译</mark> + 某个特定领域」。领域越窄，用户越精准，产品越好做。漫画、同人小说、游戏 Mod、食谱——都值得做一个 <mark>AI 翻译</mark><mark>垂直工具</mark>。</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/ogkalu2/comic-translate" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="quick-prompt-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Quick Prompt</h2>
-  <p class="card-desc">把你常用的 Prompt 存起来，下次一键调用。ChatGPT、Claude、Gemini 都支持。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI 重度用户会<mark>积累大量</mark>高质量 Prompt。每次要用的时候要么靠记忆回想、要么去翻笔记。Prompt 是你和 AI 打交道的「语言」，但没有好的<mark>管理工具</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p><mark>Prompt Engineering</mark> 是 AI 时代的<mark>新技能</mark>。任何<mark>新技能</mark>都需要配套的工具。Quick Prompt 解决的是「Prompt 写好了怎么管理和复用」这个<mark>新问题</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？
-1. Prompt 管理是一个全新的产品品类——AI 出现之前不存在
-2. 做<mark><mark>品类第一</mark></mark>比做品类最好更容易——<mark>先占位</mark>
-3. 826 stars 虽然不多，但在 Prompt 管理这个细分领域是头部
-4. 产品逻辑简单清晰：存 Prompt → 分类 → 快速调用，不做过多的 AI 功能
-
-变现：免费。潜在盈利点：Prompt 市场/社区（用户分享和交易 Prompt）。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>AI 创造了很多新需求——Prompt 管理、Token 统计、对话历史管理、Skills 管理。每个「<mark>管理类</mark>」需求都是一个产品机会。而且这些产品<mark>不需要你懂 AI 技术</mark>，只需要你懂用户怎么用 AI。</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/wenyuanw/quick-prompt" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="openclaw-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.7s">
+<div class="card" data-category="workflow" data-pid="openclaw-2026-06-23">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
@@ -1079,7 +1165,7 @@ mark {
   <div class="card-full">
     <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
   <p>?? AI ??????? ChatGPT?Claude ???????????????????????????????????????</p>
 </div>
@@ -1095,7 +1181,6 @@ mark {
   <span class="analysis-label">Transfer</span>
   <p>????????????????????????????????????????????????????????????</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
       <a href="https://github.com/openclaw/openclaw" target="_blank" class="ext-link">&#128279; View Original</a>
@@ -1103,224 +1188,42 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="chrome-extension" data-pid="mousetooltip-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.78s">
+<div class="card" data-category="workflow" data-pid="reliable-agents-2026-06-23">
   <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">MouseTooltip Translator</h2>
-  <p class="card-desc">鼠标放上去就翻译，不用选中、不用右键、不用点任何按钮。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>阅读外文内容时：选中文字 → 右键 → 选择翻译 → 等待结果 → 关闭弹窗。每次要看一个词或一句话，都要经历这 <mark>4-5 步</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>现代翻译模型快到可以<mark>实时响应</mark>悬停动作。不需要按按钮、不需要切换窗口，AI 在你「看」的瞬间就已经工作了。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。
-1. 把 <mark>5 步操作变成 1 步</mark>：鼠标悬停即可
-2. 「<mark>默认打开</mark>」的设计哲学：不用设置、不用配置，装好就用
-3. <mark>场景扩张策略</mark>：从网页翻译扩展到 PDF、EPUB、Netflix、YouTube——同一个核心交互，覆盖更多场景
-4. GitHub 1.2k stars，说明极简方案有巨大需求
-
-变现：免费开源 + 付费的 OCR/TTS 等高级功能。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>找到用户每天做 4-5 步的事情，能不能用「<mark>一个动作</mark>」解决？悬停、拖拽、选中——这些浏览器的原生动作本身就是最好的产品<mark>入口</mark>。</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/ttop32/MouseTooltipTranslator" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="creative" data-pid="browser-use-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="creative">Creative</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Browser Use</h2>
-  <p class="card-desc">???? AI Agent ?????100k stars????? AI ??????????</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    Browser Use ???? AI ???????? AI Agent ????????? Agent ?????????????100k stars...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">????</span><span class="tag">To B</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>???????????????? AI Agent ???? API ????? Agent ???????? DOM?Cookie?????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>??????????????AI Agent ???????????????????????????+??????+???????? AI ???</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>Browser Use ???? AI ???????? AI Agent ????????? Agent ?????????????100k stars ???? AI Agent ????????????????Agent ?????? API ?????? Web?</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>????????????AI Agent???????????????????????????????????????</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/browser-use/browser-use" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="creative" data-pid="dashplayer-20260620">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="creative">Creative</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">DashPlayer</h2>
-  <p class="card-desc">一个看美剧学英语的播放器，AI 给你实时翻译字幕。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">桌面应用</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>学英语最有效的方式是沉浸式看剧/看视频，但传统播放器没有针对语言学习做优化。用户需要手动找字幕、查单词、反复回放，<mark>体验断裂</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p><mark>语音识别</mark> + <mark>LLM 翻译</mark> + <mark>NLP</mark> 可以实时生成双语字幕、智能识别生词、根据上下文给出解释。以前需要人工做的工作，现在 AI 全自动。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。
-1. 视频播放器是个很老的品类，但 DashPlayer 加了「学英语」这个 AI 层
-2. <mark>不改变用户已有的习惯</mark>（看美剧/看 YouTube），在已有的行为上加 AI 价值
-3. 4k stars 说明「用 AI 改造一个老工具」这个思路本身就成立
-
-变现：免费开源桌面应用。护城河：AI 字幕质量 + 学习数据积累。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>找一个你每天都在用的老工具（播放器、阅读器、笔记软件、日历），加一个「<mark>AI 学习层</mark>」——不是教用户新习惯，而是在<mark>已有习惯</mark>上<mark>叠加 AI 价值</mark>。</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/solidSpoon/DashPlayer" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="chrome-extension" data-pid="claude-counter-20260620">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Claude Counter</h2>
-  <p class="card-desc">在 Claude 页面上加几个数字，告诉你花了多少 Token。仅此而已。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C &amp; To B</span></div>
-    <div class="card-full-grid">
-      <div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>Claude.ai 用户看不到对话消耗了多少 Token、缓存还有多久过期。这种<mark>信息不透明</mark>导致用户无法管理使用成本，也不知道什么时候该新开对话。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>AI 的普及创造了新的信息需求——Token 消耗、上下文长度、缓存状态。这些是传统产品里不存在的「<mark>新指标</mark>」。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。
-1. 只做一件事：在 Claude 界面上<mark>加几个数字</mark>和进度条
-2. 没有设置页、没有配置项、没有学习成本
-3. 解决的是「平台不告诉你但我很想知道」的<mark>信息不对称</mark>
-4. 1.9k stars 说明哪怕「<mark>加几个数字</mark>」这个需求，做好都有人用
-
-变现：免费开源。护城河：<mark>先发优势</mark> + 用户信任（不会偷数据的最小权限插件）。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>AI 平台留下了很多「<mark>信息空白</mark>」——Token 用量、成本、性能、数据归属。每一个<mark>信息空白</mark>都是一个产品机会。你不需要做 AI，你只需要把 AI 的<mark>信息翻译给用户</mark>。</p>
-</div>
-
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/she-llac/claude-counter" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="n8n-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
+    <span class="source-badge">&#9654; YouTube</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
     <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">n8n</h2>
-  <p class="card-desc">???????????????? AI ???????+??????193k stars?</p>
+  <h2 class="card-title">Reliable agentic AI systems</h2>
+  <p class="card-desc">????? Agentic AI ??????????????????????? Agent ???</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    n8n ?????????????????????????????????193k stars ??????????????????+??????????...
+    ??????? Agent???????????????????????????? Agent ???????? Agent ??????????????...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
     <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To B</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>????????????????????????????????????????????????????????????</p>
+  <p>AI Agent ? Demo ??????????? Agent ???????????????? Agent???????????????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>AI ????????if-this-then-that????????Agent ?????????????????????????????????? Agent ??????</p>
+  <p>Agent ???????? LLM ???????????????? prompt??????????????????????????????????????? AI ???</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>n8n ?????????????????????????????????193k stars ??????????????????+?????????????????? AI ??? Agent ???????????????????? AI??? AI ???????????</p>
+  <p>??????? Agent???????????????????????????? Agent ???????? Agent ??????????????????Agent ????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>To B ??????????????? SaaS?????????????????????????????????????????????</p>
+  <p>???? AI ???????????????????????????????????????????????</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/n8n-io/n8n" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
@@ -1328,7 +1231,7 @@ mark {
 <div class="card" data-category="creative" data-pid="fireship-7tools-20260621">
   <div class="card-header">
     <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="creative">Creative</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
     <span class="card-date">2026-06-21</span>
     <span class="fav-btn">&#9829;</span>
   </div>
@@ -1344,7 +1247,7 @@ mark {
   <div class="card-full">
     <div class="card-full-tags"><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
   <p>AI 工具层出不穷，但没人帮你筛选。你花大量时间在各种 Newsletter 和 Product Hunt 上找工具，结果大部分都用不上。</p>
 </div>
@@ -1366,7 +1269,6 @@ mark {
   <span class="analysis-label">Transfer</span>
   <p>做一个「帮人选好东西」的产品，比做一个「好东西」有时候更容易。你不需要懂 AI 技术，你只需要比用户更早知道哪个 AI 工具好用。就像你作为 PM，推荐最佳实践比自己写代码更有价值。</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
       <a href="https://www.youtube.com/watch?v=Xn-gtHDsaPY" target="_blank" class="ext-link">&#128279; View Original</a>
@@ -1374,43 +1276,42 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="claude-mem-2026-06-23">
+<div class="card" data-category="workflow" data-pid="n8n-2026-06-23">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
     <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">Claude Mem</h2>
-  <p class="card-desc">???????????? Agent ???????? Agent ???83k stars?</p>
+  <h2 class="card-title">n8n</h2>
+  <p class="card-desc">???????????????? AI ???????+??????193k stars?</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    claude-mem ?????? Agent ???????????????????? Agent ????????? Claude ??????? A...
+    n8n ?????????????????????????????????193k stars ??????????????????+??????????...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">????</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To B</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>AI Agent ?????????????????? Agent ?????????????????????????????????????????</p>
+  <p>????????????????????????????????????????????????????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>???????????????????????????????????????????????????????+??????????????</p>
+  <p>AI ????????if-this-then-that????????Agent ?????????????????????????????????? Agent ??????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>claude-mem ?????? Agent ???????????????????? Agent ????????? Claude ??????? Agent ???????83k stars ???? Agent ????????????????</p>
+  <p>n8n ?????????????????????????????????193k stars ??????????????????+?????????????????? AI ??? Agent ???????????????????? AI??? AI ???????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>??????????????????????????????????????????????????????????????????????????</p>
+  <p>To B ??????????????? SaaS?????????????????????????????????????????????</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/thedotmack/claude-mem" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/n8n-io/n8n" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
@@ -1432,7 +1333,7 @@ mark {
   <div class="card-full">
     <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To C</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
   <p>?????????????????????????????????????????????????????????</p>
 </div>
@@ -1448,7 +1349,6 @@ mark {
   <span class="analysis-label">Transfer</span>
   <p>??????????????????????????????????????????????????????</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
       <a href="https://github.com/BuilderPulse/BuilderPulse" target="_blank" class="ext-link">&#128279; View Original</a>
@@ -1456,121 +1356,206 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="getspecstory-20260620">
+<div class="card" data-category="extension" data-pid="mousetooltip-20260620">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
     <span class="card-date">2026-06-20</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">GetSpecStory</h2>
-  <p class="card-desc">把你和 AI 的聊天记录变成可以复用的技能，而不是扔在那里吃灰。</p>
+  <h2 class="card-title">MouseTooltip Translator</h2>
+  <p class="card-desc">鼠标放上去就翻译，不用选中、不用右键、不用点任何按钮。</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。
+    选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>每次和 AI 对话都产生大量有价值的对话历史——解决过的问题、写过的代码、调试记录。但这些信息都沉淀在<mark>聊天记录</mark>里，<mark>很难复用</mark>。下次遇到类似问题还得<mark>再问一遍</mark>。</p>
+  <p>阅读外文内容时：选中文字 → 右键 → 选择翻译 → 等待结果 → 关闭弹窗。每次要看一个词或一句话，都要经历这 <mark>4-5 步</mark>。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM 可以<mark>分析对话模式</mark>、提取关键决策点、总结解决方案。把<mark>非结构化</mark>的聊天记录变成结构化的可复用知识。</p>
+  <p>现代翻译模型快到可以<mark>实时响应</mark>悬停动作。不需要按按钮、不需要切换窗口，AI 在你「看」的瞬间就已经工作了。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。
-1. 核心洞察：AI 对话历史不是「垃圾」，是「<mark>未结构化的知识资产</mark>」
-2. 把「chat logs」变成「reusable skills」——<mark>心智模型</mark>的变化
-3. 1.2k stars，说明每个深度用 AI 的人都有「之前问过的又忘了」的痛点
-4. 产品天然有<mark>网络效应</mark>：你用得越多，积累的 Skills 越多
+  <p>选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。%%
+1. 把 <mark>5 步操作变成 1 步</mark>：鼠标悬停即可
+2. 「<mark>默认打开</mark>」的设计哲学：不用设置、不用配置，装好就用
+3. <mark>场景扩张策略</mark>：从网页翻译扩展到 PDF、EPUB、Netflix、YouTube——同一个核心交互，覆盖更多场景
+4. GitHub 1.2k stars，说明极简方案有巨大需求
 
-变现：个人版免费 + 团队版（共享 Skills 库）。护城河：用户积累的 Skills 数据。</p>
+变现：免费开源 + 付费的 OCR/TTS 等高级功能。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>AI 每天产生大量「<mark>副产品</mark>」——对话记录、生成内容、修改历史。每个<mark>副产品</mark>都可能是另一个产品的<mark>原材料</mark>。就像 Headroom 是「用 AI 给 AI 省钱」，GetSpecStory 是「用 AI 把 AI 的聊天记录变成资产」。</p>
+  <p>找到用户每天做 4-5 步的事情，能不能用「<mark>一个动作</mark>」解决？悬停、拖拽、选中——这些浏览器的原生动作本身就是最好的产品<mark>入口</mark>。</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/specstoryai/getspecstory" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/ttop32/MouseTooltipTranslator" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="ai-clip-skill-20260623">
+<div class="card" data-category="workflow" data-pid="cursor-100m-2026-06-23">
   <div class="card-header">
-    <span class="source-badge">&#128279; 小红书</span>
+    <span class="source-badge">&#9654; YouTube</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
     <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">AI 自动剪辑 Skill</h2>
-  <p class="card-desc">以 REDSkill 形态分发的 AI 剪辑 Skill，嵌入 Claude Code / Codex 使用。自动剪口误、口癖、静音，越用越懂你的剪辑习惯。</p>
+  <h2 class="card-title">How Cursor AI Hit $100M by Focusing on ONE Product</h2>
+  <p class="card-desc">Cursor AI ??????????? 1 ??????????????????</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。
+    Cursor ? 1 ????????????????????????????AI????????????????????? Copilot ??????...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">剪辑</span><span class="tag">To C</span><span class="tag">AI Agent</span></div>
+    <div class="card-full-tags"><span class="tag">To C &amp; To B</span><span class="tag">????</span></div>
     <div class="card-full-grid">
-      <div class="analysis-block">
+<div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>口播创作者反复手动剪口误/口癖/静音——有特定、高频的痛点用户群。做了三年口播的人清楚自己的习惯模式，但剪辑软件不会记住任何一个人的偏好，每期视频都从零开始。</p>
+  <p>AI ???????????API?Agent???????????????????????????????????????????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>规则方案用阈值和正则匹配来识别口癖，通用的词能抓到，个性化的长短语抓不到。更根本的问题是：剪辑不止是找到多余的——删掉之后节奏对不对？规则完全判断不了，因为节奏感因人而异。AI 把剪辑从&quot;写死规则&quot;变成了&quot;学习个人偏好&quot;，这是规则做不到的。</p>
+  <p>Cursor ???????????? AI????????? AI ???????????? AI ????????????????????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。也没做独立 App——口播创作者已经在 Agent 里写逐字稿了，录完视频的下一步是回到 Agent，不是打开另一个软件。产品形态的选择依据是：用户正在走的那条心理路径在哪里，就在哪里接住。用上二十条视频之后，用户积累的口癖列表和节奏偏好都存在这个 skill 里，换回去意味着丢掉这些数据。</p>
+  <p>Cursor ? 1 ????????????????????????????AI????????????????????? Copilot ?????????????????????????????????????</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>观察用户每天必须手动重复的具体操作；判断现有规则方案为什么盖不住它（个体差异就是 AI 的切入口）；看用户做这件事的前一个动作在什么工具里——产品就从那里接住。</p>
+  <p>??????????????????????????????????????????????Cursor ??????????????????????????</p>
 </div>
-
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.xiaohongshu.com/explore/..." target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
+<div class="card" data-category="creative" data-pid="serve-non-tech-2026-06-23">
+  <div class="card-header">
+    <span class="source-badge">&#9654; YouTube</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">The REAL AI opportunity: Serve those who don&#39;t love tech!</h2>
+  <p class="card-desc">??? AI ???????????????????????????? AI ???</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    ?????????????? AI ??????????????????????? AI ????????????????? AI ???????????...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">To C</span><span class="tag">AI Agent</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI ????????????????????????????????????????????????????prompt engineering???Agent ???????????????</p>
 </div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>AI ????????????????????????????????????????????????????????????</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>?????????????? AI ??????????????????????? AI ????????????????? AI ?????????????????????? AI ???</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>???????????????AI ??????????????????? ARPU ???????????????????????????? AI??????????? AI?????????????</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="claude-counter-20260620">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-20</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Claude Counter</h2>
+  <p class="card-desc">在 Claude 页面上加几个数字，告诉你花了多少 Token。仅此而已。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>Claude.ai 用户看不到对话消耗了多少 Token、缓存还有多久过期。这种<mark>信息不透明</mark>导致用户无法管理使用成本，也不知道什么时候该新开对话。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>AI 的普及创造了新的信息需求——Token 消耗、上下文长度、缓存状态。这些是传统产品里不存在的「<mark>新指标</mark>」。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。%%
+1. 只做一件事：在 Claude 界面上<mark>加几个数字</mark>和进度条
+2. 没有设置页、没有配置项、没有学习成本
+3. 解决的是「平台不告诉你但我很想知道」的<mark>信息不对称</mark>
+4. 1.9k stars 说明哪怕「<mark>加几个数字</mark>」这个需求，做好都有人用
 
-  </main>
-  <div id="digestSection" class="digest-section" style="display:none">
-  <div class="timeline-layout">
-<nav class="timeline-sidebar" id="timelineSidebar">
+变现：免费开源。护城河：<mark>先发优势</mark> + 用户信任（不会偷数据的最小权限插件）。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>AI 平台留下了很多「<mark>信息空白</mark>」——Token 用量、成本、性能、数据归属。每一个<mark>信息空白</mark>都是一个产品机会。你不需要做 AI，你只需要把 AI 的<mark>信息翻译给用户</mark>。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/she-llac/claude-counter" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <div id="channel-builder" class="channel-content" style="display:none">
+    <div class="timeline-layout">
+<nav class="timeline-sidebar">
   <div class="timeline-sidebar-title">Builders</div>
-  <a href="#builder-thsottiaux" class="timeline-nav-item" data-builder="builder-thsottiaux">Thibault Sottiaux</a>
-  <a href="#builder-trq212" class="timeline-nav-item" data-builder="builder-trq212">Thariq</a>
-  <a href="#builder-ryolu_" class="timeline-nav-item" data-builder="builder-ryolu_">Ryo Lu</a>
-  <a href="#builder-levie" class="timeline-nav-item" data-builder="builder-levie">Aaron Levie</a>
-  <a href="#builder-garrytan" class="timeline-nav-item" data-builder="builder-garrytan">Garry Tan</a>
-  <a href="#builder-joshwoodward" class="timeline-nav-item" data-builder="builder-joshwoodward">Josh Woodward</a>
-  <a href="#builder-petergyang" class="timeline-nav-item" data-builder="builder-petergyang">Peter Yang</a>
-  <a href="#builder-zarazhangrui" class="timeline-nav-item" data-builder="builder-zarazhangrui">Zara Zhang</a>
-  <a href="#builder-nikunj" class="timeline-nav-item" data-builder="builder-nikunj">Nikunj Kothari</a>
-  <a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg">Guillermo Rauch</a>
-  <a href="#builder-danshipper" class="timeline-nav-item" data-builder="builder-danshipper">Dan Shipper</a>
-  <a href="#builder-swyx" class="timeline-nav-item" data-builder="builder-swyx">Swyx</a>
-  <a href="#builder-realmadhuguru" class="timeline-nav-item" data-builder="builder-realmadhuguru">Madhu Guru</a>
-  <a href="#builder-adityaag" class="timeline-nav-item" data-builder="builder-adityaag">Aditya Agarwal</a>
+    <a href="#builder-thsottiaux" class="timeline-nav-item" data-builder="builder-thsottiaux">Thibault Sottiaux</a>
+    <a href="#builder-trq212" class="timeline-nav-item" data-builder="builder-trq212">Thariq</a>
+    <a href="#builder-ryolu_" class="timeline-nav-item" data-builder="builder-ryolu_">Ryo Lu</a>
+    <a href="#builder-levie" class="timeline-nav-item" data-builder="builder-levie">Aaron Levie</a>
+    <a href="#builder-garrytan" class="timeline-nav-item" data-builder="builder-garrytan">Garry Tan</a>
+    <a href="#builder-joshwoodward" class="timeline-nav-item" data-builder="builder-joshwoodward">Josh Woodward</a>
+    <a href="#builder-petergyang" class="timeline-nav-item" data-builder="builder-petergyang">Peter Yang</a>
+    <a href="#builder-zarazhangrui" class="timeline-nav-item" data-builder="builder-zarazhangrui">Zara Zhang</a>
+    <a href="#builder-nikunj" class="timeline-nav-item" data-builder="builder-nikunj">Nikunj Kothari</a>
+    <a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg">Guillermo Rauch</a>
+    <a href="#builder-danshipper" class="timeline-nav-item" data-builder="builder-danshipper">Dan Shipper</a>
+    <a href="#builder-swyx" class="timeline-nav-item" data-builder="builder-swyx">Swyx</a>
+    <a href="#builder-realmadhuguru" class="timeline-nav-item" data-builder="builder-realmadhuguru">Madhu Guru</a>
+    <a href="#builder-adityaag" class="timeline-nav-item" data-builder="builder-adityaag">Aditya Agarwal</a>
 </nav>
-    <div class="timeline-content">
+      <div class="timeline-content">
 <div class="timeline-feed">
+<h2 style="font-family:var(--font-serif);font-size:24px;margin-bottom:20px;">Builder Digest</h2>
 <div class="timeline-builder" id="builder-thsottiaux">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#a4c0b4"></span>
+    <span class="timeline-avatar" style="background:#d4b8a8"></span>
     <span class="timeline-builder-name">Thibault Sottiaux</span>
     <span class="timeline-builder-handle">@thsottiaux</span>
   </div>
@@ -1608,7 +1593,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
 </div>
 <div class="timeline-builder" id="builder-trq212">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#a8c4c0"></span>
+    <span class="timeline-avatar" style="background:#c8a8b8"></span>
     <span class="timeline-builder-name">Thariq</span>
     <span class="timeline-builder-handle">@trq212</span>
   </div>
@@ -1624,7 +1609,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
 </div>
 <div class="timeline-builder" id="builder-ryolu_">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#d4b8a8"></span>
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
     <span class="timeline-builder-name">Ryo Lu</span>
     <span class="timeline-builder-handle">@ryolu_</span>
   </div>
@@ -1655,7 +1640,7 @@ you can just build.</p>
 </div>
 <div class="timeline-builder" id="builder-levie">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#c8a8b8"></span>
+    <span class="timeline-avatar" style="background:#c4a8b0"></span>
     <span class="timeline-builder-name">Aaron Levie</span>
     <span class="timeline-builder-handle">@levie</span>
   </div>
@@ -1692,7 +1677,7 @@ At the moment the open weights players appear to be holding up at keeping close 
 </div>
 <div class="timeline-builder" id="builder-garrytan">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#b8c4a8"></span>
+    <span class="timeline-avatar" style="background:#a4c0b4"></span>
     <span class="timeline-builder-name">Garry Tan</span>
     <span class="timeline-builder-handle">@garrytan</span>
   </div>
@@ -1742,7 +1727,7 @@ The fix is the same: lower the chronic anxiety, raise the capacity to stay a sep
 </div>
 <div class="timeline-builder" id="builder-joshwoodward">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#a4c0b4"></span>
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
     <span class="timeline-builder-name">Josh Woodward</span>
     <span class="timeline-builder-handle">@joshwoodward</span>
   </div>
@@ -1780,7 +1765,7 @@ Apply today:</p>
 </div>
 <div class="timeline-builder" id="builder-petergyang">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#b8c4a8"></span>
+    <span class="timeline-avatar" style="background:#b8a8c4"></span>
     <span class="timeline-builder-name">Peter Yang</span>
     <span class="timeline-builder-handle">@petergyang</span>
   </div>
@@ -1822,7 +1807,7 @@ Maybe this thing will blow our socks off?</p>
 </div>
 <div class="timeline-builder" id="builder-zarazhangrui">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#a8b4c4"></span>
+    <span class="timeline-avatar" style="background:#c4a4a8"></span>
     <span class="timeline-builder-name">Zara Zhang</span>
     <span class="timeline-builder-handle">@zarazhangrui</span>
   </div>
@@ -1863,7 +1848,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
 </div>
 <div class="timeline-builder" id="builder-nikunj">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#a8b5c8"></span>
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
     <span class="timeline-builder-name">Nikunj Kothari</span>
     <span class="timeline-builder-handle">@nikunj</span>
   </div>
@@ -1888,7 +1873,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
 </div>
 <div class="timeline-builder" id="builder-rauchg">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#c8a8b8"></span>
+    <span class="timeline-avatar" style="background:#b8a8c4"></span>
     <span class="timeline-builder-name">Guillermo Rauch</span>
     <span class="timeline-builder-handle">@rauchg</span>
   </div>
@@ -1907,7 +1892,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
 </div>
 <div class="timeline-builder" id="builder-danshipper">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#d4b8a8"></span>
+    <span class="timeline-avatar" style="background:#c4a4a8"></span>
     <span class="timeline-builder-name">Dan Shipper</span>
     <span class="timeline-builder-handle">@danshipper</span>
   </div>
@@ -1927,7 +1912,7 @@ i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it
 </div>
 <div class="timeline-builder" id="builder-swyx">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#a8c0c0"></span>
+    <span class="timeline-avatar" style="background:#c8a8b8"></span>
     <span class="timeline-builder-name">Swyx</span>
     <span class="timeline-builder-handle">@swyx</span>
   </div>
@@ -1950,7 +1935,7 @@ i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it
 </div>
 <div class="timeline-builder" id="builder-realmadhuguru">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#c8a8b8"></span>
+    <span class="timeline-avatar" style="background:#c0a8b4"></span>
     <span class="timeline-builder-name">Madhu Guru</span>
     <span class="timeline-builder-handle">@realmadhuguru</span>
   </div>
@@ -2000,7 +1985,7 @@ the next few years will force us to rethink this.</p>
 </div>
 <div class="timeline-builder" id="builder-adityaag">
   <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#c8b0a8"></span>
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
     <span class="timeline-builder-name">Aditya Agarwal</span>
     <span class="timeline-builder-handle">@adityaag</span>
   </div>
@@ -2023,27 +2008,25 @@ Now he&#39;s running Snowflake through the AI shift.</p>
   </div>
 </div>
 </div>
+      </div>
     </div>
   </div>
-  </div>
+
   <footer class="footer">
-    <p>AI Inspiration Notebook &mdash; small AI product case studies, daily</p>
+    <p>AI Inspiration Notebook — small AI product studies, every other day</p>
     <p style="margin-top:8px;font-size:11px;">Designed by Essie Zhang</p>
   </footer>
 </div>
+
 <div id="toast" class="toast"></div>
 <div id="favModal" class="fav-modal" style="display:none">
   <div class="fav-modal-bg" onclick="closeFavModal()"></div>
   <div class="fav-modal-panel">
-    <div class="fav-modal-header">
-      <h2 class="fav-modal-title">Favorites</h2>
-      <button class="fav-modal-close" onclick="closeFavModal()">&times;</button>
-    </div>
-    <div id="favModalBody" class="fav-modal-body">
-      <div class="fav-empty">No favorites yet.</div>
-    </div>
+    <div class="fav-modal-header"><h2 class="fav-modal-title">Favorites</h2><button class="fav-modal-close" onclick="closeFavModal()">&times;</button></div>
+    <div id="favModalBody" class="fav-modal-body"><div class="fav-empty">No favorites yet.</div></div>
   </div>
 </div>
+
 <script>﻿// ==================== Theme ====================
 (function() {
   var saved = localStorage.getItem("ai-inspiration-theme");
@@ -2270,28 +2253,14 @@ function setChannel(channel, btn) {
     if (targetBtn) targetBtn.classList.add('active');
   }
 
-  var tabsRow = document.getElementById('tabsRow');
-  var cardGrid = document.querySelector('.card-grid');
-  var digest = document.getElementById('digestSection');
-  var main = document.querySelector('main');
-  var footer = document.querySelector('.footer');
-
-  if (channel === 'notebook') {
-    if (tabsRow) tabsRow.style.display = '';
-    if (cardGrid) cardGrid.style.display = '';
-    if (digest) digest.style.display = 'none';
-    if (main) main.style.display = '';
-    if (footer) footer.style.display = '';
-    var allTab = document.querySelector('.tab[onclick*="all"]');
-    if (allTab && !allTab.classList.contains('active')) {
-      allTab.click();
-    }
+  // Show/hide channel-content divs
+  document.querySelectorAll('.channel-content').forEach(function(el) { el.style.display = 'none'; });
+  if (channel === 'inspiration') {
+    var insp = document.getElementById('channel-inspiration');
+    if (insp) insp.style.display = '';
   } else {
-    if (tabsRow) tabsRow.style.display = 'none';
-    if (cardGrid) cardGrid.style.display = 'none';
-    if (digest) digest.style.display = '';
-    if (main) main.style.display = 'none';
-    if (footer) footer.style.display = 'none';
+    var builder = document.getElementById('channel-builder');
+    if (builder) builder.style.display = '';
   }
 
   // Restore scroll position for the new channel
@@ -2342,8 +2311,8 @@ filterCategory = function(btn, category) {
 // ==================== Restore channel on load (PRD 4.1) ====================
 (function() {
   var savedChannel = localStorage.getItem('ai-inspiration-channel');
-  if (savedChannel === 'digest') {
-    setChannel('digest');
+  if (savedChannel === 'builder') {
+    setChannel('builder');
   }
 })();
 

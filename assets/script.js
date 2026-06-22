@@ -202,14 +202,14 @@ restoreFavorites();
 
 
 // ==================== Channel Switcher (PRD 4.1) ====================
-var currentChannel = 'notebook';
+var currentChannel = 'inspiration';
 
 function switchChannel(btn, channel) {
   if (currentChannel === channel) return;
   setChannel(channel, btn);
 }
 
-var _channelScrollY = { notebook: 0, digest: 0 };
+var _channelScrollY = { inspiration: 0, builder: 0 };
 
 function setChannel(channel, btn) {
   // Save current scroll position before switching
@@ -224,28 +224,14 @@ function setChannel(channel, btn) {
     if (targetBtn) targetBtn.classList.add('active');
   }
 
-  var tabsRow = document.getElementById('tabsRow');
-  var cardGrid = document.querySelector('.card-grid');
-  var digest = document.getElementById('digestSection');
-  var main = document.querySelector('main');
-  var footer = document.querySelector('.footer');
-
-  if (channel === 'notebook') {
-    if (tabsRow) tabsRow.style.display = '';
-    if (cardGrid) cardGrid.style.display = '';
-    if (digest) digest.style.display = 'none';
-    if (main) main.style.display = '';
-    if (footer) footer.style.display = '';
-    var allTab = document.querySelector('.tab[onclick*="all"]');
-    if (allTab && !allTab.classList.contains('active')) {
-      allTab.click();
-    }
+  // Show/hide channel-content divs
+  document.querySelectorAll('.channel-content').forEach(function(el) { el.style.display = 'none'; });
+  if (channel === 'inspiration') {
+    var insp = document.getElementById('channel-inspiration');
+    if (insp) insp.style.display = '';
   } else {
-    if (tabsRow) tabsRow.style.display = 'none';
-    if (cardGrid) cardGrid.style.display = 'none';
-    if (digest) digest.style.display = '';
-    if (main) main.style.display = 'none';
-    if (footer) footer.style.display = 'none';
+    var builder = document.getElementById('channel-builder');
+    if (builder) builder.style.display = '';
   }
 
   // Restore scroll position for the new channel
@@ -296,8 +282,8 @@ filterCategory = function(btn, category) {
 // ==================== Restore channel on load (PRD 4.1) ====================
 (function() {
   var savedChannel = localStorage.getItem('ai-inspiration-channel');
-  if (savedChannel === 'digest') {
-    setChannel('digest');
+  if (savedChannel === 'builder') {
+    setChannel('builder');
   }
 })();
 
