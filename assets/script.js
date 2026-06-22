@@ -209,15 +209,17 @@ function switchChannel(btn, channel) {
   setChannel(channel, btn);
 }
 
+var _channelScrollY = { notebook: 0, digest: 0 };
+
 function setChannel(channel, btn) {
-  currentChannel = channel;
+  // Save current scroll position before switching
+  _channelScrollY[currentChannel] = window.scrollY;
   localStorage.setItem('ai-inspiration-channel', channel);
 
   // Update button states
   document.querySelectorAll('.channel-btn').forEach(function(b) { b.classList.remove('active'); });
   if (btn) btn.classList.add('active');
   else {
-    // Restore from localStorage: find matching button
     var targetBtn = document.querySelector('.channel-btn[onclick*="' + channel + '"]');
     if (targetBtn) targetBtn.classList.add('active');
   }
@@ -229,25 +231,26 @@ function setChannel(channel, btn) {
   var footer = document.querySelector('.footer');
 
   if (channel === 'notebook') {
-    // Show notebook: cards + tabs
     if (tabsRow) tabsRow.style.display = '';
     if (cardGrid) cardGrid.style.display = '';
     if (digest) digest.style.display = 'none';
     if (main) main.style.display = '';
     if (footer) footer.style.display = '';
-    // Reactivate the default tab
     var allTab = document.querySelector('.tab[onclick*="all"]');
     if (allTab && !allTab.classList.contains('active')) {
       allTab.click();
     }
   } else {
-    // Show Builder Digest: timeline only, hide tabs
     if (tabsRow) tabsRow.style.display = 'none';
     if (cardGrid) cardGrid.style.display = 'none';
     if (digest) digest.style.display = '';
     if (main) main.style.display = 'none';
     if (footer) footer.style.display = 'none';
   }
+
+  // Restore scroll position for the new channel
+  currentChannel = channel;
+  window.scrollTo(0, _channelScrollY[channel] || 0);
 }
 
 
