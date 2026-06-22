@@ -302,26 +302,28 @@ filterCategory = function(btn, category) {
 })();
 
 
-// ==================== Timeline Nav (builder index on right) ====================
+// ==================== Timeline Sidebar Nav (left sidebar + right content) ====================
 (function() {
-  var nav = document.getElementById('timelineNav');
-  if (!nav) return;
+  var sidebar = document.getElementById('timelineSidebar');
+  if (!sidebar) return;
 
-  var items = nav.querySelectorAll('.timeline-nav-item');
-  if (!items.length) return;
+  var items = sidebar.querySelectorAll('.timeline-nav-item');
+  var builders = document.querySelectorAll('.timeline-builder');
+  if (!items.length || !builders.length) return;
+
+  var builderIds = [];
+  builders.forEach(function(b) { if (b.id) builderIds.push(b.id); });
 
   var observer = new IntersectionObserver(function(entries) {
-    var visible = null;
+    var lastVisible = null;
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        visible = entry.target;
+        lastVisible = entry.target.id;
       }
     });
-    // Highlight the last visible builder (closest to top)
-    if (visible) {
-      var bid = visible.id;
+    if (lastVisible) {
       items.forEach(function(item) {
-        if (item.getAttribute('data-builder') === bid) {
+        if (item.getAttribute('data-builder') === lastVisible) {
           item.classList.add('active');
         } else {
           item.classList.remove('active');
@@ -330,12 +332,21 @@ filterCategory = function(btn, category) {
     }
   }, {
     root: null,
-    rootMargin: '-80px 0px -70% 0px',
+    rootMargin: '-60px 0px -60% 0px',
     threshold: 0,
   });
 
-  // Observe all builder sections
-  document.querySelectorAll('.timeline-builder').forEach(function(builder) {
-    observer.observe(builder);
+  builders.forEach(function(b) { observer.observe(b); });
+
+  // Smooth scroll on sidebar click
+  items.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = item.getAttribute('data-builder');
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 })();

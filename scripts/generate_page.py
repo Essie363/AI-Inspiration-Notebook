@@ -56,7 +56,7 @@ def avatar_color(name):
 
 
 def build_builder_nav(tweets):
-    """Generate right-side floating index of builders (PRD update)."""
+    """Generate left sidebar builder index (PRD: left nav + right content)."""
     if not tweets:
         return ''
     builders = {}
@@ -70,14 +70,16 @@ def build_builder_nav(tweets):
     ), reverse=True)
     
     lines = []
+    lines.append('<nav class="timeline-sidebar" id="timelineSidebar">')
+    lines.append('  <div class="timeline-sidebar-title">Builders</div>')
     for name in builder_order:
         username = builders[name]
         bid = 'builder-' + username
         lines.append(
-            '<a href="#' + bid + '" class="timeline-nav-item" '
-            'data-builder="' + bid + '">'
-            + escape(name) + '</a>'
+            '  <a href="#' + bid + '" class="timeline-nav-item" '
+            'data-builder="' + bid + '">' + escape(name) + '</a>'
         )
+    lines.append('</nav>')
     return '\n'.join(lines)
 
 
@@ -300,16 +302,18 @@ def generate_html(projects, builder_tweets=None):
 
     # Builder Digest timeline (hidden by default, shown via JS)
     lines.append('  <div id="digestSection" class="digest-section" style="display:none">')
-    timeline_html = generate_timeline(builder_tweets) if builder_tweets else ''
+    timeline_html_raw = generate_timeline(builder_tweets) if builder_tweets else ''
     
-    # Build timeline nav index (right side, PRD update)
     if builder_tweets:
         nav_html = build_builder_nav(builder_tweets)
-        lines.append('  <div class="timeline-nav" id="timelineNav">')
+        lines.append('  <div class="timeline-layout">')
         lines.append(nav_html)
+        lines.append('    <div class="timeline-content">')
+        lines.append(timeline_html_raw)
+        lines.append('    </div>')
         lines.append('  </div>')
-    
-    lines.append(timeline_html)
+    else:
+        lines.append(timeline_html_raw)
     lines.append('  </div>')
 
     lines.append('  <footer class="footer">')
