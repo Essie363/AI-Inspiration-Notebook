@@ -87,6 +87,37 @@ body {
 }
 .theme-btn:hover, .export-btn:hover { background: var(--tag-bg); }
 
+/* ==================== Channel Switcher (PRD 4.1) ==================== */
+.channel-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.channel-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+
+.channel-btn:hover {
+  color: var(--text);
+}
+
+.channel-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
 /* ==================== Tabs ==================== */
 .tabs {
   display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;

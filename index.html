@@ -93,6 +93,37 @@ body {
 }
 .theme-btn:hover, .export-btn:hover { background: var(--tag-bg); }
 
+/* ==================== Channel Switcher (PRD 4.1) ==================== */
+.channel-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.channel-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+
+.channel-btn:hover {
+  color: var(--text);
+}
+
+.channel-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
 /* ==================== Tabs ==================== */
 .tabs {
   display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;
@@ -544,7 +575,7 @@ mark {
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-23 01:02</span>
+        <span>2026-06-23 01:14</span>
         <span class="dot">&middot;</span>
         <span>11 projects</span>
       </div>
@@ -554,11 +585,14 @@ mark {
       </div>
     </div>
   </header>
-  <div class="tabs"><button class="tab active" onclick="filterCategory(this, 'all')">All (11)</button>
+  <div class="channel-bar">
+    <button class="channel-btn active" onclick="switchChannel(this, 'notebook')">AI ???</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'digest')">Builder Digest (33)</button>
+  </div>
+  <div id="tabsRow" class="tabs"><button class="tab active" onclick="filterCategory(this, 'all')">All (11)</button>
 <button class="tab" onclick="filterCategory(this, 'chrome-extension')">Extensions (3)</button>
 <button class="tab" onclick="filterCategory(this, 'creative')">Creative (3)</button>
 <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (5)</button>
-<button class="tab" onclick="switchToTimeline(this)">Builder Digest (33)</button>
 </div>
   <main>
 <div class="card-grid">
@@ -1748,6 +1782,49 @@ document.addEventListener("click", function(e) {
 })();
 
 restoreFavorites();
+
+
+
+// ==================== Channel Switcher (PRD 4.1) ====================
+var currentChannel = 'notebook';
+
+function switchChannel(btn, channel) {
+  if (currentChannel === channel) return;
+  currentChannel = channel;
+
+  // Update button states
+  document.querySelectorAll('.channel-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+
+  var tabsRow = document.getElementById('tabsRow');
+  var cardGrid = document.querySelector('.card-grid');
+  var digest = document.getElementById('digestSection');
+  var main = document.querySelector('main');
+  var footer = document.querySelector('.footer');
+
+  if (channel === 'notebook') {
+    // Show notebook: cards + tabs
+    if (tabsRow) tabsRow.style.display = '';
+    if (cardGrid) cardGrid.style.display = '';
+    if (digest) digest.style.display = 'none';
+    if (main) main.style.display = '';
+    if (footer) footer.style.display = '';
+    // Reactivate the default tab
+    var allTab = document.querySelector('.tab[onclick*="all"]');
+    if (allTab && !allTab.classList.contains('active')) {
+      allTab.click();
+    }
+  } else {
+    // Show Builder Digest: timeline only, hide tabs
+    if (tabsRow) tabsRow.style.display = 'none';
+    if (cardGrid) cardGrid.style.display = 'none';
+    if (digest) digest.style.display = '';
+    if (main) main.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+  }
+}
+
+
 
 
 

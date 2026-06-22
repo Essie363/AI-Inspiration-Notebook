@@ -201,6 +201,49 @@ restoreFavorites();
 
 
 
+// ==================== Channel Switcher (PRD 4.1) ====================
+var currentChannel = 'notebook';
+
+function switchChannel(btn, channel) {
+  if (currentChannel === channel) return;
+  currentChannel = channel;
+
+  // Update button states
+  document.querySelectorAll('.channel-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+
+  var tabsRow = document.getElementById('tabsRow');
+  var cardGrid = document.querySelector('.card-grid');
+  var digest = document.getElementById('digestSection');
+  var main = document.querySelector('main');
+  var footer = document.querySelector('.footer');
+
+  if (channel === 'notebook') {
+    // Show notebook: cards + tabs
+    if (tabsRow) tabsRow.style.display = '';
+    if (cardGrid) cardGrid.style.display = '';
+    if (digest) digest.style.display = 'none';
+    if (main) main.style.display = '';
+    if (footer) footer.style.display = '';
+    // Reactivate the default tab
+    var allTab = document.querySelector('.tab[onclick*="all"]');
+    if (allTab && !allTab.classList.contains('active')) {
+      allTab.click();
+    }
+  } else {
+    // Show Builder Digest: timeline only, hide tabs
+    if (tabsRow) tabsRow.style.display = 'none';
+    if (cardGrid) cardGrid.style.display = 'none';
+    if (digest) digest.style.display = '';
+    if (main) main.style.display = 'none';
+    if (footer) footer.style.display = 'none';
+  }
+}
+
+
+
+
+
 // ==================== Builder Digest Timeline (PRD 4.7) ====================
 function switchToTimeline(btn) {
   // Deactivate all tabs, activate clicked one

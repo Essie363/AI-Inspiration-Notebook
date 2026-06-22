@@ -181,11 +181,6 @@ def generate_html(projects, builder_tweets=None):
     for cat_key in tab_order:
         tabs_html += '<button class="tab" onclick="filterCategory(this, \'' + cat_key + '\')">' + tab_labels[cat_key] + "</button>\n"
 
-    # Builder Digest tab (PRD 4.7)
-    digest_count = len(builder_tweets) if builder_tweets else 0
-    tabs_html += '<button class="tab" onclick="switchToTimeline(this)">Builder Digest (' + str(digest_count) + ')</button>\n'
-
-
     grids_html = '<div class="card-grid">\n'
     all_projects = []
     for cat_key in tab_order:
@@ -236,8 +231,15 @@ def generate_html(projects, builder_tweets=None):
     lines.append("      </div>")
     lines.append("    </div>")
     lines.append("  </header>")
+    # Channel switcher (PRD 4.1)
+    digest_count = len(builder_tweets) if builder_tweets else 0
+    lines.append('  <div class="channel-bar">')
+    lines.append('    <button class="channel-btn active" onclick="switchChannel(this, \'notebook\')">AI ???</button>')
+    lines.append('    <button class="channel-btn" onclick="switchChannel(this, \'digest\')">Builder Digest (' + str(digest_count) + ')</button>')
+    lines.append('  </div>')
 
-    lines.append('  <div class="tabs">' + tabs_html + "</div>")
+
+    lines.append('  <div id="tabsRow" class="tabs">' + tabs_html + "</div>")
     lines.append("  <main>")
     if grids_html:
         lines.append(grids_html)
