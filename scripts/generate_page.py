@@ -108,8 +108,6 @@ def generate_timeline(tweets):
         lines.append('    <span class="timeline-avatar" style="background:' + color + '"></span>')
         lines.append('    <span class="timeline-builder-name">' + escape(name) + '</span>')
         lines.append('    <span class="timeline-builder-handle">@' + escape(username) + '</span>')
-        profile_url = 'https://x.com/' + username
-        lines.append('    <a href="' + profile_url + '" target="_blank" class="timeline-profile-link" title="View on X">&#8599;</a>')
         lines.append('  </div>')
         for t in btweets:
             tid = t.get("tweet_id", "")
@@ -128,7 +126,7 @@ def generate_timeline(tweets):
             lines.append('    <div class="timeline-meta">')
             lines.append('      <span class="timeline-date">' + escape(created) + '</span>')
             lines.append('      <span class="timeline-likes">&#9825; ' + str(likes) + '</span>')
-            # (View on X link removed per PRD ? redundant with header)
+            lines.append('      <a href="' + escape(url) + '" target="_blank" class="timeline-link">View on X &#8599;</a>')
             lines.append('    </div>')
             lines.append('  </div>')
         lines.append('</div>')
