@@ -679,7 +679,7 @@ mark {
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-23 01:58</span>
+        <span>2026-06-23 02:11</span>
         <span class="dot">&middot;</span>
         <span>19 projects</span>
       </div>
@@ -2248,14 +2248,14 @@ restoreFavorites();
 
 
 // ==================== Channel Switcher (PRD 4.1) ====================
-var currentChannel = 'notebook';
+var currentChannel = 'inspiration';
 
 function switchChannel(btn, channel) {
   if (currentChannel === channel) return;
   setChannel(channel, btn);
 }
 
-var _channelScrollY = { notebook: 0, digest: 0 };
+var _channelScrollY = { inspiration: 0, builder: 0 };
 
 function setChannel(channel, btn) {
   // Save current scroll position before switching
