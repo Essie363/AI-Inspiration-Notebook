@@ -108,6 +108,8 @@ def generate_timeline(tweets):
         lines.append('    <span class="timeline-avatar" style="background:' + color + '"></span>')
         lines.append('    <span class="timeline-builder-name">' + escape(name) + '</span>')
         lines.append('    <span class="timeline-builder-handle">@' + escape(username) + '</span>')
+        profile_url = 'https://x.com/' + username
+        lines.append('    <a href="' + profile_url + '" target="_blank" class="timeline-profile-link" title="View on X">&#8599;</a>')
         lines.append('  </div>')
         for t in btweets:
             tid = t.get("tweet_id", "")
