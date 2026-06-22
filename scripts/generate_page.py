@@ -37,6 +37,24 @@ def load_builder_tweets():
     return []
 
 
+# Morandi color palette for builder avatars
+import hashlib
+_MORANDI_COLORS = [
+    "#a8b5c8", "#c4a882", "#b8c4a8", "#d4b8a8", "#a8c4c0",
+    "#c8a8b8", "#a8b4c4", "#c4b0a0", "#b0c0b4", "#c0a8b8",
+    "#a0b4c4", "#c4b4a4", "#b4c4a8", "#d0b8b0", "#a8c0c0",
+    "#c8b0a8", "#b8a8c4", "#a4c0b4", "#c4a4b4", "#a8c4b4",
+]
+
+
+def avatar_color(name):
+    """Deterministic Morandi color based on builder name."""
+    if not name:
+        return _MORANDI_COLORS[0]
+    h = int(hashlib.md5(name.encode()).hexdigest()[:8], 16)
+    return _MORANDI_COLORS[h % len(_MORANDI_COLORS)]
+
+
 def generate_timeline(tweets):
     """Generate Builder Digest timeline HTML per PRD 4.7."""
     if not tweets:
@@ -57,7 +75,8 @@ def generate_timeline(tweets):
         username = btweets[0].get("author_username", "")
         lines.append('<div class="timeline-builder">')
         lines.append('  <div class="timeline-builder-header">')
-        lines.append('    <span class="timeline-avatar"></span>')
+        color = avatar_color(name)
+        lines.append('    <span class="timeline-avatar" style="background:' + color + '"></span>')
         lines.append('    <span class="timeline-builder-name">' + escape(name) + '</span>')
         lines.append('    <span class="timeline-builder-handle">@' + escape(username) + '</span>')
         lines.append('  </div>')
