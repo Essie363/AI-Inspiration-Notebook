@@ -159,6 +159,25 @@ body {
   align-self: flex-start;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.timeline-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.timeline-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.timeline-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
 }
 
 .timeline-sidebar-title {
