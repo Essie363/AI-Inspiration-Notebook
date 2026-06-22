@@ -165,25 +165,12 @@ body {
   align-self: flex-start;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .timeline-sidebar::-webkit-scrollbar {
-  width: 4px;
-}
-
-.timeline-sidebar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.timeline-sidebar::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 2px;
-}
-
-.timeline-sidebar::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary);
+  display: none;
 }
 
 .timeline-sidebar-title {
@@ -692,7 +679,7 @@ mark {
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-23 01:42</span>
+        <span>2026-06-23 01:45</span>
         <span class="dot">&middot;</span>
         <span>11 projects</span>
       </div>
@@ -1243,15 +1230,13 @@ mark {
   <a href="#builder-garrytan" class="timeline-nav-item" data-builder="builder-garrytan">Garry Tan</a>
   <a href="#builder-joshwoodward" class="timeline-nav-item" data-builder="builder-joshwoodward">Josh Woodward</a>
   <a href="#builder-petergyang" class="timeline-nav-item" data-builder="builder-petergyang">Peter Yang</a>
-  <a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg">Guillermo Rauch</a>
   <a href="#builder-zarazhangrui" class="timeline-nav-item" data-builder="builder-zarazhangrui">Zara Zhang</a>
-  <a href="#builder-amasad" class="timeline-nav-item" data-builder="builder-amasad">Amjad Masad</a>
   <a href="#builder-nikunj" class="timeline-nav-item" data-builder="builder-nikunj">Nikunj Kothari</a>
+  <a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg">Guillermo Rauch</a>
   <a href="#builder-danshipper" class="timeline-nav-item" data-builder="builder-danshipper">Dan Shipper</a>
   <a href="#builder-swyx" class="timeline-nav-item" data-builder="builder-swyx">Swyx</a>
   <a href="#builder-realmadhuguru" class="timeline-nav-item" data-builder="builder-realmadhuguru">Madhu Guru</a>
   <a href="#builder-adityaag" class="timeline-nav-item" data-builder="builder-adityaag">Aditya Agarwal</a>
-  <a href="#builder-mattturck" class="timeline-nav-item" data-builder="builder-mattturck">Matt Turck</a>
 </nav>
     <div class="timeline-content">
 <div class="timeline-feed">
@@ -1262,12 +1247,9 @@ mark {
     <span class="timeline-builder-handle">@thsottiaux</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">已修复。你知道接下来会发生什么 👀
+    <p class="timeline-text">This was fixed. You know what&#39;s coming 👀
 
-给我们 24 小时，重置所有套餐的 Codex 速率限制。 https://t.co/vx3Jb7YT6K</p>
-    <p class="timeline-text timeline-text-en">This was fixed. You know what&#39;s coming 👀
-
-Give us 24 hours to reset the Codex rate limits across all plans. https://t.co/vx3Jb7YT6K</p>
+Give us 24 hours to reset the Codex rate limits across all plans.</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 5799</span>
@@ -1275,10 +1257,7 @@ Give us 24 hours to reset the Codex rate limits across all plans. https://t.co/v
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">唉。我们注意到部分 Codex 用户遇到了较高的错误率，错误提示为“model at capacity”，我们正在努力恢复稳定。 https://t.co/R3dCKGGtQw</p>
-    <p class="timeline-text timeline-text-en">Oy. We are aware that some Codex users are experiencing high error rates with &quot;model at capacity&quot; and are working to bring things back to being stable.
-
-https://t.co/R3dCKGGtQw</p>
+    <p class="timeline-text">Oy. We are aware that some Codex users are experiencing high error rates with &quot;model at capacity&quot; and are working to bring things back to being stable.</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 3628</span>
@@ -1286,8 +1265,7 @@ https://t.co/R3dCKGGtQw</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Bim bada boum. 我这周在 France，我们正在全 Europe 推出所有最激动人心的 Codex 功能。是巧合，还是团队觉得否则我就没法高效工作？ https://t.co/LilIl4XkJF</p>
-    <p class="timeline-text timeline-text-en">Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn&#39;t able to be productive otherwise? https://t.co/LilIl4XkJF</p>
+    <p class="timeline-text">Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn&#39;t able to be productive otherwise?</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 1223</span>
@@ -1302,8 +1280,7 @@ https://t.co/R3dCKGGtQw</p>
     <span class="timeline-builder-handle">@trq212</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Slack 现在会渲染 HTML 附件，而不仅仅是显示成文本 😭🙏 https://t.co/rHoAChwRyv</p>
-    <p class="timeline-text timeline-text-en">Slack now renders HTML attachments instead of just showing it as text 😭🙏 https://t.co/rHoAChwRyv</p>
+    <p class="timeline-text">Slack now renders HTML attachments instead of just showing it as text 😭🙏</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 2513</span>
@@ -1318,8 +1295,7 @@ https://t.co/R3dCKGGtQw</p>
     <span class="timeline-builder-handle">@ryolu_</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">疯狂的想法：如果 X 和 Cursor 是同一个东西呢？ https://t.co/nUgSVT3i6J</p>
-    <p class="timeline-text timeline-text-en">crazy idea: what if X, Cursor, were the same thing? https://t.co/nUgSVT3i6J</p>
+    <p class="timeline-text">crazy idea: what if X, Cursor, were the same thing?</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 2195</span>
@@ -1327,29 +1303,15 @@ https://t.co/R3dCKGGtQw</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">关于 Cursor 移动版最疯狂的事
-是 @rikcreation 以“设计师”的身份用 Cursor 写出了大部分真正的东西
-
-头衔算个屁。
-你只管去构建。 https://t.co/UYOoUYf0t0</p>
-    <p class="timeline-text timeline-text-en">the crazy thing about Cursor mobile
+    <p class="timeline-text">the crazy thing about Cursor mobile
 is @rikcreation coded most of the real thing with Cursor, as a “designer”
 
 titles don’t mean shit.
-you can just build. https://t.co/UYOoUYf0t0</p>
+you can just build.</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 204</span>
       <a href="https://x.com/ryolu_/status/2067124871226929526" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">https://t.co/vozY3udGoP https://t.co/GSUZuCoER1</p>
-    <p class="timeline-text timeline-text-en">https://t.co/vozY3udGoP https://t.co/GSUZuCoER1</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-17</span>
-      <span class="timeline-likes">&#9825; 104</span>
-      <a href="https://x.com/ryolu_/status/2067138928864555222" target="_blank" class="timeline-link">View on X &#8599;</a>
     </div>
   </div>
 </div>
@@ -1360,12 +1322,7 @@ you can just build. https://t.co/UYOoUYf0t0</p>
     <span class="timeline-builder-handle">@levie</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Cursor 的这次交易象征意义十分重大。这实际上是 AI 应用层的首个巨大成功。
-
-他们切实证明了深度领域专注、扮演模型路由器的角色、何时借助前沿模型而非自己训练，以及应用层 AI 的 GTM 和分发在真正抓住市场机会上的价值主张。
-
-他们业务的每一个环节都经过精心调校，以便在竞争激烈的空间中抢占阵地并持续加倍投入。这确实是首个规模化执行这套打法的模板。</p>
-    <p class="timeline-text timeline-text-en">The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI. 
+    <p class="timeline-text">The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI. 
 
 They firmly proved out the value proposition of having a deep domain focus, the role you play as a model router, when to lean into frontier models vs. when to train your own, and the role of applied AI GTM and distribution to make sure you’re actually taking advantage of the market opportunity. 
 
@@ -1377,12 +1334,7 @@ Every aspect of their business was tuned to carve out ground and keep doubling d
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">AI领域最大的疑问之一是，在任何时候，open weights 模型相较于闭源模型落后多少。市场结构会因 open weights 模型落后3到6个月还是落后数年而出现巨大差异。
-
-这一问题的答案将决定芯片堆栈的演变、推理可以在哪里运行、主权AI的形态、AI应用层会发生什么、AI的利润结构、企业能在AI上投入多少资金等等。
-
-目前，open weights 玩家似乎正努力保持在能力前沿附近。看看后续如何发展会很有趣。</p>
-    <p class="timeline-text timeline-text-en">One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years. 
+    <p class="timeline-text">One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years. 
 
 The answer to this will determine how the chip stack plays out, where inference can be run, what sovereign AI looks like, what happens at the applied AI layer, what the margin structure looks like in AI, how much companies can afford to spend on AI, and more.
 
@@ -1401,12 +1353,9 @@ At the moment the open weights players appear to be holding up at keeping close 
     <span class="timeline-builder-handle">@garrytan</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">如果你害怕被人觉得尴尬，那就永远一事无成。
+    <p class="timeline-text">You’ll never achieve anything if you are afraid of being cringe
 
-不过话说回来，这话出自一个试图用looksmaxxing来获取超额回报的人，祝你好运吧 https://t.co/azxDnN4YMf</p>
-    <p class="timeline-text timeline-text-en">You’ll never achieve anything if you are afraid of being cringe
-
-Then again this is from someone trying to use looksmaxxing to achieve outsize return, good luck with that https://t.co/azxDnN4YMf</p>
+Then again this is from someone trying to use looksmaxxing to achieve outsize return, good luck with that</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 588</span>
@@ -1414,8 +1363,7 @@ Then again this is from someone trying to use looksmaxxing to achieve outsize re
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">9Mothers 是那种对战员而言影响立竿见影的技术之一 https://t.co/Aqnl9d84ky</p>
-    <p class="timeline-text timeline-text-en">9Mothers is one of those technologies whose impact is immediately obvious to warfighters https://t.co/Aqnl9d84ky</p>
+    <p class="timeline-text">9Mothers is one of those technologies whose impact is immediately obvious to warfighters</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 74</span>
@@ -1423,14 +1371,7 @@ Then again this is from someone trying to use looksmaxxing to achieve outsize re
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">这就引出了……Bowen 的自我分化
-
-低自我分化 = 对他人的情绪线索高度敏感，在关系中迷失自我，在压力下无法守住边界 —— 崩溃成“我们一体感”（每个人都必须感受一样，否则联结就受到威胁）。
-
-同一种病的两种形态：变色龙（为讨好而调整自己，融合模式）与霸凌者（强迫他人顺从，混蛋模式）。两者都未分化。自我抛弃者与混蛋其实是同一个人。
-
-解决之道也一样：降低慢性焦虑，提升在保持联结的同时保持独立自我的能力。</p>
-    <p class="timeline-text timeline-text-en">Which leads to… Bowen’s differentiation of self
+    <p class="timeline-text">Which leads to… Bowen’s differentiation of self
 
 Low differentiation = highly reactive to others&#39; emotional cues, loses self in relationships, can&#39;t hold boundaries under pressure — collapses into &quot;we-ness&quot; (everyone must feel the same or the bond feels threatened).
 
@@ -1451,19 +1392,7 @@ The fix is the same: lower the chronic anxiety, raise the capacity to stay a sep
     <span class="timeline-builder-handle">@joshwoodward</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">🇧🇷改变世界的AI公司正来自巴西。
-
-这就是我们正式将Google AI Futures Fund扩展至巴西的原因，并携手风投领军者Monashees推出Gama Fund。
-
-我们正在寻找一批精英深科技创始人，并将提供：
-
-- Google DeepMind模型的早期访问权限
-- 最高200万美元的共同投资
-- 35万美元的Google Cloud与Gemini额度
-- 在我们全新的IPT Open园区中心与Google工程师直接联合开发
-
-立即申请：https://t.co/8sv9seJLdB</p>
-    <p class="timeline-text timeline-text-en">🇧🇷World-changing AI companies are coming from Brazil.
+    <p class="timeline-text">🇧🇷World-changing AI companies are coming from Brazil.
 
 That’s why we’ve officially expanded our Google AI Futures Fund to Brazil, partnering with venture capital leader Monashees to launch the Gama Fund.
 
@@ -1474,7 +1403,7 @@ We’re looking for an elite cohort of deep tech founders and will offer:
 - $350k in Google Cloud &amp; Gemini credits
 - Direct co-development with Google engineers at our new IPT Open campus hub
 
-Apply today: https://t.co/8sv9seJLdB</p>
+Apply today:</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 351</span>
@@ -1489,12 +1418,9 @@ Apply today: https://t.co/8sv9seJLdB</p>
     <span class="timeline-builder-handle">@petergyang</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">说实话，我不想当黑粉，但我觉得这就是公司内部没人敢对CEO说不的结果。
+    <p class="timeline-text">Honestly I don&#39;t want to be a hater but I feel like this is what happens when nobody internally wants to tell the CEO no. 
 
-也许这东西会让我们大吃一惊？ https://t.co/PRD3LeNy03</p>
-    <p class="timeline-text timeline-text-en">Honestly I don&#39;t want to be a hater but I feel like this is what happens when nobody internally wants to tell the CEO no. 
-
-Maybe this thing will blow our socks off? https://t.co/PRD3LeNy03</p>
+Maybe this thing will blow our socks off?</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 280</span>
@@ -1502,8 +1428,7 @@ Maybe this thing will blow our socks off? https://t.co/PRD3LeNy03</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">靠，又来了。是不是所有1000人以上的公司都要这么干😭 https://t.co/Mg3wk7ZYT6</p>
-    <p class="timeline-text timeline-text-en">Damn not again. Is every company with 1,000+ people going to do this 😭 https://t.co/Mg3wk7ZYT6</p>
+    <p class="timeline-text">Damn not again. Is every company with 1,000+ people going to do this 😭</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 204</span>
@@ -1511,47 +1436,13 @@ Maybe this thing will blow our socks off? https://t.co/PRD3LeNy03</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">发布新教程，教你用一个由4个文件组成的技能，把 Codex 或 Claude Code 变成你的私人顾问。另外，我还在它被限制前抢存了 Fable 的建议 🥲
+    <p class="timeline-text">Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable&#39;s advice too before it got restricted 🥲
 
-📌 订阅，明天获取教程：https://t.co/MbOfeFUJbn https://t.co/bYW7tP4v0l</p>
-    <p class="timeline-text timeline-text-en">Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable&#39;s advice too before it got restricted 🥲
-
-📌 Subscribe to get the tutorial tmr: https://t.co/MbOfeFUJbn https://t.co/bYW7tP4v0l</p>
+📌 Subscribe to get the tutorial tmr: https://t.co/MbOfeFUJbn</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 78</span>
       <a href="https://x.com/petergyang/status/2067056979974160749" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-</div>
-<div class="timeline-builder" id="builder-rauchg">
-  <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#c8a8b8"></span>
-    <span class="timeline-builder-name">Guillermo Rauch</span>
-    <span class="timeline-builder-handle">@rauchg</span>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">还真被说中了 😂 懂的都懂 https://t.co/d9ncX1aP2X</p>
-    <p class="timeline-text timeline-text-en">This aged well 😂 iykyk https://t.co/d9ncX1aP2X</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-17</span>
-      <span class="timeline-likes">&#9825; 190</span>
-      <a href="https://x.com/rauchg/status/2067098826830164310" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">快速铺垫一下：
-
-☑️ 30 分钟的函数调用
-🆕 24 小时沙盒生命周期 https://t.co/r69vntZpbf</p>
-    <p class="timeline-text timeline-text-en">Quick one to set the stage:
-
-☑️ 30 minute function invocations
-🆕 24 hour sandbox lifetimes https://t.co/r69vntZpbf</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-17</span>
-      <span class="timeline-likes">&#9825; 81</span>
-      <a href="https://x.com/rauchg/status/2067137678772937000" target="_blank" class="timeline-link">View on X &#8599;</a>
     </div>
   </div>
 </div>
@@ -1562,10 +1453,7 @@ Maybe this thing will blow our socks off? https://t.co/PRD3LeNy03</p>
     <span class="timeline-builder-handle">@zarazhangrui</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">你不必追逐那些酷的东西。把你已经在做的事情做得如此出色，它自己就会变成酷的东西。
-
-酷的东西在起步时很少是酷的。它变酷，是因为有人在其他所有人都觉得微不足道的事情上深耕。</p>
-    <p class="timeline-text timeline-text-en">You don’t have to chase the cool thing. Do whatever you’re already doing so well that it becomes the cool thing.
+    <p class="timeline-text">You don’t have to chase the cool thing. Do whatever you’re already doing so well that it becomes the cool thing.
 
 The cool thing is rarely cool when it starts. It becomes cool because someone went deep on something everyone else thought was too small.</p>
     <div class="timeline-meta">
@@ -1575,14 +1463,7 @@ The cool thing is rarely cool when it starts. It becomes cool because someone we
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">现在几乎每个产品都是“一个能在你工作与生活中包办一切、并与一切集成的 AI agent”。
-
-好吧，那不就是 Claude/Codex 嘛。
-
-如果你想让我改用你的东西，那它得有主见、有灵魂。要做小巧而锋利，别做大而泛。
-
-什么都做等于什么都不做。对所有人说话等于对谁都没说。</p>
-    <p class="timeline-text timeline-text-en">Every other product right now is &quot;an AI agent that does everything in your work &amp; life &amp; integrates with everything.&quot; 
+    <p class="timeline-text">Every other product right now is &quot;an AI agent that does everything in your work &amp; life &amp; integrates with everything.&quot; 
 
 Cool, that&#39;s just Claude/Codex. 
 
@@ -1596,22 +1477,6 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     </div>
   </div>
 </div>
-<div class="timeline-builder" id="builder-amasad">
-  <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#c4b4a4"></span>
-    <span class="timeline-builder-name">Amjad Masad</span>
-    <span class="timeline-builder-handle">@amasad</span>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Databricks 年度合作伙伴！ https://t.co/pdxBVKE6M2</p>
-    <p class="timeline-text timeline-text-en">Databricks partner of the year! https://t.co/pdxBVKE6M2</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-16</span>
-      <span class="timeline-likes">&#9825; 155</span>
-      <a href="https://x.com/amasad/status/2066956074360426622" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-</div>
 <div class="timeline-builder" id="builder-nikunj">
   <div class="timeline-builder-header">
     <span class="timeline-avatar" style="background:#a8b5c8"></span>
@@ -1619,8 +1484,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     <span class="timeline-builder-handle">@nikunj</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Cursor Compile 的氛围无可挑剔。而且拿到一把定制机械键盘，是会议纪念品的新天花板了 ⌨️ https://t.co/RXq9qLvXJJ</p>
-    <p class="timeline-text timeline-text-en">Vibes at Cursor Compile were immaculate. Also getting a custom mechanical keyboard is a new kind of swag ceiling for conferences ⌨️ https://t.co/RXq9qLvXJJ</p>
+    <p class="timeline-text">Vibes at Cursor Compile were immaculate. Also getting a custom mechanical keyboard is a new kind of swag ceiling for conferences ⌨️</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 139</span>
@@ -1628,12 +1492,29 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">要么走判断（数据）这条路，要么走Token这条路。今天@cursor_ai 的收购为更多应用公司铺平了道路。祝贺我所有的朋友们 🥳 https://t.co/wCKIwElVji</p>
-    <p class="timeline-text timeline-text-en">Be in the judgement (data) path or the token path. Today’s @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends 🥳 https://t.co/wCKIwElVji</p>
+    <p class="timeline-text">Be in the judgement (data) path or the token path. Today’s @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends 🥳</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 23</span>
       <a href="https://x.com/nikunj/status/2066905445974102384" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-rauchg">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c8a8b8"></span>
+    <span class="timeline-builder-name">Guillermo Rauch</span>
+    <span class="timeline-builder-handle">@rauchg</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text">Quick one to set the stage:
+
+☑️ 30 minute function invocations
+🆕 24 hour sandbox lifetimes</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 81</span>
+      <a href="https://x.com/rauchg/status/2067137678772937000" target="_blank" class="timeline-link">View on X &#8599;</a>
     </div>
   </div>
 </div>
@@ -1644,19 +1525,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     <span class="timeline-builder-handle">@danshipper</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">我觉得这很有可能 https://t.co/duB1OtqSIj</p>
-    <p class="timeline-text timeline-text-en">I think this is quite likely https://t.co/duB1OtqSIj</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-16</span>
-      <span class="timeline-likes">&#9825; 134</span>
-      <a href="https://x.com/danshipper/status/2066988174849749303" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">刚换掉 Atlas Browser，用回 Dia 了
-
-我用 Atlas 遇到一堆奇怪的 bug，感觉一点都没变好</p>
-    <p class="timeline-text timeline-text-en">just switched off of Atlas Browser and back onto Dia
+    <p class="timeline-text">just switched off of Atlas Browser and back onto Dia
 
 i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it&#39;s improving</p>
     <div class="timeline-meta">
@@ -1673,8 +1542,7 @@ i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it
     <span class="timeline-builder-handle">@swyx</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">@TomasReimers @cursor_ai *github 竞争对手，我麻了</p>
-    <p class="timeline-text timeline-text-en">@TomasReimers @cursor_ai *github competitor fml</p>
+    <p class="timeline-text">@TomasReimers @cursor_ai *github competitor fml</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 48</span>
@@ -1682,17 +1550,7 @@ i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">@TomasReimers @cursor_ai 完整信息 https://t.co/R8Mp5Iemfn</p>
-    <p class="timeline-text timeline-text-en">@TomasReimers @cursor_ai full info https://t.co/R8Mp5Iemfn</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-16</span>
-      <span class="timeline-likes">&#9825; 9</span>
-      <a href="https://x.com/swyx/status/2067023688906822020" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">@WorkOS @mattpocockuk @zackproser 也做得很好。AIE 的观众超爱 WorkOS 的内容，他们肯定做对了什么 https://t.co/nLZTQyAk1i</p>
-    <p class="timeline-text timeline-text-en">@WorkOS @mattpocockuk @zackproser also doing great. AIE audience LOVES the workos content, they are doing something right https://t.co/nLZTQyAk1i</p>
+    <p class="timeline-text">@WorkOS @mattpocockuk @zackproser also doing great. AIE audience LOVES the workos content, they are doing something right</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 3</span>
@@ -1726,12 +1584,9 @@ Very few companies do even one of these well. Cursor brings all three.</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">在过去的一个世纪里，我们一直把智力当作界定人性的核心特质，却忽视了对其他让我们之所以为人的方面投入，比如自我意识、直觉、同情心和善良。
+    <p class="timeline-text">over the last century, we’ve treated the intellect as a defining human trait and under-invested   in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. 
 
-未来几年将迫使我们重新思考这一点。 https://t.co/4iE3kAMauP</p>
-    <p class="timeline-text timeline-text-en">over the last century, we’ve treated the intellect as a defining human trait and under-invested   in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. 
-
-the next few years will force us to rethink this. https://t.co/4iE3kAMauP</p>
+the next few years will force us to rethink this.</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 7</span>
@@ -1746,45 +1601,15 @@ the next few years will force us to rethink this. https://t.co/4iE3kAMauP</p>
     <span class="timeline-builder-handle">@adityaag</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">这个你没错过。@RamaswmySridhar 下周将作客 @southpkcommons。
-
-他曾把谷歌的广告业务从15亿美元做到1000亿美元以上。
-
-如今他正带领 Snowflake 完成 AI 转型。 https://t.co/xOCxkftsvo</p>
-    <p class="timeline-text timeline-text-en">You didn&#39;t miss this one. @RamaswmySridhar is dropping by @southpkcommons next week.
+    <p class="timeline-text">You didn&#39;t miss this one. @RamaswmySridhar is dropping by @southpkcommons next week.
 
 He grew Google&#39;s ad business from $1.5B to $ 100B+. 
 
-Now he&#39;s running Snowflake through the AI shift. https://t.co/xOCxkftsvo</p>
+Now he&#39;s running Snowflake through the AI shift.</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 38</span>
       <a href="https://x.com/adityaag/status/2066915803610370098" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">如果你想加入我们，请申请 SPC https://t.co/Dcd8nkNcLR</p>
-    <p class="timeline-text timeline-text-en">Apply to SPC if you&#39;d like to join us https://t.co/Dcd8nkNcLR</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-16</span>
-      <span class="timeline-likes">&#9825; 3</span>
-      <a href="https://x.com/adityaag/status/2066915805476827629" target="_blank" class="timeline-link">View on X &#8599;</a>
-    </div>
-  </div>
-</div>
-<div class="timeline-builder" id="builder-mattturck">
-  <div class="timeline-builder-header">
-    <span class="timeline-avatar" style="background:#b4c4a8"></span>
-    <span class="timeline-builder-name">Matt Turck</span>
-    <span class="timeline-builder-handle">@mattturck</span>
-  </div>
-  <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">FirstMark Guilds Summit 的周边赢了 https://t.co/hD1yMKqiaR</p>
-    <p class="timeline-text timeline-text-en">FirstMark Guilds Summit swag wins https://t.co/hD1yMKqiaR</p>
-    <div class="timeline-meta">
-      <span class="timeline-date">2026-06-16</span>
-      <span class="timeline-likes">&#9825; 19</span>
-      <a href="https://x.com/mattturck/status/2066875878731100668" target="_blank" class="timeline-link">View on X &#8599;</a>
     </div>
   </div>
 </div>
