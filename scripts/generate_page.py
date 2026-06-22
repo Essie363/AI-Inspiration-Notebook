@@ -234,7 +234,7 @@ def generate_html(projects, builder_tweets=None):
     # Channel switcher (PRD 4.1)
     digest_count = len(builder_tweets) if builder_tweets else 0
     lines.append('  <div class="channel-bar">')
-    lines.append('    <button class="channel-btn active" onclick="switchChannel(this, \'notebook\')">AI ???</button>')
+    lines.append('    <button class="channel-btn active" onclick="switchChannel(this, \'notebook\')">AI Projects</button>')
     lines.append('    <button class="channel-btn" onclick="switchChannel(this, \'digest\')">Builder Digest (' + str(digest_count) + ')</button>')
     lines.append('  </div>')
 
