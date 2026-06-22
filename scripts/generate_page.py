@@ -126,7 +126,7 @@ def generate_timeline(tweets):
             lines.append('    <div class="timeline-meta">')
             lines.append('      <span class="timeline-date">' + escape(created) + '</span>')
             lines.append('      <span class="timeline-likes">&#9825; ' + str(likes) + '</span>')
-            lines.append('      <a href="' + escape(url) + '" target="_blank" class="timeline-link">View on X &#8599;</a>')
+            # (View on X link removed per PRD ? redundant with header)
             lines.append('    </div>')
             lines.append('  </div>')
         lines.append('</div>')
