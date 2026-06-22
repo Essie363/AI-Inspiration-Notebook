@@ -71,7 +71,6 @@ function card(p, idx) {
 
 // Builder timeline
 let nav="", tl=`<div class="timeline-feed">
-<h2 style="font-family:var(--font-serif);font-size:24px;margin-bottom:20px;">Builder Digest</h2>
 `;
 if(tweets.length>0){
   const bd={}; for(const t of tweets){const n=t.author_name||"Unknown";if(!bd[n])bd[n]=[];bd[n].push(t);}
