@@ -152,52 +152,51 @@ body {
 /* ==================== Timeline Nav (right-side builder index) ==================== */
 .timeline-nav {
   position: fixed;
-  right: max(16px, calc((100vw - var(--max-width)) / 2 - 60px));
-  top: 50%;
-  transform: translateY(-50%);
+  right: max(12px, calc((100vw - var(--max-width)) / 2 - 70px));
+  top: 40%;
+  transform: translateY(-30%);
   z-index: 45;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  background: rgba(255, 252, 247, 0.85);
-  backdrop-filter: blur(6px);
-  border-radius: 20px;
-  padding: 10px 6px;
-  box-shadow: 0 2px 12px rgba(61, 43, 31, 0.08);
+  gap: 2px;
+  background: rgba(255, 252, 247, 0.82);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 8px 10px;
+  box-shadow: 0 2px 10px rgba(61, 43, 31, 0.07);
   border: 1px solid var(--border);
+  max-height: 55vh;
+  overflow-y: auto;
 }
 
 [data-theme="dark"] .timeline-nav {
-  background: rgba(39, 34, 28, 0.88);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  background: rgba(39, 34, 28, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .timeline-nav-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  font-size: 13px;
-  font-weight: 600;
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
   font-family: var(--font-sans);
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
   text-decoration: none;
-  background: transparent;
-  transition: all 0.2s;
-  line-height: 1;
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+  white-space: nowrap;
+  line-height: 1.4;
 }
 
 .timeline-nav-item:hover {
-  background: var(--tag-bg);
   color: var(--text);
-  transform: scale(1.15);
+  background: var(--tag-bg);
 }
 
 .timeline-nav-item.active {
-  background: var(--primary);
-  color: #fffcf7;
+  color: var(--primary);
+  font-weight: 700;
+  background: var(--primary-light);
 }
 
 @media (max-width: 900px) {
@@ -648,7 +647,7 @@ mark {
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-23 01:34</span>
+        <span>2026-06-23 01:35</span>
         <span class="dot">&middot;</span>
         <span>11 projects</span>
       </div>
@@ -1190,22 +1189,22 @@ mark {
   </main>
   <div id="digestSection" class="digest-section" style="display:none">
   <div class="timeline-nav" id="timelineNav">
-<a href="#builder-thsottiaux" class="timeline-nav-item" data-builder="builder-thsottiaux" title="Thibault Sottiaux">T</a>
-<a href="#builder-trq212" class="timeline-nav-item" data-builder="builder-trq212" title="Thariq">T</a>
-<a href="#builder-ryolu_" class="timeline-nav-item" data-builder="builder-ryolu_" title="Ryo Lu">R</a>
-<a href="#builder-levie" class="timeline-nav-item" data-builder="builder-levie" title="Aaron Levie">A</a>
-<a href="#builder-garrytan" class="timeline-nav-item" data-builder="builder-garrytan" title="Garry Tan">G</a>
-<a href="#builder-joshwoodward" class="timeline-nav-item" data-builder="builder-joshwoodward" title="Josh Woodward">J</a>
-<a href="#builder-petergyang" class="timeline-nav-item" data-builder="builder-petergyang" title="Peter Yang">P</a>
-<a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg" title="Guillermo Rauch">G</a>
-<a href="#builder-zarazhangrui" class="timeline-nav-item" data-builder="builder-zarazhangrui" title="Zara Zhang">Z</a>
-<a href="#builder-amasad" class="timeline-nav-item" data-builder="builder-amasad" title="Amjad Masad">A</a>
-<a href="#builder-nikunj" class="timeline-nav-item" data-builder="builder-nikunj" title="Nikunj Kothari">N</a>
-<a href="#builder-danshipper" class="timeline-nav-item" data-builder="builder-danshipper" title="Dan Shipper">D</a>
-<a href="#builder-swyx" class="timeline-nav-item" data-builder="builder-swyx" title="Swyx">S</a>
-<a href="#builder-realmadhuguru" class="timeline-nav-item" data-builder="builder-realmadhuguru" title="Madhu Guru">M</a>
-<a href="#builder-adityaag" class="timeline-nav-item" data-builder="builder-adityaag" title="Aditya Agarwal">A</a>
-<a href="#builder-mattturck" class="timeline-nav-item" data-builder="builder-mattturck" title="Matt Turck">M</a>
+<a href="#builder-thsottiaux" class="timeline-nav-item" data-builder="builder-thsottiaux">Thibault Sottiaux</a>
+<a href="#builder-trq212" class="timeline-nav-item" data-builder="builder-trq212">Thariq</a>
+<a href="#builder-ryolu_" class="timeline-nav-item" data-builder="builder-ryolu_">Ryo Lu</a>
+<a href="#builder-levie" class="timeline-nav-item" data-builder="builder-levie">Aaron Levie</a>
+<a href="#builder-garrytan" class="timeline-nav-item" data-builder="builder-garrytan">Garry Tan</a>
+<a href="#builder-joshwoodward" class="timeline-nav-item" data-builder="builder-joshwoodward">Josh Woodward</a>
+<a href="#builder-petergyang" class="timeline-nav-item" data-builder="builder-petergyang">Peter Yang</a>
+<a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg">Guillermo Rauch</a>
+<a href="#builder-zarazhangrui" class="timeline-nav-item" data-builder="builder-zarazhangrui">Zara Zhang</a>
+<a href="#builder-amasad" class="timeline-nav-item" data-builder="builder-amasad">Amjad Masad</a>
+<a href="#builder-nikunj" class="timeline-nav-item" data-builder="builder-nikunj">Nikunj Kothari</a>
+<a href="#builder-danshipper" class="timeline-nav-item" data-builder="builder-danshipper">Dan Shipper</a>
+<a href="#builder-swyx" class="timeline-nav-item" data-builder="builder-swyx">Swyx</a>
+<a href="#builder-realmadhuguru" class="timeline-nav-item" data-builder="builder-realmadhuguru">Madhu Guru</a>
+<a href="#builder-adityaag" class="timeline-nav-item" data-builder="builder-adityaag">Aditya Agarwal</a>
+<a href="#builder-mattturck" class="timeline-nav-item" data-builder="builder-mattturck">Matt Turck</a>
   </div>
 <div class="timeline-feed">
 <div class="timeline-builder" id="builder-thsottiaux">

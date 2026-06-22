@@ -73,11 +73,10 @@ def build_builder_nav(tweets):
     for name in builder_order:
         username = builders[name]
         bid = 'builder-' + username
-        initial = name[0] if name else '?'
         lines.append(
             '<a href="#' + bid + '" class="timeline-nav-item" '
-            'data-builder="' + bid + '" title="' + escape(name) + '">'
-            + escape(initial) + '</a>'
+            'data-builder="' + bid + '">'
+            + escape(name) + '</a>'
         )
     return '\n'.join(lines)
 
