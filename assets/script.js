@@ -206,11 +206,21 @@ var currentChannel = 'notebook';
 
 function switchChannel(btn, channel) {
   if (currentChannel === channel) return;
+  setChannel(channel, btn);
+}
+
+function setChannel(channel, btn) {
   currentChannel = channel;
+  localStorage.setItem('ai-inspiration-channel', channel);
 
   // Update button states
   document.querySelectorAll('.channel-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
+  else {
+    // Restore from localStorage: find matching button
+    var targetBtn = document.querySelector('.channel-btn[onclick*="' + channel + '"]');
+    if (targetBtn) targetBtn.classList.add('active');
+  }
 
   var tabsRow = document.getElementById('tabsRow');
   var cardGrid = document.querySelector('.card-grid');
@@ -279,3 +289,11 @@ filterCategory = function(btn, category) {
   // Call original
   origFilterCategory(btn, category);
 };
+
+// ==================== Restore channel on load (PRD 4.1) ====================
+(function() {
+  var savedChannel = localStorage.getItem('ai-inspiration-channel');
+  if (savedChannel === 'digest') {
+    setChannel('digest');
+  }
+})();
