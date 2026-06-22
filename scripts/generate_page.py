@@ -6,7 +6,7 @@ import sys
 from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import ROOT_DIR, DATA_FILE, INDEX_HTML
+from config import ROOT_DIR, DATA_FILE, INDEX_HTML, RAW_DIR
 
 if sys.stdout.encoding != "utf-8":
     import io
@@ -18,6 +18,67 @@ def load_projects():
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             return j2.load(f)
     return []
+
+
+def load_builder_tweets():
+    """Load tweets from today's x.json raw data (follow-builders feed)."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    x_path = os.path.join(RAW_DIR, today, "x.json")
+    if os.path.exists(x_path):
+        with open(x_path, "r", encoding="utf-8") as f:
+            return j2.load(f)
+    # Try yesterday as fallback
+    from datetime import timedelta
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    x_path_y = os.path.join(RAW_DIR, yesterday, "x.json")
+    if os.path.exists(x_path_y):
+        with open(x_path_y, "r", encoding="utf-8") as f:
+            return j2.load(f)
+    return []
+
+
+def generate_timeline(tweets):
+    """Generate Builder Digest timeline HTML per PRD 4.7."""
+    if not tweets:
+        return '<div class="empty-state"><p>No builder updates yet.</p></div>'
+    lines = []
+    lines.append('<div class="timeline-feed">')
+    # Group by builder
+    builders = {}
+    for t in tweets:
+        name = t.get("author_name", "Unknown")
+        if name not in builders:
+            builders[name] = []
+        builders[name].append(t)
+    # Sort builders by max likes
+    builder_order = sorted(builders.keys(), key=lambda n: max(t["likes"] for t in builders[n]), reverse=True)
+    for name in builder_order:
+        btweets = builders[name]
+        username = btweets[0].get("author_username", "")
+        lines.append('<div class="timeline-builder">')
+        lines.append('  <div class="timeline-builder-header">')
+        lines.append('    <span class="timeline-avatar"></span>')
+        lines.append('    <span class="timeline-builder-name">' + escape(name) + '</span>')
+        lines.append('    <span class="timeline-builder-handle">@' + escape(username) + '</span>')
+        lines.append('  </div>')
+        for t in btweets:
+            tid = t.get("tweet_id", "")
+            text = t.get("text", "")
+            url = t.get("url", "#")
+            likes = t.get("likes", 0)
+            created = t.get("created_at", "")[:10]
+            lines.append('  <div class="timeline-item">')
+            lines.append('    <p class="timeline-text">' + escape(text) + '</p>')
+            lines.append('    <div class="timeline-meta">')
+            lines.append('      <span class="timeline-date">' + escape(created) + '</span>')
+            lines.append('      <span class="timeline-likes">&#9825; ' + str(likes) + '</span>')
+            lines.append('      <a href="' + escape(url) + '" target="_blank" class="timeline-link">View on X &#8599;</a>')
+            lines.append('    </div>')
+            lines.append('  </div>')
+        lines.append('</div>')
+    lines.append('</div>')
+    return '\n'.join(lines)
+
 
 
 def escape(s):
@@ -94,7 +155,7 @@ def generate_card(p, delay=0):
     return "\n".join(card)
 
 
-def generate_html(projects):
+def generate_html(projects, builder_tweets=None):
     total = len(projects)
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -119,6 +180,10 @@ def generate_html(projects):
     tabs_html += '<button class="tab active" onclick="filterCategory(this, \'all\')">All (' + str(total) + ")</button>\n"
     for cat_key in tab_order:
         tabs_html += '<button class="tab" onclick="filterCategory(this, \'' + cat_key + '\')">' + tab_labels[cat_key] + "</button>\n"
+
+    # Builder Digest tab (PRD 4.7)
+    digest_count = len(builder_tweets) if builder_tweets else 0
+    tabs_html += '<button class="tab" onclick="switchToTimeline(this)">Builder Digest (' + str(digest_count) + ')</button>\n'
 
 
     grids_html = '<div class="card-grid">\n'
@@ -180,6 +245,12 @@ def generate_html(projects):
         lines.append('    <div class="empty-state"><p>No projects yet.</p></div>')
     lines.append("  </main>")
 
+    # Builder Digest timeline (hidden by default, shown via JS)
+    lines.append('  <div id="digestSection" class="digest-section" style="display:none">')
+    timeline_html = generate_timeline(builder_tweets) if builder_tweets else ''
+    lines.append(timeline_html)
+    lines.append('  </div>')
+
     lines.append('  <footer class="footer">')
     lines.append("    <p>AI Inspiration Notebook &mdash; small AI product case studies, daily</p>")
     lines.append('    <p style="margin-top:8px;font-size:11px;">Designed by Essie Zhang</p>')
@@ -223,7 +294,9 @@ def run():
         generate_html([])
         return
     print("  -> " + str(len(projects)) + " projects")
-    generate_html(projects)
+    builder_tweets = load_builder_tweets()
+    print("  -> " + str(len(builder_tweets)) + " builder tweets")
+    generate_html(projects, builder_tweets)
     # JS 语法检查：防止 script.js 带语法错误生成坏页面
     if not check_js_syntax(INDEX_HTML):
         restore_last_backup()

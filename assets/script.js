@@ -200,3 +200,39 @@ document.addEventListener("click", function(e) {
 restoreFavorites();
 
 
+
+// ==================== Builder Digest Timeline (PRD 4.7) ====================
+function switchToTimeline(btn) {
+  // Deactivate all tabs, activate clicked one
+  document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+  if (btn) btn.classList.add("active");
+
+  // Hide cards, show timeline
+  var grid = document.querySelector(".card-grid");
+  var digest = document.getElementById("digestSection");
+  var main = document.querySelector("main");
+  var footer = document.querySelector(".footer");
+
+  if (grid) grid.style.display = "none";
+  if (digest) digest.style.display = "";
+  if (main) main.style.display = "none";
+  if (footer) footer.style.display = "none";
+}
+
+// Hook into existing filterCategory to restore card view
+var origFilterCategory = filterCategory;
+filterCategory = function(btn, category) {
+  // Restore card view
+  var grid = document.querySelector(".card-grid");
+  var digest = document.getElementById("digestSection");
+  var main = document.querySelector("main");
+  var footer = document.querySelector(".footer");
+
+  if (grid) grid.style.display = "";
+  if (digest) digest.style.display = "none";
+  if (main) main.style.display = "";
+  if (footer) footer.style.display = "";
+
+  // Call original
+  origFilterCategory(btn, category);
+};

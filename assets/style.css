@@ -107,6 +107,97 @@ body {
 .tab:hover { border-color: var(--primary); color: var(--primary); }
 .tab.active { background: var(--primary); color: #fffcf7; border-color: var(--primary); }
 
+/* ==================== Builder Digest Timeline (PRD 4.7) ==================== */
+.digest-section {
+  margin-bottom: 40px;
+}
+
+.timeline-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.timeline-builder {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.timeline-builder-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.timeline-builder-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.timeline-builder-handle {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+}
+
+.timeline-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timeline-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.timeline-date {
+  font-family: var(--font-sans);
+}
+
+.timeline-likes {
+  color: var(--heart);
+  font-weight: 500;
+}
+
+.timeline-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.timeline-link:hover {
+  opacity: 0.7;
+}
+
 /* ==================== Card Grid ==================== */
 .card-grid {
   display: grid;
