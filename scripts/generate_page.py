@@ -68,7 +68,9 @@ def generate_timeline(tweets):
             likes = t.get("likes", 0)
             created = t.get("created_at", "")[:10]
             lines.append('  <div class="timeline-item">')
-            lines.append('    <p class="timeline-text">' + escape(text) + '</p>')
+            text_zh = t.get("text_zh", "")
+            display_text = text_zh if text_zh else text
+            lines.append('    <p class="timeline-text">' + escape(display_text) + '</p>')
             lines.append('    <div class="timeline-meta">')
             lines.append('      <span class="timeline-date">' + escape(created) + '</span>')
             lines.append('      <span class="timeline-likes">&#9825; ' + str(likes) + '</span>')

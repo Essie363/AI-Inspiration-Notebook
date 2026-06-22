@@ -60,6 +60,7 @@ def extract_tweets(feed_data, limit_per_builder=5):
     return all_tweets
 
 
+
 def save_results(tweets):
     os.makedirs(os.path.join(RAW_DIR, TODAY), exist_ok=True)
     path = os.path.join(RAW_DIR, TODAY, "x.json")
