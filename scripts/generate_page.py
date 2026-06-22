@@ -55,6 +55,33 @@ def avatar_color(name):
     return _MORANDI_COLORS[h % len(_MORANDI_COLORS)]
 
 
+def build_builder_nav(tweets):
+    """Generate right-side floating index of builders (PRD update)."""
+    if not tweets:
+        return ''
+    builders = {}
+    for t in tweets:
+        name = t.get("author_name", "Unknown")
+        username = t.get("author_username", "")
+        if name not in builders:
+            builders[name] = username
+    builder_order = sorted(builders.keys(), key=lambda n: max(
+        (t["likes"] for t in tweets if t.get("author_name") == n), default=0
+    ), reverse=True)
+    
+    lines = []
+    for name in builder_order:
+        username = builders[name]
+        bid = 'builder-' + username
+        initial = name[0] if name else '?'
+        lines.append(
+            '<a href="#' + bid + '" class="timeline-nav-item" '
+            'data-builder="' + bid + '" title="' + escape(name) + '">'
+            + escape(initial) + '</a>'
+        )
+    return '\n'.join(lines)
+
+
 def generate_timeline(tweets):
     """Generate Builder Digest timeline HTML per PRD 4.7."""
     if not tweets:
@@ -73,7 +100,8 @@ def generate_timeline(tweets):
     for name in builder_order:
         btweets = builders[name]
         username = btweets[0].get("author_username", "")
-        lines.append('<div class="timeline-builder">')
+        builder_id = 'builder-' + username
+        lines.append('<div class="timeline-builder" id="' + builder_id + '">')
         lines.append('  <div class="timeline-builder-header">')
         color = avatar_color(name)
         lines.append('    <span class="timeline-avatar" style="background:' + color + '"></span>')
@@ -274,6 +302,14 @@ def generate_html(projects, builder_tweets=None):
     # Builder Digest timeline (hidden by default, shown via JS)
     lines.append('  <div id="digestSection" class="digest-section" style="display:none">')
     timeline_html = generate_timeline(builder_tweets) if builder_tweets else ''
+    
+    # Build timeline nav index (right side, PRD update)
+    if builder_tweets:
+        nav_html = build_builder_nav(builder_tweets)
+        lines.append('  <div class="timeline-nav" id="timelineNav">')
+        lines.append(nav_html)
+        lines.append('  </div>')
+    
     lines.append(timeline_html)
     lines.append('  </div>')
 

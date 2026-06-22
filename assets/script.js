@@ -297,3 +297,42 @@ filterCategory = function(btn, category) {
     setChannel('digest');
   }
 })();
+
+
+// ==================== Timeline Nav (builder index on right) ====================
+(function() {
+  var nav = document.getElementById('timelineNav');
+  if (!nav) return;
+
+  var items = nav.querySelectorAll('.timeline-nav-item');
+  if (!items.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    var visible = null;
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        visible = entry.target;
+      }
+    });
+    // Highlight the last visible builder (closest to top)
+    if (visible) {
+      var bid = visible.id;
+      items.forEach(function(item) {
+        if (item.getAttribute('data-builder') === bid) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+  }, {
+    root: null,
+    rootMargin: '-80px 0px -70% 0px',
+    threshold: 0,
+  });
+
+  // Observe all builder sections
+  document.querySelectorAll('.timeline-builder').forEach(function(builder) {
+    observer.observe(builder);
+  });
+})();
