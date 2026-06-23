@@ -1,0 +1,377 @@
+[
+  {
+    "id": "writely-20260620",
+    "title": "Writely",
+    "url": "https://github.com/anc95/writely",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "在任意网页输入框里都能用的 AI 写作助手，不限平台。",
+    "tags": [
+      "Chrome 插件",
+      "To C"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "<mark>Notion AI</mark> 很好用，但被<mark>锁在 Notion 生态</mark>里。你在飞书、Gmail、GitHub Issue、微信文章编辑器里写作时都用不了。用户需要的不是「Notion 里的 AI」，而是「<mark>任何输入框</mark>里的 AI」。",
+      "why_ai": "LLM 的文本生成能力成熟到可以<mark>无缝嵌入</mark>浏览器的<mark>任何输入框</mark>。不是用户来找 AI，而是 AI 等在那里，你打字它就出现。",
+      "insight": "Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。%%\n1. <mark>借势</mark>：Notion AI 教育了市场「AI 写作助手」是什么，Writely 直接承接这个认知\n2. <mark>差异化</mark>：Notion AI 只能在 Notion 用 → Writely 任何地方都能用\n3. <mark>门槛极低</mark>：安装 Chrome 插件即可，不用切换工具、不用学新操作\n4. 冷启动：靠「Notion AI <mark>平替</mark>」这个关键词在中文社区传播，GitHub 1.3k stars 说明需求真实\n\n变现路径：免费基础版 + 付费高级版（更多模型选择、自定义 prompt）。",
+      "transfer": "不要做「比 X 更好的 Y」——做「X 的<mark>平替</mark>，但能用在 X 不能用地方」。Notion AI 的锁是它的<mark>围墙</mark>，也是你的<mark>机会</mark>。你之前做视频流媒体产品：有没有某个功能被「锁」在特定平台里，可以做成跨平台的轻量替代？"
+    }
+  },
+  {
+    "id": "comic-translate-20260620",
+    "title": "Comic Translate",
+    "url": "https://github.com/ogkalu2/comic-translate",
+    "source": "GitHub",
+    "category": "creative",
+    "description": "自动翻译漫画里的文字——识别、擦除、翻译、嵌回，一气呵成。",
+    "tags": [
+      "开源工具",
+      "Chrome 插件",
+      "To C"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "漫画/动画爱好者想追国外作品，但汉化/翻译组更新慢、质量参差不齐。等翻译的过程很煎熬。",
+      "why_ai": "<mark>OCR</mark> + <mark>图像修复</mark> + 翻译模型 + 图像生成——四步全部可以 AI 自动化。以前需要一个团队做的事情，现在一个人 + AI 就能完成。",
+      "insight": "不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。%%\n1. 不做什么「AI 翻译工具」——做「AI 漫画/漫画翻译」\n2. 2.8k stars，说明了「<mark>极度精准的定位</mark>」比「宽泛的定位」更容易传播\n3. 用户画像非常清晰：漫画粉丝、追更党、跨语言阅读者\n4. 解决了从「OCR → 擦除 → 翻译 → 嵌字」的完整 workflow，不是半吊子方案\n\n变现：免费开源。潜在盈利点：付费的高质量翻译模型、云处理服务。",
+      "transfer": "不要做「<mark>AI 翻译</mark>」这个红海。做「<mark>AI 翻译</mark> + 某个特定领域」。领域越窄，用户越精准，产品越好做。漫画、同人小说、游戏 Mod、食谱——都值得做一个 <mark>AI 翻译</mark><mark>垂直工具</mark>。"
+    }
+  },
+  {
+    "id": "getspecstory-20260620",
+    "title": "GetSpecStory",
+    "url": "https://github.com/specstoryai/getspecstory",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "把你和 AI 的聊天记录变成可以复用的技能，而不是扔在那里吃灰。",
+    "tags": [
+      "AI Agent",
+      "开源工具",
+      "To C & To B"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "每次和 AI 对话都产生大量有价值的对话历史——解决过的问题、写过的代码、调试记录。但这些信息都沉淀在<mark>聊天记录</mark>里，<mark>很难复用</mark>。下次遇到类似问题还得<mark>再问一遍</mark>。",
+      "why_ai": "LLM 可以<mark>分析对话模式</mark>、提取关键决策点、总结解决方案。把<mark>非结构化</mark>的聊天记录变成结构化的可复用知识。",
+      "insight": "每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。%%\n1. 核心洞察：AI 对话历史不是「垃圾」，是「<mark>未结构化的知识资产</mark>」\n2. 把「chat logs」变成「reusable skills」——<mark>心智模型</mark>的变化\n3. 1.2k stars，说明每个深度用 AI 的人都有「之前问过的又忘了」的痛点\n4. 产品天然有<mark>网络效应</mark>：你用得越多，积累的 Skills 越多\n\n变现：个人版免费 + 团队版（共享 Skills 库）。护城河：用户积累的 Skills 数据。",
+      "transfer": "AI 每天产生大量「<mark>副产品</mark>」——对话记录、生成内容、修改历史。每个<mark>副产品</mark>都可能是另一个产品的<mark>原材料</mark>。就像 Headroom 是「用 AI 给 AI 省钱」，GetSpecStory 是「用 AI 把 AI 的聊天记录变成资产」。"
+    }
+  },
+  {
+    "id": "paperclip-20260621",
+    "title": "Paperclip - Hire AI Agents Like Employees",
+    "url": "https://www.youtube.com/watch?v=C3-4llQYT8o",
+    "source": "YouTube",
+    "category": "workflow",
+    "description": "一个开源 Agent 编排平台。不是让你写 Agent，而是让你像招聘员工一样 hire Agent——给它岗位描述、KPI，然后看它干活。",
+    "tags": [
+      "AI Agent",
+      "开源工具",
+      "To B"
+    ],
+    "date": "2026-06-21",
+    "analysis": {
+      "pain_point": "现在用 AI Agent 的门槛太高了——要写代码、搭框架、调 prompt。企业想用 Agent 但找不到技术人才来做。Paperclip 的切入点：不用写代码，像招聘一样用 Agent。",
+      "why_ai": "LLM 的推理能力让 Agent 可以理解自然语言的任务描述和考核标准。不需要编程接口，给 Agent 说「你是客服主管，目标是把响应时间降到 2 小时内」它就懂了。",
+      "insight": "心智模型的转换很有趣——从「构建者视角」变成「管理者视角」。\n1. 招聘类比降低了心理门槛：你不会写代码，但你会招人\n2. 岗位描述 = Prompt，KPI = 评估函数，面试 = 测试用例\n3. 冷启动：在 Product Hunt 和 Hacker News 以「Hire AI Agents Like Employees」这个 Hook 传播\n4. 354k 观看量说明这个类比打动了很多人\n\n变现：开源社区版 + 托管企业版。护城河：Agent 的评估数据和工作记录。",
+      "transfer": "用用户已有的心智模型去解释新产品。招聘 vs 写代码——选择用户更熟悉的那一个。你之前做视频流媒体：如果对用户说「像选片一样选择 AI 功能」，会不会比「配置 AI 参数」更容易理解？"
+    }
+  },
+  {
+    "id": "mousetooltip-20260620",
+    "title": "MouseTooltip Translator",
+    "url": "https://github.com/ttop32/MouseTooltipTranslator",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "鼠标放上去就翻译，不用选中、不用右键、不用点任何按钮。",
+    "tags": [
+      "Chrome 插件",
+      "To C"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "阅读外文内容时：选中文字 → 右键 → 选择翻译 → 等待结果 → 关闭弹窗。每次要看一个词或一句话，都要经历这 <mark>4-5 步</mark>。",
+      "why_ai": "现代翻译模型快到可以<mark>实时响应</mark>悬停动作。不需要按按钮、不需要切换窗口，AI 在你「看」的瞬间就已经工作了。",
+      "insight": "选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。%%\n1. 把 <mark>5 步操作变成 1 步</mark>：鼠标悬停即可\n2. 「<mark>默认打开</mark>」的设计哲学：不用设置、不用配置，装好就用\n3. <mark>场景扩张策略</mark>：从网页翻译扩展到 PDF、EPUB、Netflix、YouTube——同一个核心交互，覆盖更多场景\n4. GitHub 1.2k stars，说明极简方案有巨大需求\n\n变现：免费开源 + 付费的 OCR/TTS 等高级功能。",
+      "transfer": "找到用户每天做 4-5 步的事情，能不能用「<mark>一个动作</mark>」解决？悬停、拖拽、选中——这些浏览器的原生动作本身就是最好的产品<mark>入口</mark>。"
+    }
+  },
+  {
+    "id": "claude-counter-20260620",
+    "title": "Claude Counter",
+    "url": "https://github.com/she-llac/claude-counter",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "在 Claude 页面上加几个数字，告诉你花了多少 Token。仅此而已。",
+    "tags": [
+      "Chrome 插件",
+      "To C & To B"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "Claude.ai 用户看不到对话消耗了多少 Token、缓存还有多久过期。这种<mark>信息不透明</mark>导致用户无法管理使用成本，也不知道什么时候该新开对话。",
+      "why_ai": "AI 的普及创造了新的信息需求——Token 消耗、上下文长度、缓存状态。这些是传统产品里不存在的「<mark>新指标</mark>」。",
+      "insight": "AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。%%\n1. 只做一件事：在 Claude 界面上<mark>加几个数字</mark>和进度条\n2. 没有设置页、没有配置项、没有学习成本\n3. 解决的是「平台不告诉你但我很想知道」的<mark>信息不对称</mark>\n4. 1.9k stars 说明哪怕「<mark>加几个数字</mark>」这个需求，做好都有人用\n\n变现：免费开源。护城河：<mark>先发优势</mark> + 用户信任（不会偷数据的最小权限插件）。",
+      "transfer": "AI 平台留下了很多「<mark>信息空白</mark>」——Token 用量、成本、性能、数据归属。每一个<mark>信息空白</mark>都是一个产品机会。你不需要做 AI，你只需要把 AI 的<mark>信息翻译给用户</mark>。"
+    }
+  },
+  {
+    "id": "dashplayer-20260620",
+    "title": "DashPlayer",
+    "url": "https://github.com/solidSpoon/DashPlayer",
+    "source": "GitHub",
+    "category": "creative",
+    "description": "一个看美剧学英语的播放器，AI 给你实时翻译字幕。",
+    "tags": [
+      "桌面应用",
+      "To C"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "学英语最有效的方式是沉浸式看剧/看视频，但传统播放器没有针对语言学习做优化。用户需要手动找字幕、查单词、反复回放，<mark>体验断裂</mark>。",
+      "why_ai": "<mark>语音识别</mark> + <mark>LLM 翻译</mark> + <mark>NLP</mark> 可以实时生成双语字幕、智能识别生词、根据上下文给出解释。以前需要人工做的工作，现在 AI 全自动。",
+      "insight": "你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。%%\n1. 视频播放器是个很老的品类，但 DashPlayer 加了「学英语」这个 AI 层\n2. <mark>不改变用户已有的习惯</mark>（看美剧/看 YouTube），在已有的行为上加 AI 价值\n3. 4k stars 说明「用 AI 改造一个老工具」这个思路本身就成立\n\n变现：免费开源桌面应用。护城河：AI 字幕质量 + 学习数据积累。",
+      "transfer": "找一个你每天都在用的老工具（播放器、阅读器、笔记软件、日历），加一个「<mark>AI 学习层</mark>」——不是教用户新习惯，而是在<mark>已有习惯</mark>上<mark>叠加 AI 价值</mark>。"
+    }
+  },
+  {
+    "id": "openclaw-20260621",
+    "title": "The Wild Rise of OpenClaw",
+    "url": "https://www.youtube.com/watch?v=ssYt09bCgUY",
+    "source": "YouTube",
+    "category": "workflow",
+    "description": "Fireship 讲 OpenClaw——一个开源 AI 编码平台的崛起故事。从个人项目到 23 万 GitHub Stars，只用了不到一年。",
+    "tags": [
+      "AI Agent",
+      "开源工具",
+      "To C & To B"
+    ],
+    "date": "2026-06-21",
+    "analysis": {
+      "pain_point": "AI 编码工具大多绑定特定平台（GitHub Copilot → VS Code，Cursor → 自家 IDE）。开发者想要一个平台无关的、开源的 AI 编码助手。",
+      "why_ai": "LLM 的代码理解和生成能力成熟到可以独立成为一个平台，而不只是 IDE 的插件。OpenClaw 赌的是：AI 编码助手最终会独立于编辑器存在。",
+      "insight": "这个项目的核心产品策略是「平台无关」：\n1. 不绑定任何编辑器——你可以用 VS Code、JetBrains、Vim、或者用它的 CLI\n2. 开源策略让它快速获得社区信任：23 万 Stars，是 GitHub 上增长最快的项目之一\n3. 变现路径：开源社区版免费 + 云托管版付费\n4. 时机恰当：当 Cursor 等产品证明 AI 编码有价值后，OpenClaw 用「平台无关」作为差异化\n\n201 万观看量的 Fireship 视频本身就是产品推广——一个 YouTube 视频帮项目获得了大量关注。",
+      "transfer": "你的产品不一定非要重新发明轮子。有时候「A 平台有的功能，B 平台为什么不能用」就是最好的产品切入点。Cursor 有的 AI 编码功能，为什么 Vim 用户不能用？这就是 OpenClaw 的整个故事。"
+    }
+  },
+  {
+    "id": "quick-prompt-20260620",
+    "title": "Quick Prompt",
+    "url": "https://github.com/wenyuanw/quick-prompt",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "把你常用的 Prompt 存起来，下次一键调用。ChatGPT、Claude、Gemini 都支持。",
+    "tags": [
+      "Chrome 插件",
+      "To C"
+    ],
+    "date": "2026-06-20",
+    "analysis": {
+      "pain_point": "AI 重度用户会<mark>积累大量</mark>高质量 Prompt。每次要用的时候要么靠记忆回想、要么去翻笔记。Prompt 是你和 AI 打交道的「语言」，但没有好的<mark>管理工具</mark>。",
+      "why_ai": "<mark>Prompt Engineering</mark> 是 AI 时代的<mark>新技能</mark>。任何<mark>新技能</mark>都需要配套的工具。Quick Prompt 解决的是「Prompt 写好了怎么管理和复用」这个<mark>新问题</mark>。",
+      "insight": "AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？%%\n1. Prompt 管理是一个全新的产品品类——AI 出现之前不存在\n2. 做<mark><mark>品类第一</mark></mark>比做品类最好更容易——<mark>先占位</mark>\n3. 826 stars 虽然不多，但在 Prompt 管理这个细分领域是头部\n4. 产品逻辑简单清晰：存 Prompt → 分类 → 快速调用，不做过多的 AI 功能\n\n变现：免费。潜在盈利点：Prompt 市场/社区（用户分享和交易 Prompt）。",
+      "transfer": "AI 创造了很多新需求——Prompt 管理、Token 统计、对话历史管理、Skills 管理。每个「<mark>管理类</mark>」需求都是一个产品机会。而且这些产品<mark>不需要你懂 AI 技术</mark>，只需要你懂用户怎么用 AI。"
+    }
+  },
+  {
+    "id": "fireship-7tools-20260621",
+    "title": "7 New Open Source AI Tools (Fireship)",
+    "url": "https://www.youtube.com/watch?v=Xn-gtHDsaPY",
+    "source": "YouTube",
+    "category": "creative",
+    "description": "Fireship 盘点 7 个新开源 AI 工具——从代码助手到视频生成，每个都只要几分钟就能上手。",
+    "tags": [
+      "开源工具",
+      "To C & To B"
+    ],
+    "date": "2026-06-21",
+    "analysis": {
+      "pain_point": "AI 工具层出不穷，但没人帮你筛选。你花大量时间在各种 Newsletter 和 Product Hunt 上找工具，结果大部分都用不上。",
+      "why_ai": "Fireship 的频道本身就是 AI 时代的产物——AI 让内容创作速度大幅提升，他才能每周出多期高质量盘点视频。他用 AI 做内容来帮你找 AI 工具，形成闭环。",
+      "insight": "盘点类内容本身就是一种产品：\n1. 解决的不是「没有工具」的问题，而是「工具太多不知道怎么选」的问题\n2. 200 万观看说明「帮你做选择」是个被低估的需求\n3. Fireship 的模式：用 AI 做内容 → AI 提高产出速度 → 覆盖更多工具 → 更多流量 → 更好的推荐\n4. 对个人开发者的启发：你不需要做一个大产品，你可以做「帮人选好产品」的产品\n\n变现：YouTube 广告 + 赞助 + 付费课程。7 个工具里大部分都是免费/开源，Fireship 不卖工具，卖的是精选。",
+      "transfer": "做一个「帮人选好东西」的产品，比做一个「好东西」有时候更容易。你不需要懂 AI 技术，你只需要比用户更早知道哪个 AI 工具好用。就像你作为 PM，推荐最佳实践比自己写代码更有价值。"
+    }
+  },
+  {
+    "id": "ai-clip-skill-20260623",
+    "title": "AI 自动剪辑 Skill",
+    "url": "http://xhslink.com/o/947lQCYSOgA",
+    "source": "小红书",
+    "category": "workflow",
+    "description": "以 REDSkill 形态分发的 AI 剪辑 Skill，嵌入 Claude Code / Codex 使用。自动剪口误、口癖、静音，越用越懂你的剪辑习惯。",
+    "tags": [
+      "剪辑",
+      "To C",
+      "AI Agent"
+    ],
+    "date": "2026-06-23",
+    "author": "???AI",
+    "analysis": {
+      "pain_point": "口播创作者反复手动剪口误/口癖/静音——有特定、高频的痛点用户群。做了三年口播的人清楚自己的习惯模式，但剪辑软件不会记住任何一个人的偏好，每期视频都从零开始。",
+      "why_ai": "规则方案用阈值和正则匹配来识别口癖，通用的词能抓到，个性化的长短语抓不到。更根本的问题是：剪辑不止是找到多余的——删掉之后节奏对不对？规则完全判断不了，因为节奏感因人而异。%%AI 把剪辑从\"写死规则\"变成了\"学习个人偏好\"，这是规则做不到的。",
+      "insight": "没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。%%也没做独立 App——口播创作者已经在 Agent 里写逐字稿了，录完视频的下一步是回到 Agent，不是打开另一个软件。产品形态的选择依据是：用户正在走的那条心理路径在哪里，就在哪里接住。用上二十条视频之后，用户积累的口癖列表和节奏偏好都存在这个 skill 里，换回去意味着丢掉这些数据。",
+      "transfer": "观察用户每天必须手动重复的具体操作；判断现有规则方案为什么盖不住它（个体差异就是 AI 的切入口）；看用户做这件事的前一个动作在什么工具里——产品就从那里接住。"
+    }
+  },
+  {
+    "id": "openclaw-2026-06-23",
+    "title": "OpenClaw",
+    "url": "https://github.com/openclaw/openclaw",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "跨平台个人AI助手——\"The lobster way\"品牌叙事，379k stars，任何OS任何平台都能用的AI agent，不走平台绑定路线",
+    "tags": [
+      "AI Agent",
+      "To C",
+      "跨平台"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "AI助手大多<mark>绑定特定平台</mark>——ChatGPT有独立App、Claude在网页里、Copilot在IDE里。用户想要一个<mark>跨OS、跨平台</mark>的统一入口：在Windows、macOS、Linux任何地方，同一个AI助手随时在。",
+      "why_ai": "LLM的推理和生成能力已成熟到可以作为<mark>独立平台层</mark>存在——不需要依附于特定IDE或操作系统。<mark>REST API + WebSocket</mark>让AI助手可以在任何环境运行，平台不再是瓶颈。",
+      "insight": "379k stars说明需求成立。OpenClaw把AI助手从<mark>\"平台附属功能\"</mark>变成了<mark>\"独立OS层\"</mark>——不是另一个ChatGPT客户端，而是AI时代的操作系统级入口。\n1. 不绑定编辑器、不绑定终端、不绑定OS——与Copilot和Warp走完全相反的路\n2. \"The lobster way\"的品牌调性说明他们有<mark>产品叙事意识</mark>，不是纯技术项目",
+      "transfer": "你的产品不一定非要绑定某个生态。当竞争对手都在绑定平台时，做<mark>\"跨平台统一层\"</mark>本身就是差异。观察哪些AI工具只在单一平台存在——把它们拉到跨平台就是你的机会。"
+    }
+  },
+  {
+    "id": "n8n-2026-06-23",
+    "title": "n8n",
+    "url": "https://github.com/n8n-io/n8n",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "公平代码的工作流自动化平台，193k stars，原生AI能力——可视化拖拽+代码双模式，把if-this-then-that升级为AI驱动",
+    "tags": [
+      "AI Agent",
+      "工作流",
+      "To B"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "Zapier/Make等自动化工具在很多场景下<mark>锁数据和限制复杂度</mark>——你要么忍受，要么写代码自己搭。企业需要既能让<mark>非技术人员可视化操作</mark>、又能让工程师写代码定制的统一平台。",
+      "why_ai": "LLM让工作流从<mark>\"规则驱动\"</mark>升级为<mark>\"语义驱动\"</mark>——n8n原生集成了AI节点，用户可以在可视工作流中直接调用LLM做分类、提取、生成，不再需要单独搭AI pipeline。",
+      "insight": "193k stars，体量巨大。n8n的核心策略是<mark>\"公平代码\"（fair-code）</mark>：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。\n1. <mark>可视化+代码双模式</mark>覆盖了两类完全不同的用户——非技术操作者和工程师\n2. <mark>原生AI节点</mark>是真正的差异化——不是插件，是内置的一等公民",
+      "transfer": "做平台型产品时，考虑<mark>\"双模式\"</mark>——可视化入门降低门槛，代码出口保证天花板。不要只做其中之一。另外，<mark>fair-code</mark>是一个值得研究的商业模式：比MIT更保护创作者，比SaaS更开放。"
+    }
+  },
+  {
+    "id": "browser-use-2026-06-23",
+    "title": "Browser Use",
+    "url": "https://github.com/browser-use/browser-use",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "让网站对AI Agent可访问——100k stars，为AI Agent提供浏览器自动化API，让Agent能像人一样操作网页",
+    "tags": [
+      "AI Agent",
+      "基础设施",
+      "To B"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "AI Agent想操作网页但<mark>缺乏统一接口</mark>——每个网站有不同的DOM结构和交互逻辑。开发者要为每个网站写定制脚本，Agent的<mark>网页交互层</mark>没有标准化。",
+      "why_ai": "LLM的<mark>视觉理解和推理能力</mark>让Agent可以\"看懂\"网页——不是解析DOM，而是像人一样理解布局、按钮、表单。Browser Use把这种能力封装成<mark>简单API</mark>。",
+      "insight": "100k stars说明了一个被忽视的刚需：AI Agent的<mark>\"手\"和\"眼睛\"</mark>。\n1. 它是<mark>基础设施型产品</mark>——不面向终端用户，面向所有做AI Agent的开发者\n2. 基础设施的价值不在功能多，在于<mark>接口简单</mark>。提供精简API让任何Agent都能操作浏览器，而不是做一个大而全的自动化框架",
+      "transfer": "AI时代产生了大量<mark>新基础设施需求</mark>——Agent的浏览器层、记忆层、工具调用层、安全层。每一个都是独立的产品机会。观察你用的Agent框架，里面哪些模块可以独立出来做产品？"
+    }
+  },
+  {
+    "id": "claude-mem-2026-06-23",
+    "title": "Claude Mem",
+    "url": "https://github.com/thedotmack/claude-mem",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "跨会话持久上下文——83k stars，捕获Agent的一切记忆，任何LLM Agent通用的记忆层",
+    "tags": [
+      "AI Agent",
+      "基础设施",
+      "To C & To B"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "Agent每次新会话都是空白——不记得你昨天的偏好、上周解决的问题、上个月的上下文。用户需要反复重复背景信息。LLM的上下文窗口虽然越来越大，但<mark>会话间的记忆是断裂</mark>的。",
+      "why_ai": "LLM本身<mark>没有持久记忆</mark>——这是架构设计决定的。但LLM可以理解、压缩、检索历史上下文。Claude Mem在LLM外面加了一层<mark>记忆管理</mark>：自动捕获关键决策、总结历史、跨会话注入上下文。",
+      "insight": "83k stars，Agent<mark>\"记忆\"</mark>是基础设施级需求。\n1. 它不做Agent本身——只做<mark>记忆层</mark>。任何Agent都可以接入\n2. 类似<mark>浏览器cookie</mark>之于Web开发：不是产品核心，但没有它产品体验不完整\n3. 记忆越积累越有价值——<mark>用户迁移成本</mark>随使用增加而上升",
+      "transfer": "不从正面做AI Agent——从侧面做Agent的<mark>配套设施</mark>。Agent生态里最缺的不一定是新Agent，可能是记忆、安全、监控、测试这些模块。挑一个功能把它做到<mark>通用、独立、可插拔</mark>。"
+    }
+  },
+  {
+    "id": "builderpulse-2026-06-23",
+    "title": "BuilderPulse",
+    "url": "https://github.com/BuilderPulse/BuilderPulse",
+    "source": "GitHub",
+    "category": "creative",
+    "description": "独立开发者的AI日报——20个问题+10多个数据源，AI帮你盯行业动态，1.4k stars",
+    "tags": [
+      "AI Agent",
+      "To C",
+      "资讯"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "独立开发者需要关注行业动态但没时间——每天要扫GitHub trending、X、Hacker News、Reddit多个信息源。<mark>信息分散，筛选耗时</mark>。",
+      "why_ai": "LLM擅长<mark>信息聚合和摘要</mark>——可以同时监控多个数据源，用预设的<mark>20个问题框架</mark>筛选和总结。不是简单的RSS聚合，而是有筛选逻辑的智能资讯。",
+      "insight": "1.4k stars但产品思路值得关注。\n1. <mark>\"20个问题+10多个数据源\"</mark>的框架设计是亮点——不是被动推送，是主动按项目需求拉取\n2. 工具类产品的天花板在这里：<mark>你自己就是独立开发者</mark>，你为自己做工具，然后发现别人也需要\n3. 资讯类产品的核心不是\"信息多\"，是<mark>\"不需要我看的信息不要出现\"</mark>",
+      "transfer": "为自己做一个工具。你每天重复做的<mark>信息处理工作</mark>，大概率别人也需要。从自己的需求出发做产品——你不是在做市场调研，你就是在解决自己的问题，顺便产品化。"
+    }
+  },
+  {
+    "id": "trvl-2026-06-23",
+    "title": "trvl",
+    "url": "https://github.com/MikkoParkkola/trvl",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "1个MCP工具包揽66种旅行搜索——航班、酒店、火车、租车、轮渡、价格提醒，无API key依赖，单个Go二进制，41 stars",
+    "tags": [
+      "To C",
+      "MCP",
+      "旅行"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "规划旅行要在多个App间跳转——机票在Skyscanner、酒店在Booking、火车在Rail Europe。每个平台不同界面，<mark>信息分散</mark>，反复切换。",
+      "why_ai": "LLM可以理解自然语言的旅行需求（\"下周五去东京，预算5000，找最便宜的航班+酒店组合\"），但缺一个统一的<mark>搜索执行层</mark>。trvl提供了这个层——1个MCP工具，66个别名，AI助手一次调用覆盖所有旅行搜索。",
+      "insight": "41 stars，但产品思路精炼。\n1. <mark>\"1 tool + 66 aliases\"</mark>的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）\n2. 98.9% smaller tools/list 说明他们在做<mark>接口精简</mark>，而不是堆功能\n3. 无API key的纯抓取方案让用户零配置即可用——降低了MCP的使用门槛",
+      "transfer": "做MCP工具时，考虑<mark>\"单工具多别名\"</mark>模式——不要为每个功能做一个tool，用别名覆盖语义变体让AI更灵活调用。另外，无API key方案虽然稳定性不如官方API，但<mark>零配置</mark>体验适合个人用户场景。"
+    }
+  },
+  {
+    "id": "odoopilot-2026-06-23",
+    "title": "OdooPilot",
+    "url": "https://github.com/arunrajiah/odoopilot",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "ERP通过聊天使用——免登录Odoo，Telegram/WhatsApp上AI助手，请假、审批、CRM更新、库存校验全用自然语言，15种语言，15 stars",
+    "tags": [
+      "To B",
+      "AI Agent",
+      "ERP"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "ERP系统功能强大但<mark>学习成本极高</mark>——Odoo有上千个模块和菜单，普通员工要记住请假在哪个入口、报销怎么填、库存怎么查。对非技术人员，ERP就是<mark>一个迷宫</mark>。",
+      "why_ai": "LLM可以理解\"我想请三天年假\"这样的自然语言请求并映射到Odoo的<mark>具体操作</mark>——创建请假单、检测余额、发给审批人。Telegram/WhatsApp作为入口，员工不需要登录ERP。",
+      "insight": "15 stars但场景极准。\n1. 它不做通用AI助手——<mark>只做Odoo的AI前端</mark>。定位越窄，替代意愿越强\n2. 用即时通讯工具（Telegram/WhatsApp）当入口——不改变员工的工作习惯\n3. \"Your team uses Odoo — without logging in to Odoo\" 这句产品描述就是<mark>价值主张本身</mark>",
+      "transfer": "找一个复杂的企业软件（SAP、Salesforce、Jira），把它<mark>最常用的20%功能</mark>用聊天界面重新包装。不需要替换系统——只替换交互层。员工不需要学系统，只需要会说话。"
+    }
+  },
+  {
+    "id": "147-agents-2026-06-23",
+    "title": "147 Pre-Built AI Agents",
+    "url": "https://www.youtube.com/watch?v=XpRnyqxM3Jk",
+    "source": "YouTube",
+    "category": "workflow",
+    "description": "开源仓库147+预构建AI Agent——金融、营销、产品等领域的专业Agent，可直接用于Claude Code，Agent专业化趋势",
+    "tags": [
+      "AI Agent",
+      "To B",
+      "开源"
+    ],
+    "date": "2026-06-23",
+    "analysis": {
+      "pain_point": "AI Agent很强大但<mark>不会写prompt</mark>的人用不起来。每个领域需要不同的Agent配置——金融分析师要财报解读能力，营销人要文案和数据分析。普通用户<mark>不知道Agent该怎么配</mark>。",
+      "why_ai": "LLM的能力可以通过<mark>专业化的system prompt + 工具集</mark>变成垂直Agent。不是训练新模型，而是给同一个模型不同的\"角色卡\"和工具包。147个预构建Agent就是147套经过验证的角色配置。",
+      "insight": "Agent正在从<mark>\"通用助手\"走向\"专业化分工\"</mark>。\n1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领域会有专属Agent\n2. 开源预构建的Agent让\"不会写prompt\"不再是障碍——直接用别人调好的\n3. Sebastian Hardy频道从AI营销视角推荐，目标受众明确",
+      "transfer": "你的产品可以考虑做<mark>Agent模板市场</mark>——不是让用户从头配置Agent，而是给他们一套开箱即用的分类Agent。像Notion模板市场一样，不同场景不同模板，用户只需选+微调。"
+    }
+  }
+]
