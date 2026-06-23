@@ -1,0 +1,3020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Inspiration Notebook</title>
+<style>﻿/* ====================
+   AI Inspiration Notebook - Styles v5
+   Added: favorite button, favorited card highlight, export
+   ==================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f6f1ea;
+  --surface: #fffcf7;
+  --text: #3d2b1f;
+  --text-secondary: #7d6b5a;
+  --text-tertiary: #b0a090;
+  --border: #e6ddd0;
+  --primary: #9a6b4d;
+  --primary-hover: #b88560;
+  --primary-light: #f5ede3;
+  --mark-bg: #f2ebd0;
+  --mark-border: transparent;
+  --tag-bg: #ece4d8;
+  --tag-text: #6b5a48;
+  --heart: #d4726a;
+  --shadow: 0 1px 3px rgba(61, 43, 31, 0.06);
+  --shadow-hover: 0 6px 20px rgba(61, 43, 31, 0.10);
+  --radius: 10px;
+  --max-width: 1200px;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "STSong", Georgia, "Times New Roman", serif;
+  --font-sans: "Noto Sans SC", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #1c1814;
+  --surface: #27221c;
+  --text: #e6ddd0;
+  --text-secondary: #b0a090;
+  --text-tertiary: #7d6b5a;
+  --border: #3d342b;
+  --primary: #c49a6c;
+  --primary-hover: #d4b080;
+  --primary-light: #2a241f;
+  --mark-bg: #4a3f28;
+  --mark-border: #8b7530;
+  --tag-bg: #3d342b;
+  --tag-text: #c2b2a0;
+  --heart: #d4726a;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+  transition: background 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 24px 24px 80px; }
+
+/* ==================== Header ==================== */
+.header { margin-bottom: 20px; }
+.header-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+.header h1 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.header-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex; gap: 8px; align-items: center;
+}
+.header-meta .dot { color: var(--heart); }
+
+.header-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+.theme-btn, .export-btn {
+  background: none; border: 1px solid var(--border); border-radius: 8px;
+  padding: 4px 10px; cursor: pointer; font-size: 14px; line-height: 1;
+  color: var(--text-secondary); transition: all 0.2s;
+}
+.theme-btn:hover, .export-btn:hover { background: var(--tag-bg); }
+
+/* ==================== Channel Switcher (PRD 4.1) ==================== */
+.channel-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  padding-top: 4px;
+}
+
+.channel-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+
+.channel-btn:hover {
+  color: var(--text);
+}
+
+.channel-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ==================== Tabs ==================== */
+.tabs {
+  display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;
+  position: sticky; top: 44px; z-index: 40;
+  background: var(--bg);
+  padding: 12px 0;
+  transition: box-shadow 0.2s;
+}
+.tabs-scroll-sentinel {
+  position: relative;
+  height: 1px; margin-bottom: 23px;
+}
+.tab {
+  padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+  cursor: pointer; transition: all 0.2s; font-family: var(--font-sans);
+}
+.tab:hover { border-color: var(--primary); color: var(--primary); }
+.tab.active { background: var(--primary); color: #fffcf7; border-color: var(--primary); }
+
+/* ==================== Timeline Layout ? left sidebar + right content ==================== */
+.timeline-layout {
+  display: flex;
+  gap: 0;
+}
+
+.timeline-sidebar {
+  width: 150px;
+  flex-shrink: 0;
+  padding-right: 16px;
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 60px;
+  align-self: flex-start;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.timeline-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-sidebar-title {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-nav-item {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+  line-height: 1.4;
+  margin-bottom: 1px;
+}
+
+.timeline-nav-item:hover {
+  color: var(--text);
+  background: var(--tag-bg);
+}
+
+.timeline-nav-item.active {
+  color: var(--primary);
+  font-weight: 700;
+  background: var(--primary-light);
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+  padding-left: 24px;
+}
+
+@media (max-width: 640px) {
+  .timeline-sidebar {
+    display: none;
+  }
+  .timeline-content {
+    padding-left: 0;
+  }
+}
+
+/* ==================== Builder Digest Timeline (PRD 4.7) ==================== */
+.digest-section {
+  margin-bottom: 40px;
+}
+
+.timeline-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.timeline-builder {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.timeline-builder-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.timeline-builder-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.timeline-builder-handle {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+}
+
+.timeline-profile-link {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.timeline-profile-link:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.timeline-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timeline-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.timeline-text-zh {
+  /* main display */
+}
+
+.timeline-text-en {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: -4px;
+  margin-bottom: 8px;
+}
+
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.timeline-date {
+  font-family: var(--font-sans);
+}
+
+.timeline-likes {
+  color: var(--heart);
+  font-weight: 500;
+}
+
+.timeline-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.timeline-link:hover {
+  opacity: 0.7;
+}
+
+/* ==================== Card Grid ==================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1023px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } .container { padding: 28px 16px; } }
+
+/* ==================== Card ==================== */
+.card {
+  background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);
+  padding: 24px; cursor: pointer;
+  display: flex; flex-direction: column;
+  grid-column: span 1;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Favorited card */
+.card.favorited { border-left-color: var(--heart); }
+
+.card.expanded {
+  grid-column: 1 / -1;
+  cursor: default;
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+/* ==================== Card Compact ==================== */
+.card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.source-badge {
+  font-size: 11px; color: var(--text-secondary); font-weight: 500;
+}
+.card-date { font-size: 11px; color: var(--text-tertiary); }
+
+/* Favorite heart button */
+.fav-btn {
+  margin-left: auto;
+  cursor: pointer; font-size: 18px; line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text-tertiary);
+  transition: all 0.2s; user-select: none;
+}
+.fav-btn:hover { color: var(--heart); -webkit-text-stroke: 0; transform: scale(1.2); }
+.fav-btn.active { color: var(--heart); -webkit-text-stroke: 0; }
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag {
+  font-size: 11px; padding: 2px 8px; border-radius: 6px;
+  background: var(--tag-bg); color: var(--tag-text); font-weight: 500;
+  font-family: var(--font-sans);
+}
+
+.key-insight {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  background: var(--primary-light);
+  border-radius: 6px;
+  border-left: 3px solid var(--primary);
+  min-height: calc(1.5em * 2 + 20px);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.key-insight-label {
+  font-size: 8px; font-weight: 500; color: var(--text-tertiary);
+  display: block; margin-bottom: 3px;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  font-family: var(--font-sans);
+}
+
+.expand-hint {
+  font-size: 12px; color: var(--text-tertiary); margin-top: 10px;
+  display: flex; align-items: center; gap: 4px;
+  font-family: var(--font-sans);
+}
+
+/* ==================== Full Analysis ==================== */
+.card-full {
+  display: none;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  animation: slideReveal 0.4s ease-out;
+}
+
+.card.expanded .card-full { display: block; }
+
+@keyframes slideReveal {
+  from { opacity: 0; transform: translateY(-8px); max-height: 0; }
+  to { opacity: 1; transform: translateY(0); max-height: 2000px; }
+}
+
+.card-full-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .card-full-grid { grid-template-columns: 1fr; } }
+
+.analysis-block { margin-bottom: 0; }
+.analysis-label {
+  font-size: 11px; font-weight: 600; color: var(--text-tertiary);
+  text-transform: uppercase; letter-spacing: 0.4px; display: block; margin-bottom: 6px;
+  font-family: var(--font-sans);
+}
+.analysis-block p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); white-space: pre-line; }
+
+/* ==================== Mark Highlight ==================== */
+mark {
+  background: var(--mark-bg);
+  color: inherit;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== Close & Link ==================== */
+.close-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 500; color: var(--text-tertiary);
+  background: var(--tag-bg); border: none; border-radius: 6px;
+  padding: 6px 14px; cursor: pointer;
+  transition: all 0.2s; font-family: var(--font-sans);
+}
+.close-btn:hover { background: var(--primary); color: #fffcf7; }
+
+.ext-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 14px; font-weight: 500;
+  color: var(--primary); text-decoration: none;
+  transition: opacity 0.2s;
+}
+.ext-link:hover { opacity: 0.75; }
+
+/* ==================== Toast ==================== */
+.toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--text); color: var(--bg);
+  padding: 10px 24px; border-radius: 8px; font-size: 13px;
+  opacity: 0; transition: all 0.4s ease;
+  pointer-events: none; z-index: 999;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ==================== Footer ==================== */
+.footer {
+  text-align: center; padding-top: 56px; margin-top: 56px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-tertiary);
+  font-family: var(--font-serif);
+}
+.empty-state { text-align: center; padding: 60px 0; color: var(--text-tertiary); font-size: 15px; }
+.tabs--stuck {
+  box-shadow: 0 1px 4px rgba(61, 43, 31, 0.08);
+}
+[data-theme="dark"] .tabs--stuck {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+/* ==================== Favorites Modal ==================== */
+.fav-modal {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 200; display: flex; align-items: center; justify-content: center;
+}
+
+.fav-modal-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4); cursor: pointer;
+}
+
+.fav-modal-panel {
+  position: relative; z-index: 1;
+  background: var(--surface); border-radius: 12px;
+  width: 90%; max-width: 560px; max-height: 80vh;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  display: flex; flex-direction: column;
+  animation: modalIn 0.25s ease-out;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+[data-theme="dark"] .fav-modal-panel { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+
+.fav-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px 12px; border-bottom: 1px solid var(--border);
+}
+
+.fav-modal-title {
+  font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text);
+}
+
+.fav-modal-close {
+  background: none; border: none; font-size: 22px; cursor: pointer;
+  color: var(--text-tertiary); padding: 4px; line-height: 1;
+  transition: color 0.2s;
+}
+.fav-modal-close:hover { color: var(--text); }
+
+.fav-modal-body {
+  padding: 16px 24px 20px; overflow-y: auto; flex: 1;
+}
+
+.fav-empty {
+  text-align: center; padding: 32px 0; color: var(--text-tertiary); font-size: 14px;
+}
+
+.fav-group { margin-bottom: 16px; }
+.fav-group:last-child { margin-bottom: 0; }
+
+.fav-group-title {
+  font-size: 12px; font-weight: 600; color: var(--text-tertiary);
+  text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px;
+}
+
+.fav-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+.fav-item:last-child { border-bottom: none; }
+
+.fav-item-info { flex: 1; min-width: 0; }
+
+.fav-item-title {
+  font-size: 14px; font-weight: 600; color: var(--text);
+  display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.fav-item-meta {
+  font-size: 11px; color: var(--text-tertiary); margin-top: 2px;
+  display: flex; gap: 8px; align-items: center;
+}
+.fav-item-meta .dot { color: var(--border); }
+
+.fav-item-link {
+  font-size: 12px; padding: 4px 12px; border-radius: 6px;
+  background: var(--primary); color: #fffcf7; text-decoration: none;
+  font-weight: 500; white-space: nowrap; transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.fav-item-link:hover { opacity: 0.85; }
+
+/* ==================== Header favorites button ==================== */
+.fav-header-btn {
+  background: none; border: 1px solid var(--border); border-radius: 8px;
+  padding: 4px 10px; cursor: pointer; font-size: 16px; line-height: 1;
+  color: var(--text-secondary); transition: all 0.2s;
+}
+.fav-header-btn:hover { background: var(--heart); color: #fffcf7; border-color: var(--heart); }
+/* Card category badge - visible in All view */
+.card-cat-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  color: #fffcf7;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+/* Category badge colors - Morandi palette */
+.card-cat-badge[data-cat="extension"] { background: #8ea9c6; }
+.card-cat-badge[data-cat="creative"] { background: #c4a882; }
+.card-cat-badge[data-cat="workflow"] { background: #92b8a8; }
+[data-theme="dark"] .card-cat-badge[data-cat="extension"] { background: #6d8ba8; }
+[data-theme="dark"] .card-cat-badge[data-cat="creative"] { background: #a88d6a; }
+[data-theme="dark"] .card-cat-badge[data-cat="workflow"] { background: #719a88; }
+
+/* Unfavorite button in modal */
+.fav-item-unfav {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer; font-size: 14px; line-height: 1; padding: 3px 6px;
+  color: var(--heart); transition: all 0.2s; flex-shrink: 0;
+}
+.fav-item-unfav:hover { color: var(--heart); border-color: var(--heart); background: var(--primary-light); }
+.fav-filter {
+  display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.fav-filter-btn {
+  padding: 3px 12px; border-radius: 12px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text-secondary); cursor: pointer;
+  font-size: 11px; font-weight: 500; transition: all 0.2s;
+}
+.fav-filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+.fav-filter-btn.active { background: var(--primary); color: #fffcf7; border-color: var(--primary); }
+
+.card-full-tags {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;
+}
+
+
+/* ==================== Opportunities Channel ==================== */
+.opportunities-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+
+.opp-empty {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  padding: 60px 20px;
+  font-family: var(--font-sans);
+}
+
+.opp-day {
+  margin-bottom: 40px;
+}
+
+.opp-day-header {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border, #e8e0d8);
+}
+
+.opp-day-content {}
+.opp-h1 { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--text); margin: 24px 0 12px; line-height: 1.3; }
+.opp-h2 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border, #e8e0d8); }
+.opp-h3 { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--text); margin: 18px 0 8px; }
+.opp-h4 { font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--text-secondary); margin: 14px 0 6px; }
+
+.opp-p {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+
+.opp-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.opp-link:hover { color: var(--primary-dark, #8b6914); }
+
+.opp-blockquote {
+  border-left: 3px solid var(--primary-light, #f5eed9);
+  padding: 8px 16px;
+  margin: 16px 0;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  background: var(--primary-light, #faf7ed);
+  border-radius: 0 6px 6px 0;
+}
+
+.opp-hr {
+  border: none;
+  border-top: 1px solid var(--border, #e8e0d8);
+  margin: 24px 0;
+}
+
+.opp-code {
+  background: var(--code-bg, #f5f0e8);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.opp-inline-code {
+  background: var(--code-bg, #f5f0e8);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 12px;
+  color: var(--primary-dark, #8b6914);
+}
+
+.opp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.opp-table th {
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--primary-light, #faf7ed);
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 2px solid var(--border, #e8e0d8);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.opp-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border, #e8e0d8);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.opp-table tr:last-child td { border-bottom: none; }
+
+strong { font-weight: 600; color: var(--text); }
+em { font-style: italic; }
+
+@media (max-width: 640px) {
+  .opportunities-container { padding: 16px; }
+  .opp-h1 { font-size: 20px; }
+  .opp-h2 { font-size: 16px; }
+  .opp-table { font-size: 11px; }
+  .opp-table th, .opp-table td { padding: 6px 8px; }
+}
+
+[data-theme="dark"] .opp-table th { background: rgba(255,255,255,0.05); }
+[data-theme="dark"] .opp-blockquote { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .opp-code, [data-theme="dark"] .opp-inline-code { background: rgba(255,255,255,0.05); }
+
+
+/* ==================== Opportunities Sidebar Nav ==================== */
+.opp-layout {}
+.opp-sidebar {
+  width: 150px;
+  flex-shrink: 0;
+  padding-right: 16px;
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 60px;
+  align-self: flex-start;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+.opp-sidebar::-webkit-scrollbar { display: none; }
+.opp-sidebar-title {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.opp-nav-item {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.opp-nav-item:hover { color: var(--text); background: var(--tag-bg); }
+.opp-nav-item.active { color: var(--primary); font-weight: 700; background: var(--primary-light); }
+.opp-content { padding-left: 24px; }
+
+@media (max-width: 640px) {
+  .opp-sidebar { display: none; }
+  .opp-content { padding-left: 0; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="header-top">
+      <h1>AI Inspiration Notebook</h1>
+      <div class="header-meta">
+        <span>2026-06-23 06:38</span>
+        <span class="dot">&middot;</span>
+        <span>19 projects</span>
+      </div>
+      <div class="header-right">
+        <button class="fav-header-btn" onclick="openFavModal()" title="Your favorites">&#9825;</button>
+        <button id="themeBtn" class="theme-btn" onclick="toggleTheme()">&#127769;</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="channel-bar">
+    <button class="channel-btn" onclick="switchChannel(this, 'inspiration')">AI Projects</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'builder')">Builder Digest</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'opportunities')">Opportunities</button>
+  </div>
+
+  <div id="channel-inspiration" class="channel-content" style="display:none">
+    <div class="tabs" id="categoryTabs">
+      <button class="tab active" onclick="filterCategory(this, 'all')">All (9)</button>
+      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (4)</button>
+      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (1)</button>
+      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (4)</button>
+    </div>
+    <div class="card-grid">
+<div class="card" data-category="creative" data-pid="builderpulse-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">BuilderPulse</h2>
+  <p class="card-desc">独立开发者的AI日报——20个问题+10多个数据源，AI帮你盯行业动态，1.4k stars</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    1.4k stars但产品思路值得关注。
+1. &quot;20个问题+10多个数据源&quot;的框架设计是亮点——不是被动推送，是主动按项目需求拉取
+2. 工具类产品的天...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span><span class="tag">资讯</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>独立开发者需要关注行业动态但没时间——每天要扫GitHub trending、X、Hacker News、Reddit多个信息源。<mark>信息分散，筛选耗时</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM擅长<mark>信息聚合和摘要</mark>——可以同时监控多个数据源，用预设的<mark>20个问题框架</mark>筛选和总结。不是简单的RSS聚合，而是有筛选逻辑的智能资讯。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>1.4k stars但产品思路值得关注。
+1. <mark>"20个问题+10多个数据源"</mark>的框架设计是亮点——不是被动推送，是主动按项目需求拉取
+2. 工具类产品的天花板在这里：<mark>你自己就是独立开发者</mark>，你为自己做工具，然后发现别人也需要
+3. 资讯类产品的核心不是"信息多"，是<mark>"不需要我看的信息不要出现"</mark></p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>为自己做一个工具。你每天重复做的<mark>信息处理工作</mark>，大概率别人也需要。从自己的需求出发做产品——你不是在做市场调研，你就是在解决自己的问题，顺便产品化。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/BuilderPulse/BuilderPulse" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="browser-use-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Browser Use</h2>
+  <p class="card-desc">让网站对AI Agent可访问——100k stars，为AI Agent提供浏览器自动化API，让Agent能像人一样操作网页</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    100k stars说明了一个被忽视的刚需：AI Agent的&quot;手&quot;和&quot;眼睛&quot;。
+1. 它是基础设施型产品——不面向终端用户，面向所有做AI Agent的...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">基础设施</span><span class="tag">To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI Agent想操作网页但<mark>缺乏统一接口</mark>——每个网站有不同的DOM结构和交互逻辑。开发者要为每个网站写定制脚本，Agent的<mark>网页交互层</mark>没有标准化。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM的<mark>视觉理解和推理能力</mark>让Agent可以"看懂"网页——不是解析DOM，而是像人一样理解布局、按钮、表单。Browser Use把这种能力封装成<mark>简单API</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>100k stars说明了一个被忽视的刚需：AI Agent的<mark>"手"和"眼睛"</mark>。
+1. 它是<mark>基础设施型产品</mark>——不面向终端用户，面向所有做AI Agent的开发者
+2. 基础设施的价值不在功能多，在于<mark>接口简单</mark>。提供精简API让任何Agent都能操作浏览器，而不是做一个大而全的自动化框架</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>AI时代产生了大量<mark>新基础设施需求</mark>——Agent的浏览器层、记忆层、工具调用层、安全层。每一个都是独立的产品机会。观察你用的Agent框架，里面哪些模块可以独立出来做产品？</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/browser-use/browser-use" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="odoopilot-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">OdooPilot</h2>
+  <p class="card-desc">ERP通过聊天使用——免登录Odoo，Telegram/WhatsApp上AI助手，请假、审批、CRM更新、库存校验全用自然语言，15种语言，15 stars</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    15 stars但场景极准。
+1. 它不做通用AI助手——只做Odoo的AI前端。定位越窄，替代意愿越强
+2. 用即时通讯工具（Telegram/What...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">To B</span><span class="tag">AI Agent</span><span class="tag">ERP</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>ERP系统功能强大但<mark>学习成本极高</mark>——Odoo有上千个模块和菜单，普通员工要记住请假在哪个入口、报销怎么填、库存怎么查。对非技术人员，ERP就是<mark>一个迷宫</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM可以理解"我想请三天年假"这样的自然语言请求并映射到Odoo的<mark>具体操作</mark>——创建请假单、检测余额、发给审批人。Telegram/WhatsApp作为入口，员工不需要登录ERP。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>15 stars但场景极准。
+1. 它不做通用AI助手——<mark>只做Odoo的AI前端</mark>。定位越窄，替代意愿越强
+2. 用即时通讯工具（Telegram/WhatsApp）当入口——不改变员工的工作习惯
+3. "Your team uses Odoo — without logging in to Odoo" 这句产品描述就是<mark>价值主张本身</mark></p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>找一个复杂的企业软件（SAP、Salesforce、Jira），把它<mark>最常用的20%功能</mark>用聊天界面重新包装。不需要替换系统——只替换交互层。员工不需要学系统，只需要会说话。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/arunrajiah/odoopilot" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="147-agents-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
+  <div class="card-header">
+    <span class="source-badge">&#9654; YouTube</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">147 Pre-Built AI Agents</h2>
+  <p class="card-desc">开源仓库147+预构建AI Agent——金融、营销、产品等领域的专业Agent，可直接用于Claude Code，Agent专业化趋势</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    Agent正在从&quot;通用助手&quot;走向&quot;专业化分工&quot;。
+1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To B</span><span class="tag">开源</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI Agent很强大但<mark>不会写prompt</mark>的人用不起来。每个领域需要不同的Agent配置——金融分析师要财报解读能力，营销人要文案和数据分析。普通用户<mark>不知道Agent该怎么配</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM的能力可以通过<mark>专业化的system prompt + 工具集</mark>变成垂直Agent。不是训练新模型，而是给同一个模型不同的"角色卡"和工具包。147个预构建Agent就是147套经过验证的角色配置。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>Agent正在从<mark>"通用助手"走向"专业化分工"</mark>。
+1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领域会有专属Agent
+2. 开源预构建的Agent让"不会写prompt"不再是障碍——直接用别人调好的
+3. Sebastian Hardy频道从AI营销视角推荐，目标受众明确</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>你的产品可以考虑做<mark>Agent模板市场</mark>——不是让用户从头配置Agent，而是给他们一套开箱即用的分类Agent。像Notion模板市场一样，不同场景不同模板，用户只需选+微调。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://www.youtube.com/watch?v=XpRnyqxM3Jk" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="claude-mem-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Claude Mem</h2>
+  <p class="card-desc">跨会话持久上下文——83k stars，捕获Agent的一切记忆，任何LLM Agent通用的记忆层</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    83k stars，Agent&quot;记忆&quot;是基础设施级需求。
+1. 它不做Agent本身——只做记忆层。任何Agent都可以接入
+2. 类似浏览器cookie...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">基础设施</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>Agent每次新会话都是空白——不记得你昨天的偏好、上周解决的问题、上个月的上下文。用户需要反复重复背景信息。LLM的上下文窗口虽然越来越大，但<mark>会话间的记忆是断裂</mark>的。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM本身<mark>没有持久记忆</mark>——这是架构设计决定的。但LLM可以理解、压缩、检索历史上下文。Claude Mem在LLM外面加了一层<mark>记忆管理</mark>：自动捕获关键决策、总结历史、跨会话注入上下文。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>83k stars，Agent<mark>"记忆"</mark>是基础设施级需求。
+1. 它不做Agent本身——只做<mark>记忆层</mark>。任何Agent都可以接入
+2. 类似<mark>浏览器cookie</mark>之于Web开发：不是产品核心，但没有它产品体验不完整
+3. 记忆越积累越有价值——<mark>用户迁移成本</mark>随使用增加而上升</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>不从正面做AI Agent——从侧面做Agent的<mark>配套设施</mark>。Agent生态里最缺的不一定是新Agent，可能是记忆、安全、监控、测试这些模块。挑一个功能把它做到<mark>通用、独立、可插拔</mark>。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/thedotmack/claude-mem" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="openclaw-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">OpenClaw</h2>
+  <p class="card-desc">跨平台个人AI助手——&quot;The lobster way&quot;品牌叙事，379k stars，任何OS任何平台都能用的AI agent，不走平台绑定路线</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    379k stars说明需求成立。OpenClaw把AI助手从&quot;平台附属功能&quot;变成了&quot;独立OS层&quot;——不是另一个ChatGPT客户端，而是AI时代的操作系...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span><span class="tag">跨平台</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI助手大多<mark>绑定特定平台</mark>——ChatGPT有独立App、Claude在网页里、Copilot在IDE里。用户想要一个<mark>跨OS、跨平台</mark>的统一入口：在Windows、macOS、Linux任何地方，同一个AI助手随时在。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM的推理和生成能力已成熟到可以作为<mark>独立平台层</mark>存在——不需要依附于特定IDE或操作系统。<mark>REST API + WebSocket</mark>让AI助手可以在任何环境运行，平台不再是瓶颈。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>379k stars说明需求成立。OpenClaw把AI助手从<mark>"平台附属功能"</mark>变成了<mark>"独立OS层"</mark>——不是另一个ChatGPT客户端，而是AI时代的操作系统级入口。
+1. 不绑定编辑器、不绑定终端、不绑定OS——与Copilot和Warp走完全相反的路
+2. "The lobster way"的品牌调性说明他们有<mark>产品叙事意识</mark>，不是纯技术项目</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>你的产品不一定非要绑定某个生态。当竞争对手都在绑定平台时，做<mark>"跨平台统一层"</mark>本身就是差异。观察哪些AI工具只在单一平台存在——把它们拉到跨平台就是你的机会。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/openclaw/openclaw" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="trvl-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">trvl</h2>
+  <p class="card-desc">1个MCP工具包揽66种旅行搜索——航班、酒店、火车、租车、轮渡、价格提醒，无API key依赖，单个Go二进制，41 stars</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    41 stars，但产品思路精炼。
+1. &quot;1 tool + 66 aliases&quot;的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）
+...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">To C</span><span class="tag">MCP</span><span class="tag">旅行</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>规划旅行要在多个App间跳转——机票在Skyscanner、酒店在Booking、火车在Rail Europe。每个平台不同界面，<mark>信息分散</mark>，反复切换。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM可以理解自然语言的旅行需求（"下周五去东京，预算5000，找最便宜的航班+酒店组合"），但缺一个统一的<mark>搜索执行层</mark>。trvl提供了这个层——1个MCP工具，66个别名，AI助手一次调用覆盖所有旅行搜索。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>41 stars，但产品思路精炼。
+1. <mark>"1 tool + 66 aliases"</mark>的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）
+2. 98.9% smaller tools/list 说明他们在做<mark>接口精简</mark>，而不是堆功能
+3. 无API key的纯抓取方案让用户零配置即可用——降低了MCP的使用门槛</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>做MCP工具时，考虑<mark>"单工具多别名"</mark>模式——不要为每个功能做一个tool，用别名覆盖语义变体让AI更灵活调用。另外，无API key方案虽然稳定性不如官方API，但<mark>零配置</mark>体验适合个人用户场景。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/MikkoParkkola/trvl" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="ai-clip-skill-20260623" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
+  <div class="card-header">
+    <span class="source-badge">&#128279; 小红书</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">AI 自动剪辑 Skill</h2>
+  <p class="card-desc">以 REDSkill 形态分发的 AI 剪辑 Skill，嵌入 Claude Code / Codex 使用。自动剪口误、口癖、静音，越用越懂你的剪辑习惯。</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">剪辑</span><span class="tag">To C</span><span class="tag">AI Agent</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>口播创作者反复手动剪口误/口癖/静音——有特定、高频的痛点用户群。做了三年口播的人清楚自己的习惯模式，但剪辑软件不会记住任何一个人的偏好，每期视频都从零开始。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>规则方案用阈值和正则匹配来识别口癖，通用的词能抓到，个性化的长短语抓不到。更根本的问题是：剪辑不止是找到多余的——删掉之后节奏对不对？规则完全判断不了，因为节奏感因人而异。%%AI 把剪辑从"写死规则"变成了"学习个人偏好"，这是规则做不到的。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。%%也没做独立 App——口播创作者已经在 Agent 里写逐字稿了，录完视频的下一步是回到 Agent，不是打开另一个软件。产品形态的选择依据是：用户正在走的那条心理路径在哪里，就在哪里接住。用上二十条视频之后，用户积累的口癖列表和节奏偏好都存在这个 skill 里，换回去意味着丢掉这些数据。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>观察用户每天必须手动重复的具体操作；判断现有规则方案为什么盖不住它（个体差异就是 AI 的切入口）；看用户做这件事的前一个动作在什么工具里——产品就从那里接住。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="http://xhslink.com/o/947lQCYSOgA" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="n8n-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.7s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">n8n</h2>
+  <p class="card-desc">公平代码的工作流自动化平台，193k stars，原生AI能力——可视化拖拽+代码双模式，把if-this-then-that升级为AI驱动</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    193k stars，体量巨大。n8n的核心策略是&quot;公平代码&quot;（fair-code）：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。
+1...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">工作流</span><span class="tag">To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>Zapier/Make等自动化工具在很多场景下<mark>锁数据和限制复杂度</mark>——你要么忍受，要么写代码自己搭。企业需要既能让<mark>非技术人员可视化操作</mark>、又能让工程师写代码定制的统一平台。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM让工作流从<mark>"规则驱动"</mark>升级为<mark>"语义驱动"</mark>——n8n原生集成了AI节点，用户可以在可视工作流中直接调用LLM做分类、提取、生成，不再需要单独搭AI pipeline。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>193k stars，体量巨大。n8n的核心策略是<mark>"公平代码"（fair-code）</mark>：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。
+1. <mark>可视化+代码双模式</mark>覆盖了两类完全不同的用户——非技术操作者和工程师
+2. <mark>原生AI节点</mark>是真正的差异化——不是插件，是内置的一等公民</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>做平台型产品时，考虑<mark>"双模式"</mark>——可视化入门降低门槛，代码出口保证天花板。不要只做其中之一。另外，<mark>fair-code</mark>是一个值得研究的商业模式：比MIT更保护创作者，比SaaS更开放。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/n8n-io/n8n" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+
+  <div id="channel-builder" class="channel-content" style="display:none">
+    <div class="timeline-layout">
+<nav class="timeline-sidebar">
+  <div class="timeline-sidebar-title">Builders</div>
+    <a href="#builder-thsottiaux" class="timeline-nav-item" data-builder="builder-thsottiaux">Thibault Sottiaux</a>
+    <a href="#builder-trq212" class="timeline-nav-item" data-builder="builder-trq212">Thariq</a>
+    <a href="#builder-ryolu_" class="timeline-nav-item" data-builder="builder-ryolu_">Ryo Lu</a>
+    <a href="#builder-levie" class="timeline-nav-item" data-builder="builder-levie">Aaron Levie</a>
+    <a href="#builder-garrytan" class="timeline-nav-item" data-builder="builder-garrytan">Garry Tan</a>
+    <a href="#builder-joshwoodward" class="timeline-nav-item" data-builder="builder-joshwoodward">Josh Woodward</a>
+    <a href="#builder-petergyang" class="timeline-nav-item" data-builder="builder-petergyang">Peter Yang</a>
+    <a href="#builder-zarazhangrui" class="timeline-nav-item" data-builder="builder-zarazhangrui">Zara Zhang</a>
+    <a href="#builder-nikunj" class="timeline-nav-item" data-builder="builder-nikunj">Nikunj Kothari</a>
+    <a href="#builder-rauchg" class="timeline-nav-item" data-builder="builder-rauchg">Guillermo Rauch</a>
+    <a href="#builder-danshipper" class="timeline-nav-item" data-builder="builder-danshipper">Dan Shipper</a>
+    <a href="#builder-swyx" class="timeline-nav-item" data-builder="builder-swyx">Swyx</a>
+    <a href="#builder-realmadhuguru" class="timeline-nav-item" data-builder="builder-realmadhuguru">Madhu Guru</a>
+    <a href="#builder-adityaag" class="timeline-nav-item" data-builder="builder-adityaag">Aditya Agarwal</a>
+</nav>
+      <div class="timeline-content">
+<div class="timeline-feed">
+<div class="timeline-builder" id="builder-thsottiaux">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#d4b8a8"></span>
+    <span class="timeline-builder-name">Thibault Sottiaux</span>
+    <span class="timeline-builder-handle">@thsottiaux</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">已修复。你知道接下来会发生什么 🤫
+
+给我们 24 小时，重置所有套餐的 Codex 速率限制。</p>
+    <p class="timeline-text timeline-text-en">This was fixed. You know what&#39;s coming 👀
+
+Give us 24 hours to reset the Codex rate limits across all plans.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 5799</span>
+      <a href="https://x.com/thsottiaux/status/2066956441173323943" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">收到。我们注意到部分 Codex 用户遇到了较高的「模型满载」错误率，正在努力恢复稳定。</p>
+    <p class="timeline-text timeline-text-en">Oy. We are aware that some Codex users are experiencing high error rates with &quot;model at capacity&quot; and are working to bring things back to being stable.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 3628</span>
+      <a href="https://x.com/thsottiaux/status/2066865154902380796" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">Bim bada boum。这周我在法国，正在全欧洲推出所有最令人兴奋的 Codex 功能。是巧合，还是团队觉得我不在就没法好好干活？</p>
+    <p class="timeline-text timeline-text-en">Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn&#39;t able to be productive otherwise?</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 1223</span>
+      <a href="https://x.com/thsottiaux/status/2067064381855187231" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-trq212">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c8a8b8"></span>
+    <span class="timeline-builder-name">Thariq</span>
+    <span class="timeline-builder-handle">@trq212</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">Slack 现在直接渲染 HTML 附件，不再只显示纯文本了 🤶🙏</p>
+    <p class="timeline-text timeline-text-en">Slack now renders HTML attachments instead of just showing it as text 😭🙏</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 2513</span>
+      <a href="https://x.com/trq212/status/2067021344341098670" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-ryolu_">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
+    <span class="timeline-builder-name">Ryo Lu</span>
+    <span class="timeline-builder-handle">@ryolu_</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">疑惑的想法：如果 X 和 Cursor 是同一个东西会怎样？</p>
+    <p class="timeline-text timeline-text-en">crazy idea: what if X, Cursor, were the same thing?</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 2195</span>
+      <a href="https://x.com/ryolu_/status/2066902677905461579" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">Cursor 移动版最疯狂的是 @rikcreation 以「设计师」的身份，用 Cursor 编码出了大部分实际产品。
+
+头衔一文不值。你只管动手构建就行。</p>
+    <p class="timeline-text timeline-text-en">the crazy thing about Cursor mobile
+is @rikcreation coded most of the real thing with Cursor, as a “designer”
+
+titles don’t mean shit.
+you can just build.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 204</span>
+      <a href="https://x.com/ryolu_/status/2067124871226929526" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-levie">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c4a8b0"></span>
+    <span class="timeline-builder-name">Aaron Levie</span>
+    <span class="timeline-builder-handle">@levie</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">Cursor 交易在象征意义上非常重要。它实际上是 AI 应用层第一个大获成功的案例。
+
+他们坚实证明了深度领域聚焦的价值主张、作为模型路由器的角色、何时依赖前沿模型 vs. 何时自己训练、以及应用层 AI 的 GTM 和分发如何确保你真正抓住市场机会。
+
+他们业务的每一个层面都经过精心调校，在一个高度竞争的空间里不断开拓阵地并加倍投入。这真正是第一个规模化执行这套打法的方法论模板。</p>
+    <p class="timeline-text timeline-text-en">The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI. 
+
+They firmly proved out the value proposition of having a deep domain focus, the role you play as a model router, when to lean into frontier models vs. when to train your own, and the role of applied AI GTM and distribution to make sure you’re actually taking advantage of the market opportunity. 
+
+Every aspect of their business was tuned to carve out ground and keep doubling down in a highly competitive space. This is really the first at scale template for how to execute this playbook.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 736</span>
+      <a href="https://x.com/levie/status/2066908002809221496" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">AI 领域最大的问题之一是：开源权重模型离前沿模型到底还有多远。关键问题不是「开源能赶上吗？」而是「开源能离得够近，让大多数应用场景都可以用吗？」——这个答案正在快速变成「是的」。这也正是应用层创业者应该兴奋的地方。</p>
+    <p class="timeline-text timeline-text-en">One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years. 
+
+The answer to this will determine how the chip stack plays out, where inference can be run, what sovereign AI looks like, what happens at the applied AI layer, what the margin structure looks like in AI, how much companies can afford to spend on AI, and more.
+
+At the moment the open weights players appear to be holding up at keeping close to frontier levels of capability. Will be fun to see how this plays out.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 206</span>
+      <a href="https://x.com/levie/status/2067070918300664161" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-garrytan">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#a4c0b4"></span>
+    <span class="timeline-builder-name">Garry Tan</span>
+    <span class="timeline-builder-handle">@garrytan</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">如果你害怕出丑，永远不会成就任何事。
+
+不过说这话的人正试图靠 looksmaxxing 获取超额回报，祝他好运。</p>
+    <p class="timeline-text timeline-text-en">You’ll never achieve anything if you are afraid of being cringe
+
+Then again this is from someone trying to use looksmaxxing to achieve outsize return, good luck with that</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 588</span>
+      <a href="https://x.com/garrytan/status/2067101283493040518" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">Mothers 是那种对战斗人员来说影响立竿见影的技术。</p>
+    <p class="timeline-text timeline-text-en">9Mothers is one of those technologies whose impact is immediately obvious to warfighters</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 74</span>
+      <a href="https://x.com/garrytan/status/2067101655934591154" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">从而导致……Bowen 的「自我分化」理论
+
+低分化 = 对他人的情绪信号高度反应，在关系中失去自我，在压力下无法守住边界——坍缩为「我们一体感」（每个人必须感受一致，否则关系就受到威胁）。
+
+同一种病症的两种表现：变色龙（调整自己讨好，融合模式）和霸凌者（强迫他人服从，混蛋模式）。两者都是未分化的。自我放弃者和混蛋是同一个人。
+
+解方相同：降低慢性焦虑，提高在关系中保持独立自我的能力。</p>
+    <p class="timeline-text timeline-text-en">Which leads to… Bowen’s differentiation of self
+
+Low differentiation = highly reactive to others&#39; emotional cues, loses self in relationships, can&#39;t hold boundaries under pressure — collapses into &quot;we-ness&quot; (everyone must feel the same or the bond feels threatened).
+
+Two flavors of the same disease: chameleons (adjust themselves to please, fusion mode) and bullies (force others to conform, the asshole mode). Both are undifferentiated. The self-abandoner and the asshole are the same person.
+
+The fix is the same: lower the chronic anxiety, raise the capacity to stay a separate self in contact.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 17</span>
+      <a href="https://x.com/garrytan/status/2067100549775032702" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-joshwoodward">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
+    <span class="timeline-builder-name">Josh Woodward</span>
+    <span class="timeline-builder-handle">@joshwoodward</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">🌍🌎改变世界的 AI 公司正从巴西涌现。
+
+这就是为什么我们正式将 Google AI Futures Fund 扩展至巴西，与风投领导者 Monashees 合作推出 Gama Fund。
+
+我们正在寻找一群精英级别的前沿技术创始人，将提供：
+
+- 提前访问 Google DeepMind 模型
+- 最高 200 万美元的联合投资
+- 35 万美元的 Google Cloud 和 Gemini 额度
+- 在我们新的 IPT Open 园区与 Google 工程师直接联合开发
+
+立即申请：</p>
+    <p class="timeline-text timeline-text-en">🇧🇷World-changing AI companies are coming from Brazil.
+
+That’s why we’ve officially expanded our Google AI Futures Fund to Brazil, partnering with venture capital leader Monashees to launch the Gama Fund.
+
+We’re looking for an elite cohort of deep tech founders and will offer:
+
+- Early access to Google DeepMind models
+- Up to $2M in co-investment
+- $350k in Google Cloud &amp; Gemini credits
+- Direct co-development with Google engineers at our new IPT Open campus hub
+
+Apply today:</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 351</span>
+      <a href="https://x.com/joshwoodward/status/2067025851829330076" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-petergyang">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#b8a8c4"></span>
+    <span class="timeline-builder-name">Peter Yang</span>
+    <span class="timeline-builder-handle">@petergyang</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">老实说我不想当黑子，但我觉得这就是公司内部没人敢跟 CEO 说不的结果。
+
+也许这东西会让我们惊艳？</p>
+    <p class="timeline-text timeline-text-en">Honestly I don&#39;t want to be a hater but I feel like this is what happens when nobody internally wants to tell the CEO no. 
+
+Maybe this thing will blow our socks off?</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 280</span>
+      <a href="https://x.com/petergyang/status/2067047343971848201" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">又一次。是不是每个超过 1000 人的公司都要来这一出 🤶</p>
+    <p class="timeline-text timeline-text-en">Damn not again. Is every company with 1,000+ people going to do this 😭</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 204</span>
+      <a href="https://x.com/petergyang/status/2066975504973050077" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">发布一个新教程：如何用 4 个文件将 Codex 或 Claude Code 变成你的个人顾问。另外，我在 Fable 被封之前成功保存了它的建议 🗠️
+
+👉 订阅获取明天的教程：https://t.co/MbOfeFUJbn</p>
+    <p class="timeline-text timeline-text-en">Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable&#39;s advice too before it got restricted 🥲
+
+📌 Subscribe to get the tutorial tmr: https://t.co/MbOfeFUJbn</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 78</span>
+      <a href="https://x.com/petergyang/status/2067056979974160749" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-zarazhangrui">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c4a4a8"></span>
+    <span class="timeline-builder-name">Zara Zhang</span>
+    <span class="timeline-builder-handle">@zarazhangrui</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">你不用追逐最酷的东西。把你已经在做的事情做到极致，它就变成了最酷的东西。
+
+最酷的东西在起步时往往一点都不酷。它变酷是因为有人在所有人都觉得太小的领域里走得更深。</p>
+    <p class="timeline-text timeline-text-en">You don’t have to chase the cool thing. Do whatever you’re already doing so well that it becomes the cool thing.
+
+The cool thing is rarely cool when it starts. It becomes cool because someone went deep on something everyone else thought was too small.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 162</span>
+      <a href="https://x.com/zarazhangrui/status/2066994434953421226" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">现在市面上每个产品都在说「一个 AI Agent 能搞定你的工作和生活，跟一切集成。」
+
+挺好的，但那不就是 Claude / Codex 本身吗。
+
+如果你想让我换用你的产品，它得有观点、有灵魂。做得小而锋利，不要大而空洞。
+
+什么都能做等于什么都做不好。对所有人说话等于对谁都没说。</p>
+    <p class="timeline-text timeline-text-en">Every other product right now is &quot;an AI agent that does everything in your work &amp; life &amp; integrates with everything.&quot; 
+
+Cool, that&#39;s just Claude/Codex. 
+
+If you want me to use your thing instead, it needs an opinion &amp; a soul. Build small &amp; sharp, not big &amp; generic.
+
+Doing everything means doing nothing. Speaking to everybody means speaking to nobody.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 158</span>
+      <a href="https://x.com/zarazhangrui/status/2066936706281206165" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-nikunj">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
+    <span class="timeline-builder-name">Nikunj Kothari</span>
+    <span class="timeline-builder-handle">@nikunj</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">Cursor Compile 的氛围绝了。拿到定制机械键盘作为会议周边，简直是新天花板 ⌔︎</p>
+    <p class="timeline-text timeline-text-en">Vibes at Cursor Compile were immaculate. Also getting a custom mechanical keyboard is a new kind of swag ceiling for conferences ⌨️</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 139</span>
+      <a href="https://x.com/nikunj/status/2066966270197805331" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">判断自己是在数据路径里还是 token 路径里。今天 @cursor_ai 的收购为更多应用层公司指明了方向。恭喜我的朋友们 🥥</p>
+    <p class="timeline-text timeline-text-en">Be in the judgement (data) path or the token path. Today’s @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends 🥳</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 23</span>
+      <a href="https://x.com/nikunj/status/2066905445974102384" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-rauchg">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#b8a8c4"></span>
+    <span class="timeline-builder-name">Guillermo Rauch</span>
+    <span class="timeline-builder-handle">@rauchg</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">快速铺垫一下：☑️ 30 分钟的函数调用 🆕 24 小时沙箱 ☑️ 无限后台任务 🆕 响应式 UI 渲染。这不仅仅是扩展限制了——我们正在改变你能构建的东西的范畴。</p>
+    <p class="timeline-text timeline-text-en">Quick one to set the stage:
+
+☑️ 30 minute function invocations
+🆕 24 hour sandbox lifetimes</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 81</span>
+      <a href="https://x.com/rauchg/status/2067137678772937000" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-danshipper">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c4a4a8"></span>
+    <span class="timeline-builder-name">Dan Shipper</span>
+    <span class="timeline-builder-handle">@danshipper</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">刚从 Atlas 浏览器换回 Dia。
+
+Atlas 各种奇怪的 bug，感觉也没什么改进。</p>
+    <p class="timeline-text timeline-text-en">just switched off of Atlas Browser and back onto Dia
+
+i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it&#39;s improving</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 72</span>
+      <a href="https://x.com/danshipper/status/2066914130863473048" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-swyx">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c8a8b8"></span>
+    <span class="timeline-builder-name">Swyx</span>
+    <span class="timeline-builder-handle">@swyx</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text">@TomasReimers @cursor_ai *github competitor fml</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 48</span>
+      <a href="https://x.com/swyx/status/2066937943139479618" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text">@WorkOS @mattpocockuk @zackproser also doing great. AIE audience LOVES the workos content, they are doing something right</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 3</span>
+      <a href="https://x.com/swyx/status/2067057648617538037" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-realmadhuguru">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#c0a8b4"></span>
+    <span class="timeline-builder-name">Madhu Guru</span>
+    <span class="timeline-builder-handle">@realmadhuguru</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">SpaceX-Cursor 交易中真正的奖品是 agentic harness——它将成为规模化自动化所有知识工作的核心。
+
+以下是 SpaceX 拿到的东西：
+
+1. 生产级的 agentic harness——规划、上下文管理、工具使用、迭代、验证、记忆、错误恢复。任何产品体验都可以基于这个 harness 以 AI 原生的方式重新设计。
+
+2. 全 AI 栈的专业能力——模型、评估、harness、应用层。
+
+3. 端到端的产品生命周期聚焦：产品战略 → 用户旅程 → GTM。一切为一件事优化：帮助软件工程师构建。
+
+很少有公司能在其中任何一项做好。Cursor 三者兼备。</p>
+    <p class="timeline-text timeline-text-en">The real prize in the SpaceX-Cursor deal is the agentic harness that will become the core for automating all knowledge work at scale.
+
+Here’s what SpaceX is getting:
+
+1. Production-grade agentic harness  -planning, context management, tool use, iteration, verification, memory, error recovery. 
+Any product experience can be completely redesigned in an AI-native way with this harness.
+
+2. Expertise on the full AI stack - model, evals, harness, application layer.
+
+3. End to end product lifecycle focus: product strategy -&gt; user journeys -&gt; GTM. Everything optimized for one job: helping software engineers build.
+
+Very few companies do even one of these well. Cursor brings all three.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 44</span>
+      <a href="https://x.com/realmadhuguru/status/2066935654500671499" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">过去一个世纪，我们把智力视为人类的标志性特质，却在自我意识、直觉、同情心和善良等其他使我们成为人类的方面投入不足。
+
+未来几年会迫使我们重新思考这一点。</p>
+    <p class="timeline-text timeline-text-en">over the last century, we’ve treated the intellect as a defining human trait and under-invested   in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. 
+
+the next few years will force us to rethink this.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-17</span>
+      <span class="timeline-likes">&#9825; 7</span>
+      <a href="https://x.com/realmadhuguru/status/2067090477434966396" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+<div class="timeline-builder" id="builder-adityaag">
+  <div class="timeline-builder-header">
+    <span class="timeline-avatar" style="background:#a8c4ac"></span>
+    <span class="timeline-builder-name">Aditya Agarwal</span>
+    <span class="timeline-builder-handle">@adityaag</span>
+  </div>
+  <div class="timeline-item">
+    <p class="timeline-text timeline-text-zh">你没看错。@RamaswmySridhar 下周要来 @southpkcommons。
+
+他将 Google 的广告收入从 15 亿做到了 1000 亿+。
+
+现在他正带领 Snowflake 经历 AI 转型。</p>
+    <p class="timeline-text timeline-text-en">You didn&#39;t miss this one. @RamaswmySridhar is dropping by @southpkcommons next week.
+
+He grew Google&#39;s ad business from $1.5B to $ 100B+. 
+
+Now he&#39;s running Snowflake through the AI shift.</p>
+    <div class="timeline-meta">
+      <span class="timeline-date">2026-06-16</span>
+      <span class="timeline-likes">&#9825; 38</span>
+      <a href="https://x.com/adityaag/status/2066915803610370098" target="_blank" class="timeline-link">View on X &#8599;</a>
+    </div>
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="channel-opportunities" class="channel-content" style="display:none">
+    <div class="timeline-layout opp-layout">
+<nav class="opp-sidebar" id="oppSidebar"><div class="opp-sidebar-title">On this page</div><a href="#opp-0" class="opp-nav-item" data-opp="opp-0">📝 刘小排说</a><a href="#opp-1" class="opp-nav-item" data-opp="opp-1">🎯 今日 2 小时构建</a><a href="#opp-2" class="opp-nav-item" data-opp="opp-2">今日 Top 3 信号</a><a href="#opp-3" class="opp-nav-item" data-opp="opp-3">白话简报</a><a href="#opp-4" class="opp-nav-item" data-opp="opp-4">发现机会</a><a href="#opp-5" class="opp-nav-item" data-opp="opp-5">技术选型</a><a href="#opp-6" class="opp-nav-item" data-opp="opp-6">竞争情报</a><a href="#opp-7" class="opp-nav-item" data-opp="opp-7">趋势判断</a><a href="#opp-8" class="opp-nav-item" data-opp="opp-8">行动触发</a><a href="#opp-9" class="opp-nav-item" data-opp="opp-9">📝 刘小排说</a><a href="#opp-10" class="opp-nav-item" data-opp="opp-10">🎯 今日 2 小时构建</a><a href="#opp-11" class="opp-nav-item" data-opp="opp-11">今日 Top 3 信号</a><a href="#opp-12" class="opp-nav-item" data-opp="opp-12">白话简报</a><a href="#opp-13" class="opp-nav-item" data-opp="opp-13">发现机会</a><a href="#opp-14" class="opp-nav-item" data-opp="opp-14">技术选型</a><a href="#opp-15" class="opp-nav-item" data-opp="opp-15">竞争情报</a><a href="#opp-16" class="opp-nav-item" data-opp="opp-16">趋势判断</a><a href="#opp-17" class="opp-nav-item" data-opp="opp-17">行动触发</a></nav>      <div class="timeline-content opp-content">
+<div class="opp-day"><div class="opp-day-header">2026-06-17</div><div class="opp-day-content"><h2 class="opp-h1">BuilderPulse Daily — 2026 年 6 月 17 日</h2>
+
+<h2 class="opp-h2" id="opp-0">📝 刘小排说</h2>
+
+<p class="opp-p">今天声音最大的新闻，是一笔 $60B 的 <code class="opp-inline-code">AI coding</code> 收购。但对构建者更有用的信号更小，也更扎手：<a href="https://roman.pt/posts/linkedin-backdoor/" target="_blank" class="opp-link">A backdoor in a LinkedIn job offer</a> 引发 292 条 Hacker News 讨论和 12 条 Lobsters 评论，因为它展示了一个看起来正常的居家编程任务仓库，怎样把 <code class="opp-inline-code">npm install</code> 变成远程代码执行。</p>
+
+<strong>候选人今天实际在做什么？</strong> 他们克隆招聘方给的仓库，运行安装命令，花 8 小时证明自己有能力，然后才知道这个机会到底是不是真的。
+
+<strong>样本有多大？</strong> 这条讨论有 292 条评论，@dantodor 说这 6 个月里自己遇到过 3 次，@jhancock 则描述过一个被攻陷的安全研究员身份又被拿来做招聘。
+
+<strong>为什么 indie 能赢？</strong> solo developer 可以比 LinkedIn、GitHub 或招聘平台更快扫描 <code class="opp-inline-code">lifecycle scripts</code>、混淆 URL、网络调用和高风险安装钩子；大平台要重做招聘流程，速度慢得多。
+
+<p class="opp-p">真正麻烦的活，不是再做一个 <code class="opp-inline-code">coding assistant</code>。而是在不运行仓库的前提下打开它，读 <code class="opp-inline-code">package scripts</code>，指出危险行，然后给紧张的候选人或招聘经理一页报告：这个任务能不能安全执行。</p>
+
+<h2 class="opp-h2" id="opp-1">🎯 今日 2 小时构建</h2>
+
+<strong>Interview Repo Quarantine</strong> — 面向求职候选人和招聘团队的仓库安全报告。在任何人运行 <code class="opp-inline-code">npm install</code> 之前，它检查居家项目里的安装期脚本、混淆网络调用、高风险 <code class="opp-inline-code">package hooks</code> 和安全沙箱命令；背后证据是那篇引发 292 条评论的 LinkedIn 后门故事，以及其中具体的 <code class="opp-inline-code">prepare</code> 脚本触发点。
+
+<p class="opp-p">→ 完整拆解见下方 <em>行动触发</em> 部分。</p>
+
+<h2 class="opp-h2" id="opp-2">今日 Top 3 信号</h2>
+
+<p class="opp-p">1. 居家任务仓库变成了安全攻击面：LinkedIn 求职后门把 payload 藏在测试文件和自动 npm <code class="opp-inline-code">prepare</code> 脚本后面，引发 292 条 Hacker News 讨论和 12 条 Lobsters 评论。</p>
+<p class="opp-p">2. <code class="opp-inline-code">AI coding tools</code> 已经是战略基础设施：Reuters 的 <a href="https://www.reuters.com/legal/transactional/spacex-buy-anysphere-60-billion-2026-06-16/" target="_blank" class="opp-link">SpaceX to buy Cursor for $60B</a> 引发 1,339 条评论，而 Product Hunt 同一天也出现了 <code class="opp-inline-code">Goldfish</code>、<code class="opp-inline-code">Edgee Turbo Models</code>、<code class="opp-inline-code">GitHits</code>、<code class="opp-inline-code">Glint</code> 和 <code class="opp-inline-code">agentbrowse</code>。</p>
+<p class="opp-p">3. 本地模型迎来实用化第二波：<a href="https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/" target="_blank" class="opp-link">Running local models is good now</a> 引发 432 条评论，关于替代 Claude/GPT 的 Ask HN 讨论达到 530 条，里面有具体的 <code class="opp-inline-code">Qwen</code>、<code class="opp-inline-code">Gemma</code>、<code class="opp-inline-code">RTX 3090</code> 和 <code class="opp-inline-code">$100/month</code> 替代故事。</p>
+
+<p class="opp-p">交叉参考 Hacker News、GitHub、Product Hunt、HuggingFace、Google Trends、Reddit、Indie Hackers、Lobsters 和 DEV Community。更新时间 09:41（上海时间）。</p>
+
+<h2 class="opp-h2" id="opp-3">白话简报</h2>
+
+<blockquote class="opp-blockquote">今天真正有用的变化是：软件信任问题开始出现在人们平时最容易赶时间跳过的环节里：面试、模型切换、收件箱回复和安装命令。</blockquote>
+
+<table class="opp-table">
+<tr><th>证据</th><th>讨论量</th><th>白话含义</th></tr>
+<tr><td><a href="https://roman.pt/posts/linkedin-backdoor/" target="_blank" class="opp-link">A backdoor in a LinkedIn job offer</a></td><td>292 条 Hacker News 评论 + 12 条 Lobsters 评论</td><td>求职者可能会被要求快速运行的代码评审任务本身攻击。</td></tr>
+<tr><td><a href="https://www.reuters.com/legal/transactional/spacex-buy-anysphere-60-billion-2026-06-16/" target="_blank" class="opp-link">SpaceX to buy Cursor for $60B</a></td><td>1,339 条评论</td><td><code class="opp-inline-code">AI coding tools</code> 正被当作关键工作流资产，而不是边缘小工具。</td></tr>
+<tr><td><a href="https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/" target="_blank" class="opp-link">Running local models is good now</a> 和本地编程 Ask HN 讨论</td><td>432 + 530 条评论</td><td>开发者不再只问本地 AI 能不能用；他们在比较隐私、成本、速度和所有权。</td></tr>
+</table>
+
+<table class="opp-table">
+<tr><th>读者</th><th>今天意味着什么</th></tr>
+<tr><td>技术爱好者</td><td>盯住普通工作流边缘：求职申请、安装、别名、本地模型和会议应用，信任正在这些地方破裂。</td></tr>
+<tr><td>构建者</td><td>把一个混乱的安全问题打包成付费报告，明确负责人、命令、警告和下一步。</td></tr>
+<tr><td>谨慎提醒</td><td>Hacker News 会高估安全意识强的开发者；要去找候选人、招聘方和真实发送居家任务的团队验证。</td></tr>
+</table>
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-4">发现机会</h2>
+
+<h3 class="opp-h3">今天有哪些 solo-founder 产品发布？</h3>
+
+<strong>🔍 信号</strong>：今天的新发布包括 <a href="https://github.com/tamnd/kage" target="_blank" class="opp-link">Kage</a> 引发 139 条评论，<a href="https://traceapp.info" target="_blank" class="opp-link">Trace</a> 83 条，<a href="https://garden-of-flowers.heikkilotvonen.com/" target="_blank" class="opp-link">Garden of Flowers</a> 25 条，<a href="https://voicedraw.com/" target="_blank" class="opp-link">VoiceDraw</a> 12 条，Product Hunt 上的 <a href="https://www.producthunt.com/products/goldfish-early-access" target="_blank" class="opp-link">Goldfish</a> 154 条评论，以及 <a href="https://www.producthunt.com/products/edgee" target="_blank" class="opp-link">Edgee Turbo Models</a> 28 条。
+<strong>白话说：</strong> 小团队发布卖的不是抽象 AI 承诺，而是对本地文件、会议、模型和工作上下文的控制权。
+
+<p class="opp-p">今天的发布市场分成三个有用簇。第一，本地所有权继续有效：<a href="https://github.com/tamnd/kage" target="_blank" class="opp-link">Kage</a> 把网站打包成可离线浏览的内容，<a href="https://traceapp.info" target="_blank" class="opp-link">Trace</a> 在本地记录 Mac 会议转写，一个 Reddit 构建者发布了 <a href="https://www.reddit.com/r/SideProject/comments/1u3km0q/own_your_music_i_built_a_terminal_app_that/" target="_blank" class="opp-link">soundcli</a>，把播放列表拉成真正的本地文件。<code class="opp-inline-code">Kage</code> 已经连续出现在前两期报告里，所以今天不应再把它当成全新头条，但持续的 139 条评论说明 <code class="opp-inline-code">offline-copy</code> 这个任务是真实的。</p>
+
+<p class="opp-p">第二，Product Hunt 页面明显偏向环境型 Mac 和编程助手。<a href="https://www.producthunt.com/products/goldfish-early-access" target="_blank" class="opp-link">Goldfish</a> 说“Press Option”并像你一样回复，<a href="https://www.producthunt.com/products/invoko" target="_blank" class="opp-link">Invoko</a> 承诺在 Mac 上给你“一只小手”，<a href="https://www.producthunt.com/products/githits" target="_blank" class="opp-link">GitHits beta 0.9</a> 让编程助手访问开源代码。这和更大的 <code class="opp-inline-code">AI coding</code> 市场重叠，但看起来已经拥挤。</p>
+
+<p class="opp-p">第三，创始人声音仍然奖励狭窄的人类痛点。<a href="https://www.indiehackers.com/product/dearhiringmanager-io?post=qM130jemvFVuoynGUDcC" target="_blank" class="opp-link">DearHiringManager.io</a> 围绕绕过求职申请黑洞拿到 23 条 Indie Hackers 评论；Reddit 帖子里则有人报告一个 Google Docs 风格的 <code class="opp-inline-code">ChatGPT wrapper</code> 已有 500 用户，一个截图保存应用 10,000 用户，一个把菜谱视频转文本的工具 600 日活。</p>
+
+<strong>关键判断</strong>：围绕一个具体负责人动作发货；本地文件、求职申请、会议笔记和仓库安全，今天都比泛泛的“AI workspace”定位更强。
+
+<strong>反向视角</strong>：很多发布有注意力但没有收入，所以把评论量当成发现线索，而不是付费意愿证明。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">过去一周哪些搜索词暴涨？</h3>
+
+<strong>🔍 信号</strong>：搜索上涨包括 "best free drawing software" +4,150%，"google deepmind ai agent risks" +1,050%，"apify" +250%，"mastercard ai agent payments" +250%，"how to edit pdf on mac free" +160%，"bitwarden" +90%，以及 "vaultwarden" +50%。
+<strong>白话说：</strong> 人们在找更便宜的软件、更安全的 AI 行为，以及自己能运行或能信任的替代品。
+
+<p class="opp-p">最强的消费者短语是 <code class="opp-inline-code">"best free drawing software"</code>，上涨 4,150%。它本身不是很深的开发者信号，但符合今天反复出现的模式：当软件显得太贵、太封闭或太脆弱时，人们会主动搜索免费或低承诺的替代品。<code class="opp-inline-code">"How to edit pdf on mac free"</code> 上涨 160%，指向文档工作流里的同一类需求。</p>
+
+<p class="opp-p">开发者侧更有意思。"Google DeepMind AI agent risks" 上涨 1,050%，也命中了更广泛的当日语料。<code class="opp-inline-code">AI agent</code> 指能代表用户执行动作的软件；这个风险搜索说明普通用户正在追上开发者过去一周讨论的问题：如果软件可以行动、花钱、读文件或调用工具，那么问题不只是输出质量。</p>
+
+<p class="opp-p">"Apify" 上涨 250%，值得关注，因为它可能意味着对网页数据提取、自动化或抓取基础设施的需求。"Mastercard AI agent payments" 仍以 250% 上涨，但最近已经多次出现；如果没有新的支付产品或商户故事，它更适合作为背景，而不是今天的头条。"Bitwarden" 和 "Vaultwarden" 显示身份与 <code class="opp-inline-code">self-hosted</code> 兴趣。<code class="opp-inline-code">Self-hosted</code> 意味着用户自己运行服务，而不是只依赖厂商云。</p>
+
+<strong>关键判断</strong>：验证付费想法时，要找搜索词接触具体任务的地方：免费 PDF 编辑、AI 风险解释、密码所有权和网页数据自动化，都比宽泛的 agent 热潮更清楚。
+
+<strong>反向视角</strong>：搜索暴涨里混有嘈杂的消费者短语，所以不要只因为一个词上涨就开做，除非今天的讨论也解释了买家的任务。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">GitHub 上哪些快速增长的开源项目还没有商业版本？</h3>
+
+<strong>🔍 信号</strong>：GitHub 注意力继续集中在 <a href="https://github.com/addyosmani/agent-skills" target="_blank" class="opp-link">addyosmani/agent-skills</a> 11,431 weekly stars，<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a> 10,896，<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">chopratejas/headroom</a> 9,766，<a href="https://github.com/Panniantong/Agent-Reach" target="_blank" class="opp-link">Panniantong/Agent-Reach</a> 6,427，<a href="https://github.com/phuryn/pm-skills" target="_blank" class="opp-link">phuryn/pm-skills</a> 5,775，以及 <a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a> 5,190。
+<strong>白话说：</strong> 开源注意力正在聚集到 AI 工作指令、压缩上下文、技能安全和助手联网能力上。
+
+<p class="opp-p">重复出现的名字需要克制。<a href="https://github.com/addyosmani/agent-skills" target="_blank" class="opp-link">addyosmani/agent-skills</a>、<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a>、<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">chopratejas/headroom</a> 和 <a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a> 已经连续几天突出。继续出现在榜单是真实信号，但除非数字或叙事变化，它们不算新头条。用它们理解市场即可：<code class="opp-inline-code">AI coding</code> 现在需要可复用工作指令、本地容器、上下文压缩和安全扫描。</p>
+
+<p class="opp-p">更新鲜的缺口是策展。<a href="https://github.com/phuryn/pm-skills" target="_blank" class="opp-link">phuryn/pm-skills</a> 打包了 100 多个产品管理技能、命令和插件。<a href="https://github.com/Panniantong/Agent-Reach" target="_blank" class="opp-link">Panniantong/Agent-Reach</a> 通过一个 CLI 跨 Twitter、Reddit、YouTube、GitHub、Bilibili 和 XiaoHongShu 读取和搜索。<a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools" target="_blank" class="opp-link">x1xhlol/system-prompts-and-models-of-ai-tools</a> 和 <a href="https://github.com/asgeirtj/system_prompts_leaks" target="_blank" class="opp-link">asgeirtj/system_prompts_leaks</a> 把隐藏的 AI 工具行为变成可检查 artifact。</p>
+
+<p class="opp-p">商业空白不是“把 repo 托管起来”。而是买家能读懂的 <code class="opp-inline-code">governance</code>：哪些技能安全，哪些 prompt 过期，哪些连接器能读取私有数据，哪些复制来的技能应该被阻止。<code class="opp-inline-code">Model Context Protocol</code> 是一种让 AI 助手连接外部工具的方式，它出现在多个产品周围；这让信任元数据比又一个目录更有价值。</p>
+
+<strong>关键判断</strong>：围绕 AI 技能和连接器做评审层；评分、所有权、高风险权限和变更提醒，比另一个技能市场更容易卖。
+
+<strong>反向视角</strong>：很多快速增长的 repo 已经吸引复制者，所以商业切入口需要专有工作流知识或分发渠道。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">开发者在抱怨哪些工具？</h3>
+
+<strong>🔍 信号</strong>：抱怨集中在仓库执行、邮件别名、本地模型配置和 AI 审查工作：LinkedIn 后门引发 292 条评论，<a href="https://arseniyshestakov.com/2026/06/16/apple-is-about-to-make-hide-my-email-useless/" target="_blank" class="opp-link">Apple is about to make Hide My Email useless</a> 引发 237 条，本地编程模型引发 530 + 432 条评论，DEV 的 <a href="https://dev.to/sylwia-lask/the-code-works-what-could-possibly-go-wrong-5hbm" target="_blank" class="opp-link">The Code Works. What Could Possibly Go Wrong?</a> 有 135 条评论。
+<strong>白话说：</strong> 抱怨的核心不是软件不强，而是安全路径常常要等出事后才看得见。
+
+<p class="opp-p">LinkedIn 后门是最干净的抱怨，因为危险动作非常日常。文章描述了一个公开 GitHub 仓库、一个要求检查废弃 Node 模块的请求，以及一个通过 npm 自动 <code class="opp-inline-code">prepare</code> 脚本运行的 payload。@aykutseker 说它 "uncomfortably close to a normal interview task"，@heldrida 则指出候选人本来就已经每天在骗局、ghosting 和居家项目上耗掉超过 8 小时。</p>
+
+<p class="opp-p">第二个抱怨是身份可靠性。<a href="https://arseniyshestakov.com/2026/06/16/apple-is-about-to-make-hide-my-email-useless/" target="_blank" class="opp-link">Apple is about to make Hide My Email useless</a> 引发 237 条评论，因为 <code class="opp-inline-code">email aliases</code> 卡在隐私和账号恢复之间。如果交易邮件、密码重置或客服回复漏掉别名，用户的隐私功能就会变成产品方的工单。</p>
+
+<p class="opp-p">第三个抱怨是本地 AI 配置。开发者在分享 <code class="opp-inline-code">Qwen</code>、<code class="opp-inline-code">Gemma</code>、<code class="opp-inline-code">RTX 3090</code>、<code class="opp-inline-code">Mac Studio</code> 和 <code class="opp-inline-code">llama.cpp</code> 细节，因为本地模型对部分任务已经能用，但配置仍然需要判断。@codinhood 认为对很多人来说机会成本仍然太高。DEV 文章补上了主流版本：能跑的代码仍需要像医疗审查一样复核，付款流程仍会坏，<code class="opp-inline-code">AI detectors</code> 也会错误惩罚写作者。</p>
+
+<strong>关键判断</strong>：在行动发生的那一刻卖安全：安装、登录、找回账号、审查 AI 代码或切换模型。
+
+<strong>反向视角</strong>：抱怨密集的讨论可能过度代表专家用户，所以要找那些感到成本却没有术语的人验证。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-5">技术选型</h2>
+
+<h3 class="opp-h3">有没有大公司关闭或降级了产品？</h3>
+
+<strong>🔍 信号</strong>：没有清晰的关停事件占主导，但控制权降级很响：Cursor 被报道的 $60B SpaceX 交易引发 1,339 条评论，Apple 的 Hide My Email 变化引发 237 条，Chrome 广告屏蔽变化在 Lobsters 有 14 条评论，Meta 工程组织文章有 376 条评论。
+<strong>白话说：</strong> 更大的故事不是产品消失，而是用户失去了自己曾经围绕它建立工作流的假设。
+
+<p class="opp-p">最显眼的公司事件是 Reuters 的 <a href="https://www.reuters.com/legal/transactional/spacex-buy-anysphere-60-billion-2026-06-16/" target="_blank" class="opp-link">SpaceX to buy Cursor for $60B</a>。即使无法读取正文，HN 的讨论量也重要：1,339 条评论意味着开发者把 <code class="opp-inline-code">AI coding tools</code> 看作战略基础设施。当一个工作流工具进入收购级别关注，买家就会开始问：谁控制它，所有权变化后会怎样，团队还能不能按原方式继续使用。</p>
+
+<p class="opp-p">Apple 的别名故事更直接面对用户。<a href="https://arseniyshestakov.com/2026/06/16/apple-is-about-to-make-hide-my-email-useless/" target="_blank" class="opp-link">Apple is about to make Hide My Email useless</a> 指向隐私工作流里的降级：产品仍然存在，但如果发送方无法通过别名可靠触达或识别用户，承诺就会变弱。这对 <code class="opp-inline-code">SaaS</code> 团队来说是支持和账号恢复问题，不只是 Apple 用户的小烦恼。</p>
+
+<p class="opp-p">Chrome 广告屏蔽压力再次通过 Lobsters 的 <a href="https://9to5google.com/2026/06/15/google-chromes-next-update-will-mark-the-end-of-popular-ad-blockers/" target="_blank" class="opp-link">Google Chrome's next update will mark the end of popular ad blockers</a> 出现。Meta 的工程组织讨论不是产品关停，但强化了同一主题：大平台改变底层条件的速度，可能快过客户重写习惯。</p>
+
+<strong>关键判断</strong>：把平台变化当作工作流风险事件；先画出会破裂的用户承诺，再追公司戏剧。
+
+<strong>反向视角</strong>：收购和政策讨论经常跑在事实前面，所以在客户可见的破裂出现前，不要基于猜测构建。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">本周增长最快的开发者工具有哪些？</h3>
+
+<strong>🔍 信号</strong>：快速增长的开发者工具包括 <a href="https://www.iroh.computer/blog/v1" target="_blank" class="opp-link">Iroh 1.0</a> 引发 423 条 HN 评论和 42 条 Lobsters 评论，<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a> 10,896 weekly stars，<a href="https://www.producthunt.com/products/edgee" target="_blank" class="opp-link">Edgee Turbo Models</a> 28 条 Product Hunt 评论，<a href="https://www.producthunt.com/products/githits" target="_blank" class="opp-link">GitHits beta 0.9</a> 23 条，<a href="https://www.producthunt.com/products/devcleaner-reclaim-gbs-from-dev-tools" target="_blank" class="opp-link">DevCleaner</a> 15 条，以及 Show HN 上的 <a href="https://github.com/nvlabs/cutile-rs" target="_blank" class="opp-link">cuTile Rust</a>。
+<strong>白话说：</strong> 开发者工具正在比拼触达能力、本地控制、低摩擦，以及它们是否真的嵌进了实际工作流。
+
+<a href="https://www.iroh.computer/blog/v1" target="_blank" class="opp-link">Iroh 1.0</a> 是技术上最突出的，虽然昨天已经可见。今天的新数据更强：HN 讨论升到 423 条，Lobsters 到 42 条。文章称 Iroh 的公共中继在 30 天内创建了超过 200 million endpoints。@apitman 把它解释成 "Tailscale at the application layer"，@arilotter 说他们公司已在生产中用 Iroh 做分布式 ML 训练。
+
+<p class="opp-p">GitHub 榜单说明 AI 工作界面仍在吸收开发者注意力，但去重很重要。<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a>、<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">chopratejas/headroom</a> 和 <a href="https://github.com/addyosmani/agent-skills" target="_blank" class="opp-link">addyosmani/agent-skills</a> 仍然巨大，但不够新，不适合再次做头条。更新鲜的 Product Hunt 角度是，开发者工具正在被包装成日常助手：<code class="opp-inline-code">Edgee</code> 把 Claude Code 路由到替代模型，<code class="opp-inline-code">GitHits</code> 让助手访问开源代码，<code class="opp-inline-code">DevCleaner</code> 则售卖清理开发工具和 AI 应用囤积的 GB 空间。</p>
+
+<p class="opp-p">Show HN 补上更底层的一层：<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a> 承诺从 <code class="opp-inline-code">CLI</code> 创建持久化 <code class="opp-inline-code">NixOS VM</code>，<a href="https://github.com/nvlabs/cutile-rs" target="_blank" class="opp-link">cuTile Rust</a> 提供安全 <code class="opp-inline-code">GPU kernels</code>，<a href="https://voicedraw.com/" target="_blank" class="opp-link">VoiceDraw</a> 把口述系统设计笔记变成架构草图。</p>
+
+<strong>关键判断</strong>：在工具从基础设施跨到清晰日常任务的地方构建：可触达设备、模型路由、仓库上下文或本地清理。
+
+<strong>反向视角</strong>：开发者工具注意力很拥挤；GitHub 增长强不等于一定有买家，除非工作流负责人很明确。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">HuggingFace 上最热的模型是什么？它们能催生哪些消费者产品？</h3>
+
+<strong>🔍 信号</strong>：HuggingFace 注意力由 <a href="https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF" target="_blank" class="opp-link">yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF</a> 领跑，trending score 1,079、60,921 downloads；<a href="https://huggingface.co/google/diffusiongemma-26B-A4B-it" target="_blank" class="opp-link">google/diffusiongemma-26B-A4B-it</a> 有 375,974 downloads；还有 <a href="https://huggingface.co/MiniMaxAI/MiniMax-M3" target="_blank" class="opp-link">MiniMaxAI/MiniMax-M3</a>、<a href="https://huggingface.co/moonshotai/Kimi-K2.7-Code" target="_blank" class="opp-link">moonshotai/Kimi-K2.7-Code</a> 102,206 downloads，以及 <a href="https://huggingface.co/zai-org/GLM-5.2" target="_blank" class="opp-link">zai-org/GLM-5.2</a>。
+<strong>白话说：</strong> 模型正在变成给本地编程、视觉搜索、翻译、语音和私有媒体工具使用的原料。
+
+<p class="opp-p">模型榜单呼应了本地模型讨论。<code class="opp-inline-code">GGUF</code> builds、<code class="opp-inline-code">llama.cpp</code> tags、Qwen variants、Gemma variants 和编程调优模型不再只是实验室好奇心。530 条评论的 Ask HN 讨论里，开发者正用这些名字解释为什么某些工作可以从云模型迁回本地。消费者产品角度不是“又一个聊天应用”，而是一个配置助手：告诉用户哪个模型适合他的 RAM、GPU、隐私需求和任务。</p>
+
+<p class="opp-p">视觉和多模态模型指向更丰富的产品。<a href="https://huggingface.co/google/diffusiongemma-26B-A4B-it" target="_blank" class="opp-link">google/diffusiongemma-26B-A4B-it</a> 及其量化变体暗示本地图像转文本工作流。<a href="https://huggingface.co/nvidia/LocateAnything-3B" target="_blank" class="opp-link">nvidia/LocateAnything-3B</a> 有 98,698 downloads，支持“在我的照片或视频库里找到这个东西”的产品。这和 Ask HN 上本地索引 669 GB GoPro 视频的帖子相互印证：作者处理了 57,537 frames，评论者立刻讨论实际场景复盘。</p>
+
+<p class="opp-p">音频也仍然可行。<a href="https://huggingface.co/bosonai/higgs-audio-v3-tts-4b" target="_blank" class="opp-link">bosonai/higgs-audio-v3-tts-4b</a> 和 NVIDIA 的流式语音识别模型指向本地会议、听写和配音工具。<code class="opp-inline-code">Trace</code> 的评论显示，买家在花哨摘要之前更关心崩溃恢复、语言支持和 App Store 之外的购买方式。</p>
+
+<strong>关键判断</strong>：围绕用户的机器和媒体库来包装模型选择；“它能不能在这里、私密地、为这个任务运行？”就是产品。
+
+<strong>反向视角</strong>：HuggingFace 热度可能只是实验，所以需求证明需要会议笔记、视频搜索或本地编程这样的用户工作流。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">本周最重要的开源 AI 进展是什么？</h3>
+
+<strong>🔍 信号</strong>：开源 AI 工作集中在本地编程栈、引发 432 条评论的 <a href="https://vickiboykis.com/2026/06/15/running-local-models-is-good-now/" target="_blank" class="opp-link">Running local models is good now</a>、530 条评论的 Ask HN 本地编程讨论、<a href="https://huggingface.co/CohereLabs/North-Mini-Code-1.0" target="_blank" class="opp-link">CohereLabs/North-Mini-Code-1.0</a>、<a href="https://huggingface.co/microsoft/FastContext-1.0-4B-SFT" target="_blank" class="opp-link">microsoft/FastContext-1.0-4B-SFT</a>，以及 <code class="opp-inline-code">agent-skill security</code>。
+<strong>白话说：</strong> 开源 AI 正变成一个运营问题：哪些能本地跑，哪些保持私密，哪些仍需要云端帮忙。
+
+<p class="opp-p">最重要的变化是实用本地编程。Vicki Boykis 写道，对她来说，<code class="opp-inline-code">Gemma 4</code> 让本地 <code class="opp-inline-code">agentic coding</code> 达到了前沿模型大约 75% 的准确率和速度。这是主观 <code class="opp-inline-code">benchmark</code>，但讨论量和 Ask HN 评论给它加了权重。@horsawlarway 说他们用双 <code class="opp-inline-code">RTX 3090</code> 上的本地 <code class="opp-inline-code">Qwen</code> 和 <code class="opp-inline-code">Gemma</code> 替代了 <code class="opp-inline-code">$100/month</code> 的 Claude 订阅。@bluejay2387 说他们大约 90% 的编程现在跑在 <code class="opp-inline-code">Qwen 3.6 27B</code> 加 <code class="opp-inline-code">Open Code</code> 上，同时也承认它没有 Claude Code 或 Codex 聪明。</p>
+
+<p class="opp-p">开源产品机会不是假装本地处处胜出，而是把 <code class="opp-inline-code">local readiness</code> 变成清晰报告：哪些任务能离线，哪些 prompt 仍需要前沿模型，哪些文件永远不应离开机器，什么硬件够用。这比另一个模型排行榜更有买家价值。</p>
+
+<code class="opp-inline-code">Agent-skill security</code> 是另一条线。技能、prompt 和连接器正在变成类似代码的资产。<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a>、<a href="https://github.com/phuryn/pm-skills" target="_blank" class="opp-link">phuryn/pm-skills</a> 和 prompt 泄露 repo 表明，生态正在意识到助手指令可能携带漏洞、过期假设和隐藏权限。
+
+<strong>关键判断</strong>：销售混合 AI 准备度：隐私或成本重要时本地跑，质量重要时上云，并把两者边界写清楚。
+
+<strong>反向视角</strong>：本地模型成功高度依赖硬件、任务形状和耐心，所以宽泛替代论会过度承诺。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">最受欢迎的 Show HN 项目在用哪些技术栈？</h3>
+
+<strong>🔍 信号</strong>：Show HN 技术栈混合了单二进制网页归档、离线 Mac 转写、字体档案、HN 文章发现、针对 AI 技能退化的间隔重复、持久化 NixOS VM、语音到架构草图工作流、Haskell notebooks、Rust GPU kernels、Unreal Editor 连接器和终端管理工具。
+<strong>白话说：</strong> 这里的技术栈故事不是某一种语言胜出，而是把混乱工作流包装成本地、可携带的小工具。
+
+<a href="https://github.com/tamnd/kage" target="_blank" class="opp-link">Kage</a> 展示了 <code class="opp-inline-code">single-binary</code> 冲动：把一个网页体验做得足够可携带，能在离线时继续存在。评论马上追问它能不能不用服务器打开、限速抓取、避免视频加载，以及保留 Chrome sandbox。这告诉构建者，技术栈要按交付动作判断，而不只是内部架构。
+
+<a href="https://traceapp.info" target="_blank" class="opp-link">Trace</a> 展示了本地 Mac 模式。产品本身是记录并标记会议时刻，但评论集中在可靠性：<code class="opp-inline-code">crash recovery</code>、简单转写格式、重复会议、日历名称、德语支持、原始音频和 <code class="opp-inline-code">App Store</code> 外购买。这是一场披着发布帖外衣的成熟技术栈讨论。
+
+<p class="opp-p">其余 Show HN 分散在专门工具上：<a href="https://fata.dev" target="_blank" class="opp-link">Fata</a> 用间隔重复对抗 AI 编程技能退化，<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a> 通过 CLI 提供持久化 NixOS VM，<a href="https://voicedraw.com/" target="_blank" class="opp-link">VoiceDraw</a> 做口述系统草图，<a href="https://sabela.datahaskell.com/" target="_blank" class="opp-link">Sabela</a> 做 Haskell notebooks，<a href="https://github.com/nvlabs/cutile-rs" target="_blank" class="opp-link">cuTile Rust</a> 做安全 GPU kernels，<a href="https://github.com/believer-oss/claireon" target="_blank" class="opp-link">Claireon</a> 做 Unreal Editor 集成。</p>
+
+<p class="opp-p">胜出的技术栈模式是“让第一个有用输出变得显而易见”。离线文件夹、转写文件、VM 命令、架构草图、notebook 和安全报告，都比泛化 dashboard 更强。</p>
+
+<strong>关键判断</strong>：选择能让买家 artifact 可携带、可检查的技术栈；本周护城河就是这个 artifact。
+
+<strong>反向视角</strong>：Show HN 奖励技术新奇，所以技术栈热度未必等于主流买家会安装的东西。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-6">竞争情报</h2>
+
+<h3 class="opp-h3">Indie 开发者在讨论哪些收入和定价问题？</h3>
+
+<strong>🔍 信号</strong>：钱相关的讨论包括 Indie Hackers 上 $16K MRR、$30K MRR、$1.3M ARR、$1.6M/year、$11M ARR 的故事，一篇新的 $159 销售帖，围绕硬性花费上限的 Valta 发布有 51 条评论，Trace 被一位评论者看作 $10 购买决策，以及 Reddit 产品有 10,000 用户或 600 日活。
+<strong>白话说：</strong> 收入故事奖励的是小而具体的结果，而不是宽泛创业类别。
+
+<p class="opp-p">几篇 Indie Hackers 故事是过去一周的重复，所以不应驱动新头条。不过它们仍是有用的定价参考。<a href="https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9" target="_blank" class="opp-link">Building a product in 48 hours and hitting $30K MRR</a> 继续引发讨论，因为真正的经验是分发渠道。<a href="https://www.indiehackers.com/post/tech/growing-an-open-source-product-to-1-3m-arr-in-two-years-hbMiXIoZsueV9D3L58DP" target="_blank" class="opp-link">Growing an open-source product to $1.3M ARR</a> 说明开源价值捕获可行但很慢。<a href="https://www.indiehackers.com/post/tech/theo-browne-on-how-hes-bringing-in-over-1m-yr-as-a-creator-and-founder-tJPQiOnONnf7pJ9m1PTP" target="_blank" class="opp-link">Theo Browne on how he's bringing in over one million dollars per year</a> 继续强化受众加产品的组合。</p>
+
+<p class="opp-p">更新鲜的创始人笔记更朴素，也更有用。<a href="https://www.indiehackers.com/post/i-got-my-first-159-in-sales-after-realizing-i-was-building-in-silence-2387f69447" target="_blank" class="opp-link">I got my first $159 in sales after realizing I was building in silence</a> 提醒你，分发清晰度往往早于产品复杂度。<a href="https://www.indiehackers.com/product/valta?post=eWCM5GON7ti7pja6LGLu" target="_blank" class="opp-link">Valta</a> 发布了 AI agents 的硬性花费上限并引发 51 条评论，但 <code class="opp-inline-code">agent spend</code> 主题最近已经做过头条。</p>
+
+<p class="opp-p">Reddit 补上了陷阱：截图保存应用有 10,000 用户，菜谱视频工具有 600 日活，听起来都不错，但后者作者说托管成本已经在累积却没有计划。没有变现的使用量不是胜利。</p>
+
+<strong>关键判断</strong>：把第一个交付物定价成手工报告或配置评审；只有当同一痛点重复出现后，才进入订阅软件。
+
+<strong>反向视角</strong>：Indie Hackers 数字常常是事后成功故事，所以用它看模式，不要拿它做预测。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">有没有沉寂的老项目突然复活？</h3>
+
+<strong>🔍 信号</strong>：复兴能量出现在 <a href="https://kde.org/announcements/plasma/6/6.7.0/" target="_blank" class="opp-link">KDE Plasma 6.7</a> 的 17 条 Lobsters 评论、<a href="https://typst.app/blog/2026/typst-0.15/" target="_blank" class="opp-link">Typst 0.15</a> 的 11 条、<a href="https://inessential.com/2026/06/15/netnewswire-status.html" target="_blank" class="opp-link">NetNewsWire Status</a>、<a href="https://www.sacredheartsc.com/blog/freebsd-15-on-a-laptop/" target="_blank" class="opp-link">FreeBSD 15 on a Laptop</a>、<a href="https://trifectatech.org/blog/zlib-rs-in-firefox/" target="_blank" class="opp-link">zlib-rs in Firefox</a>，以及 <a href="https://www.rfc-editor.org/info/rfc10008/" target="_blank" class="opp-link">RFC 10008: The HTTP QUERY Method</a>。
+<strong>白话说：</strong> 成熟软件没有死；当用户在新压力下需要稳定界面时，它会不断回来。
+
+<p class="opp-p">今天的复兴主题比安全和 AI 线安静，但仍然重要。<a href="https://kde.org/announcements/plasma/6/6.7.0/" target="_blank" class="opp-link">KDE Plasma 6.7</a> 和 <a href="https://filipfila.wordpress.com/2026/06/16/oxygen-6-7-is-here-a-breath-of-fresh-air-for-kdes-classic-theme/" target="_blank" class="opp-link">Oxygen 6.7</a> 说明桌面环境仍能赢得认真关注。<a href="https://www.sacredheartsc.com/blog/freebsd-15-on-a-laptop/" target="_blank" class="opp-link">FreeBSD 15 on a Laptop</a> 延续了“老操作系统，新日常主力机”的故事。<a href="https://inessential.com/2026/06/15/netnewswire-status.html" target="_blank" class="opp-link">NetNewsWire Status</a> 让 RSS 留在对话里，因为人们在寻找更少算法化的阅读方式。</p>
+
+<p class="opp-p">Typst 是最接近构建者的复兴相邻信号。<a href="https://typst.app/blog/2026/typst-0.15/" target="_blank" class="opp-link">Typst 0.15 contains multitudes</a> 有 11 条 Lobsters 评论，因为文档写作一直在老 LaTeX 预期和现代开发者体验之间移动。同一周，<a href="https://garden-of-flowers.heikkilotvonen.com/" target="_blank" class="opp-link">Garden of Flowers</a> 的评论要求本地镜像和 metadata。老内容和老格式需要新包装时，就会变成产品机会。</p>
+
+<p class="opp-p">系统侧，<a href="https://trifectatech.org/blog/zlib-rs-in-firefox/" target="_blank" class="opp-link">zlib-rs in Firefox</a> 和 <a href="https://kobzol.github.io/rust/2026/06/15/how-memory-safety-cves-differ-between-rust-and-c-cpp.html" target="_blank" class="opp-link">How memory safety CVEs differ between Rust and C/C++</a> 显示成熟基础设施正被 <code class="opp-inline-code">memory safety</code> 重新审视。</p>
+
+<strong>关键判断</strong>：找老软件遇上现代交付动作的地方：本地归档、更安全替代、迁移说明或清晰配置报告。
+
+<strong>反向视角</strong>：复兴讨论常被专家喜爱，但如果没有 deadline、审计或迁移，它们作为付费产品会偏弱。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">有没有“XX 已死”或迁移类文章？</h3>
+
+<strong>🔍 信号</strong>：迁移压力来自 <a href="https://gist.github.com/samsch/0d1f3d3b4745d778f78b230cf6061452" target="_blank" class="opp-link">Stop Using JWTs</a> 的 142 条评论、Apple Hide My Email 237 条讨论、Chrome 广告屏蔽变化、本地模型替代讨论、Iroh 的“dial keys, not IPs”说法，以及 <a href="https://notnotp.com/notes/what-job-interviews-taught-me-about-kubernetes/" target="_blank" class="opp-link">What job interviews taught me about Kubernetes</a> 的 47 条 Lobsters 评论。
+<strong>白话说：</strong> 迁移讨论正在从“换掉这个工具”变成“换掉这个工具曾经替你兜底的假设”。
+
+<a href="https://gist.github.com/samsch/0d1f3d3b4745d778f78b230cf6061452" target="_blank" class="opp-link">Stop Using JWTs</a> 是熟悉的开发者版本：一种认证 token 模式太常见，以至于人们忘了它在哪里危险。讨论有 142 条评论，因为身份系统里充满半记住的最佳实践。这和 <a href="https://dev.to/shubhradev/i-thought-my-nextjs-16-auth-was-solid-one-afternoon-proved-otherwise-4dhc" target="_blank" class="opp-link">I Thought My Next.js 16 Auth Was Solid. One Afternoon Proved Otherwise</a> 相互配合，后者有 23 条 DEV 评论。
+
+<p class="opp-p">平台版本是 Apple 和 Chrome。<code class="opp-inline-code">Hide My Email</code> 与广告屏蔽都是“功能还在，但周围契约变了”的故事。对 <code class="opp-inline-code">SaaS owner</code> 来说，这变成兼容性检查：别名能不能收到关键消息，隐私浏览器能不能通过注册和付款，客服知不知道哪里坏了。</p>
+
+<p class="opp-p">AI 版本是本地替代。Ask HN 问 Claude/GPT 是否能被日常编程替代；最好的回答是“有时候”。这是一种没有干净切换点的迁移压力。<code class="opp-inline-code">Iroh</code> 类似：它不是说 IP 已死，而是认为应用开发者应该拨稳定 key，而不是假设地址总是可靠。</p>
+
+<p class="opp-p">Kubernetes 通过一篇面试练习文章出现。Kubernetes 是系统团队用来运行容器化服务的系统；这里的迁移教训是文化层面的：人们通过面试仪式学习基础设施，而不只是生产需要。</p>
+
+<strong>关键判断</strong>：围绕假设而不是 logo 构建迁移检查：token 安全、别名送达、浏览器兼容、本地模型适配和网络可达性。
+
+<strong>反向视角</strong>：“Stop using”文章可能只是说服材料，所以构建前要先要求一条具体失败路径。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-7">趋势判断</h2>
+
+<h3 class="opp-h3">本周最常见的技术关键词是什么？它们如何变化？</h3>
+
+<strong>🔍 信号</strong>：重复语言聚集在求职仓库、安装脚本、本地模型、AI coding tools、stable keys、离线副本、邮件别名、广告屏蔽、模型路由、技能市场和 proof reports。
+<strong>白话说：</strong> 软件信任的词汇正在贴近日常工作：面试、安装、发票、别名和私有文件。
+
+<p class="opp-p">过去一周充满了 Fable、模型访问、AI 工作流暴露、agent 花费、Homebrew 信任、离线文档和依赖日历。今天增加了一个不同的攻击面：招聘。"Repo"、"npm install"、"prepare script"、"LinkedIn" 和 "job offer" 重要，是因为它们让安全问题变得个人化。候选人不是在管理生产环境；他们只是想拿到工作。</p>
+
+<p class="opp-p">本地模型语言也变得更实际。术语不再只是模型名。人们在说硬件、内存、GPU 卡、tokens per second、取消 $100/month 订阅，以及哪些任务仍需要云端帮忙。这是类别成熟的信号：一旦用户能描述 tradeoffs，产品就能帮他们选择。</p>
+
+<p class="opp-p">连接性和所有权词汇仍然活跃。<code class="opp-inline-code">Iroh</code> 的“keys, not IPs”框架、<code class="opp-inline-code">Kage</code> 的离线 binary、<code class="opp-inline-code">Trace</code> 的本地转写、Reddit 的本地音乐下载，都指向同一个情绪任务：当网络、厂商或订阅失败时仍能保持访问。</p>
+
+<p class="opp-p">Product Hunt 的词汇更精致：work context、AI employees、model routing、source of truth、content operations。HN 的词汇更粗粝：backdoor、install hook、local model、kill switch、alias、ad blocker，以及“为什么这需要服务器？”这类评论。两个词汇体系之间的缝隙，就是有用产品出现的地方。</p>
+
+<strong>关键判断</strong>：落地页文案要用用户出事时会说的粗粝词汇；精致的 AI 名词不如 install、alias、invoice 和 private file 有力。
+
+<strong>反向视角</strong>：关键词簇会反映样本社区，所以改定位前，要先用客户访谈验证措辞。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">VC 和 YC 正在关注哪些话题？</h3>
+
+<strong>🔍 信号</strong>：投资人与创业注意力集中在 AI coding infrastructure、运营治理、创始人操作系统和工作界面 AI：Cursor 被报道的 $60B 交易引发 1,339 条评论，Eric Ries 的 AMA 引发 577 条，<a href="https://www.producthunt.com/products/goldfish-early-access" target="_blank" class="opp-link">Goldfish</a> 有 154 条 Product Hunt 评论，<a href="https://www.producthunt.com/products/invoko" target="_blank" class="opp-link">Invoko</a> 88 条，<a href="https://www.producthunt.com/products/makersclaw" target="_blank" class="opp-link">MakersClaw</a> 29 条。
+<strong>白话说：</strong> 资本正在把 AI 工作工具当成公司基础设施，而创始人仍需要证明这些工作确实变好了。
+
+<p class="opp-p">Cursor 事件是重心。一笔被报道的 SpaceX $60B 收购，如果讨论者按字面理解，会把 AI coding 从生产力应用重塑为战略资产。这不意味着 solo founder 应该做 Cursor 竞品。它意味着买家会问连续性问题：谁拥有编程助手，定价会怎样，数据会怎样，政策变化时什么能替换。</p>
+
+<p class="opp-p">Eric Ries 的 <a href="https://news.ycombinator.com/item?id=48477135" target="_blank" class="opp-link">Incorruptible AMA</a> 是治理镜像。热门评论讨论了 Costco 热狗定价、创始人使命漂移、收入模型，以及组织结构或领导力能不能防止腐化。在一个充满 AI 工具的星期里，这场对话重要，因为买家的问题越来越像是：“谁对这个工作流负责？”</p>
+
+<p class="opp-p">Product Hunt 的 "Vercel Day" 页面充满 AI 工作界面：Goldfish 像你一样回复，Invoko 像 Mac 上的一只手，MakersClaw 在 Slack 和 Teams 里雇 AI employees，Zoona AI 基于文档和过去对话自动化客服，Dirac 给创始人收件箱做简报。创业市场正在把助手包装进现有工作渠道，而不是要求用户去新的 dashboard。</p>
+
+<strong>关键判断</strong>：利用融资信号销售 AI 工作的治理和连续性；不要推断“再做一个泛化助手”就是好的 indie 选择。
+
+<strong>反向视角</strong>：VC 注意力可能追逐大型平台结果，这通常不适合周末软件产品。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">哪些 AI 搜索词正在降温？</h3>
+
+<strong>🔍 信号</strong>：长期窗口里仍可见、但本周紧迫感下降的词包括 Hermes-agent phrases、"software testing strategies"、"planka"、"docker containerization"、"robotics programming"、"frontend frameworks"、"api design principles"、"python data analysis"、"nocodb" 和 "codex"。
+<strong>白话说：</strong> 有些词几个月看起来仍然很大，但不再配占今天的头版。
+
+<code class="opp-inline-code">Hermes</code> 相关搜索是最清楚的例子。它们在前几期报告里反复出现，长期窗口数据里也仍然可见，但今天没有新的产品事件、收入数字或跨社区转折。这让它们适合作背景，不适合做头条。
+
+<p class="opp-p">"Software testing strategies" 类似。它仍是长期窗口里的大词，但今天直接的测试证据更窄：DEV 帖子讨论付款流程、Next.js auth、AI 写的代码和 MCP checklist。这说明可行动的产品角度是具体工作流测试，而不是宽泛测试策略内容。</p>
+
+<p class="opp-p">"Planka"、"NocoDB"、"frontend frameworks" 和 "API design principles" 仍然指向自托管和开发者教育需求，但它们没有仓库安全、别名失效、本地 AI 适配或 AI coding 收购那么强的本周紧迫性。"Docker containerization" 和 "python data analysis" 太宽，除非挂到具体买家问题上。</p>
+
+<p class="opp-p">"Robotics programming" 和其他物理世界短语，对软件优先的 indie 构建者应该降权，除非它们能转译成纯软件。Qwen-Robot Suite 和硬件重的 Reddit 发布可能很有趣，但它们需要领域测试、设备或买家渠道，2 小时的 MicroSaaS 验证很难够到。</p>
+
+<strong>关键判断</strong>：让旧的高搜索量词指导 SEO 和内容，但产品押注要留给今天具体的工作流失败。
+
+<strong>反向视角</strong>：一个词在搜索里降温，仍可能是好生意，只要买家痛点反复出现且服务不足。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">新词雷达：哪些全新概念正在从零升起？</h3>
+
+<strong>🔍 信号</strong>：新近变尖的短语包括 "google deepmind ai agent risks" +1,050%，"best free drawing software" +4,150%，"apify" +250%，"mastercard ai agent payments" +250%，"kaggle 5 day ai agent" +190%，"doodle poll" +100%，"bitwarden" +90%，以及 "vaultwarden" +50%。
+<strong>白话说：</strong> 最新搜索混合了 AI 风险、免费替代、自动化基础设施和密码所有权。
+
+<p class="opp-p">"Google DeepMind AI agent risks" 是最有意义的 AI 短语，因为它也连接到更广泛的讨论语料。它符合过去一周从模型能力转向行动风险的变化：花费、权限、数据共享，现在还有求职仓库。一个好产品想法不必使用这个精确短语；它需要回答背后的问题：这个 AI 控制的工作流能在人类注意到之前做什么？</p>
+
+<p class="opp-p">"Best free drawing software" 很大但很宽。它可能支持内容、比较页或轻量迁移指南，尤其是和 Excalidraw 或 Krita 这类真实产品绑定时。作为独立 SaaS idea 吸引力较低，因为搜索者可能想要免费软件，而不是付费产品。</p>
+
+<p class="opp-p">"Apify" +250% 值得构建者监控，因为网页数据自动化往往先于小型付费工具出现：线索列表、竞品监控、价格追踪和公开页面变化报告。"Mastercard AI agent payments" 和 "kaggle 5 day ai agent" 更投机。它们显示公众对 agents 有好奇心，但最近出现次数已经够多；没有新买家故事时，不该成为头号构建。</p>
+
+<p class="opp-p">"Bitwarden" 和 "Vaultwarden" 增加了一层信任。密码所有权和自运行身份并不新，但本周上涨与 Hide My Email 焦虑和别名送达担忧形成配对。</p>
+
+<strong>关键判断</strong>：把新短语当作问题访谈的钩子；AI 风险和密码所有权比免费绘图软件搜索有更清晰的买家。
+
+<strong>反向视角</strong>：搜索发现可能只是早期好奇，而不是购买意图，所以每个短语都要搭配一次讨论或发布再行动。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-8">行动触发</h2>
+
+<h3 class="opp-h3">如果今天有 2 小时或一个完整周末，应该做什么？</h3>
+
+<strong>🔍 信号</strong>：今天最好的 software-first 机会是 Interview Repo Quarantine：<a href="https://roman.pt/posts/linkedin-backdoor/" target="_blank" class="opp-link">A backdoor in a LinkedIn job offer</a> 引发 292 条 Hacker News 讨论和 12 条 Lobsters 评论，文章展示了一个 npm <code class="opp-inline-code">prepare</code> 脚本执行隐藏代码，评论者也描述了反复出现的招聘攻击。
+<strong>白话说：</strong> 候选人在安装命令碰到自己机器之前，就应该知道一个居家任务仓库是否安全。
+
+<strong>最佳 2 小时方案</strong>：<strong>Interview Repo Quarantine</strong> 是面向求职候选人和招聘团队的仓库安全报告。客户给你一个居家任务或代码评审作业的 GitHub URL。你返回一页报告，列出高风险 <code class="opp-inline-code">lifecycle scripts</code>、安装钩子、混淆域名、网络调用、可疑测试文件、<code class="opp-inline-code">child_process</code> 使用、未知二进制文件，以及最安全的下一条命令：只读审查、一次性容器、临时 VPS，或不要运行。
+
+<strong>为什么今天选它</strong>：证据新、具体，而且原生属于软件。文章详细解释了陷阱：招聘方发送一个损坏的 proof-of-concept，<code class="opp-inline-code">app/test/index.js</code> 下的文件拼出 <code class="opp-inline-code">https://rest-icon-handler.store/icons/77</code>，npm 在安装后自动运行 <code class="opp-inline-code">prepare</code>。HN 评论提供了买家语言。@jmward01 问为什么网络犯罪没有一个知名紧急路径。@heldrida 描述候选人在骗局和居家项目上耗费时间。@dantodor 说类似攻击 6 个月里发生在自己身上 3 次。
+
+<strong>为什么不选另外两个</strong>：<strong>Alias Delivery Check</strong> 在 Apple Hide My Email 讨论后是强 runner-up，但在真实密码重置失败可见前，买家痛点没那么急。<strong>Local Model Fit Sheet</strong> 有 530 + 432 条评论和真实 $100/month 替代故事，但本地模型准备度最近已经被重点写过；今天它是支撑证据，不是最新构建。
+
+<strong>周末延伸</strong>：加一个小 CLI，不安装项目依赖也能运行，跨 JavaScript、Python、Ruby 和 Go 解析 package 文件，标记 lifecycle scripts，提取域名，打印安全 Docker 或 VPS 命令，并为候选人或招聘经理生成可分享 PDF。先手工收费：候选人每个 repo $49，发送居家任务的团队每个 role $149。
+
+<strong>最快验证路径</strong>：如果今天要验证，先找五个正在面试的开发者；要一个居家任务仓库，返回一页“safe to inspect, unsafe to install, ask recruiter this”报告。
+
+<p class="opp-p">承诺要窄。不要声称能检测每一个恶意仓库。卖给紧张候选人真正需要的那句话：“这个任务可以安全阅读，这个安装钩子危险；如果你仍要继续，这是确切命令。”</p>
+
+<strong>关键判断</strong>：先发 Interview Repo Quarantine；它把招聘焦虑转成安装钩子、高风险文件、安全命令，以及发回招聘方的一个问题。
+
+<strong>反向视角</strong>：买家可能要被坑过后才更愿意付费，所以初始分发应该瞄准安全意识强的候选人、bootcamps、招聘方和有居家任务的工程团队。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">哪些定价和变现模型值得研究？</h3>
+
+<strong>🔍 信号</strong>：今天值得研究的是 $49-$149 手工 Interview Repo Quarantine、Trace 被感知为 $10 购买决策、Indie Hackers 从 $159 first sales 到 $30K MRR 和 $1.3M ARR 的例子、Valta 51 条评论的 spending-limit 发布，以及 Reddit 上有 10,000 用户或 600 日活但变现不明的产品。
+<strong>白话说：</strong> 最好的定价课从一个完成的 artifact 开始，而不是一个大平台承诺。
+
+<p class="opp-p">今天构建最安全的模型是手工报告。求职候选人可能愿意付 $49，避免在自己的笔记本上运行恶意 repo，尤其报告里包含一条可直接发给招聘方的问题。招聘团队可能愿意为每个 role 付 $149，确保自己的居家作业看起来不危险，并给候选人一条安全评审路径。这不是 SaaS 幻想；这是带证据的付费 checklist。</p>
+
+<code class="opp-inline-code">Trace</code> 提供了低价 app 的对照。在评论里，@robertkarl 说，如果价格是 $10，他们更愿意让 Claude 实现类似东西，而不是购买，除非它开源且能从源码构建。这对小工具是警告：如果产品很容易被想象成可重建，那么信任界面、可靠性和分发比功能列表更重要。
+
+<p class="opp-p">Indie Hackers 的重复故事给出上限。$30K MRR 的 48 小时产品故事仍有 144 条评论，因为分发早于软件复杂度。$1.3M ARR 的开源故事展示了长路线：社区、信任和付费包装。<a href="https://www.indiehackers.com/post/i-got-my-first-159-in-sales-after-realizing-i-was-building-in-silence-2387f69447" target="_blank" class="opp-link">I got my first $159 in sales after realizing I was building in silence</a> 是今天更朴素、但更可行动的一课。</p>
+
+<p class="opp-p">Reddit 的使用量故事是提醒。截图保存应用达到 10,000 用户，菜谱视频工具达到 600 日活，但没有价格模型的流量会变成托管焦虑。</p>
+
+<strong>关键判断</strong>：在构建订阅软件前，先为第一个证明 artifact 收费；买家会转发的报告，是最干净的变现测试。
+
+<strong>反向视角</strong>：手工报告会限制规模，所以只有当重复输入和重复买家语言出现后，再迁移到订阅。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">今天最反直觉的发现是什么？</h3>
+
+<strong>🔍 信号</strong>：反直觉发现是：今天最好的软件机会来自找工作，而不是 $60B Cursor 讨论、530 条评论的本地模型线程或 423 条评论的 Iroh 发布。
+<strong>白话说：</strong> 最有价值的软件，常常是在保护那些赶时间、低地位、人人都当成例行公事的瞬间。
+
+<p class="opp-p">显而易见的头条是 AI coding 市场整合。被报道的 $60B Cursor 收购非常惊人，也确实说明资本认为开发者工作会往哪里走。但它不给 solo builder 一个干净的 2 小时产品。和 Cursor 竞争、绕开 Cursor 路由，或给 Cursor 策略做咨询，都需要不确定的平台事实和企业分发。</p>
+
+<p class="opp-p">本地模型浪潮也是真的。开发者在说真实配置、成本和硬件。但本地模型准备度已经是昨天报告的一部分，今天的新证据是在升级这个故事，而不是替换它。本地模型配置报告有用，但没有招聘攻击新鲜。</p>
+
+<p class="opp-p">LinkedIn 后门更小，因此更好。它把安全失败塞进一个人们很难拒绝的工作流里：候选人被要求通过审查别人代码来证明能力。文章说作者避免在本地克隆，使用一次性 VPS，并以只读模式运行 Pi，只开放文件读取工具。这个流程正是产品可以包装的东西。</p>
+
+<p class="opp-p">评论让痛点变得真实。@heldrida 写道，候选人已经要面对骗局、Trojan horses、ghosting 和浪费时间。@BobAliceInATree 指出，向 GitHub 和 LinkedIn 报告后代码仍未改变。@dantodor 说攻击者正在变得更好。</p>
+
+<strong>关键判断</strong>：为用户被迫快速行动的时刻构建；当拒绝本身有成本时，安全产品才卖得动。
+
+<strong>反向视角</strong>：招聘攻击可能是阶段性事件，所以需求取决于能不能触达活跃候选人和发送居家任务的团队。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">Product Hunt 产品和开发者工具在哪里重叠？</h3>
+
+<strong>🔍 信号</strong>：Product Hunt 与开发者工具的重叠出现在 <a href="https://www.producthunt.com/products/goldfish-early-access" target="_blank" class="opp-link">Goldfish</a>、<a href="https://www.producthunt.com/products/invoko" target="_blank" class="opp-link">Invoko</a>、<a href="https://www.producthunt.com/products/edgee" target="_blank" class="opp-link">Edgee Turbo Models</a>、<a href="https://www.producthunt.com/products/githits" target="_blank" class="opp-link">GitHits beta 0.9</a>、<a href="https://www.producthunt.com/products/stride-10" target="_blank" class="opp-link">Stride</a>、<a href="https://www.producthunt.com/products/devcleaner-reclaim-gbs-from-dev-tools" target="_blank" class="opp-link">DevCleaner</a>、<a href="https://www.producthunt.com/products/glint-9" target="_blank" class="opp-link">Glint</a> 和 <a href="https://www.producthunt.com/products/agentbrowse" target="_blank" class="opp-link">agentbrowse</a>。
+<strong>白话说：</strong> Product Hunt 把 AI 包装成职场便利，而开发者论坛追问这种便利是否安全、可检查。
+
+<p class="opp-p">Goldfish 和 Invoko 是 Mac-native 工作伴侣。它们在 Product Hunt 上分别有 154 和 88 条评论，说明发布兴趣很强，但买家承诺很宽：懂我的工作，像我一样回复，在我的 Mac 上伸出一只手。这种风格能赢得消费者注意力，但也会招来 HN 一直在问的问题：它能读什么，数据去哪儿，行动时会发生什么？</p>
+
+<p class="opp-p">Edgee Turbo Models 是更清晰的 devtool crossover。它让 Claude Code 使用 Kimi K2.7 Code、MiniMax M2.7 等模型。这和 530 条评论的本地模型替代讨论、432 条评论的本地模型文章相互配合。市场想要 routing，但构建者机会不只是 routing，而是一份解释哪个任务该放在哪个模型上、以及为什么的报告。</p>
+
+<p class="opp-p">GitHits、Glint 和 agentbrowse 也很接近 HN 对话。<code class="opp-inline-code">GitHits</code> 让 coding agents 访问开源代码，<code class="opp-inline-code">Glint</code> 展示 Claude Code 活动，<code class="opp-inline-code">agentbrowse</code> 给 coding agent 一个命令行形式的网页。每一个都需要信任层：权限、日志、私有代码边界和成本。</p>
+
+<p class="opp-p">DevCleaner 是最具体的非 agent 产品。“Free the gigabytes your dev tools and AI apps hoard” 是一个买家可见的任务。它符合今天更广泛的模式：清理、证明和本地控制。</p>
+
+<strong>关键判断</strong>：用 Product Hunt 学包装，但补上 HN 级别的证明：权限、日志、安全默认值和清晰 artifact。
+
+<strong>反向视角</strong>：Product Hunt 奖励精致演示，所以它和开发者工具的重叠可能夸大了真实工程环境里的安装意愿。
+
+<hr class="opp-hr">
+
+<em>— BuilderPulse Daily</em>
+</div></div><div class="opp-day"><div class="opp-day-header">2026-06-16</div><div class="opp-day-content"><h2 class="opp-h1">BuilderPulse Daily — 2026 年 6 月 16 日</h2>
+
+<h2 class="opp-h2" id="opp-9">📝 刘小排说</h2>
+
+<p class="opp-p">今天最热闹的讨论，是本地模型到底能不能在日常写代码里替代 Claude 或 GPT。但更好的构建信号其实像一张日历：<a href="https://daniel.haxx.se/blog/2026/06/15/curl-summer-of-bliss/" target="_blank" class="opp-link">curl will stop accepting vulnerability reports from July 1 to August 3</a> 引发 302 条 Hacker News 讨论和 18 条 Lobsters 评论，而且 <code class="opp-inline-code">libexpat</code> 和 <code class="opp-inline-code">uriparser</code> 也开始照着这个节奏放假。维护者是否在线，已经变成了一项运营依赖。</p>
+
+<strong>谁会为这个掏钱？</strong> 有公开互联网产品、要做合规审查、但没有明确负责人管理 <code class="opp-inline-code">curl</code>、<code class="opp-inline-code">libexpat</code>、<code class="opp-inline-code">uriparser</code>、<code class="opp-inline-code">OpenSSL</code> 或包管理器升级窗口的小型 SaaS 团队工程负责人。
+
+<strong>为什么这周必须做？</strong> 7 月 1 日还有 15 天，已经近到足够做一次仓库清单，又远到还来得及在漏洞入口暂停前补上负责人名单。
+
+<strong>第一份报告卖 $49 值不值？</strong> 值，只要它能在客户追问前，把一个仓库里的关键依赖变成负责人、支持路径、7 月日期和第一条升级命令。
+
+<p class="opp-p">麻烦事不是再扫一遍 CVE，而是读维护者日历、支持页面、发布说明和包清单，然后交给团队一页很朴素的东西：下一个依赖问题出现时，谁是醒着的。</p>
+
+<h2 class="opp-h2" id="opp-10">🎯 今日 2 小时构建</h2>
+
+<strong>Dependency Security Calendar</strong> — 给软件团队的一页报告，显示哪些关键开源依赖会暂停漏洞接收或发布，谁负责升级，以及在 7 月截止日期让 <code class="opp-inline-code">curl</code>、<code class="opp-inline-code">libexpat</code> 或 <code class="opp-inline-code">uriparser</code> 变成某个人的生产事故前，还有什么支持路径。这个判断由 <code class="opp-inline-code">curl</code> 引发 302 条讨论和 18 条 Lobsters 评论支撑。
+
+<p class="opp-p">→ 详见下方 <em>行动触发</em> 部分的完整拆解。</p>
+
+<h2 class="opp-h2" id="opp-11">今日 Top 3 信号</h2>
+
+<p class="opp-p">1. 开源维护者可用性变成了产品界面：<code class="opp-inline-code">curl</code> 将在 7 月 1 日到 8 月 3 日暂停处理漏洞报告，引发 302 条讨论，评论者还指出 <code class="opp-inline-code">libexpat</code> 和 <code class="opp-inline-code">uriparser</code> 也在采用同样的休假模式。</p>
+<p class="opp-p">2. 点对点应用联网从研究话题进入生产管线：<a href="https://www.iroh.computer/blog/v1" target="_blank" class="opp-link">Iroh 1.0</a> 称 30 天内创建了超过 2 亿个端点，并引发 284 条 Hacker News 讨论和 16 条 Lobsters 评论。</p>
+<p class="opp-p">3. 本地编码模型从爱好者实验变成预算讨论：那条关于用本地模型替代 Claude/GPT 日常写代码的 Ask HN 引发 332 条评论，用户提到 Qwen、Gemma、RTX 3090 机器，以及替代 $100/month Claude 订阅的故事。</p>
+
+<p class="opp-p">交叉参考 Hacker News、GitHub、Product Hunt、HuggingFace、Google Trends、Reddit、Indie Hackers、Lobsters 和 DEV Community。更新时间 09:29（上海时间）。</p>
+
+<h2 class="opp-h2" id="opp-12">白话简报</h2>
+
+<blockquote class="opp-blockquote">今天真正有用的变化是：软件依赖开始不像静态库，反而更像人、日历、账单和备用路径。</blockquote>
+
+<table class="opp-table">
+<tr><th>证据</th><th>讨论量</th><th>白话含义</th></tr>
+<tr><td><a href="https://daniel.haxx.se/blog/2026/06/15/curl-summer-of-bliss/" target="_blank" class="opp-link">curl summer of bliss</a> 将在 7 月暂停处理漏洞报告</td><td>302 条 Hacker News 讨论 + 18 条 Lobsters 评论</td><td>一个关键开源项目可以技术上很健康，但在人类日历上仍然不可用</td></tr>
+<tr><td><a href="https://www.iroh.computer/blog/v1" target="_blank" class="opp-link">Iroh 1.0</a> 称其公共中继 30 天内看到 2 亿个端点</td><td>284 条 Hacker News 讨论 + 16 条 Lobsters 评论</td><td>应用开始用稳定密钥连接彼此，而不是假设 IP 地址和网络总会正常</td></tr>
+<tr><td><a href="https://news.ycombinator.com/item?id=48542100" target="_blank" class="opp-link">Ask HN on replacing Claude/GPT with local models</a></td><td>332 条评论</td><td>一部分开发者现在愿意用云端便利换取隐私、速度和可预测的月度成本</td></tr>
+</table>
+
+<table class="opp-table">
+<tr><th>读者</th><th>今天意味着什么</th></tr>
+<tr><td>技术爱好者</td><td>有意思的软件故事都围绕控制权：谁维护代码、设备在哪里连接、AI 工作是否离开你的机器。</td></tr>
+<tr><td>构建者</td><td>把一个混乱的运营问题打包成付费报告：依赖覆盖、点对点可达性、本地模型就绪度，或支持成本对比。</td></tr>
+<tr><td>提醒</td><td>Hacker News 会高估懂基础设施的开发者；要找那些已经交付客户依赖软件的团队验证。</td></tr>
+</table>
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-13">发现机会</h2>
+
+<h3 class="opp-h3">今天有哪些 solo-founder 产品发布？</h3>
+
+<strong>🔍 信号</strong>：新发布产品里，<a href="https://traceapp.info" target="_blank" class="opp-link">Trace</a> 有 81 条评论，<a href="https://fata.dev" target="_blank" class="opp-link">Fata</a> 有 44 条，<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a> 有 32 条，还有 <a href="https://github.com/firish/claude_code_vs" target="_blank" class="opp-link">Claude Code for Visual Studio</a>、<a href="https://github.com/RimantasZ/contextspy" target="_blank" class="opp-link">ContextSpy</a>、Product Hunt 上 49 条评论的 <a href="https://www.producthunt.com/products/novu" target="_blank" class="opp-link">Novu Connect</a>，以及 20 条评论的 <a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a>。
+
+<strong>白话说：</strong> 小发布能被注意到，往往是因为它把隐藏的工作流做得可见、本地、可衡量，或者更值得信任。
+
+<p class="opp-p">今天的发布地图分成两块：本地控制和 AI 工作流证明。<a href="https://traceapp.info" target="_blank" class="opp-link">Trace</a> 卖的是离线 Mac 会议转录和会中标记，评论马上点出了实际缺口：@blopker 想要崩溃恢复和基础功能先于打磨；@zmmmmm 想要本地转录文件、按日历命名，以及重复会议的追加行为；@littlecranky67 想要符合德国隐私法的“只录自己”。这些都是付费产品语言，因为它们说出了失败模式、存储和法律约束。</p>
+
+<a href="https://fata.dev" target="_blank" class="opp-link">Fata</a> 是另一类 <code class="opp-inline-code">本地控制</code> 发布：用间隔重复对抗 AI 写代码带来的技能生疏。它和 C++ 光追线程很搭，因为“without AI”成了一枚徽章，人们想保住手艺，而不只是产出。<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a> 把持久化 <code class="opp-inline-code">NixOS</code> 虚拟机带到命令行，而 <a href="https://github.com/firish/claude_code_vs" target="_blank" class="opp-link">Claude Code for Visual Studio</a>、<a href="https://github.com/RimantasZ/contextspy" target="_blank" class="opp-link">ContextSpy</a> 和 <a href="https://github.com/Hash-7777/HashMeterAi" target="_blank" class="opp-link">HashMeterAi</a> 则显示，编码助手用户正在要 diff、token 可见性和私有用量表。
+
+<p class="opp-p">Product Hunt 给同样的情绪套上了商业外壳。<a href="https://www.producthunt.com/products/novu" target="_blank" class="opp-link">Novu Connect</a> 说它把能替用户执行动作的 <code class="opp-inline-code">AI agents</code> 放进现有工作界面。<a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a> 承诺给 AI agents 提供执行证明。<a href="https://www.producthunt.com/products/synopsule" target="_blank" class="opp-link">Synopsule</a> 把会议转录留在设备端。发布课不是“更多 AI”，而是“让我看到它在哪里运行、做了什么、留下了什么记录”。</p>
+
+<strong>关键判断</strong>：围绕工作流发布一个可见产物：转录文件、<code class="opp-inline-code">token</code> 计量、执行证明或技能保持练习，比又一个含糊的助手演示更强。
+
+<strong>反向视角</strong>：几个发布的评论数不高，所以只能把它们当成方向信号，而不是已验证需求。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">过去一周哪些搜索词暴涨？</h3>
+
+<strong>🔍 信号</strong>：搜索上涨包括 "excalidraw" 达到 breakout，"zulip" 上涨 650%，"sentry" 上涨 350%，"software testing strategies" 上涨 300%，"mastercard ai agent payments" 上涨 250%，"excalidraw self hosted" 上涨 160%，以及 "mattermost" 上涨 120%。
+
+<strong>白话说：</strong> 搜索者把 AI 执行动作和一些老派问题放在一起看：所有权、测试、聊天、错误和付款审批。
+
+<p class="opp-p">搜索层仍然很嘈杂，但有用的聚类不是又一次追模型名。<code class="opp-inline-code">Self-hosted</code> 指团队自己运行的软件，而不是完全依赖供应商云；这些词持续出现在 Excalidraw、Zulip、Mattermost、GitLab、ownCloud、Sentry 和 TeamSpeak 周围。这不代表每个项目突然都成了独立创业机会，而是说明人们在找熟悉的工作工具，同时希望更能控制数据在哪里、谁来运营系统。</p>
+
+<p class="opp-p">AI agent 的搜索现在听起来更像机构问题，而不是实验问题。"TCS AI agent strategy"、"TCS AI agent workforce" 和 "Mastercard AI agent payments" 都像是管理者在问，能执行动作的软件会如何影响用工、资金流转和审批。这和半夜试聊天机器人的开发者不是同一个买家。"Software testing strategies" 上涨 300% 也重要，因为围绕 AI 产出的争论一直回到证明，而不是速度。</p>
+
+<p class="opp-p">去重之后的阅读很关键：Fable 和相关模型词仍然可见，但它们已经连续几天占据标题。今天更新鲜的搜索结论，是 AI 执行动作和无聊运营名词之间的桥：测试、支付、聊天、错误追踪和自运行工作区。</p>
+
+<strong>关键判断</strong>：围绕控制词做内容和工具：<code class="opp-inline-code">self-run workspace</code>、付款审批、测试清单和错误可见性，比泛泛的 <code class="opp-inline-code">AI-agent SEO</code> 更耐用。
+
+<strong>反向视角</strong>：搜索暴涨可能来自新闻和品牌活动，所以围绕某个词做完整产品前，要先用点击或访谈验证。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">GitHub 上哪些快速增长的开源项目还没有商业版本？</h3>
+
+<strong>🔍 信号</strong>：GitHub 注意力继续集中在 <a href="https://github.com/addyosmani/agent-skills" target="_blank" class="opp-link">addyosmani/agent-skills</a>，每周新增 11,088 stars；<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">headroom</a> 新增 10,660 stars；<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a> 新增 10,541 stars；<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a> 新增 4,633 stars；<a href="https://github.com/RyanCodrai/turbovec" target="_blank" class="opp-link">turbovec</a> 新增 3,651 stars；以及 <a href="https://github.com/refactoringhq/tolaria" target="_blank" class="opp-link">tolaria</a> 新增 3,179 stars。
+
+<strong>白话说：</strong> 开源热度不是单纯围绕代码，而是在把 AI 工作变成团队可以重复执行的流程。
+
+<p class="opp-p">几个头部仓库已经连续几天出现，所以新的商业入口不是托管一个热门 repo 然后自称公司。更有用的缺口在采用层。<a href="https://github.com/addyosmani/agent-skills" target="_blank" class="opp-link">addyosmani/agent-skills</a>、<a href="https://github.com/phuryn/pm-skills" target="_blank" class="opp-link">pm-skills</a> 和 <a href="https://github.com/mvanhorn/last30days-skill" target="_blank" class="opp-link">last30days-skill</a> 显示，团队正在把给编码助手和研究助手的指令打包。买家不只需要文件，还需要决定哪个 <code class="opp-inline-code">skill</code> 被批准、谁维护它、它能碰什么。</p>
+
+<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">headroom</a> 仍然有最清楚的成本故事，因为它声称在文本到达模型前减少 60-95% 的 <code class="opp-inline-code">token</code>。<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a> 给出了安全版本：团队安装 AI skills 前先扫描风险行为。<a href="https://github.com/RyanCodrai/turbovec" target="_blank" class="opp-link">turbovec</a> 指向更便宜的本地搜索，而 <a href="https://github.com/refactoringhq/tolaria" target="_blank" class="opp-link">tolaria</a> 说明 markdown 知识库仍然需要桌面管理。
+
+<p class="opp-p">商业版本应该是一个审查和运营产品：上传 <code class="opp-inline-code">skill</code> 文件夹或 repo，得到安装说明、风险说明、负责人说明、更新节奏和一条建议。这比薄薄的克隆更好卖，因为买家付钱买的是判断和可重复性。</p>
+
+<strong>关键判断</strong>：围绕开放 AI 工具的采用证明商业化：审批、安全、成本和负责人映射，比原始托管更有力。
+
+<strong>反向视角</strong>：每周 stars 可能只是社交收藏，不是购买意图；只有当团队已经想标准化工作流时才收费。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">开发者在抱怨哪些工具？</h3>
+
+<strong>🔍 信号</strong>：抱怨集中在可用性、信任和隐藏成本：<code class="opp-inline-code">curl</code> 的 7 月暂停引发 302 条讨论，<a href="https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/#cloud-servers" target="_blank" class="opp-link">Hetzner 的价格调整</a>引发 474 条讨论，<a href="https://andreklein.net/your-epub-is-fine-kobo-disagrees-blame-adobe/" target="_blank" class="opp-link">Kobo/Adobe EPUB 行为</a>引发 298 条讨论，本地模型写代码引发 332 条讨论。
+
+<strong>白话说：</strong> 当工具背后的隐形负责人、价格、格式或模型路径突然变成自己的问题时，开发者就会生气。
+
+<code class="opp-inline-code">curl</code> 线程异常有价值，因为它不是崩盘，而是维护者划边界。@vessenes 点出了埋在下面的商业模式：项目可以休假，但企业支持合同仍然有可用性。@flaburgan 赞成这个决定，因为维护者压力很大、回报很少。@laszlojamf 说出了尴尬的依赖关系：所有人都用 <code class="opp-inline-code">curl</code>，但很少有客户直接资助备用方案。
+
+<p class="opp-p">Hetzner 是钱的版本。云价格调整引发 474 条讨论，因为基础设施买家运营很多服务器时，每一个小单位变化都会被放大。Kobo/Adobe 线程是格式版本。@nfw2 说独立开发者没有实际办法拿到 Adobe RMSDK，@lidavidm 则提到 kepubify 作为替代方案。本地模型写代码线程是 AI 版本：一些开发者正在用 GPU、本地模型和隐私换掉月度订阅，另一些人则说设置成本仍然输给前沿云模型。</p>
+
+<p class="opp-p">共同抱怨不是“软件很烂”，而是所有权不清楚：谁维护这个东西、谁拿钱、什么会涨价、到底什么格式可用，以及首选供应商不可用时怎么办。</p>
+
+<strong>关键判断</strong>：做“抱怨翻译器”，把模糊不满变成团队可以行动的负责人、日期、价格、格式和备用路径。
+
+<strong>反向视角</strong>：基础设施论坛会高估控制敏感型用户，所以要找已经在生产中感受到这些失败的团队验证。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-14">技术选型</h2>
+
+<h3 class="opp-h3">有没有大公司关闭或降级了产品？</h3>
+
+<strong>🔍 信号</strong>：最清楚的降级不是产品死亡，而是运营层变化：<code class="opp-inline-code">curl</code> 将在 7 月暂停处理漏洞报告；同时 <a href="https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/#cloud-servers" target="_blank" class="opp-link">Hetzner</a> 调整云价格，<a href="https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-signs-definitive-agreement-to-acquire-fin/?bc=HL" target="_blank" class="opp-link">Salesforce agreed to buy Fin for $3.6B</a>，Fox 则推动收购 Roku。
+
+<strong>白话说：</strong> 一个服务可以继续存在，但当它周围的支持、价格或所有权变了，用户感受仍然会变差。
+
+<p class="opp-p">今天的降级故事不是一次干净的关停，而是一组控制权变化。<code class="opp-inline-code">curl</code> 成熟且可信，但有一个月漏洞报告路径会关闭。这不是 <code class="opp-inline-code">curl</code> 的缺陷，而是提醒我们：关键开源可用性依赖人。文章说 HackerOne 表单会在 7 月 1 日暂停，8 月 3 日重新开放，下一次发布移到 9 月 2 日。普通工程团队应该听到的是：“哪些依赖有我们没有追踪的日历？”</p>
+
+<p class="opp-p">Hetzner 的价格调整没有那么戏剧化，但更直接进入预算。围绕云服务器价格的 474 条讨论说明，经历了几个月 AI 成本噪音后，买家仍然关心基础设施单位经济。Salesforce 以 $3.6B 收购 Fin 是市场结构版本：独立的 Intercom/AI 支持类别被拉进 Salesforce 的账户控制引力场。Fox 如果完成对 Roku 的收购，则会让一个重要电视软件界面落到媒体所有者手里。</p>
+
+<p class="opp-p">结论是，“降级”现在也包括更柔性的变化：支持可用性、价格页、收购后的所有权和平台激励。</p>
+
+<strong>关键判断</strong>：追踪运营降级，而不只是产品关停；支持窗口和所有权变化常常才是买家真正的迁移截止日期。
+
+<strong>反向视角</strong>：<code class="opp-inline-code">curl</code> 的 7 月暂停是临时且透明的，所以它是规划信号，而不是项目变弱的证据。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">本周增长最快的开发者工具有哪些？</h3>
+
+<strong>🔍 信号</strong>：快速获得开发者注意的工具包括 <a href="https://www.iroh.computer/blog/v1" target="_blank" class="opp-link">Iroh 1.0</a>、<a href="https://pyinfra.com" target="_blank" class="opp-link">pyinfra</a>、<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a>、<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a>、<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a>、<a href="https://savearoundtrip.com/" target="_blank" class="opp-link">savearoundtrip</a>、<a href="https://github.com/RimantasZ/contextspy" target="_blank" class="opp-link">ContextSpy</a> 和 <a href="https://github.com/Hash-7777/HashMeterAi" target="_blank" class="opp-link">HashMeterAi</a>。
+
+<strong>白话说：</strong> 开发者工具这周赢在帮人移除隐藏的设置、安全、联网或成本疑问。
+
+<a href="https://www.iroh.computer/blog/v1" target="_blank" class="opp-link">Iroh 1.0</a> 是头条技术发布，因为它改变了应用的连接模型。博客说，公共中继过去 30 天看到超过 2 亿个端点，评论者把承诺翻译成开发者语言：@apitman 称它是 “Tailscale at the application layer”，@colinmarc 说他们在生产中用它做 <code class="opp-inline-code">QUIC</code> 风格连接。围绕它的产品机会不是再写一个协议解释器，而是给那些需要设备穿过混乱网络互相发现的应用做可达性测试和集成帮助。
+
+<a href="https://pyinfra.com" target="_blank" class="opp-link">pyinfra</a> 因为用普通 Python 做无代理基础设施自动化，在 Lobsters 获得 28 条评论，这和更重的编排工具形成了可喜对照。<a href="https://github.com/apple/container" target="_blank" class="opp-link">apple/container</a> 仍然是重要的本地运行时界面。<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a> 持续增长，因为 AI skills 现在看起来像可安装行为，而不是无害文本。<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a> 则把持久化 <code class="opp-inline-code">NixOS</code> 虚拟机包装在命令行后面。
+
+<p class="opp-p">小工具也讲同一个故事。<a href="https://savearoundtrip.com/" target="_blank" class="opp-link">savearoundtrip</a> 把一条 HTTPS DNS 记录变成少一次网络往返，<a href="https://github.com/RimantasZ/contextspy" target="_blank" class="opp-link">ContextSpy</a> 分析 <code class="opp-inline-code">token</code> 用量，<a href="https://github.com/Hash-7777/HashMeterAi" target="_blank" class="opp-link">HashMeterAi</a> 则跨模型计量私有 AI token 使用。</p>
+
+<strong>关键判断</strong>：耐用的开发者工具切入口是运营清晰度：连接可达性、网络延迟、<code class="opp-inline-code">token</code> 成本、skill 安全和可复现本地机器。
+
+<strong>反向视角</strong>：开发者工具热度可能由好奇心驱动，所以做付费层之前，要寻找反复出现的团队工作流。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">HuggingFace 上最热的模型是什么？它们能催生哪些消费者产品？</h3>
+
+<strong>🔍 信号</strong>：HuggingFace 注意力由 <a href="https://huggingface.co/google/diffusiongemma-26B-A4B-it" target="_blank" class="opp-link">google/diffusiongemma-26B-A4B-it</a> 领跑，下载量 311,788；还有 <a href="https://huggingface.co/MiniMaxAI/MiniMax-M3" target="_blank" class="opp-link">MiniMaxAI/MiniMax-M3</a>、下载量 56,750 的 <a href="https://huggingface.co/moonshotai/Kimi-K2.7-Code" target="_blank" class="opp-link">moonshotai/Kimi-K2.7-Code</a>、<a href="https://huggingface.co/nvidia/LocateAnything-3B" target="_blank" class="opp-link">nvidia/LocateAnything-3B</a>，以及 <a href="https://huggingface.co/bosonai/higgs-audio-v3-tts-4b" target="_blank" class="opp-link">bosonai/higgs-audio-v3-tts-4b</a>。
+
+<strong>白话说：</strong> 模型热度正在分散到图像、编码、物体定位和语音，这意味着产品创意又可以变窄、变具体。
+
+<p class="opp-p">最有用的变化是模态变宽。<a href="https://huggingface.co/google/diffusiongemma-26B-A4B-it" target="_blank" class="opp-link">diffusiongemma-26B-A4B-it</a> 及其 <code class="opp-inline-code">GGUF</code> 变体显示，图像-文本工作正在走向本地和可移植格式。<a href="https://huggingface.co/MiniMaxAI/MiniMax-M3" target="_blank" class="opp-link">MiniMax-M3</a> 和 <a href="https://huggingface.co/moonshotai/Kimi-K2.7-Code" target="_blank" class="opp-link">Kimi-K2.7-Code</a> 位于代码与 agent 赛道，<a href="https://huggingface.co/nvidia/LocateAnything-3B" target="_blank" class="opp-link">LocateAnything-3B</a> 指向物体定位。<a href="https://huggingface.co/bosonai/higgs-audio-v3-tts-4b" target="_blank" class="opp-link">higgs-audio-v3-tts-4b</a> 让语音 agent 和可控语音继续留在视野里。</p>
+
+<p class="opp-p">消费者产品应该比“AI studio”窄得多。图像方向，产品是给不能上传草稿的团队做本地品牌资产变体生成器。编码方向，产品是一份 <code class="opp-inline-code">local-model readiness report</code>，说明哪些任务可以用 Qwen、Gemma 或 Kimi，哪些仍然需要云模型。物体定位方向，可以想库存照片、检查清单，或“在图里找到这个零件”的工作流。语音方向，小创作者更需要一致的旁白和多语草稿，而不是万能助手。</p>
+
+<p class="opp-p">本地编码 Ask HN 线程给出了买家约束：人们喜欢隐私和成本控制，但仍然会比较输出质量、上下文新鲜度和设置负担。</p>
+
+<strong>关键判断</strong>：用热门模型做狭窄本地工具：图像审查、代码任务路由、物体查找清单和语音草稿，比通用模型游乐场更好。
+
+<strong>反向视角</strong>：下载量不等于终端用户需求；许多下载来自实验、镜像和模型收藏。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">本周最重要的开源 AI 进展是什么？</h3>
+
+<strong>🔍 信号</strong>：开放 AI 工作集中在 332 条评论的 Ask HN 本地编码技术栈线程、<a href="https://huggingface.co/moonshotai/Kimi-K2.7-Code" target="_blank" class="opp-link">Kimi-K2.7-Code</a>、<a href="https://huggingface.co/CohereLabs/North-Mini-Code-1.0" target="_blank" class="opp-link">CohereLabs/North-Mini-Code-1.0</a>、<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">NVIDIA/SkillSpector</a>、<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">headroom</a>，以及 Product Hunt 的 <a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a>。
+
+<strong>白话说：</strong> 开放 AI 的故事正在从“能不能拿到模型”转向“团队能不能运行、限制、检查并证明这个工作流”。
+
+<p class="opp-p">Ask HN 线程比又一个基准测试更有价值，因为它包含设置现实。@horsawlarway 说，他们用双 RTX 3090 上的 Qwen 和 Gemma 本地方案替代了 $100/month Claude 订阅。@pierotofy 描述了单张 RTX 3090 上的 Llama.cpp、Qwen3.6-35B 和 OpenCode。@codinhood 给出反向砝码：很多任务里，不用最好的云模型所带来的机会成本仍然太高。这正是一项付费就绪度服务的形状。</p>
+
+<p class="opp-p">开放模型工作支撑同一个分裂。Kimi 和 North-Mini-Code 让代码导向替代品继续存在，而 Gemma 变体主导本地实验。<a href="https://github.com/chopratejas/headroom" target="_blank" class="opp-link">headroom</a> 在模型运行前攻击上下文成本。<a href="https://github.com/NVIDIA/SkillSpector" target="_blank" class="opp-link">SkillSpector</a> 在 AI skill 运行前攻击安装风险。<a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a> 把执行证明变成商业对象。</p>
+
+<p class="opp-p">重要进展不是一个赢家，而是围绕开放 AI 出现了一套运营技术栈：选模型、压缩上下文、扫描 skills、记录执行，并比较输出。</p>
+
+<strong>关键判断</strong>：先做 <code class="opp-inline-code">local-AI operations reports</code>，再做仪表盘；买家首先需要知道哪些任务可以离开云端且不损失质量。
+
+<strong>反向视角</strong>：本地硬件买家比云工具用户更窄，所以先卖给隐私敏感和成本敏感的团队。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">最受欢迎的 Show HN 项目在用哪些技术栈？</h3>
+
+<strong>🔍 信号</strong>：Show HN 技术栈混合了 Rust 网络、macOS 原生音频捕获、C++ 图形、NixOS 虚拟机、Vue 组件、Chrome 扩展、Ruby 终端实验、纯浏览器 schema 地图，以及 AI token 计量器。
+
+<strong>白话说：</strong> 技术栈信号很务实：当信任很重要时，构建者会选择本地文件、命令行、纯浏览器工具和原生应用。
+
+<a href="https://github.com/tamnd/kage" target="_blank" class="opp-link">Kage</a> 继续引发讨论，但昨天已经给过它头条。今天更适合把它当成技术栈案例：一个 Go/Rust 风格的离线打包工具，使用浏览器、剥离脚本，并产出可携带产物。<a href="https://traceapp.info" target="_blank" class="opp-link">Trace</a> 是 macOS 原生，因为会议、麦克风权限和本地转录文件都受益于靠近操作系统。<a href="https://fata.dev" target="_blank" class="opp-link">Fata</a> 把间隔重复变成 AI 编码的反向砝码，可能需要轻量 Web app 加上持久用户历史。
+
+<a href="https://machine0.io" target="_blank" class="opp-link">machine0</a> 押注 <code class="opp-inline-code">NixOS</code> 来做持久虚拟机。<a href="https://nxui.geoql.in/docs/" target="_blank" class="opp-link">Nxui</a> 是 Vue 组件分发。<a href="https://github.com/firish/claude_code_vs" target="_blank" class="opp-link">Claude Code for Visual Studio</a> 是 IDE 集成，因为开发者想在已经审代码的地方接受或拒绝 diff。<a href="https://github.com/nz366/zero_browser" target="_blank" class="opp-link">Zero Browser</a> 和 <a href="https://github.com/Constellation-Labs/gate-oc-audit" target="_blank" class="opp-link">gate-oc-audit</a> 则在低评论边缘展示浏览器和审计轨迹实验。
+
+<p class="opp-p">共同的技术栈偏好是可检查性。纯浏览器工具承诺“不上传”。原生 Mac 工具承诺本地文件。<code class="opp-inline-code">Nix</code> 承诺可复现机器。IDE 插件承诺在上下文里审查。这是对黑箱 AI 工作流最实际的解药。</p>
+
+<strong>关键判断</strong>：选择能证明承诺的技术栈：<code class="opp-inline-code">local-first apps</code>、纯浏览器工具、CLI 报告和 IDE 原生审查，胜过时髦架构。
+
+<strong>反向视角</strong>：Show HN 样本偏向开发者口味，所以消费者产品可能需要比这些技术栈暗示的更简单 onboarding。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-15">竞争情报</h2>
+
+<h3 class="opp-h3">Indie 开发者在讨论哪些收入和定价问题？</h3>
+
+<strong>🔍 信号</strong>：金钱讨论包括 <code class="opp-inline-code">curl</code> 在 7 月期间的企业支持可用性、引发 474 条讨论的 Hetzner 云价格变化、Indie Hackers 上 $16K MRR、$30K MRR、$1.3M ARR、$1.6M/year 和 $4K/month 的故事，以及 Reddit 上 500 用户、2,500 用户、10,000 用户和 600 日活用户的帖子。
+
+<strong>白话说：</strong> 创始人不只是在谈发布兴奋感，而是在比较真实账单、支持合同和使用量数字。
+
+<p class="opp-p">最干净的新定价课来自 <code class="opp-inline-code">curl</code>。@vessenes 注意到，7 月暂停也让企业支持更具体：公开漏洞入口可以等，但付费客户仍然有路径。这不是犬儒，而是一个维护业务模式变得可见。小型开源创始人应该研究它，因为它把可用性和支持合同绑在一起，同时不假装维护者是机器。</p>
+
+<p class="opp-p">Hetzner 展示了另一面：基础设施买家对涨价反应强烈，因为服务器账单会复利。一个把供应商价格变化翻译成“你的月度差额和迁移风险”的小工具，比泛泛成本建议更好卖。Indie Hackers 补上了反复出现的创始人模式：<a href="https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9" target="_blank" class="opp-link">$30K MRR in a 48-hour product story</a> 引发 144 条评论，而 <a href="https://www.indiehackers.com/post/tech/hitting-16k-mrr-after-years-of-failed-products-h5lM0xJmVrRZM0B23MT6" target="_blank" class="opp-link">$16K MRR</a>、<a href="https://www.indiehackers.com/post/tech/growing-an-open-source-product-to-1-3m-arr-in-two-years-hbMiXIoZsueV9D3L58DP" target="_blank" class="opp-link">$1.3M ARR</a> 和 <a href="https://www.indiehackers.com/post/tech/diversifying-to-break-a-1-6m-yr-plateau-D8QDyPuDzSuOQS7ux9nR" target="_blank" class="opp-link">$1.6M/year plateau</a> 让创始人数学保持落地。</p>
+
+<p class="opp-p">Reddit 上的用户数帖子可靠性低一些，但有用：600 日活用户却没有托管计划，正是爱好项目变成定价工作的时刻。</p>
+
+<strong>关键判断</strong>：先给报告定价，再做平台；围绕成本、覆盖或支持做 $49-$149 的人工分析，可以在软件存在前验证需求。
+
+<strong>反向视角</strong>：Indie 收入故事常有幸存者偏差，所以要复制定价测试，而不是照抄宣称的增长路径。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">有没有沉寂的老项目突然复活？</h3>
+
+<strong>🔍 信号</strong>：复活能量出现在 <a href="https://daniel.haxx.se/blog/2026/06/15/curl-summer-of-bliss/" target="_blank" class="opp-link">curl</a> 这个成熟项目设置边界、<a href="https://karthinks.com/software/even-more-batteries-included-with-emacs/" target="_blank" class="opp-link">Emacs batteries included</a>、<a href="https://www.sacredheartsc.com/blog/freebsd-15-on-a-laptop/" target="_blank" class="opp-link">FreeBSD 15 on a laptop</a>、<a href="https://forgottenbytes.net/commander_keen.html" target="_blank" class="opp-link">Commander Keen engine notes</a>，以及围绕 EPUB 的旧电子书工具争论。
+
+<strong>白话说：</strong> 老工具重新受到注意，往往是因为它们仍然能解释今天的控制、可移植和维护问题。
+
+<p class="opp-p">今天的复活故事不是“废弃项目回归”，更像是“旧基础设施教会当前市场”。<code class="opp-inline-code">curl</code> 并不沉寂，它很成熟。但 7 月暂停让所有人注意到，一个多数开发者当作背景辐射的命令背后有人。这是注意力复活，不是代码复活。</p>
+
+<p class="opp-p">Emacs 也是同一种形状。<a href="https://karthinks.com/software/even-more-batteries-included-with-emacs/" target="_blank" class="opp-link">Even More Batteries Included With Emacs</a> 引发 13 条 Lobsters 评论，因为长寿工具会积累能力，而新产品常把这些能力重新包装成新奇。<a href="https://www.sacredheartsc.com/blog/freebsd-15-on-a-laptop/" target="_blank" class="opp-link">FreeBSD 15 on a laptop</a> 和 <a href="https://nick.zoic.org/art/boot-naked-linux/" target="_blank" class="opp-link">Boot Naked Linux</a> 显示，开发者仍然喜欢能一路理解到启动路径的系统。<a href="https://forgottenbytes.net/commander_keen.html" target="_blank" class="opp-link">Commander Keen engine notes</a> 和手写 C++ 光追线程说明，在 AI 很重的一周里，教育性手艺重新成了身份标记。</p>
+
+<code class="opp-inline-code">EPUB</code> 是商业课。格式很老，验证器很老，Adobe/Kobo 行为却仍然制造当前痛点。给作者和出版方做一个小型兼容性检查器，比听起来更合理，因为旧技术栈仍然挡着现代分发。
+
+<strong>关键判断</strong>：从成熟工具里挖现代痛点：兼容性、维护者、本地控制和手艺证明，常藏在旧软件争论里。
+
+<strong>反向视角</strong>：怀旧可能伪装成需求，所以只在旧工具仍然阻塞当前工作流或销售时才构建。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">有没有“XX 已死”或迁移类文章？</h3>
+
+<strong>🔍 信号</strong>：迁移压力出现在 <a href="https://news.ycombinator.com/item?id=48542100" target="_blank" class="opp-link">Ask HN: Has anyone replaced Claude/GPT with a local model for daily coding?</a>、<a href="https://andreklein.net/your-epub-is-fine-kobo-disagrees-blame-adobe/" target="_blank" class="opp-link">Kobo disagreeing with valid EPUB files</a>、Hetzner 价格讨论、Windows 账户要求带来的不满，以及 Salesforce 收购 Fin。
+
+<strong>白话说：</strong> 人们不是单纯离开某个产品，而是在尝试摆脱不透明格式、账户、价格和云模型的依赖。
+
+<p class="opp-p">本地模型线程就是直接的迁移文章："Has anyone replaced Claude/GPT?" 最好的答案不是意识形态。@Greenpants 在意数据隐私和免费本地模型，@horsawlarway 替换了 $100/month 订阅，@codinhood 则说机会成本重要时，最好的云模型仍然赢。这给出了一份现实迁移清单：隐私、成本、硬件、上下文新鲜度和输出质量。</p>
+
+<code class="opp-inline-code">EPUB</code> 文章是格式迁移故事。作者按 epubcheck 做对了一切，但 Kobo 和 Adobe 的行为仍然破坏了读者体验。这就是为什么“有效”和“在买家的环境里可用”是两种不同的产品承诺。Hetzner 价格线程把买家推向供应商对比。Windows 账户要求把用户推向绕路和替代操作系统。Salesforce 收购 Fin 可能会让一些团队重新评估独立客户支持工具，如果它们不想被更多 Salesforce 引力包住。
+
+<p class="opp-p">迁移产品模式是一份就绪度报告，而不是抱怨文章。展示什么变了、什么会坏、买家能保留什么，以及什么仍然需要旧供应商。</p>
+
+<strong>关键判断</strong>：围绕证据做迁移检查器：本地模型替换、<code class="opp-inline-code">EPUB</code> 兼容、云价格变化和支持工具所有权，都足够具体，可以测试。
+
+<strong>反向视角</strong>：谈迁移比真的迁移容易；只有旧路径已经让买家疼时，他们才会付钱。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-16">趋势判断</h2>
+
+<h3 class="opp-h3">本周最常见的技术关键词是什么？它们如何变化？</h3>
+
+<strong>🔍 信号</strong>：重复出现的语言转向维护者可用性、点对点网络、本地模型、自运行工作区、AI 执行证明、token 计量、会议转录、EPUB 兼容性和基础设施价格变化。
+
+<strong>白话说：</strong> 这一周少了些炫目的能力展示，多了一个问题：软件能不能被拥有、连接、付费和修复。
+
+<p class="opp-p">AI 词没有消失，而是变得更运营化。“Agent” 现在会带上执行证明、支出限制、<code class="opp-inline-code">token</code> 计量、本地记忆和支付。Product Hunt 的 <a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a>、Indie Hackers 上的 <a href="https://www.indiehackers.com/product/valta?post=eWCM5GON7ti7pja6LGLu" target="_blank" class="opp-link">Valta</a>、DEV 上关于 prompt batching 和 agent memory 的文章，以及 GitHub 上围绕 skills 的项目，都指向同一个变化：人们想要能执行动作的软件周围的记录。</p>
+
+<p class="opp-p">非 AI 关键词同样重要。“curl”、“Iroh”、“EPUB”、“Kobo”、“Hetzner”、“Mattermost”、“Zulip”、“Sentry” 和 “Excalidraw self hosted” 都携带所有权或可靠性。它们不是流行词，而是当某个东西必须在自己的账户下、自己的机器上或自己的预算内工作时，买家会使用的名词。</p>
+
+<p class="opp-p">最有用的趋势是汇合。本地模型和自运行工作区回答隐私。<code class="opp-inline-code">Iroh</code> 回答可达性。<code class="opp-inline-code">curl</code> 回答维护者容量。<code class="opp-inline-code">EPUB</code> 回答兼容性。Hetzner 回答单位经济。放在一起，它们说明软件买家在多年接受平台便利之后，开始要求控制界面。</p>
+
+<strong>关键判断</strong>：围绕控制界面写产品文案：负责人、路径、成本、文件、格式、日历和证明，是今天最强的名词。
+
+<strong>反向视角</strong>：今天基础设施味很重；消费者市场可能仍然更奖励便利，而不是控制。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">VC 和 YC 正在关注哪些话题？</h3>
+
+<strong>🔍 信号</strong>：创业注意力集中在 AI 支持整合、垂直 AI、agent 工作界面和基础设施：Salesforce 同意以 $3.6B 收购 Fin，<a href="https://news.ycombinator.com/item?id=48543908" target="_blank" class="opp-link">Drafted (YC P26)</a> 发布住宅建筑模型，<a href="https://www.producthunt.com/products/novu" target="_blank" class="opp-link">Novu Connect</a> 领跑 Product Hunt，Amazon 宣布在密苏里建设数十亿美元数据中心。
+
+<strong>白话说：</strong> 资本仍在追 AI，但最具体的交易都和 AI 插进现有工作与基础设施的位置有关。
+
+<p class="opp-p">Salesforce 收购 Fin 是最清楚的战略信号。客户支持 AI 不再是旁支实验，而是账户所有权、数据访问和工作流控制。对独立构建者来说，机会不是在通用支持 AI 上和 Salesforce 拼钱，而是在边缘做狭窄工具：导出就绪度、质量检查、升级日志，或“收购后发生了什么变化”的迁移说明。</p>
+
+<a href="https://news.ycombinator.com/item?id=48543908" target="_blank" class="opp-link">Drafted (YC P26)</a> 显示，YC 仍然喜欢领域数据和工作流特异性很重要的垂直 AI。住宅建筑接近物理世界，所以不适合快速软件创始人的构建名额，但它是有用的投资者证据：理解一个受监管、昂贵领域的模型，仍然可融资。<a href="https://www.producthunt.com/products/novu" target="_blank" class="opp-link">Novu Connect</a>、<a href="https://www.producthunt.com/products/pandaprobe-cloud" target="_blank" class="opp-link">PandaProbe Cloud</a> 和 <a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a> 显示，Product Hunt 的创业层在关注 agent 交付、托管评测和证明。
+
+<p class="opp-p">数据中心公告是背景鼓点。AI 软件继续依赖重资本算力，这给小构建者留下了成本可见性、本地替代和供应商比较的入口。</p>
+
+<strong>关键判断</strong>：不要复制已融资平台；围绕它们的采用，做小型证明、导出、成本或迁移层。
+
+<strong>反向视角</strong>：VC 注意力会扭曲 indie 优先级，因为融资团队能承受更长销售周期和基础设施成本。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">哪些 AI 搜索词正在降温？</h3>
+
+<strong>🔍 信号</strong>：长周期里仍有注意力、但本周紧迫性不足的词包括 Hermes-agent phrases、"python data analysis"、"planka"、"docker containerization"、"robotics programming"、"frontend frameworks"、"api design principles"、"codex" 和 "nocodb"。
+
+<strong>白话说：</strong> 有些词仍然被人知道，但已经不是今天最值得开工的理由。
+
+<p class="opp-p">降温不等于死亡。Hermes-agent phrases 仍然有长周期注意力，但最近几份报告已经消化过这个故事，今天的数据没有给出新的产品转折。“Codex” 也类似：仍然重要，但除非绑定新的工作流、成本或证明界面，否则不是今天最尖锐的买家问题。像 "python data analysis"、"frontend frameworks"、"api design principles" 和 "docker containerization" 这类宽泛词，如果没有具体受众和新的分发路径，就不适合 2 小时构建。</p>
+
+<p class="opp-p">"Planka" 和 "nocodb" 属于自运行替代品故事，但今天更当前的搜索偏向 Mattermost、Zulip、Sentry、Excalidraw 和 ownCloud。机器人编程和物联网查询很有意思，但对软件优先的 indie 创始人来说，除非翻译成纯软件：模拟器、仪表盘、文档或合规工具，否则用处较小。</p>
+
+<p class="opp-p">降温词的实用价值是防守。它们告诉你，如果没有新数据、自有分发渠道或更窄买家，不要把唯一一个周末花在这里。</p>
+
+<strong>关键判断</strong>：不要基于昨天的宽泛搜索领头词开工；等到有新数字、新买家原话或新的跨界面验证，再回到它。
+
+<strong>反向视角</strong>：如果创始人已经有权威或窄众定位，长周期搜索词仍然可以支撑 SEO。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">新词雷达：哪些全新概念正在从零升起？</h3>
+
+<strong>🔍 信号</strong>：新近变尖的词包括 "excalidraw" 达到 breakout，"tcs ai agent strategy" 达到 breakout，"tcs chairman ai agent projections" 达到 breakout，"tcs ai agent workforce" 上涨 1,700%，"software testing strategies" 上涨 300%，"mastercard ai agent payments" 上涨 250%，以及 "mattermost" 上涨 120%。
+
+<strong>白话说：</strong> 新词把能执行动作的 AI 和很无聊的业务系统连在一起：用工、支付、测试和团队聊天。
+
+<p class="opp-p">这里有两组有用信号。第一组是企业 AI 词汇。TCS strategy 和 workforce 查询说明，普通商业读者正在尝试理解 staffing 和 operating model 的影响。Mastercard agent payments 更具体：一旦 AI 能发起或建议交易，审批规则和审计日志就会变成产品要求。这些词本身对小产品来说太宽，但它们告诉你非开发者可能会用什么语言。</p>
+
+<p class="opp-p">第二组是受控工作软件。Mattermost、Zulip、Sentry、Excalidraw 和 Excalidraw self-hosted 不是全新产品，但在这个搜索窗口里变得更显眼。“为什么是现在”不是新奇，而是替代好奇：在更清楚的所有权下做聊天、绘图、错误追踪和白板。</p>
+
+<p class="opp-p">"Software testing strategies" 是桥。AI 可以写更多代码，但团队仍然搜索怎么知道成果好不好。这个词和 DEV 的结账流程文章、“The Code Works” 讨论，以及关于 AI 产出能运行但缺少判断的反复抱怨相配。</p>
+
+<strong>关键判断</strong>：做一个小页面或工具，把 <code class="opp-inline-code">agent payments</code>、自运行聊天或测试策略翻译成给真实运营者的清单。
+
+<strong>反向视角</strong>：几个词来自外部发现，还没有被多个发布市场确认，所以先从内容或计算器开始，而不是软件。
+
+<hr class="opp-hr">
+
+<h2 class="opp-h2" id="opp-17">行动触发</h2>
+
+<h3 class="opp-h3">如果今天有 2 小时或一个完整周末，应该做什么？</h3>
+
+<strong>🔍 信号</strong>：最好的软件优先机会是 Dependency Security Calendar：<code class="opp-inline-code">curl</code> 将在 7 月 1 日到 8 月 3 日暂停处理漏洞报告，引发 302 条 Hacker News 讨论和 18 条 Lobsters 评论，评论者还提到 <code class="opp-inline-code">libexpat</code> 和 <code class="opp-inline-code">uriparser</code> 也在采用同样模式。
+
+<strong>白话说：</strong> 在安全截止日期暴露缺口之前，团队应该知道哪些关键依赖背后有一张人类支持日历。
+
+<strong>最佳 2 小时方案</strong>：<strong>Dependency Security Calendar</strong> 是给小型软件团队的一页报告，把关键依赖映射到维护者可用性、漏洞报告路径、发布日期、升级负责人和付费支持选项。客户发来包清单、<code class="opp-inline-code">Dockerfile</code>、<code class="opp-inline-code">lockfile</code> 或一小段生产依赖列表。你交回一页报告：<code class="opp-inline-code">curl</code> 在 7 月 1 日到 8 月 3 日暂停公开漏洞入口，这个 repo 通过这些包使用 <code class="opp-inline-code">curl</code>，这个负责人升级它，这条支持路径存在，其他这些依赖也需要同样的日历检查。
+
+<strong>为什么今天选它</strong>：它新鲜、有时间边界、软件原生，而且买家看得见。<code class="opp-inline-code">curl</code> 无处不在，7 月窗口很快开始，文章明确说 HackerOne 提交会暂停，而企业支持仍然可用。评论给了销售语言：@vessenes 看到了支持合同角度，@flaburgan 称赞维护者设边界，@laszlojamf 点出了社会对少数资金不足维护者的依赖。这个产品卖的不是恐惧，而是规划。
+
+<strong>为什么不选另外两个</strong>：<strong>Iroh Reachability Check</strong> 在 Iroh 的 2 亿端点和生产用户评论之后，技术上很令人兴奋，但它需要更深的网络专业知识和更清楚的买家紧迫性。<strong>Local Coding Model Readiness Report</strong> 有 332 条评论，也有真实的 $100/month 替代故事，但这一周已经过度使用 AI 工作流报告；它是强二号，不是今天最新鲜的构建。
+
+<strong>周末延伸</strong>：增加常见 <code class="opp-inline-code">lockfile</code> 解析、关键依赖安全页面小数据库、负责人分配、支持联系人字段、可发 Slack 的 7 月提醒和月度变化摘要。先用人工方式按每个 repo 收 $49-$149。之后，只有在三个手工客户要求刷新后，再向团队收取周期性依赖日历检查费用。
+
+<strong>最快验证路径</strong>：如果今天就想验证，从五个发布公开 Web 服务的团队开始；索要依赖列表，返还一页日历，展示 <code class="opp-inline-code">curl</code>、<code class="opp-inline-code">OpenSSL</code>、<code class="opp-inline-code">libexpat</code>、<code class="opp-inline-code">uriparser</code> 和包管理器安全路径。
+
+<p class="opp-p">承诺要窄。不要声称能找到每一个漏洞。卖给忙碌工程负责人的那句话是：“这些依赖很重要，这些人维护它们，这些日期会改变响应方式，这个人负责下一次升级。”</p>
+
+<strong>关键判断</strong>：先发布 Dependency Security Calendar；它把开源维护者可用性变成团队今天就能理解的日期、负责人、支持路径和升级动作。
+
+<strong>反向视角</strong>：对没有合规压力的团队，这个产品会变弱，所以先卖给 SaaS、代理公司、金融科技、医疗，以及有客户安全问卷的团队。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">哪些定价和变现模型值得研究？</h3>
+
+<strong>🔍 信号</strong>：今天值得研究的是：$49-$149 的人工 Dependency Security Calendar、<code class="opp-inline-code">curl</code> 在公开暂停期间的企业支持可用性、Hetzner 的价格调整讨论、Product Hunt 上的 agent engineering 发布，以及 Indie Hackers 上从 $16K MRR 到 $1.3M ARR 的案例。
+
+<strong>白话说：</strong> 钱在于把混乱的运营风险翻译成会前可以转发的一页纸。
+
+<p class="opp-p">最干净的模型是付费人工报告。Dependency Security Calendar 可以从一个 repo 的 $49 开始，因为第一个版本卖的是判断和研究，不是平台。买家付钱买一个带截止日期意识的答案：什么重要、谁负责、有什么支持，以及 7 月前该做什么。更高的 $149 价格适合有多个服务或客户合规审查的团队。</p>
+
+<code class="opp-inline-code">curl</code> 自己的情况值得研究，因为它把公开可用性和付费支持分开。开源创始人常常害怕为可用性收费，但这个线程显示，很多开发者理解维护者需要休息，支持合同也需要价值。Hetzner 价格调整给出第二个模型：账单变化时，一个显示“你的差额”的计算器或报告，比教育内容卖得更快。
+
+<p class="opp-p">Indie Hackers 补上创始人阶梯。<a href="https://www.indiehackers.com/post/tech/building-a-product-in-48-hours-and-hitting-30k-mrr-as-a-non-technical-founder-wWtWIH5tmwASUbxKaLT9" target="_blank" class="opp-link">$30K MRR</a> 和 <a href="https://www.indiehackers.com/post/tech/hitting-16k-mrr-after-years-of-failed-products-h5lM0xJmVrRZM0B23MT6" target="_blank" class="opp-link">$16K MRR</a> 故事很振奋，但今天更可迁移的经验更小：在投入订阅产品前，先为一个紧急产物收费。</p>
+
+<strong>关键判断</strong>：从绑定日期或账单的付费报告开始；只有当买家要求反复刷新时，再做周期性软件。
+
+<strong>反向视角</strong>：人工报告不会自动规模化，但它能在投入工程时间前揭示买家是否在意。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">今天最反直觉的发现是什么？</h3>
+
+<strong>🔍 信号</strong>：今天最反直觉的发现是，最可构建的软件机会来自维护者认真休假，而不是最大的 AI 或网络发布。
+
+<strong>白话说：</strong> 市场经常围绕那句没人想写下来的无聊话成形。
+
+<code class="opp-inline-code">curl</code> 文章可能被误读成反用户。它其实是亲现实的。"The bad guys won't rest. Probably not. But we will." 这句话有效，是因为它承认关键基础设施背后的人类层。线程里不只是在争安全，也在谈休假、企业支持、维护者过载，以及世界依赖一些没有正常人员冗余项目的奇怪事实。
+
+<p class="opp-p">这让机会更强，而不是更弱。创始人不需要替代 <code class="opp-inline-code">curl</code>，也不需要成为安全厂商。入口是围绕依赖做一个轻量运营产物：日期、支持路径、负责人和第一步行动。同样的模式也适用于电子书格式、本地模型、点对点网络和云价格。人们不会为抽象控制付钱；当控制变成会议、日期、账单或客户问题时，他们才会付钱。</p>
+
+<code class="opp-inline-code">Iroh</code> 技术上更令人兴奋。本地编码模型更时髦。Product Hunt 上的执行证明发布更明显属于 AI 时代。但 <code class="opp-inline-code">curl</code> 的暂停有最清楚的紧迫性，以及到买家可读交付物的最短路径。
+
+<strong>关键判断</strong>：寻找技术系统里的人类约束；日历、支持路径和负责人缺口，可以胜过更闪亮的能力演示。
+
+<strong>反向视角</strong>：一个月暂停未必能创造长期类别，所以第一个产品要聚焦验证和周期性日历。
+
+<hr class="opp-hr">
+
+<h3 class="opp-h3">Product Hunt 产品和开发者工具在哪里重叠？</h3>
+
+<strong>🔍 信号</strong>：Product Hunt 和开发者工具的重叠出现在 <a href="https://www.producthunt.com/products/novu" target="_blank" class="opp-link">Novu Connect</a>、<a href="https://www.producthunt.com/products/pandaprobe-cloud" target="_blank" class="opp-link">PandaProbe Cloud</a>、<a href="https://www.producthunt.com/products/mockpilot" target="_blank" class="opp-link">MockPilot</a>、<a href="https://www.producthunt.com/products/synopsule" target="_blank" class="opp-link">Synopsule</a>、<a href="https://www.producthunt.com/products/mimo-3" target="_blank" class="opp-link">MiMo Code</a>、<a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a>、<a href="https://www.producthunt.com/products/verol" target="_blank" class="opp-link">Verol</a> 和 <a href="https://www.producthunt.com/products/stackd-cc" target="_blank" class="opp-link">stackd.cc</a>。
+
+<strong>白话说：</strong> 发布市场正在把开发者的焦虑包装成证明、落位、私有记忆和可编辑产物。
+
+<a href="https://www.producthunt.com/products/novu" target="_blank" class="opp-link">Novu Connect</a> 领跑当天，因为它说 agents 应该在用户已经所在的地方工作。这和开发者工具重叠，因为集成才是真正的产品：Slack、email、chat 和工作流界面，比独立演示更重要。<a href="https://www.producthunt.com/products/pandaprobe-cloud" target="_blank" class="opp-link">PandaProbe Cloud</a> 把 agent engineering 变成托管基础设施。<a href="https://www.producthunt.com/products/aevs-by-fetch-ai" target="_blank" class="opp-link">AEVS</a> 把执行证明变成产品短语。它们都和 GitHub 的 skill libraries 以及 SkillSpector 押韵：能执行动作的软件需要包装和证据。
+
+<a href="https://www.producthunt.com/products/mockpilot" target="_blank" class="opp-link">MockPilot</a> 把在线网站变成可编辑 mockup，重叠在开发者/设计师交接。<a href="https://www.producthunt.com/products/synopsule" target="_blank" class="opp-link">Synopsule</a> 把私有会议转录留在设备端，呼应 Trace 的本地会议信号。<a href="https://www.producthunt.com/products/mimo-3" target="_blank" class="opp-link">MiMo Code</a> 强调写代码的长期记忆，和 DEV 关于持久 agent memory 以及本地模型使用的帖子重叠。<a href="https://www.producthunt.com/products/stackd-cc" target="_blank" class="opp-link">stackd.cc</a> 把“你的 AI 技术栈是什么？”变成身份和文档。
+
+<p class="opp-p">交叉结论是：Product Hunt 给出买家友好的外壳，而 GitHub 和 Hacker News 暴露更尖锐的技术反对意见。</p>
+
+<strong>关键判断</strong>：当一个 Product Hunt 发布说证明、记忆、落位或可编辑输出时，就去开发者论坛找更尖锐的痛点，并在那里构建。
+
+<strong>反向视角</strong>：Product Hunt 可能先奖励定位、后验证留存，所以不要在没有重复工作流的情况下把票数当成证明。
+
+<hr class="opp-hr">
+
+<em>— BuilderPulse Daily</em>
+</div></div>      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>AI Inspiration Notebook — small AI product studies, every other day</p>
+    <p style="margin-top:8px;font-size:11px;">Designed by Essie Zhang</p>
+  </footer>
+</div>
+
+<div id="toast" class="toast"></div>
+<div id="favModal" class="fav-modal" style="display:none">
+  <div class="fav-modal-bg" onclick="closeFavModal()"></div>
+  <div class="fav-modal-panel">
+    <div class="fav-modal-header"><h2 class="fav-modal-title">Favorites</h2><button class="fav-modal-close" onclick="closeFavModal()">&times;</button></div>
+    <div id="favModalBody" class="fav-modal-body"><div class="fav-empty">No favorites yet.</div></div>
+  </div>
+</div>
+
+<script>﻿// ==================== Theme ====================
+(function() {
+  var saved = localStorage.getItem("ai-inspiration-theme");
+  if (saved === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+})();
+
+function toggleTheme() {
+  var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  if (isDark) {
+    document.documentElement.removeAttribute("data-theme");
+    localStorage.setItem("ai-inspiration-theme", "light");
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("ai-inspiration-theme", "dark");
+  }
+}
+
+// ==================== Favorites ====================
+function loadFavorites() {
+  try { return JSON.parse(localStorage.getItem("ai-inspiration-favs")) || []; }
+  catch(e) { return []; }
+}
+
+function saveFavorites(f) { localStorage.setItem("ai-inspiration-favs", JSON.stringify(f)); }
+
+function isFavorited(pid) {
+  var favs = loadFavorites();
+  for (var i = 0; i < favs.length; i++) {
+    if (favs[i].id === pid || favs[i] === pid) return true;
+  }
+  return false;
+}
+
+function toggleFavorite(btn) {
+  var card = btn.closest(".card");
+  var pid = card.getAttribute("data-pid");
+  if (!pid) return;
+  var favs = loadFavorites();
+  var found = false;
+  for (var i = 0; i < favs.length; i++) {
+    var id = (typeof favs[i] === "string") ? favs[i] : favs[i].id;
+    if (id === pid) { favs.splice(i, 1); found = true; break; }
+  }
+  if (!found) { favs.push({ id: pid, addedAt: new Date().toISOString().slice(0,10) }); }
+  saveFavorites(favs);
+  updateCardUI(card, !found);
+}
+
+function updateCardUI(card, isFav) {
+  var btn = card.querySelector(".fav-btn");
+  if (!btn) return;
+  if (isFav) {
+    btn.classList.add("active"); card.classList.add("favorited");
+  } else {
+    btn.classList.remove("active"); card.classList.remove("favorited");
+  }
+}
+
+function restoreFavorites() {
+  var favs = loadFavorites();
+  document.querySelectorAll(".card").forEach(function(card) {
+    var pid = card.getAttribute("data-pid");
+    if (pid) updateCardUI(card, isFavorited(pid));
+  });
+}
+
+// ==================== Card Expand/Collapse ====================
+function expandCard(card) {
+  card.classList.add("expanded");
+  setTimeout(function() { card.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 50);
+}
+
+function collapseCard(card) {
+  var full = card.querySelector(".card-full");
+  if (full) { full.style.opacity = "0"; full.style.transform = "translateY(-8px)"; }
+  setTimeout(function() {
+    card.classList.remove("expanded");
+    if (full) { full.style.opacity = ""; full.style.transform = ""; }
+  }, 150);
+}
+
+// ==================== Category Filter ====================
+function filterCategory(btn, category) {
+  document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+  btn.classList.add("active");
+  document.querySelectorAll(".card").forEach(function(c) {
+    if (category === "all" || c.getAttribute("data-category") === category) {
+      c.style.display = "";
+    } else {
+      c.style.display = "none";
+    }
+  });
+  var expanded = document.querySelector(".card.expanded");
+  if (expanded) collapseCard(expanded);
+}
+
+// ==================== Favorites Modal ====================
+function openFavModal() {
+  var favs = loadFavorites();
+  var body = document.getElementById("favModalBody");
+  var modal = document.getElementById("favModal");
+  if (!body || !modal) return;
+  if (favs.length === 0) {
+    body.innerHTML = "<div class=\"fav-empty\">No favorites yet.</div>";
+    modal.style.display = ""; return;
+  }
+  var groups = {};
+  for (var f of favs) {
+    var card = document.querySelector('.card[data-pid="' + f.id + '"]');
+    if (!card) continue;
+    if (!groups[f.addedAt]) groups[f.addedAt] = [];
+    var title = (card.querySelector(".card-title") || {}).textContent || f.id;
+    var link = (card.querySelector(".ext-link") || {}).getAttribute("href") || "#";
+    groups[f.addedAt].push({ id: f.id, title: title, link: link });
+  }
+  var sortedDates = Object.keys(groups).sort().reverse();
+  var html = "";
+  for (var d of sortedDates) {
+    html += "<div class=\"fav-group\">";
+    html += "  <div class=\"fav-group-title\">" + d + "</div>";
+    for (var item of groups[d]) {
+      html += "  <div class=\"fav-item\">";
+      html += "    <div class=\"fav-item-info\">";
+      html += "      <span class=\"fav-item-title\">" + item.title + "</span>";
+      html += "    </div>";
+      html += '    <a href="' + item.link + '" target="_blank" class="fav-item-link">Open</a>';
+      html += '    <button class="fav-item-unfav" title="Remove" data-pid="' + item.id + '">♥</button>';
+      html += "  </div>";
+    }
+    html += "</div>";
+  }
+  body.innerHTML = html;
+  modal.style.display = "";
+}
+
+function closeFavModal() {
+  var modal = document.getElementById("favModal");
+  if (modal) modal.style.display = "none";
+}
+
+function unfavFromModal(pid) {
+  var favs = loadFavorites();
+  for (var i = 0; i < favs.length; i++) {
+    var id = (typeof favs[i] === "string") ? favs[i] : favs[i].id;
+    if (id === pid) { favs.splice(i, 1); break; }
+  }
+  saveFavorites(favs);
+  var card = document.querySelector('.card[data-pid="' + pid + '"]');
+  if (card) updateCardUI(card, false);
+  openFavModal();
+}
+
+document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeFavModal(); });
+// ==================== Modal unfav button delegation ====================
+document.addEventListener("click", function(e) {
+  var btn = e.target.closest(".fav-item-unfav");
+  if (!btn) return;
+  var pid = btn.getAttribute("data-pid");
+  if (pid) unfavFromModal(pid);
+});
+
+
+// ==================== Main Click Handler ====================
+document.addEventListener("click", function(e) {
+  var favBtn = e.target.closest(".fav-btn");
+  if (favBtn) { e.stopPropagation(); toggleFavorite(favBtn); return; }
+  var card = e.target.closest(".card");
+  if (!card) return;
+  if (e.target.closest(".close-btn") || e.target.closest(".ext-link") || e.target.closest(".tab")) return;
+  if (card.classList.contains("expanded")) { collapseCard(card); }
+  else {
+    var expanded = document.querySelector(".card.expanded");
+    if (expanded) collapseCard(expanded);
+    expandCard(card);
+  }
+});
+
+document.addEventListener("click", function(e) {
+  var cb = e.target.closest(".close-btn");
+  if (cb) { e.stopPropagation(); collapseCard(cb.closest(".card")); }
+});
+
+// ==================== Sticky Tabs ====================
+(function() {
+  var sentinel = document.createElement("div");
+  sentinel.className = "tabs-scroll-sentinel";
+  var tabs = document.querySelector(".tabs");
+  if (tabs && tabs.parentNode) {
+    tabs.parentNode.insertBefore(sentinel, tabs.nextSibling);
+  }
+  new IntersectionObserver(function(entries) {
+    for (var e of entries) {
+      tabs.classList.toggle("tabs--stuck", !e.isIntersecting);
+    }
+  }, { threshold: 0 }).observe(sentinel);
+})();
+
+restoreFavorites();
+
+
+
+// ==================== Channel Switcher (PRD 4.1) ====================
+var currentChannel = 'inspiration';
+
+function switchChannel(btn, channel) {
+  if (currentChannel === channel) return;
+  setChannel(channel, btn);
+}
+
+var _channelScrollY = { inspiration: 0, builder: 0 };
+
+function setChannel(channel, btn) {
+  // Save current scroll position before switching
+  _channelScrollY[currentChannel] = window.scrollY;
+  localStorage.setItem('ai-inspiration-channel', channel);
+
+  // Update button states
+  document.querySelectorAll('.channel-btn').forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  else {
+    var targetBtn = document.querySelector('.channel-btn[onclick*="' + channel + '"]');
+    if (targetBtn) targetBtn.classList.add('active');
+  }
+
+  // Show/hide channel-content divs
+  document.querySelectorAll('.channel-content').forEach(function(el) { el.style.display = 'none'; });
+  if (channel === "inspiration") {
+    var insp = document.getElementById("channel-inspiration");
+    if (insp) insp.style.display = "";
+  } else if (channel === "builder") {
+    var builder = document.getElementById("channel-builder");
+    if (builder) builder.style.display = "";
+  } else if (channel === "opportunities") {
+    var opp = document.getElementById("channel-opportunities");
+    if (opp) opp.style.display = "";
+  }
+
+  // Restore scroll position for the new channel
+  currentChannel = channel;
+  window.scrollTo(0, _channelScrollY[channel] || 0);
+}
+
+
+
+
+
+// ==================== Builder Digest Timeline (PRD 4.7) ====================
+function switchToTimeline(btn) {
+  // Deactivate all tabs, activate clicked one
+  document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+  if (btn) btn.classList.add("active");
+
+  // Hide cards, show timeline
+  var grid = document.querySelector(".card-grid");
+  var digest = document.getElementById("digestSection");
+  var main = document.querySelector("main");
+  var footer = document.querySelector(".footer");
+
+  if (grid) grid.style.display = "none";
+  if (digest) digest.style.display = "";
+  if (main) main.style.display = "none";
+  if (footer) footer.style.display = "none";
+}
+
+// Hook into existing filterCategory to restore card view
+var origFilterCategory = filterCategory;
+filterCategory = function(btn, category) {
+  // Restore card view
+  var grid = document.querySelector(".card-grid");
+  var digest = document.getElementById("digestSection");
+  var main = document.querySelector("main");
+  var footer = document.querySelector(".footer");
+
+  if (grid) grid.style.display = "";
+  if (digest) digest.style.display = "none";
+  if (main) main.style.display = "";
+  if (footer) footer.style.display = "";
+
+  // Call original
+  origFilterCategory(btn, category);
+};
+
+// ==================== Restore channel on load (PRD 4.1) ====================
+(function() {
+  var savedChannel = localStorage.getItem("ai-inspiration-channel");
+  if (savedChannel === "builder" || savedChannel === "opportunities") {
+    setChannel(savedChannel);
+  } else {
+    var insp = document.getElementById("channel-inspiration");
+    if (insp) insp.style.display = "";
+    var inspBtn = document.querySelector('.channel-btn[onclick*="inspiration"]');
+    if (inspBtn) inspBtn.classList.add("active");
+  }
+})();
+
+
+// ==================== Timeline Sidebar Nav (left sidebar + right content) ====================
+(function() {
+  var sidebar = document.getElementById('timelineSidebar');
+  if (!sidebar) return;
+
+  var items = sidebar.querySelectorAll('.timeline-nav-item');
+  var builders = document.querySelectorAll('.timeline-builder');
+  if (!items.length || !builders.length) return;
+
+  var builderIds = [];
+  builders.forEach(function(b) { if (b.id) builderIds.push(b.id); });
+
+  var observer = new IntersectionObserver(function(entries) {
+    var lastVisible = null;
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        lastVisible = entry.target.id;
+      }
+    });
+    if (lastVisible) {
+      items.forEach(function(item) {
+        if (item.getAttribute('data-builder') === lastVisible) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+  }, {
+    root: null,
+    rootMargin: '-60px 0px -60% 0px',
+    threshold: 0,
+  });
+
+  builders.forEach(function(b) { observer.observe(b); });
+
+  // Smooth scroll on sidebar click
+  items.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetId = item.getAttribute('data-builder');
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+
+
+// ==================== Opportunities Sidebar Nav ====================
+(function() {
+  var sidebar = document.getElementById("oppSidebar");
+  if (!sidebar) return;
+  var items = sidebar.querySelectorAll(".opp-nav-item");
+  var headings = document.querySelectorAll(".opp-h2[id]");
+  if (!items.length || !headings.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    var lastVisible = null;
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { lastVisible = entry.target.id; }
+    });
+    if (lastVisible) {
+      items.forEach(function(item) {
+        if (item.getAttribute("data-opp") === lastVisible) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }
+  }, { root: null, rootMargin: "-60px 0px -60% 0px", threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  items.forEach(function(item) {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+      var targetId = item.getAttribute("data-opp");
+      var target = document.getElementById(targetId);
+      if (target) { target.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
