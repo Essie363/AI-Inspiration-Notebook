@@ -38,6 +38,9 @@ def extract_tweets(feed_data, limit_per_builder=5):
                 continue
             seen.add(tid)
             text = t.get("text", "")
+            # Strip trailing t.co short links (X appends these, no value to readers)
+            import re
+            text = re.sub(r'\s*https?://t\.co/\S+\s*$', '', text).strip()
             # Skip overly short tweets (no real content)
             if len(text) < 40:
                 continue

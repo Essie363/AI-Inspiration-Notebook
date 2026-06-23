@@ -1,4 +1,4 @@
-// generate_page.js - AI Inspiration Notebook v2.1 (UTF-8 safe)
+﻿// generate_page.js - AI Inspiration Notebook v2.1 (UTF-8 safe)
 // Usage: node scripts/generate_page.js
 
 const fs = require("fs");
@@ -7,6 +7,15 @@ const { execSync } = require("child_process");
 const ROOT = path.resolve(__dirname, "..");
 
 const projects = JSON.parse(fs.readFileSync(ROOT + "/data/projects.json", "utf-8"));
+const TODAY = (() => { const n = new Date(); const pad = x => String(x).padStart(2, "0"); return n.getFullYear() + "-" + pad(n.getMonth() + 1) + "-" + pad(n.getDate()); })();
+const YESTERDAY = (() => { const n = new Date(); n.setDate(n.getDate() - 1); const pad = x => String(x).padStart(2, "0"); return n.getFullYear() + "-" + pad(n.getMonth() + 1) + "-" + pad(n.getDate()); })();
+const todayProjects = projects.filter(p => p.date === TODAY);
+const catCount = (arr, cat) => {
+  if (cat === "extension") return arr.filter(p => (p.category || "").toLowerCase() === "chrome-extension" || (p.category || "").toLowerCase() === "extensions").length;
+  if (cat === "creative") return arr.filter(p => (p.category || "").toLowerCase() === "creative" || (p.category || "").toLowerCase() === "creative tools").length;
+  if (cat === "workflow") return arr.filter(p => (p.category || "").toLowerCase() === "workflow").length;
+  return arr.length;
+};
 let tweets = [];
 try {
   const dirs = fs.readdirSync(ROOT + "/data/raw").filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().reverse();
@@ -108,9 +117,133 @@ if(tweets.length>0){
 `;
     }
     tl+="</div>\n";
+
+    }
   }
+  tl+="</div>\n";
+// ==================== Opportunities: BuilderPulse ====================
+const BP_DIR = "D:\\codex_workspace\\BuilderPulse-main\\BuilderPulse-main\\zh\\2026";
+let oppHtml = "<div class=\"opp-empty\">No BuilderPulse reports available for the past two days.</div>";
+
+function parseMdToHtml(md) {
+  let h = md;
+  h = h.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="opp-code"><code>$2</code></pre>');
+  h = h.replace(/`([^`]+)`/g, '<code class="opp-inline-code">$1</code>');
+  h = h.replace(/^#### (.+)$/gm, '<h4 class="opp-h4">$1</h4>');
+  h = h.replace(/^### (.+)$/gm, '<h3 class="opp-h3">$1</h3>');
+  h = h.replace(/^## (.+)$/gm, '<h2 class="opp-h2">$1</h2>');
+  h = h.replace(/^# (.+)$/gm, '<h2 class="opp-h1">$1</h2>');
+  h = h.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+  h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  h = h.replace(/\*(.+?)\*/g, '<em>$1</em>');
+  h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="opp-link">$1</a>');
+  h = h.replace(/^> (.+)$/gm, '<blockquote class="opp-blockquote">$1</blockquote>');
+  h = h.replace(/^---$/gm, '<hr class="opp-hr">');
+  let tblLines = h.split("\n");
+  let inTable = false;
+  let tblResult = [];
+  for (let i = 0; i < tblLines.length; i++) {
+    const line = tblLines[i];
+    if (line.match(/^\|.+\|$/) && line.includes("|")) {
+      if (!inTable) { inTable = true; tblResult.push('<table class="opp-table">'); }
+      const cells = line.split("|").filter(c => c.trim() !== "");
+      const isHeader = (i + 1 < tblLines.length && tblLines[i + 1] && tblLines[i + 1].match(/^\|[\s:|-]+\|$/));
+      const tag = isHeader ? "th" : "td";
+      tblResult.push("<tr>" + cells.map(c => "<" + tag + ">" + c.trim() + "</" + tag + ">").join("") + "</tr>");
+      if (isHeader) { i++; }
+    } else {
+      if (inTable) { inTable = false; tblResult.push("</table>"); }
+      tblResult.push(line);
+    }
+  }
+  if (inTable) tblResult.push("</table>");
+  h = tblResult.join("\n");
+  h = h.split("\n").map(l => {
+    const t = l.trim();
+    if (!t) return "";
+    if (t.startsWith("<")) return t;
+    return '<p class="opp-p">' + t + "</p>";
+  }).join("\n");
+  return h;
 }
-tl+="</div>\n";
+
+try {
+  // Find the most recent 2 available BuilderPulse files
+  const bpDates = [];
+  for (let offset = 0; offset < 14; offset++) {
+    const d = new Date(); d.setDate(d.getDate() - offset);
+    const ds = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    const fp = BP_DIR + "\\" + ds + ".md";
+    if (fs.existsSync(fp)) { bpDates.push({ date: ds, path: fp }); }
+    if (bpDates.length >= 2) break;
+  }
+    const OPP_DIR = ROOT + "/data/opportunities";
+  if (bpDates.length > 0) {
+    oppHtml = "";
+    for (const f of bpDates) {
+      // Prefer distilled version, fallback to raw BuilderPulse
+      const distilledPath = OPP_DIR + "/" + f.date + "-distilled.md";
+      const rawPath = f.path;
+      const readPath = fs.existsSync(distilledPath) ? distilledPath : rawPath;
+      const raw = fs.readFileSync(readPath, "utf-8");
+      const parsed = parseMdToHtml(raw);
+      oppHtml += '<div class="opp-day">';
+      oppHtml += '<div class="opp-day-header">' + f.date + '</div>';
+      oppHtml += '<div class="opp-day-content">' + parsed + '</div>';
+      oppHtml += '</div>';
+    }
+  }
+} catch(e) {
+  oppHtml = "<div class=\"opp-empty\">Unable to load BuilderPulse data: " + esc(String(e)) + "</div>";
+}
+
+
+const formatDate = (ds) => {
+  const parts = ds.split("-");
+  if (parts.length === 3) return parseInt(parts[1]) + "月" + parseInt(parts[2]) + "日";
+  return ds;
+};
+// Build Opportunities nav from H2 headings
+let oppNav = "";
+if (oppHtml.length > 0 && oppHtml.includes("opp-h2")) {
+  oppNav = '<nav class="opp-sidebar" id="oppSidebar"><div class="opp-sidebar-title">On this page</div>';
+  // Extract day blocks and their H2s
+  const dayRe = /<div class="opp-day-header">([^<]+)<\/div>[\s\S]*?(?=<div class="opp-day-header">|$)/g;
+  let dayMatch;
+  let h2GlobalIdx = 0;
+  const dayBlocks = [];
+  while ((dayMatch = dayRe.exec(oppHtml)) !== null) {
+    const dayDate = dayMatch[1];
+    const dayContent = dayMatch[0];
+    const dayH2s = [];
+    const h2ReLocal = /<h2 class="opp-h2">([^<]+)<\/h2>/g;
+    let h2m;
+    while ((h2m = h2ReLocal.exec(dayContent)) !== null) {
+      const title = h2m[1].replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#39;/g, "'").replace(/&quot;/g, '"');
+      const slug = "opp-" + h2GlobalIdx;
+      h2GlobalIdx++;
+      dayH2s.push({ title: title, slug: slug });
+    }
+    if (dayH2s.length > 0) dayBlocks.push({ date: dayDate, h2s: dayH2s });
+  }
+  // Build nav with date groups
+  for (const block of dayBlocks) {
+    oppNav += `<div class="opp-nav-date">${formatDate(block.date)}</div>`;
+    for (const h of block.h2s) {
+      oppNav += `<a href="#${h.slug}" class="opp-nav-item" data-opp="${h.slug}">${esc(h.title)}</a>`;
+    }
+  }
+  oppNav += "</nav>";
+  // Inject id anchors into oppHtml
+  let h2Idx = 0;
+  const allH2s = dayBlocks.flatMap(b => b.h2s);
+  oppHtml = oppHtml.replace(/<h2 class="opp-h2">/g, function(m) {
+    const id = allH2s[h2Idx] ? allH2s[h2Idx].slug : "";
+    h2Idx++;
+    return `<h2 class="opp-h2" id="${id}">`;
+  });
+}
+
 
 let e=0,c=0,w=0; for(const p of projects){if(p.category==="chrome-extension")e++;else if(p.category==="creative")c++;else w++;}
 
@@ -126,7 +259,7 @@ function shuffle(arr, seed) {
   return a;
 }
 const todaySeed = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-const shuffledProjects = shuffle(projects, parseInt(todaySeed, 10));
+const shuffledProjects = shuffle(todayProjects, parseInt(todaySeed, 10));
 
 const css = fs.readFileSync(ROOT+"/assets/style.css","utf-8");
 const js = fs.readFileSync(ROOT+"/assets/script.js","utf-8");
@@ -159,16 +292,17 @@ const html = `<!DOCTYPE html>
   </header>
 
   <div class="channel-bar">
-    <button class="channel-btn active" onclick="switchChannel(this, 'inspiration')">AI Projects</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'inspiration')">AI Projects</button>
     <button class="channel-btn" onclick="switchChannel(this, 'builder')">Builder Digest</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'opportunities')">Opportunities</button>
   </div>
 
-  <div id="channel-inspiration" class="channel-content active">
+  <div id="channel-inspiration" class="channel-content" style="display:none">
     <div class="tabs" id="categoryTabs">
-      <button class="tab active" onclick="filterCategory(this, 'all')">All (${projects.length})</button>
-      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (${e})</button>
-      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (${c})</button>
-      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (${w})</button>
+      <button class="tab active" onclick="filterCategory(this, 'all')">All (${todayProjects.length})</button>
+      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (${catCount(todayProjects, "extension")})</button>
+      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (${catCount(todayProjects, "creative")})</button>
+      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (${catCount(todayProjects, "workflow")})</button>
     </div>
     <div class="card-grid">
 ${shuffledProjects.map((p, i) => card(p, i)).join("")}    </div>
@@ -178,6 +312,13 @@ ${shuffledProjects.map((p, i) => card(p, i)).join("")}    </div>
     <div class="timeline-layout">
 ${nav}      <div class="timeline-content">
 ${tl}      </div>
+    </div>
+  </div>
+
+  <div id="channel-opportunities" class="channel-content" style="display:none">
+    <div class="timeline-layout opp-layout">
+${oppNav}      <div class="timeline-content opp-content">
+${oppHtml}      </div>
     </div>
   </div>
 
@@ -244,3 +385,7 @@ try {
 }
 
 console.log("  [OK] Done!");
+
+
+
+

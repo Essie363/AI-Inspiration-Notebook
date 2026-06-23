@@ -13,8 +13,8 @@ SEARCH_QUERIES = [
     {"q": "\"AI for\" stars:>10",          "sort": "stars",   "days_back": 30,  "desc": "Vertical apps"},
     {"q": "ai stars:>500",                 "sort": "stars",   "days_back": 365, "desc": "Proven high-star"},
     {"q": "\"AI assistant\" OR \"AI copilot\" stars:>10", "sort": "updated", "days_back": 30, "desc": "Copilot/assistant"},
-    {"q": "\"indie hacker\" OR \"AI side project\" stars:>5", "sort": "stars", "days_back": 90, "desc": "Indie makers"},
-    {"q": "\"AI chrome extension\" OR \"AI plugin\" stars:>5", "sort": "stars", "days_back": 90, "desc": "Extensions/plugins"},
+    {"q": "\"AI for makers\" OR \"solo dev AI\" stars:>5", "sort": "stars", "days_back": 90, "desc": "Maker/indie AI projects"},
+    {"q": "\"what new AI tool\" OR \"interesting AI project\" stars:>5", "sort": "stars", "days_back": 90, "desc": "Tool/project discovery"},
 ]
 
 

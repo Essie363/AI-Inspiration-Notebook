@@ -1,5 +1,9 @@
-"""AI Inspiration Notebook - YouTube AI project video collector (Data API v3)"""
-import requests, json, sys, os, re, glob
+"""AI Inspiration Notebook - YouTube AI project video collector (Data API v3)
+
+YouTube Data API v3 search endpoint does not support filtering by view count.
+Filters are applied AFTER fetching stats: AI-related check, then MIN_VIEWS cutoff.
+"""
+import requests, json, sys, os, glob
 from datetime import datetime, timedelta
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -23,6 +27,19 @@ NON_AI_KEYWORDS = [
     "music video", "trailer", "movie", "gameplay", "android app", "hello world",
     "nvidia tech demo", "evolution of", "wwdc", "concert", "sport",
 ]
+
+# Minimum view threshold to filter low-signal videos (applied AFTER stats fetch)
+# YouTube search API does not support filtering by view count natively.
+# Set to 0 to disable.
+# If all results are filtered out, candidate list should state "YouTube 今日无达标内容".
+# Do NOT relax the standard to pad numbers. If 3 consecutive days yield zero qualified
+# results, PM will decide whether to broaden search queries.
+MIN_VIEWS = 500
+
+# Trusted channels whose videos get priority in screening (PM-curated)
+# Videos from these channels are marked `trusted: true` in output.
+# Still subject to MIN_VIEWS filter — zero-signal videos don't qualify regardless.
+TRUSTED_CHANNELS = ["Fireship", "IndieStudio"]
 
 YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3"
 
@@ -167,25 +184,52 @@ def run():
     stats_map = get_video_stats(api_key, video_ids)
 
     # Combine data and filter
-    final = []
+    ai_related = []
+    filtered_by_views = 0
     for v in all_videos:
         stats = stats_map.get(v["video_id"], {"views": 0, "likes": 0})
         v["views"] = stats["views"]
         v["likes"] = stats["likes"]
+        v["trusted"] = v["channel"] in TRUSTED_CHANNELS
         desc = v.get("description", "")
         if is_ai_related(v["title"], desc):
+            ai_related.append(v)
+
+    # Apply MIN_VIEWS filter (post-stats, not possible at search level)
+    final = []
+    for v in ai_related:
+        if v["views"] >= MIN_VIEWS:
             final.append(v)
+        else:
+            filtered_by_views += 1
+
+    if not final:
+        save_results([])
+        trusted_count = sum(1 for v in all_videos if v.get("trusted"))
+        print(f"\n  Total new: {len(all_videos)}")
+        print(f"  AI-related: {len(ai_related)}")
+        print(f"  After MIN_VIEWS ({MIN_VIEWS}) filter: 0")
+        print(f"  From trusted channels: {trusted_count}")
+        print(f"  Filtered by views: {filtered_by_views}")
+        print(f"  [Dedup] Cross-day excluded: {len(previous_ids & seen_ids)}")
+        print(f"\n  ⚠ YouTube 今日无达标内容 (MIN_VIEWS={MIN_VIEWS})")
+        return
 
     save_results(final)
 
+    trusted_count = sum(1 for v in final if v["trusted"])
     print(f"\n  Total new: {len(all_videos)}")
-    print(f"  AI-related: {len(final)}")
+    print(f"  AI-related: {len(ai_related)}")
+    print(f"  After MIN_VIEWS ({MIN_VIEWS}) filter: {len(final)}")
+    print(f"  From trusted channels: {trusted_count}")
+    print(f"  Filtered by views: {filtered_by_views}")
     print(f"  [Dedup] Cross-day excluded: {len(previous_ids & seen_ids)}")
 
-    final.sort(key=lambda x: x["views"], reverse=True)
+    final.sort(key=lambda x: (not x["trusted"], -x["views"]))
     for i, v in enumerate(final[:10], 1):
+        badge = " 🏅" if v["trusted"] else ""
         print(f"\n  {i}. {v['title']}")
-        print(f"      Channel: {v['channel']}  |  Views: {v['views']:,}")
+        print(f"      Channel: {v['channel']}{badge}  |  Views: {v['views']:,}")
         pub = v.get("published_at", "")[:10]
         print(f"      Published: {pub}")
         print(f"      https://www.youtube.com/watch?v={v['video_id']}")

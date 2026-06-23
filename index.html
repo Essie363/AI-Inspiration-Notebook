@@ -260,7 +260,7 @@ body {
 
 .timeline-builder-name {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text);
 }
@@ -378,9 +378,9 @@ body {
 /* ==================== Card Compact ==================== */
 .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
 .source-badge {
-  font-size: 11px; color: var(--text-secondary); font-weight: 500;
+  font-size: 12px; color: var(--text-secondary); font-weight: 500;
 }
-.card-date { font-size: 11px; color: var(--text-tertiary); }
+.card-date { font-size: 12px; color: var(--text-tertiary); }
 
 /* Favorite heart button */
 .fav-btn {
@@ -395,7 +395,7 @@ body {
 
 .card-title {
   font-family: var(--font-serif);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.35;
   margin-bottom: 6px;
@@ -416,17 +416,17 @@ body {
 
 .card-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
 .tag {
-  font-size: 11px; padding: 2px 8px; border-radius: 6px;
+  font-size: 12px; padding: 2px 8px; border-radius: 6px;
   background: var(--tag-bg); color: var(--tag-text); font-weight: 500;
   font-family: var(--font-sans);
 }
 
 .key-insight {
-  font-family: var(--font-serif);
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: 12px;
   line-height: 1.5;
-  color: var(--text);
-  padding: 10px 12px;
+  color: var(--text-secondary);
+  padding: 8px 12px;
   background: var(--primary-light);
   border-radius: 6px;
   border-left: 3px solid var(--primary);
@@ -437,9 +437,9 @@ body {
   overflow: hidden;
 }
 .key-insight-label {
-  font-size: 10px; font-weight: 600; color: var(--primary);
-  display: block; margin-bottom: 4px;
-  text-transform: uppercase; letter-spacing: 0.4px;
+  font-size: 12px; font-weight: 500; color: var(--text-tertiary);
+  display: block; margin-bottom: 3px;
+  text-transform: uppercase; letter-spacing: 0.6px;
   font-family: var(--font-sans);
 }
 
@@ -470,11 +470,11 @@ body {
 
 .analysis-block { margin-bottom: 0; }
 .analysis-label {
-  font-size: 11px; font-weight: 600; color: var(--text-tertiary);
+  font-size: 12px; font-weight: 600; color: var(--text-tertiary);
   text-transform: uppercase; letter-spacing: 0.4px; display: block; margin-bottom: 6px;
   font-family: var(--font-sans);
 }
-.analysis-block p { font-size: 14px; line-height: 1.7; color: var(--text); white-space: pre-line; }
+.analysis-block p { font-size: 13px; line-height: 1.6; color: var(--text-secondary); white-space: pre-line; }
 
 /* ==================== Mark Highlight ==================== */
 mark {
@@ -611,7 +611,7 @@ mark {
 }
 
 .fav-item-meta {
-  font-size: 11px; color: var(--text-tertiary); margin-top: 2px;
+  font-size: 12px; color: var(--text-tertiary); margin-top: 2px;
   display: flex; gap: 8px; align-items: center;
 }
 .fav-item-meta .dot { color: var(--border); }
@@ -627,13 +627,13 @@ mark {
 /* ==================== Header favorites button ==================== */
 .fav-header-btn {
   background: none; border: 1px solid var(--border); border-radius: 8px;
-  padding: 4px 10px; cursor: pointer; font-size: 16px; line-height: 1;
+  padding: 4px 10px; cursor: pointer; font-size: 15px; line-height: 1;
   color: var(--text-secondary); transition: all 0.2s;
 }
 .fav-header-btn:hover { background: var(--heart); color: #fffcf7; border-color: var(--heart); }
 /* Card category badge - visible in All view */
 .card-cat-badge {
-  font-size: 10px;
+  font-size: 12px;
   padding: 2px 8px;
   border-radius: 8px;
   color: #fffcf7;
@@ -663,7 +663,7 @@ mark {
 .fav-filter-btn {
   padding: 3px 12px; border-radius: 12px; border: 1px solid var(--border);
   background: var(--surface); color: var(--text-secondary); cursor: pointer;
-  font-size: 11px; font-weight: 500; transition: all 0.2s;
+  font-size: 12px; font-weight: 500; transition: all 0.2s;
 }
 .fav-filter-btn:hover { border-color: var(--primary); color: var(--primary); }
 .fav-filter-btn.active { background: var(--primary); color: #fffcf7; border-color: var(--primary); }
@@ -671,6 +671,206 @@ mark {
 .card-full-tags {
   display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;
 }
+
+
+/* ==================== Opportunities Channel ==================== */
+.opportunities-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+
+.opp-empty {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  padding: 60px 20px;
+  font-family: var(--font-sans);
+}
+
+.opp-day {
+  margin-bottom: 40px;
+}
+
+.opp-day-header {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border, #e8e0d8);
+}
+
+.opp-day-content {}
+.opp-h1 { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--text); margin: 24px 0 12px; line-height: 1.3; }
+.opp-h2 { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--text); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border, #e8e0d8); }
+.opp-h3 { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--text); margin: 18px 0 8px; }
+.opp-h4 { font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--text-secondary); margin: 14px 0 6px; }
+
+.opp-p {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+
+.opp-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.opp-link:hover { color: var(--primary-dark, #8b6914); }
+
+.opp-blockquote {
+  border-left: 3px solid var(--primary-light, #f5eed9);
+  padding: 8px 16px;
+  margin: 16px 0;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  background: var(--primary-light, #faf7ed);
+  border-radius: 0 6px 6px 0;
+}
+
+.opp-hr {
+  border: none;
+  border-top: 1px solid var(--border, #e8e0d8);
+  margin: 24px 0;
+}
+
+.opp-code {
+  background: var(--code-bg, #f5f0e8);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+.opp-inline-code {
+  background: var(--code-bg, #f5f0e8);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "SF Mono", "Consolas", monospace;
+  font-size: 12px;
+  color: var(--primary-dark, #8b6914);
+}
+
+.opp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+.opp-table th {
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--primary-light, #faf7ed);
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 2px solid var(--border, #e8e0d8);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.opp-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border, #e8e0d8);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.opp-table tr:last-child td { border-bottom: none; }
+
+strong { font-weight: 600; color: var(--text); }
+em { font-style: italic; }
+
+@media (max-width: 640px) {
+  .opportunities-container { padding: 16px; }
+  .opp-h1 { font-size: 22px; }
+  .opp-h2 { font-size: 14px; }
+  .opp-table { font-size: 12px; }
+  .opp-table th, .opp-table td { padding: 6px 8px; }
+}
+
+[data-theme="dark"] .opp-table th { background: rgba(255,255,255,0.05); }
+[data-theme="dark"] .opp-blockquote { background: rgba(255,255,255,0.03); }
+[data-theme="dark"] .opp-code, [data-theme="dark"] .opp-inline-code { background: rgba(255,255,255,0.05); }
+
+
+/* ==================== Opportunities Sidebar Nav ==================== */
+.opp-layout {}
+.opp-sidebar {
+  width: 150px;
+  flex-shrink: 0;
+  padding-right: 16px;
+  border-right: 1px solid var(--border);
+  position: sticky;
+  top: 60px;
+  align-self: flex-start;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+.opp-sidebar::-webkit-scrollbar { display: none; }
+.opp-sidebar-title {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.opp-nav-item {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.opp-nav-item:hover { color: var(--text); background: var(--tag-bg); }
+.opp-nav-item.active { color: var(--primary);
+
+
+.opp-nav-date {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: none;
+  letter-spacing: 0.3px;
+  margin: 12px 0 4px;
+  padding: 0 8px;
+} font-weight: 700; background: var(--primary-light); }
+.opp-content { padding-left: 24px; }
+
+@media (max-width: 640px) {
+  .opp-sidebar { display: none; }
+  .opp-content { padding-left: 0; }
+}
+
+
+
 </style>
 </head>
 <body>
@@ -679,7 +879,7 @@ mark {
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-22 18:29</span>
+        <span>2026-06-23 10:48</span>
         <span class="dot">&middot;</span>
         <span>19 projects</span>
       </div>
@@ -691,50 +891,99 @@ mark {
   </header>
 
   <div class="channel-bar">
-    <button class="channel-btn active" onclick="switchChannel(this, 'inspiration')">AI Projects</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'inspiration')">AI Projects</button>
     <button class="channel-btn" onclick="switchChannel(this, 'builder')">Builder Digest</button>
+    <button class="channel-btn" onclick="switchChannel(this, 'opportunities')">Opportunities</button>
   </div>
 
-  <div id="channel-inspiration" class="channel-content active">
+  <div id="channel-inspiration" class="channel-content" style="display:none">
     <div class="tabs" id="categoryTabs">
-      <button class="tab active" onclick="filterCategory(this, 'all')">All (19)</button>
-      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (3)</button>
-      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (5)</button>
-      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (11)</button>
+      <button class="tab active" onclick="filterCategory(this, 'all')">All (9)</button>
+      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (4)</button>
+      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (1)</button>
+      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (4)</button>
     </div>
     <div class="card-grid">
-<div class="card" data-category="creative" data-pid="browser-use-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
+<div class="card" data-category="creative" data-pid="builderpulse-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
     <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">Browser Use</h2>
-  <p class="card-desc">???? AI Agent ?????100k stars????? AI ??????????</p>
+  <h2 class="card-title">BuilderPulse</h2>
+  <p class="card-desc">独立开发者的AI日报——20个问题+10多个数据源，AI帮你盯行业动态，1.4k stars</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    Browser Use ???? AI ???????? AI Agent ????????? Agent ?????????????100k stars...
+    1.4k stars但产品思路值得关注。
+1. &quot;20个问题+10多个数据源&quot;的框架设计是亮点——不是被动推送，是主动按项目需求拉取
+2. 工具类产品的天...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">????</span><span class="tag">To B</span></div>
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span><span class="tag">资讯</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>???????????????? AI Agent ???? API ????? Agent ???????? DOM?Cookie?????????????????????</p>
+  <p>独立开发者需要关注行业动态但没时间——每天要扫GitHub trending、X、Hacker News、Reddit多个信息源。<mark>信息分散，筛选耗时</mark>。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>??????????????AI Agent ???????????????????????????+??????+???????? AI ???</p>
+  <p>LLM擅长<mark>信息聚合和摘要</mark>——可以同时监控多个数据源，用预设的<mark>20个问题框架</mark>筛选和总结。不是简单的RSS聚合，而是有筛选逻辑的智能资讯。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>Browser Use ???? AI ???????? AI Agent ????????? Agent ?????????????100k stars ???? AI Agent ????????????????Agent ?????? API ?????? Web?</p>
+  <p>1.4k stars但产品思路值得关注。
+1. <mark>"20个问题+10多个数据源"</mark>的框架设计是亮点——不是被动推送，是主动按项目需求拉取
+2. 工具类产品的天花板在这里：<mark>你自己就是独立开发者</mark>，你为自己做工具，然后发现别人也需要
+3. 资讯类产品的核心不是"信息多"，是<mark>"不需要我看的信息不要出现"</mark></p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>????????????AI Agent???????????????????????????????????????</p>
+  <p>为自己做一个工具。你每天重复做的<mark>信息处理工作</mark>，大概率别人也需要。从自己的需求出发做产品——你不是在做市场调研，你就是在解决自己的问题，顺便产品化。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/BuilderPulse/BuilderPulse" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="browser-use-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Browser Use</h2>
+  <p class="card-desc">让网站对AI Agent可访问——100k stars，为AI Agent提供浏览器自动化API，让Agent能像人一样操作网页</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    100k stars说明了一个被忽视的刚需：AI Agent的&quot;手&quot;和&quot;眼睛&quot;。
+1. 它是基础设施型产品——不面向终端用户，面向所有做AI Agent的...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">基础设施</span><span class="tag">To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI Agent想操作网页但<mark>缺乏统一接口</mark>——每个网站有不同的DOM结构和交互逻辑。开发者要为每个网站写定制脚本，Agent的<mark>网页交互层</mark>没有标准化。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM的<mark>视觉理解和推理能力</mark>让Agent可以"看懂"网页——不是解析DOM，而是像人一样理解布局、按钮、表单。Browser Use把这种能力封装成<mark>简单API</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>100k stars说明了一个被忽视的刚需：AI Agent的<mark>"手"和"眼睛"</mark>。
+1. 它是<mark>基础设施型产品</mark>——不面向终端用户，面向所有做AI Agent的开发者
+2. 基础设施的价值不在功能多，在于<mark>接口简单</mark>。提供精简API让任何Agent都能操作浏览器，而不是做一个大而全的自动化框架</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>AI时代产生了大量<mark>新基础设施需求</mark>——Agent的浏览器层、记忆层、工具调用层、安全层。每一个都是独立的产品机会。观察你用的Agent框架，里面哪些模块可以独立出来做产品？</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
@@ -743,132 +992,132 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="paperclip-20260621" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-21</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Paperclip - Hire AI Agents Like Employees</h2>
-  <p class="card-desc">一个开源 Agent 编排平台。不是让你写 Agent，而是让你像招聘员工一样 hire Agent——给它岗位描述、KPI，然后看它干活。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    心智模型的转换很有趣——从「构建者视角」变成「管理者视角」。
-1. 招聘类比降低了心理门槛：你不会写代码，但你会招人
-2. 岗位描述 = Prompt，K...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To B</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>现在用 AI Agent 的门槛太高了——要写代码、搭框架、调 prompt。企业想用 Agent 但找不到技术人才来做。Paperclip 的切入点：不用写代码，像招聘一样用 Agent。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>LLM 的推理能力让 Agent 可以理解自然语言的任务描述和考核标准。不需要编程接口，给 Agent 说「你是客服主管，目标是把响应时间降到 2 小时内」它就懂了。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>心智模型的转换很有趣——从「构建者视角」变成「管理者视角」。
-1. 招聘类比降低了心理门槛：你不会写代码，但你会招人
-2. 岗位描述 = Prompt，KPI = 评估函数，面试 = 测试用例
-3. 冷启动：在 Product Hunt 和 Hacker News 以「Hire AI Agents Like Employees」这个 Hook 传播
-4. 354k 观看量说明这个类比打动了很多人
-
-变现：开源社区版 + 托管企业版。护城河：Agent 的评估数据和工作记录。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>用用户已有的心智模型去解释新产品。招聘 vs 写代码——选择用户更熟悉的那一个。你之前做视频流媒体：如果对用户说「像选片一样选择 AI 功能」，会不会比「配置 AI 参数」更容易理解？</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=C3-4llQYT8o" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="extension" data-pid="writely-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Writely</h2>
-  <p class="card-desc">在任意网页输入框里都能用的 AI 写作助手，不限平台。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p><mark>Notion AI</mark> 很好用，但被<mark>锁在 Notion 生态</mark>里。你在飞书、Gmail、GitHub Issue、微信文章编辑器里写作时都用不了。用户需要的不是「Notion 里的 AI」，而是「<mark>任何输入框</mark>里的 AI」。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>LLM 的文本生成能力成熟到可以<mark>无缝嵌入</mark>浏览器的<mark>任何输入框</mark>。不是用户来找 AI，而是 AI 等在那里，你打字它就出现。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>Notion AI 只能在 Notion 里用。它可以去任何地方。就这么一个区别。%%
-1. <mark>借势</mark>：Notion AI 教育了市场「AI 写作助手」是什么，Writely 直接承接这个认知
-2. <mark>差异化</mark>：Notion AI 只能在 Notion 用 → Writely 任何地方都能用
-3. <mark>门槛极低</mark>：安装 Chrome 插件即可，不用切换工具、不用学新操作
-4. 冷启动：靠「Notion AI <mark>平替</mark>」这个关键词在中文社区传播，GitHub 1.3k stars 说明需求真实
-
-变现路径：免费基础版 + 付费高级版（更多模型选择、自定义 prompt）。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>不要做「比 X 更好的 Y」——做「X 的<mark>平替</mark>，但能用在 X 不能用地方」。Notion AI 的锁是它的<mark>围墙</mark>，也是你的<mark>机会</mark>。你之前做视频流媒体产品：有没有某个功能被「锁」在特定平台里，可以做成跨平台的轻量替代？</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/anc95/writely" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="claude-mem-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
+<div class="card" data-category="workflow" data-pid="odoopilot-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
     <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">Claude Mem</h2>
-  <p class="card-desc">???????????? Agent ???????? Agent ???83k stars?</p>
+  <h2 class="card-title">OdooPilot</h2>
+  <p class="card-desc">ERP通过聊天使用——免登录Odoo，Telegram/WhatsApp上AI助手，请假、审批、CRM更新、库存校验全用自然语言，15种语言，15 stars</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    claude-mem ?????? Agent ???????????????????? Agent ????????? Claude ??????? A...
+    15 stars但场景极准。
+1. 它不做通用AI助手——只做Odoo的AI前端。定位越窄，替代意愿越强
+2. 用即时通讯工具（Telegram/What...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">????</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-tags"><span class="tag">To B</span><span class="tag">AI Agent</span><span class="tag">ERP</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>AI Agent ?????????????????? Agent ?????????????????????????????????????????</p>
+  <p>ERP系统功能强大但<mark>学习成本极高</mark>——Odoo有上千个模块和菜单，普通员工要记住请假在哪个入口、报销怎么填、库存怎么查。对非技术人员，ERP就是<mark>一个迷宫</mark>。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>???????????????????????????????????????????????????????+??????????????</p>
+  <p>LLM可以理解"我想请三天年假"这样的自然语言请求并映射到Odoo的<mark>具体操作</mark>——创建请假单、检测余额、发给审批人。Telegram/WhatsApp作为入口，员工不需要登录ERP。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>claude-mem ?????? Agent ???????????????????? Agent ????????? Claude ??????? Agent ???????83k stars ???? Agent ????????????????</p>
+  <p>15 stars但场景极准。
+1. 它不做通用AI助手——<mark>只做Odoo的AI前端</mark>。定位越窄，替代意愿越强
+2. 用即时通讯工具（Telegram/WhatsApp）当入口——不改变员工的工作习惯
+3. "Your team uses Odoo — without logging in to Odoo" 这句产品描述就是<mark>价值主张本身</mark></p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>??????????????????????????????????????????????????????????????????????????</p>
+  <p>找一个复杂的企业软件（SAP、Salesforce、Jira），把它<mark>最常用的20%功能</mark>用聊天界面重新包装。不需要替换系统——只替换交互层。员工不需要学系统，只需要会说话。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/arunrajiah/odoopilot" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="147-agents-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
+  <div class="card-header">
+    <span class="source-badge">&#9654; YouTube</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">147 Pre-Built AI Agents</h2>
+  <p class="card-desc">开源仓库147+预构建AI Agent——金融、营销、产品等领域的专业Agent，可直接用于Claude Code，Agent专业化趋势</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    Agent正在从&quot;通用助手&quot;走向&quot;专业化分工&quot;。
+1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To B</span><span class="tag">开源</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI Agent很强大但<mark>不会写prompt</mark>的人用不起来。每个领域需要不同的Agent配置——金融分析师要财报解读能力，营销人要文案和数据分析。普通用户<mark>不知道Agent该怎么配</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM的能力可以通过<mark>专业化的system prompt + 工具集</mark>变成垂直Agent。不是训练新模型，而是给同一个模型不同的"角色卡"和工具包。147个预构建Agent就是147套经过验证的角色配置。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>Agent正在从<mark>"通用助手"走向"专业化分工"</mark>。
+1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领域会有专属Agent
+2. 开源预构建的Agent让"不会写prompt"不再是障碍——直接用别人调好的
+3. Sebastian Hardy频道从AI营销视角推荐，目标受众明确</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>你的产品可以考虑做<mark>Agent模板市场</mark>——不是让用户从头配置Agent，而是给他们一套开箱即用的分类Agent。像Notion模板市场一样，不同场景不同模板，用户只需选+微调。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://www.youtube.com/watch?v=XpRnyqxM3Jk" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="extension" data-pid="claude-mem-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Claude Mem</h2>
+  <p class="card-desc">跨会话持久上下文——83k stars，捕获Agent的一切记忆，任何LLM Agent通用的记忆层</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    83k stars，Agent&quot;记忆&quot;是基础设施级需求。
+1. 它不做Agent本身——只做记忆层。任何Agent都可以接入
+2. 类似浏览器cookie...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">基础设施</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>Agent每次新会话都是空白——不记得你昨天的偏好、上周解决的问题、上个月的上下文。用户需要反复重复背景信息。LLM的上下文窗口虽然越来越大，但<mark>会话间的记忆是断裂</mark>的。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM本身<mark>没有持久记忆</mark>——这是架构设计决定的。但LLM可以理解、压缩、检索历史上下文。Claude Mem在LLM外面加了一层<mark>记忆管理</mark>：自动捕获关键决策、总结历史、跨会话注入上下文。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>83k stars，Agent<mark>"记忆"</mark>是基础设施级需求。
+1. 它不做Agent本身——只做<mark>记忆层</mark>。任何Agent都可以接入
+2. 类似<mark>浏览器cookie</mark>之于Web开发：不是产品核心，但没有它产品体验不完整
+3. 记忆越积累越有价值——<mark>用户迁移成本</mark>随使用增加而上升</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>不从正面做AI Agent——从侧面做Agent的<mark>配套设施</mark>。Agent生态里最缺的不一定是新Agent，可能是记忆、安全、监控、测试这些模块。挑一个功能把它做到<mark>通用、独立、可插拔</mark>。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
@@ -877,190 +1126,94 @@ mark {
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="getspecstory-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
+<div class="card" data-category="extension" data-pid="openclaw-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-20</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">GetSpecStory</h2>
-  <p class="card-desc">把你和 AI 的聊天记录变成可以复用的技能，而不是扔在那里吃灰。</p>
+  <h2 class="card-title">OpenClaw</h2>
+  <p class="card-desc">跨平台个人AI助手——&quot;The lobster way&quot;品牌叙事，379k stars，任何OS任何平台都能用的AI agent，不走平台绑定路线</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。
+    379k stars说明需求成立。OpenClaw把AI助手从&quot;平台附属功能&quot;变成了&quot;独立OS层&quot;——不是另一个ChatGPT客户端，而是AI时代的操作系...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span><span class="tag">跨平台</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>每次和 AI 对话都产生大量有价值的对话历史——解决过的问题、写过的代码、调试记录。但这些信息都沉淀在<mark>聊天记录</mark>里，<mark>很难复用</mark>。下次遇到类似问题还得<mark>再问一遍</mark>。</p>
+  <p>AI助手大多<mark>绑定特定平台</mark>——ChatGPT有独立App、Claude在网页里、Copilot在IDE里。用户想要一个<mark>跨OS、跨平台</mark>的统一入口：在Windows、macOS、Linux任何地方，同一个AI助手随时在。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM 可以<mark>分析对话模式</mark>、提取关键决策点、总结解决方案。把<mark>非结构化</mark>的聊天记录变成结构化的可复用知识。</p>
+  <p>LLM的推理和生成能力已成熟到可以作为<mark>独立平台层</mark>存在——不需要依附于特定IDE或操作系统。<mark>REST API + WebSocket</mark>让AI助手可以在任何环境运行，平台不再是瓶颈。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>每次和 AI 对话完，那些解决问题的思路就扔在记录里。它帮你捡回来，变成下次能直接用的东西。%%
-1. 核心洞察：AI 对话历史不是「垃圾」，是「<mark>未结构化的知识资产</mark>」
-2. 把「chat logs」变成「reusable skills」——<mark>心智模型</mark>的变化
-3. 1.2k stars，说明每个深度用 AI 的人都有「之前问过的又忘了」的痛点
-4. 产品天然有<mark>网络效应</mark>：你用得越多，积累的 Skills 越多
-
-变现：个人版免费 + 团队版（共享 Skills 库）。护城河：用户积累的 Skills 数据。</p>
+  <p>379k stars说明需求成立。OpenClaw把AI助手从<mark>"平台附属功能"</mark>变成了<mark>"独立OS层"</mark>——不是另一个ChatGPT客户端，而是AI时代的操作系统级入口。
+1. 不绑定编辑器、不绑定终端、不绑定OS——与Copilot和Warp走完全相反的路
+2. "The lobster way"的品牌调性说明他们有<mark>产品叙事意识</mark>，不是纯技术项目</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>AI 每天产生大量「<mark>副产品</mark>」——对话记录、生成内容、修改历史。每个<mark>副产品</mark>都可能是另一个产品的<mark>原材料</mark>。就像 Headroom 是「用 AI 给 AI 省钱」，GetSpecStory 是「用 AI 把 AI 的聊天记录变成资产」。</p>
+  <p>你的产品不一定非要绑定某个生态。当竞争对手都在绑定平台时，做<mark>"跨平台统一层"</mark>本身就是差异。观察哪些AI工具只在单一平台存在——把它们拉到跨平台就是你的机会。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/specstoryai/getspecstory" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/openclaw/openclaw" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="quick-prompt-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
+<div class="card" data-category="extension" data-pid="trvl-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-20</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-23</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">Quick Prompt</h2>
-  <p class="card-desc">把你常用的 Prompt 存起来，下次一键调用。ChatGPT、Claude、Gemini 都支持。</p>
+  <h2 class="card-title">trvl</h2>
+  <p class="card-desc">1个MCP工具包揽66种旅行搜索——航班、酒店、火车、租车、轮渡、价格提醒，无API key依赖，单个Go二进制，41 stars</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？
+    41 stars，但产品思路精炼。
+1. &quot;1 tool + 66 aliases&quot;的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）
+...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
+    <div class="card-full-tags"><span class="tag">To C</span><span class="tag">MCP</span><span class="tag">旅行</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>AI 重度用户会<mark>积累大量</mark>高质量 Prompt。每次要用的时候要么靠记忆回想、要么去翻笔记。Prompt 是你和 AI 打交道的「语言」，但没有好的<mark>管理工具</mark>。</p>
+  <p>规划旅行要在多个App间跳转——机票在Skyscanner、酒店在Booking、火车在Rail Europe。每个平台不同界面，<mark>信息分散</mark>，反复切换。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p><mark>Prompt Engineering</mark> 是 AI 时代的<mark>新技能</mark>。任何<mark>新技能</mark>都需要配套的工具。Quick Prompt 解决的是「Prompt 写好了怎么管理和复用」这个<mark>新问题</mark>。</p>
+  <p>LLM可以理解自然语言的旅行需求（"下周五去东京，预算5000，找最便宜的航班+酒店组合"），但缺一个统一的<mark>搜索执行层</mark>。trvl提供了这个层——1个MCP工具，66个别名，AI助手一次调用覆盖所有旅行搜索。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>AI 创造了一个新品类叫「Prompt 管理」——你是做品类第一，还是等别人做？%%
-1. Prompt 管理是一个全新的产品品类——AI 出现之前不存在
-2. 做<mark><mark>品类第一</mark></mark>比做品类最好更容易——<mark>先占位</mark>
-3. 826 stars 虽然不多，但在 Prompt 管理这个细分领域是头部
-4. 产品逻辑简单清晰：存 Prompt → 分类 → 快速调用，不做过多的 AI 功能
-
-变现：免费。潜在盈利点：Prompt 市场/社区（用户分享和交易 Prompt）。</p>
+  <p>41 stars，但产品思路精炼。
+1. <mark>"1 tool + 66 aliases"</mark>的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）
+2. 98.9% smaller tools/list 说明他们在做<mark>接口精简</mark>，而不是堆功能
+3. 无API key的纯抓取方案让用户零配置即可用——降低了MCP的使用门槛</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>AI 创造了很多新需求——Prompt 管理、Token 统计、对话历史管理、Skills 管理。每个「<mark>管理类</mark>」需求都是一个产品机会。而且这些产品<mark>不需要你懂 AI 技术</mark>，只需要你懂用户怎么用 AI。</p>
+  <p>做MCP工具时，考虑<mark>"单工具多别名"</mark>模式——不要为每个功能做一个tool，用别名覆盖语义变体让AI更灵活调用。另外，无API key方案虽然稳定性不如官方API，但<mark>零配置</mark>体验适合个人用户场景。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/wenyuanw/quick-prompt" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/MikkoParkkola/trvl" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="creative" data-pid="dashplayer-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">DashPlayer</h2>
-  <p class="card-desc">一个看美剧学英语的播放器，AI 给你实时翻译字幕。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">桌面应用</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>学英语最有效的方式是沉浸式看剧/看视频，但传统播放器没有针对语言学习做优化。用户需要手动找字幕、查单词、反复回放，<mark>体验断裂</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p><mark>语音识别</mark> + <mark>LLM 翻译</mark> + <mark>NLP</mark> 可以实时生成双语字幕、智能识别生词、根据上下文给出解释。以前需要人工做的工作，现在 AI 全自动。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>你不是缺学习工具，你缺的是一个你本来就在用的东西，里面多了 AI。比如这个播放器。%%
-1. 视频播放器是个很老的品类，但 DashPlayer 加了「学英语」这个 AI 层
-2. <mark>不改变用户已有的习惯</mark>（看美剧/看 YouTube），在已有的行为上加 AI 价值
-3. 4k stars 说明「用 AI 改造一个老工具」这个思路本身就成立
-
-变现：免费开源桌面应用。护城河：AI 字幕质量 + 学习数据积累。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>找一个你每天都在用的老工具（播放器、阅读器、笔记软件、日历），加一个「<mark>AI 学习层</mark>」——不是教用户新习惯，而是在<mark>已有习惯</mark>上<mark>叠加 AI 价值</mark>。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/solidSpoon/DashPlayer" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="creative" data-pid="comic-translate-20260620" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Comic Translate</h2>
-  <p class="card-desc">自动翻译漫画里的文字——识别、擦除、翻译、嵌回，一气呵成。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">开源工具</span><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>漫画/动画爱好者想追国外作品，但汉化/翻译组更新慢、质量参差不齐。等翻译的过程很煎熬。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p><mark>OCR</mark> + <mark>图像修复</mark> + 翻译模型 + 图像生成——四步全部可以 AI 自动化。以前需要一个团队做的事情，现在一个人 + AI 就能完成。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>不做「AI 翻译」这个大而全的东西，只做「AI 翻译漫画」。定位越窄，用户越觉得这东西就是为我做的。%%
-1. 不做什么「AI 翻译工具」——做「AI 漫画/漫画翻译」
-2. 2.8k stars，说明了「<mark>极度精准的定位</mark>」比「宽泛的定位」更容易传播
-3. 用户画像非常清晰：漫画粉丝、追更党、跨语言阅读者
-4. 解决了从「OCR → 擦除 → 翻译 → 嵌字」的完整 workflow，不是半吊子方案
-
-变现：免费开源。潜在盈利点：付费的高质量翻译模型、云处理服务。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>不要做「<mark>AI 翻译</mark>」这个红海。做「<mark>AI 翻译</mark> + 某个特定领域」。领域越窄，用户越精准，产品越好做。漫画、同人小说、游戏 Mod、食谱——都值得做一个 <mark>AI 翻译</mark><mark>垂直工具</mark>。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/ogkalu2/comic-translate" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="ai-clip-skill-20260623" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.7s">
+<div class="card" data-category="workflow" data-pid="ai-clip-skill-20260623" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
   <div class="card-header">
     <span class="source-badge">&#128279; 小红书</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
@@ -1095,188 +1248,12 @@ mark {
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.xiaohongshu.com/explore/..." target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="http://xhslink.com/o/947lQCYSOgA" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="openclaw-20260621" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.78s">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-21</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">The Wild Rise of OpenClaw</h2>
-  <p class="card-desc">Fireship 讲 OpenClaw——一个开源 AI 编码平台的崛起故事。从个人项目到 23 万 GitHub Stars，只用了不到一年。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    这个项目的核心产品策略是「平台无关」：
-1. 不绑定任何编辑器——你可以用 VS Code、JetBrains、Vim、或者用它的 CLI
-2. 开源策略...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI 编码工具大多绑定特定平台（GitHub Copilot → VS Code，Cursor → 自家 IDE）。开发者想要一个平台无关的、开源的 AI 编码助手。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>LLM 的代码理解和生成能力成熟到可以独立成为一个平台，而不只是 IDE 的插件。OpenClaw 赌的是：AI 编码助手最终会独立于编辑器存在。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>这个项目的核心产品策略是「平台无关」：
-1. 不绑定任何编辑器——你可以用 VS Code、JetBrains、Vim、或者用它的 CLI
-2. 开源策略让它快速获得社区信任：23 万 Stars，是 GitHub 上增长最快的项目之一
-3. 变现路径：开源社区版免费 + 云托管版付费
-4. 时机恰当：当 Cursor 等产品证明 AI 编码有价值后，OpenClaw 用「平台无关」作为差异化
-
-201 万观看量的 Fireship 视频本身就是产品推广——一个 YouTube 视频帮项目获得了大量关注。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>你的产品不一定非要重新发明轮子。有时候「A 平台有的功能，B 平台为什么不能用」就是最好的产品切入点。Cursor 有的 AI 编码功能，为什么 Vim 用户不能用？这就是 OpenClaw 的整个故事。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=ssYt09bCgUY" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="openclaw-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">OpenClaw</h2>
-  <p class="card-desc">????? AI ?????? OS??????&quot;The lobster way&quot;?????????????????</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    379k stars ????????OpenClaw ?????? AI ???????AI ?????????????????????????????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>?? AI ??????? ChatGPT?Claude ???????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>??????????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>379k stars ????????OpenClaw ?????? AI ???????AI ????????????????????????????????????????? SaaS????+????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>????????????????????????????????????????????????????????????</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/openclaw/openclaw" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="reliable-agents-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Reliable agentic AI systems</h2>
-  <p class="card-desc">????? Agentic AI ??????????????????????? Agent ???</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    ??????? Agent???????????????????????????? Agent ???????? Agent ??????????????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To B</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI Agent ? Demo ??????????? Agent ???????????????? Agent???????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>Agent ???????? LLM ???????????????? prompt??????????????????????????????????????? AI ???</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>??????? Agent???????????????????????????? Agent ???????? Agent ??????????????????Agent ????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>???? AI ???????????????????????????????????????????????</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="creative" data-pid="fireship-7tools-20260621">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
-    <span class="card-date">2026-06-21</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">7 New Open Source AI Tools (Fireship)</h2>
-  <p class="card-desc">Fireship 盘点 7 个新开源 AI 工具——从代码助手到视频生成，每个都只要几分钟就能上手。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    盘点类内容本身就是一种产品：
-1. 解决的不是「没有工具」的问题，而是「工具太多不知道怎么选」的问题
-2. 200 万观看说明「帮你做选择」是个被低估的需...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">开源工具</span><span class="tag">To C &amp; To B</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI 工具层出不穷，但没人帮你筛选。你花大量时间在各种 Newsletter 和 Product Hunt 上找工具，结果大部分都用不上。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>Fireship 的频道本身就是 AI 时代的产物——AI 让内容创作速度大幅提升，他才能每周出多期高质量盘点视频。他用 AI 做内容来帮你找 AI 工具，形成闭环。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>盘点类内容本身就是一种产品：
-1. 解决的不是「没有工具」的问题，而是「工具太多不知道怎么选」的问题
-2. 200 万观看说明「帮你做选择」是个被低估的需求
-3. Fireship 的模式：用 AI 做内容 → AI 提高产出速度 → 覆盖更多工具 → 更多流量 → 更好的推荐
-4. 对个人开发者的启发：你不需要做一个大产品，你可以做「帮人选好产品」的产品
-
-变现：YouTube 广告 + 赞助 + 付费课程。7 个工具里大部分都是免费/开源，Fireship 不卖工具，卖的是精选。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>做一个「帮人选好东西」的产品，比做一个「好东西」有时候更容易。你不需要懂 AI 技术，你只需要比用户更早知道哪个 AI 工具好用。就像你作为 PM，推荐最佳实践比自己写代码更有价值。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=Xn-gtHDsaPY" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="n8n-2026-06-23">
+<div class="card" data-category="workflow" data-pid="n8n-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.7s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
@@ -1284,246 +1261,37 @@ mark {
     <span class="fav-btn">&#9829;</span>
   </div>
   <h2 class="card-title">n8n</h2>
-  <p class="card-desc">???????????????? AI ???????+??????193k stars?</p>
+  <p class="card-desc">公平代码的工作流自动化平台，193k stars，原生AI能力——可视化拖拽+代码双模式，把if-this-then-that升级为AI驱动</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    n8n ?????????????????????????????????193k stars ??????????????????+??????????...
+    193k stars，体量巨大。n8n的核心策略是&quot;公平代码&quot;（fair-code）：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。
+1...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To B</span></div>
+    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">工作流</span><span class="tag">To B</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>????????????????????????????????????????????????????????????</p>
+  <p>Zapier/Make等自动化工具在很多场景下<mark>锁数据和限制复杂度</mark>——你要么忍受，要么写代码自己搭。企业需要既能让<mark>非技术人员可视化操作</mark>、又能让工程师写代码定制的统一平台。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>AI ????????if-this-then-that????????Agent ?????????????????????????????????? Agent ??????</p>
+  <p>LLM让工作流从<mark>"规则驱动"</mark>升级为<mark>"语义驱动"</mark>——n8n原生集成了AI节点，用户可以在可视工作流中直接调用LLM做分类、提取、生成，不再需要单独搭AI pipeline。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>n8n ?????????????????????????????????193k stars ??????????????????+?????????????????? AI ??? Agent ???????????????????? AI??? AI ???????????</p>
+  <p>193k stars，体量巨大。n8n的核心策略是<mark>"公平代码"（fair-code）</mark>：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。
+1. <mark>可视化+代码双模式</mark>覆盖了两类完全不同的用户——非技术操作者和工程师
+2. <mark>原生AI节点</mark>是真正的差异化——不是插件，是内置的一等公民</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>To B ??????????????? SaaS?????????????????????????????????????????????</p>
+  <p>做平台型产品时，考虑<mark>"双模式"</mark>——可视化入门降低门槛，代码出口保证天花板。不要只做其中之一。另外，<mark>fair-code</mark>是一个值得研究的商业模式：比MIT更保护创作者，比SaaS更开放。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
       <a href="https://github.com/n8n-io/n8n" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="builderpulse-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">BuilderPulse</h2>
-  <p class="card-desc">?????? AI ????20 ???+10+ ????AI ????????</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    BuilderPulse ??20 ?????+10+ ????????? AI ????????????????????????????????????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">???</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>?????????????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>???????????????????????????AI ????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>BuilderPulse ??20 ?????+10+ ????????? AI ??????????????????????????????????????????????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>??????????????????????????????????????????????????????</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/BuilderPulse/BuilderPulse" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="extension" data-pid="mousetooltip-20260620">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">MouseTooltip Translator</h2>
-  <p class="card-desc">鼠标放上去就翻译，不用选中、不用右键、不用点任何按钮。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>阅读外文内容时：选中文字 → 右键 → 选择翻译 → 等待结果 → 关闭弹窗。每次要看一个词或一句话，都要经历这 <mark>4-5 步</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>现代翻译模型快到可以<mark>实时响应</mark>悬停动作。不需要按按钮、不需要切换窗口，AI 在你「看」的瞬间就已经工作了。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>选中 → 右键 → 翻译 → 等弹窗 → 关弹窗。你每天重复多少次？它砍成一步：悬停。%%
-1. 把 <mark>5 步操作变成 1 步</mark>：鼠标悬停即可
-2. 「<mark>默认打开</mark>」的设计哲学：不用设置、不用配置，装好就用
-3. <mark>场景扩张策略</mark>：从网页翻译扩展到 PDF、EPUB、Netflix、YouTube——同一个核心交互，覆盖更多场景
-4. GitHub 1.2k stars，说明极简方案有巨大需求
-
-变现：免费开源 + 付费的 OCR/TTS 等高级功能。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>找到用户每天做 4-5 步的事情，能不能用「<mark>一个动作</mark>」解决？悬停、拖拽、选中——这些浏览器的原生动作本身就是最好的产品<mark>入口</mark>。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/ttop32/MouseTooltipTranslator" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="cursor-100m-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">How Cursor AI Hit $100M by Focusing on ONE Product</h2>
-  <p class="card-desc">Cursor AI ??????????? 1 ??????????????????</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    Cursor ? 1 ????????????????????????????AI????????????????????? Copilot ??????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">To C &amp; To B</span><span class="tag">????</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI ???????????API?Agent???????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>Cursor ???????????? AI????????? AI ???????????? AI ????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>Cursor ? 1 ????????????????????????????AI????????????????????? Copilot ?????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>??????????????????????????????????????????????Cursor ??????????????????????????</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="creative" data-pid="serve-non-tech-2026-06-23">
-  <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">The REAL AI opportunity: Serve those who don&#39;t love tech!</h2>
-  <p class="card-desc">??? AI ???????????????????????????? AI ???</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    ?????????????? AI ??????????????????????? AI ????????????????? AI ???????????...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">To C</span><span class="tag">AI Agent</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI ????????????????????????????????????????????????????prompt engineering???Agent ???????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>AI ????????????????????????????????????????????????????????????</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>?????????????? AI ??????????????????????? AI ????????????????? AI ?????????????????????? AI ???</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>???????????????AI ??????????????????? ARPU ???????????????????????????? AI??????????? AI?????????????</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=???" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="extension" data-pid="claude-counter-20260620">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-20</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Claude Counter</h2>
-  <p class="card-desc">在 Claude 页面上加几个数字，告诉你花了多少 Token。仅此而已。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">Chrome 插件</span><span class="tag">To C &amp; To B</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>Claude.ai 用户看不到对话消耗了多少 Token、缓存还有多久过期。这种<mark>信息不透明</mark>导致用户无法管理使用成本，也不知道什么时候该新开对话。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>AI 的普及创造了新的信息需求——Token 消耗、上下文长度、缓存状态。这些是传统产品里不存在的「<mark>新指标</mark>」。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>AI 不告诉你的事，就是你的机会。Claude 不显示 Token？那我来加几行字。%%
-1. 只做一件事：在 Claude 界面上<mark>加几个数字</mark>和进度条
-2. 没有设置页、没有配置项、没有学习成本
-3. 解决的是「平台不告诉你但我很想知道」的<mark>信息不对称</mark>
-4. 1.9k stars 说明哪怕「<mark>加几个数字</mark>」这个需求，做好都有人用
-
-变现：免费开源。护城河：<mark>先发优势</mark> + 用户信任（不会偷数据的最小权限插件）。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>AI 平台留下了很多「<mark>信息空白</mark>」——Token 用量、成本、性能、数据归属。每一个<mark>信息空白</mark>都是一个产品机会。你不需要做 AI，你只需要把 AI 的<mark>信息翻译给用户</mark>。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/she-llac/claude-counter" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
@@ -2011,6 +1779,116 @@ Now he&#39;s running Snowflake through the AI shift.</p>
     </div>
   </div>
 
+  <div id="channel-opportunities" class="channel-content" style="display:none">
+    <div class="timeline-layout opp-layout">
+<nav class="opp-sidebar" id="oppSidebar"><div class="opp-sidebar-title">On this page</div><div class="opp-nav-date">6月17日</div><a href="#opp-0" class="opp-nav-item" data-opp="opp-0">核心观点</a><a href="#opp-1" class="opp-nav-item" data-opp="opp-1">今日三大信号</a><a href="#opp-2" class="opp-nav-item" data-opp="opp-2">白话简报</a><a href="#opp-3" class="opp-nav-item" data-opp="opp-3">发现机会</a><a href="#opp-4" class="opp-nav-item" data-opp="opp-4">反直觉发现</a><a href="#opp-5" class="opp-nav-item" data-opp="opp-5">Product Hunt 热门</a><div class="opp-nav-date">6月16日</div><a href="#opp-6" class="opp-nav-item" data-opp="opp-6">核心观点</a><a href="#opp-7" class="opp-nav-item" data-opp="opp-7">今日三大信号</a><a href="#opp-8" class="opp-nav-item" data-opp="opp-8">白话简报</a><a href="#opp-9" class="opp-nav-item" data-opp="opp-9">发现机会</a><a href="#opp-10" class="opp-nav-item" data-opp="opp-10">Product Hunt 热门</a></nav>      <div class="timeline-content opp-content">
+<div class="opp-day"><div class="opp-day-header">2026-06-17</div><div class="opp-day-content"><p class="opp-p"># BuilderPulse — 2026年6月17日</p>
+
+<h2 class="opp-h2" id="opp-0">核心观点</h2>
+
+<p class="opp-p">今天的声音最大的新闻是 SpaceX 花 600 亿美元收购 Cursor。但对普通人更值得关注的反而是一件小事：有人把恶意代码藏在看起来正常的编程任务仓库里，通过 <code class="opp-inline-code">npm install</code> 就能远程控制求职者的电脑。这件事在 Hacker News 上有 292 条讨论。它提醒我们：以后收到"请克隆这个仓库跑一下"的面试题，先看看安装脚本再动手。</p>
+
+<h2 class="opp-h2" id="opp-1">今日三大信号</h2>
+
+<strong>1. 居家任务仓库变成安全陷阱</strong>
+<p class="opp-p">求职后门把恶意代码藏在测试文件和自动安装脚本后面。普通人接面试题时不会检查安装脚本，这是一个新的风险入口。</p>
+
+<strong>2. AI 编程工具已经是战略基础设施</strong>
+<p class="opp-p">SpaceX 花 600 亿美元买 Cursor，证明 AI 编程工具不再是辅助插件，而是跟操作系统一样重要的基础设施。</p>
+
+<strong>3. 本地模型迎来实用化第二波</strong>
+<p class="opp-p">越来越多人开始用本地 AI 替代云端 ChatGPT/Claude。讨论聚焦在隐私、成本、速度三个点。有人用 Qwen 模型 + RTX 3090 显卡，月费从 100 美元降到几乎为零。</p>
+
+<h2 class="opp-h2" id="opp-2">白话简报</h2>
+
+<table class="opp-table">
+<tr><th>发生了什么</th><th>为什么重要</th></tr>
+<tr><td>面试仓库里藏恶意代码，引发 292 条讨论</td><td>求职时的"先跑一下这个代码"新风险</td></tr>
+<tr><td>SpaceX 花 600 亿收购 Cursor</td><td>AI 编程工具不再是边缘小工具，是核心资产</td></tr>
+<tr><td>本地模型"现在真的好用了"</td><td>普通人用本地 AI 替代云端，省钱且隐私安全</td></tr>
+</table>
+
+<h2 class="opp-h2" id="opp-3">发现机会</h2>
+
+<strong>今天发布的新产品</strong>
+
+<p class="opp-p">小团队在卖的不是抽象 AI 承诺，而是对本地文件、会议、工作上下文的控制权。值得关注的三个方向：</p>
+
+<p class="opp-p">- <strong>本地文件控制</strong>：Kage 把网站打包成可离线浏览的内容；soundcli 把在线播放列表变成真正的本地文件。背后趋势是"把云上的东西拿回本地"。</p>
+<p class="opp-p">- <strong>垂直场景工具</strong>：DearHiringManager.io 帮求职者绕过投简历黑洞，23 条讨论。一个把菜谱视频转成文字的工具，日活 600。</p>
+<p class="opp-p">- <strong>AI 工作伴侣</strong>：Goldfish 说"按下 Option 键，它在任何地方回复你"。不是另一个聊天窗口，而是融入你正在做的事。</p>
+
+<strong>对普通人的提示</strong>
+
+<p class="opp-p">小市场比大市场好做。与其跟风做"AI 工作台"，不如找一个具体动作（求职申请、会议笔记、菜谱转文字）来做。</p>
+
+<h2 class="opp-h2" id="opp-4">反直觉发现</h2>
+
+<p class="opp-p">今天最反直觉的不是 SpaceX 的 600 亿收购，而是<strong>信任正在普通工作流程的边缘破裂</strong>——求职面试、安装命令、邮件回复这些人们最不设防的环节，正在变成新的风险入口。这不是技术问题，是人的行为习惯问题。</p>
+
+<h2 class="opp-h2" id="opp-5">Product Hunt 热门</h2>
+
+<table class="opp-table">
+<tr><th>产品</th><th>类型</th><th>一句话</th></tr>
+<tr><td>Goldfish</td><td>AI 工作伴侣</td><td>按下 Option，AI 在任何输入框里回复你</td></tr>
+<tr><td>GitHits</td><td>开发者工具</td><td>让编程助手能搜索开源代码</td></tr>
+<tr><td>Invoko</td><td>AI 助手</td><td>Mac 上的"一只小手"，帮你操作电脑</td></tr>
+<tr><td>Kage</td><td>离线工具</td><td>把网站打包，没网也能看</td></tr>
+</table>
+<p class="opp-p">| Trace | 会议工具 | 在 Mac 本地记录和转写会议 |</p>
+</div></div><div class="opp-day"><div class="opp-day-header">2026-06-16</div><div class="opp-day-content"><p class="opp-p"># BuilderPulse — 2026年6月16日</p>
+
+<h2 class="opp-h2" id="opp-6">核心观点</h2>
+
+<p class="opp-p">今天最有意思的讨论不是"AI 有多强"，而是"人不在的时候怎么办"。curl——几乎所有软件都在用的开源网络工具——宣布 7 月 1 日到 8 月 3 日暂停处理漏洞报告。这件事在 Hacker News 上引发了 302 条讨论。网上又有很多日常工具的功能都依赖那些几个维护者几乎不休息地干活。他们一放假，整条链路上的人都会慌。</p>
+
+<h2 class="opp-h2" id="opp-7">今日三大信号</h2>
+
+<strong>1. 开源工具的维护者休假，变成公司的运营风险</strong>
+<p class="opp-p">curl 暂停漏洞处理、libexpat 和 uriparser 也在跟风。对小公司来说，依赖的某个工具突然没人维护了，这不是技术问题，是运营问题。</p>
+
+<strong>2. 本地 AI 模型从"爱好者实验"变成"预算讨论"</strong>
+<p class="opp-p">一条 Ask HN 引发 332 条评论，开发者在认真讨论用本地模型替代每月 100 美元的 Claude 订阅。关键词：隐私、速度、成本可预测。</p>
+
+<strong>3. 点对点连接技术进入实用阶段</strong>
+<p class="opp-p">Iroh 1.0 声称 30 天内创建了超过 2 亿个连接端点。这意味着以后的应用不需要假设"网络总是通的"——设备可以自己找到彼此并直连。</p>
+
+<h2 class="opp-h2" id="opp-8">白话简报</h2>
+
+<table class="opp-table">
+<tr><th>发生了什么</th><th>为什么重要</th></tr>
+<tr><td>curl 宣布 7 月暂停漏洞处理，302 条讨论</td><td>你用的软件底层依赖可能有维护者休假日历，但你不知道</td></tr>
+<tr><td>本地模型替代 Claude 的 Ask HN，332 条评论</td><td>普通人开始认真算账：用本地 AI 到底能省多少钱</td></tr>
+<tr><td>Iroh 1.0 发布，30 天 2 亿端点</td><td>应用不再依赖"网络随时通"，设备可以自己直连</td></tr>
+</table>
+
+<h2 class="opp-h2" id="opp-9">发现机会</h2>
+
+<strong>今天发布的新产品</strong>
+
+<p class="opp-p">今天小产品发布分两类：本地控制和 AI 工作流验证。</p>
+
+<p class="opp-p">- <strong>本地优先</strong>：Trace 做离线 Mac 会议转录，用户已经在要求隐私合规、崩溃恢复、按日历命名文件。Fata 用间隔重复练习帮程序员对抗"AI 写完代码就忘"的问题。machine0 把持久化虚拟机带到命令行。</p>
+<p class="opp-p">- <strong>AI 工作流证明</strong>：Novu Connect 说把 AI 助手嵌入现有工作界面。AEVS 给 AI 助手提供"执行证明"——不是做了什么，而是留下了什么记录。Synopsule 把会议转录留在设备端。</p>
+
+<strong>对普通人的提示</strong>
+
+<p class="opp-p">"AI 能做什么"已经不是卖点。"AI 做完了你还能知道它做了什么、在哪里运行的、留下了什么记录"才是卖点。</p>
+
+<h2 class="opp-h2" id="opp-10">Product Hunt 热门</h2>
+
+<table class="opp-table">
+<tr><th>产品</th><th>类型</th><th>一句话</th></tr>
+<tr><td>Novu Connect</td><td>AI 工作流</td><td>把 AI 助手嵌入现有工作界面</td></tr>
+<tr><td>AEVS</td><td>AI 验证</td><td>给 AI 助手提供执行证明和记录</td></tr>
+<tr><td>Synopsule</td><td>会议工具</td><td>设备端会议转录，保护隐私</td></tr>
+<tr><td>Trace</td><td>会议工具</td><td>Mac 本地转写会议，离线可用</td></tr>
+</table>
+<p class="opp-p">| Fata | 学习工具 | 用间隔重复练习防 AI 写代码后技能生疏 |</p>
+</div></div>      </div>
+    </div>
+  </div>
+
   <footer class="footer">
     <p>AI Inspiration Notebook — small AI product studies, every other day</p>
     <p style="margin-top:8px;font-size:11px;">Designed by Essie Zhang</p>
@@ -2254,12 +2132,15 @@ function setChannel(channel, btn) {
 
   // Show/hide channel-content divs
   document.querySelectorAll('.channel-content').forEach(function(el) { el.style.display = 'none'; });
-  if (channel === 'inspiration') {
-    var insp = document.getElementById('channel-inspiration');
-    if (insp) insp.style.display = '';
-  } else {
-    var builder = document.getElementById('channel-builder');
-    if (builder) builder.style.display = '';
+  if (channel === "inspiration") {
+    var insp = document.getElementById("channel-inspiration");
+    if (insp) insp.style.display = "";
+  } else if (channel === "builder") {
+    var builder = document.getElementById("channel-builder");
+    if (builder) builder.style.display = "";
+  } else if (channel === "opportunities") {
+    var opp = document.getElementById("channel-opportunities");
+    if (opp) opp.style.display = "";
   }
 
   // Restore scroll position for the new channel
@@ -2309,9 +2190,14 @@ filterCategory = function(btn, category) {
 
 // ==================== Restore channel on load (PRD 4.1) ====================
 (function() {
-  var savedChannel = localStorage.getItem('ai-inspiration-channel');
-  if (savedChannel === 'builder') {
-    setChannel('builder');
+  var savedChannel = localStorage.getItem("ai-inspiration-channel");
+  if (savedChannel === "builder" || savedChannel === "opportunities") {
+    setChannel(savedChannel);
+  } else {
+    var insp = document.getElementById("channel-inspiration");
+    if (insp) insp.style.display = "";
+    var inspBtn = document.querySelector('.channel-btn[onclick*="inspiration"]');
+    if (inspBtn) inspBtn.classList.add("active");
   }
 })();
 
@@ -2361,6 +2247,43 @@ filterCategory = function(btn, category) {
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    });
+  });
+})();
+
+
+// ==================== Opportunities Sidebar Nav ====================
+(function() {
+  var sidebar = document.getElementById("oppSidebar");
+  if (!sidebar) return;
+  var items = sidebar.querySelectorAll(".opp-nav-item");
+  var headings = document.querySelectorAll(".opp-h2[id]");
+  if (!items.length || !headings.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    var lastVisible = null;
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { lastVisible = entry.target.id; }
+    });
+    if (lastVisible) {
+      items.forEach(function(item) {
+        if (item.getAttribute("data-opp") === lastVisible) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }
+  }, { root: null, rootMargin: "-60px 0px -60% 0px", threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  items.forEach(function(item) {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+      var targetId = item.getAttribute("data-opp");
+      var target = document.getElementById(targetId);
+      if (target) { target.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });
   });
 })();

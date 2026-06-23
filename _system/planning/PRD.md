@@ -1,4 +1,4 @@
-# AI 灵感簿 — 产品需求文档（PRD）v2.0
+﻿# AI 灵感簿 — 产品需求文档（PRD）v2.0
 
 > 项目版本：v2.0  
 > 最后更新：2026-06-21（重构版）  
@@ -78,6 +78,7 @@
   - 排除非 AI 内容（音乐 MV、预告片、游戏、体育等）
   - 发布窗口按 query 分层：7 天（date 排序）；relevance 排序的不限窗口
 - **防重复**：对比上一次采集的 `data/raw/` 数据，剔除重复 `video_id`
+- **信号校验**：零播放/零点赞/零评论的新视频（信号全空）默认不入库——这些视频无法判断信息质量，降低入库门槛风险
 - **输出**：`data/raw/YYYY-MM-DD/youtube.json`
 - **备用方案**：`scripts/fetch_youtube_test.py` 提供无 API Key 的网页抓取路线
 ### 2.4 X/Twitter 采集（follow-builders feed）
@@ -116,6 +117,8 @@
 
 > 小红书 / B 站 / 其他平台不经过此流程——由你手动丢链接，AI 直接用 content-extractor 提取并分析。
 ---
+- **数据源说明**：Builder Digest 内容更新依赖 follow-builders skill 的上游 eed-x.json 刷新频率（当前约每周 1-2 次），非实时推送。采集 Agent 每次运行时拉取最新 feed-x.json 并转存为 x.json；如上游无更新，x.json 内容保持上一次的数据。这是数据源固有特性，非 bug。
+
 
 ## 3. 分析框架
 
@@ -217,8 +220,40 @@
 - 点击「Builder Digest」tab 时，主内容区从卡片网格切换为时间线流
 - 每条显示：builder 名称 + 推文正文（简体中文翻译，AI 自动翻译）+ 原文链接
 - 推文不超过 3 句话，不展开、不拆解——内容是信号，不是产品案例
+- Builder Digest 更新频率跟随 follow-builders feed 节奏，非每日必新
 - 英文推文在采集阶段由 AI 翻译为简体中文（`text_zh` 字段存入 `x.json`），页面优先显示中文
 - 数据源同 PRD §2.4，从 follow-builders 的 `feed-x.json` 读取，隔天一批，翻译在采集阶段完成
+
+
+### 4.8 Opportunities 频道（BuilderPulse 蒸馏版）
+
+**数据来源**：BuilderPulse 中文版日报（`BuilderPulse/zh/2026/`），取最近 2 天
+
+**筛选原则**：从 BuilderPulse 原文中只提取与「模型进展 / 产品发布 / 对日常有什么帮助」相关的内容，删掉纯技术工程话题（npm 后门、安全漏洞、容器配置、GPU 技术选型、"今日 2 小时构建"）。
+
+**保留的板块结构**：
+
+| 板块 | 内容 |
+|------|------|
+| 📝 核心观点 | 当日最重要的一个判断，一段话 |
+| 📊 今日三大信号 | 当日最值得关注的 3 条动态，每条带「对你意味着什么」 |
+| 📋 白话简报 | 表格形式：事件 + 讨论热度 + 对你意味着什么 |
+| 🔍 发现机会 | 保留子板块：本地模型进展、模型路由、AI 工作伴侣、独立开发者产品思路 |
+| 🔄 反直觉发现 | 当日跟表面头条不同的深层信号 |
+| 📱 Product Hunt 热门 | 表格形式：产品 + 类型 + 一句话 |
+
+**删除的板块**：今日 2 小时构建、技术选型·开发者工具、技术选型·大公司产品变动（如与普通用户无关）、HuggingFace 模型技术指标
+
+**蒸馏语言规则**（与 PRD §3.1 一致）：
+- 平白直实，每句只讲一个事实或一个因果
+- 技术黑话转普通人语言（如「MCP 协议使 AI 连接外部工具」→「让 AI 能调用其他软件」）
+- 每条控制在卡片可读长度，不超 5-6 句
+- 聚焦「跟之前有什么不同 → 对普通用户意味着什么」，不讲跑分数字
+
+**页面布局**：与 Builder Digest 一致的双栏布局（左侧 sticky 导航 + 右侧内容区），左侧目录自动提取 H2 标题，IntersectionObserver 滚动高亮
+
+**更新频率**：跟 BuilderPulse 源同步，隔天取最新 2 天内容
+
 
 ---
 
@@ -292,6 +327,31 @@
 - 用户偏好存储在 `localStorage` key `ai-inspiration-theme`
 - 页面加载时立即读取 localStorage 恢复主题（避免闪烁）
 
+
+### 6.6 字体规范阶梯
+
+全站所有文字组件统一从以下六级字号中取值，不各自定义：
+
+| 级别 | 字号 | 字重 | 字族 | 用途 |
+|------|------|------|------|------|
+| **H1** | 22px | 700 | Serif | 页面主标题 |
+| **H2** | 18px | 700 | Serif | 板块标题（Opportunities 章节标题） |
+| **Body-L** | 15px | 400 | Sans | 全局正文、卡片描述 |
+| **Body-M** | 14px | 400 | Sans/Serif | 卡片分析正文（Serif）、Opportunities 正文（Serif） |
+| **Body-S** | 13px | 400/500 | Sans | 卡片分析小字、导航项、标签、Builder Digest 推文 |
+| **Caption** | 12px | 400/500 | Sans | 辅助文字、Key Insight 标签、tab 按钮 |
+
+**字族分配**：
+- Serif（`"Noto Serif SC", Georgia, serif`）：标题 H1/H2、卡片 Key Insight、Opportunities 正文段落
+- Sans（`"Noto Sans SC", -apple-system, sans-serif`）：全局 UI、标签、按钮、导航、Builder Digest 全部内容
+
+**色值统一**：
+- 正文：`--text`（#3d2b1f 亮 / #e6ddd0 暗）
+- 次要文字：`--text-secondary`（#7d6b5a 亮 / #b0a090 暗）
+- 三级文字：`--text-tertiary`（#b0a090 亮 / #7d6b5a 暗）
+- 主色强调：`--primary`（#9a6b4d 亮 / #c49a6c 暗）
+
+
 ---
 
 ## 7. 技术架构
@@ -314,7 +374,7 @@
 | `fetch_github.py` | GitHub Search API 6 维度搜索，过滤 AI 项目 | 被 fetch_all.py 调用 |
 | `fetch_youtube.py` | YouTube Data API v3 搜索 AI 项目视频 | 被 fetch_all.py 调用 |
 | `fetch_youtube_test.py` | YouTube 网页抓取备用方案（无需 API Key） | 独立运行，测试用 |
-| `generate_page.py` | 读取 projects.json → 拼接 HTML/CSS/JS → 备份 + JS 校验 + 清理 | `python scripts/generate_page.py` |
+| `generate_page.py` | 读取 projects.json → 拼接 HTML/CSS/JS → 备份 + JS 校验 + 清理 | `node scripts/generate_page.js` |
 | `search_small_projects.py` | 小星标专项搜索（早期探索，当前未集成管线） | 独立运行 |
 | `config.py` | 公用路径、AI 关键词、标签体系配置 | 被其他脚本 import |
 
@@ -496,17 +556,24 @@ ai-inspiration-notebook/
 | `data/backups/` | ❌ 不推送 | 页面备份 |
 | `__pycache__/`、`*.pyc` | ❌ 不推送 | 编译缓存 |
 
-### 11.6 日常更新流程
 
-```
-1. python scripts/generate_page.py     # 生成最新页面
-2. git add index.html data/projects.json
-3. git commit -m "update: YYYY-MM-DD"
-4. git push
-5. 等待 1-2 分钟 → 刷新手机浏览器
-```
+### 11.6 GitHub Actions 自动部署
 
-> 后续可考虑用 GitHub Actions 自动执行步骤 1-4（定时触发或 Push 触发），当前先手动。
+每次采集线程跑完 → 页面生成后，自动触发 GitHub Actions 将最新 `index.html` 和 `data/projects.json` 推送到仓库 → GitHub Pages 自动重新部署。
+
+**触发条件**：采集 Agent 完成采集+分析+入库+页面生成后，触发部署 workflow
+
+**workflow 流程**：
+1. checkout 仓库
+2. 复制最新 `index.html`、`data/projects.json`、`data/raw/` 当天目录到工作区
+3. `git commit` + `git push`
+4. GitHub Pages 检测到 main 分支更新 → 自动重新部署（1-2 分钟）
+
+**用户侧效果**：用户打开同一个 URL，刷新即可看到当天最新内容。无需下载、无需安装、无需任何操作。
+
+**安全红线**：
+- `config.json` 已在 `.gitignore` 排除，不会被推送
+- GitHub Pages 部署的是 `index.html` 静态文件，不含任何 API Key 或敏感数据
 ## 12. 已知技术决策、约束与环境信息
 
 1. **Python 运行时**：3.12.13（通过 Codex 捆绑），无需额外安装
@@ -516,7 +583,7 @@ ai-inspiration-notebook/
 5. **页面无服务器依赖**：纯静态 `file://` 直接打开，localStorage 在 `file://` 协议下正常
 6. **收藏数据存储于浏览器**：换设备或清缓存后丢失（纯前端的固有限制）
 7. **分析文案由 Codex LLM 辅助生成，人工审查定稿**：非全自动，保证分析质量
-8. **无自动化调度**：当前采集 → 筛选 → 分析 → 生成均为手动触发或对话式操作，未接入 cron / GitHub Actions
+8. **自动化调度**：采集 Agent 已配置 48 小时定时触发；GitHub Actions 自动部署待实现
 9. **数据管线**：GitHub / YouTube / X 由 AI 自动采集 + 筛选 + 排优先级；小红书 / B 站由用户手动丢链接触发
 10. **YouTube 采集依赖 API Key**：已配置在 `config.json`，备用 `fetch_youtube_test.py` 提供无 Key 抓取路线；X/Twitter 通过 follow-builders feed 获取，无 API Key 依赖
 
@@ -550,7 +617,7 @@ ai-inspiration-notebook/
 08:30  python scripts/fetch_all.py        # AI 自动采集 GitHub + YouTube
 08:35  AI 自动筛选 + 排优先级 → 推荐清单    # AI 初筛，产品经理审阅确认
 08:40  确认入选 → AI 编写分析 → 定稿入库     # 协作完成分析文案（PRD §3.1 标准）
-08:50  python scripts/generate_page.py     # 生成页面 + 自动备份 + JS 校验
+08:50  node scripts/generate_page.js     # 生成页面 + 自动备份 + JS 校验
 09:00  打开 index.html 查看效果             # 或刷新 GitHub Pages
 ```
 
@@ -559,7 +626,7 @@ ai-inspiration-notebook/
 ```
 收到链接 → content-extractor 提取内容（按 content-filter-rules.md 判断）
          → 信息充分？→ 产品经理审批 → AI 编写分析文案 → 入库 projects.json
-         → python scripts/generate_page.py → 重新生成页面
+         → node scripts/generate_page.js → 重新生成页面
          → 信息不足？→ 直接告知产品经理「这条不行 + 原因」
 ```
 

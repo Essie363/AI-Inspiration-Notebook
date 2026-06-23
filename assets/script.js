@@ -226,12 +226,15 @@ function setChannel(channel, btn) {
 
   // Show/hide channel-content divs
   document.querySelectorAll('.channel-content').forEach(function(el) { el.style.display = 'none'; });
-  if (channel === 'inspiration') {
-    var insp = document.getElementById('channel-inspiration');
-    if (insp) insp.style.display = '';
-  } else {
-    var builder = document.getElementById('channel-builder');
-    if (builder) builder.style.display = '';
+  if (channel === "inspiration") {
+    var insp = document.getElementById("channel-inspiration");
+    if (insp) insp.style.display = "";
+  } else if (channel === "builder") {
+    var builder = document.getElementById("channel-builder");
+    if (builder) builder.style.display = "";
+  } else if (channel === "opportunities") {
+    var opp = document.getElementById("channel-opportunities");
+    if (opp) opp.style.display = "";
   }
 
   // Restore scroll position for the new channel
@@ -281,9 +284,14 @@ filterCategory = function(btn, category) {
 
 // ==================== Restore channel on load (PRD 4.1) ====================
 (function() {
-  var savedChannel = localStorage.getItem('ai-inspiration-channel');
-  if (savedChannel === 'builder') {
-    setChannel('builder');
+  var savedChannel = localStorage.getItem("ai-inspiration-channel");
+  if (savedChannel === "builder" || savedChannel === "opportunities") {
+    setChannel(savedChannel);
+  } else {
+    var insp = document.getElementById("channel-inspiration");
+    if (insp) insp.style.display = "";
+    var inspBtn = document.querySelector('.channel-btn[onclick*="inspiration"]');
+    if (inspBtn) inspBtn.classList.add("active");
   }
 })();
 
@@ -333,6 +341,43 @@ filterCategory = function(btn, category) {
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    });
+  });
+})();
+
+
+// ==================== Opportunities Sidebar Nav ====================
+(function() {
+  var sidebar = document.getElementById("oppSidebar");
+  if (!sidebar) return;
+  var items = sidebar.querySelectorAll(".opp-nav-item");
+  var headings = document.querySelectorAll(".opp-h2[id]");
+  if (!items.length || !headings.length) return;
+
+  var observer = new IntersectionObserver(function(entries) {
+    var lastVisible = null;
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { lastVisible = entry.target.id; }
+    });
+    if (lastVisible) {
+      items.forEach(function(item) {
+        if (item.getAttribute("data-opp") === lastVisible) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }
+  }, { root: null, rootMargin: "-60px 0px -60% 0px", threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  items.forEach(function(item) {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+      var targetId = item.getAttribute("data-opp");
+      var target = document.getElementById(targetId);
+      if (target) { target.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });
   });
 })();

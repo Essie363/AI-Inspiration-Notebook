@@ -1,60 +1,40 @@
-﻿# AI 灵感簿 🎯
+﻿# AI Inspiration Notebook
 
-每日精选 3 个近 1 年内活跃的 AI 小项目，用产品思维框架拆解它们的创意切入点。
+每两天一期的小型 AI 产品研究笔记。从 GitHub / YouTube / BuilderPulse 中筛选值得关注的 AI 产品，用产品经理视角写分析。
 
-## 一句话
+## 内容
 
-**从发现项目 → 拆解思维 → 积累直觉。** 帮你建立「X 问题能不能用 AI 解」的创意手感。
+- **AI 灵感簿** — 产品卡片（痛点 / 为什么 AI / 产品洞见 / 可迁移思路）
+- **Builder Digest** — 26 位一线 AI builder 的推文时间线
+- **Opportunities** — BuilderPulse 每日行业信号简报
 
-## 使用方式
+## 如何使用
 
-1. 打开 `index.html` 查看每日简报
-2. 用分类标签筛选项目（Extensions / Creative / Workflow）
-3. 点击「View Original」去 GitHub 查看项目详情
-4. 读到好项目？把链接丢给我，我来加进来
+直接打开 `index.html` 即可，无需服务器。也可托管到 GitHub Pages。
 
-## 数据来源
+## 部署到 GitHub Pages
 
-| 来源 | 方式 | 状态 |
-|------|------|------|
-| GitHub | Python 自动采集，Search API 搜索热门 AI 项目 | ✅ 已上线 |
-| X/Twitter | 待配置 API Key | ⏳ Phase 2 |
-| YouTube | 待配置 API Key | ⏳ Phase 2 |
-| 小红书 | 你手动丢链接，我来提取分析 | 🔗 随时可用 |
-
-## 技术栈
-
-- Python 3.12（采集 + 页面生成）
-- 静态 HTML/CSS/JS（纯前端，无需服务器）
-- Codex 自动任务（每日调度 + LLM 分析）
-
-## 项目结构
+1. 创建 GitHub 仓库（建议 Private + GitHub Pages）
+2. 上传以下文件（保持目录结构）：
 
 ```
-ai-inspiration-notebook/
-├── index.html              # 主页面（自动生成）
-├── data/
-│   ├── projects.json       # 所有项目归档
-│   └── raw/                # 原始采集数据
-├── scripts/
-│   ├── config.py           # 公用配置
-│   ├── fetch_github.py     # GitHub 热门 AI 项目采集
-│   └── generate_page.py    # 页面生成器
+├── index.html
 ├── assets/
 │   ├── style.css
 │   └── script.js
-└── README.md
+└── data/
+    ├── projects.json
+    └── raw/
+        └── YYYY-MM-DD/
+            └── x.json
 ```
 
-## 项目筛选标准
+3. Settings → Pages → Source: Deploy from a branch → 选择分支 → Save
 
-1. **近 1 年内活跃** — 创建或更新在近 1 年内的项目
-2. **AI 前沿相关** — LLM、Agent、多模态、RAG、AI 工作流等方向
-3. **有产品思维** — 解决真实痛点，切入点有启发
+## 更新方式
 
-## 每个项目的分析框架
+本项目由 Codex Agent 协作生成。新内容通过 `node scripts/generate_page.js` 编译为 `index.html` 后上传。
 
-1. Pain Point — 它解决了什么痛点？
-2. Why AI — 为什么用 AI 做？为什么是现在？
-3. Product Insight — 产品思维拆解（核心）
-4. Transfer — 由此及彼：这个思维还能用在别处吗？
+## 设计
+
+Designed by Essie Zhang
