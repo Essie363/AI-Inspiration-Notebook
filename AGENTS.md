@@ -1,66 +1,33 @@
 ﻿# AGENTS.md — AI-Inspiration-Notebook
 
-## 协作协议（所有 Agent 必须遵守）
+## 协作规则（所有 Agent 必须遵守）
 
-### 1. 先读通信录
-每次开始工作前，先读 `_系统/通信录.md`，确认协作方的线程 ID。
+1. 先读 `_系统/通信录.md`，确认协作方线程 ID
+2. 跨 Agent 消息用 `send_message_to_thread` 工具发送，不在对话里打字
+3. 每条消息带 `REQ-YYYYMMDD-NNN`（派发方生成，回报方引用，序号每日从 001 重置）
+4. 消息格式：📋 派发 / ✅ 完成 / ⚠️ 退回 / 🎉 验收通过，均标注「记录于: _系统/工作日志/YYYY-MM-DD_角色.md」
+5. 每轮协作后在 `_系统/工作日志/` 追加 `[HH:MM] [动作] REQ-ID — 内容 — 结果`
+6. 完整指令见各角色 `.agents/` 目录
 
-### 2. 消息用工具发，不是打字
-与其他 Agent 沟通时，**必须调用 `send_message_to_thread`** 工具发送消息。
-❌ 在对话里打字说"我完成了" — 对方收不到
-✅ 调用 `send_message_to_thread` 发送 — 对方线程会收到
+## 角色分工
 
-### 3. Request ID 规则
-每条跨 Agent 消息必须携带 `request_id`，格式：`REQ-YYYYMMDD-NNN`（如 `REQ-20260621-001`）。
-派发方生成新 ID，回报方引用同一 ID。
-序号从 001 开始，每个日历日重置。维护计数器文件 `_系统/.request_counter`（单行数字）。
+| 角色 | 线程 | 核心职责 |
+|------|------|---------|
+| 产品经理 | `019eea61` | 审批→分析→维护PRD→派发→验收 |
+| 产品研发 | `019eea72` | 读PRD→实现→commit→回报 |
+| 采集Agent | `019ef08b` | fetch_all→初筛→候选清单→通知PM |
 
-### 4. SOP 消息格式
+## 项目文档索引
 
-**派发任务：**
-```
-📋 REQ-YYYYMMDD-NNN
-[简述内容]
-→ 记录于: _系统/工作日志/YYYY-MM-DD_角色.md
-```
+- PRD（核心规约）：`_system/planning/PRD.md`
+- 实现细节：`_system/docs/specs.md`
+- 函数索引：`_system/docs/implementation.md`
+- 项目复盘：`LESSONS.md`
+- 内容过滤规则：`_system/content-filter-rules.md`
 
-**完成回报：**
-```
-✅ REQ-YYYYMMDD-NNN [动作]完成
-[具体内容]
-请验收。
-→ 记录于: _系统/工作日志/YYYY-MM-DD_角色.md
-```
+## 关键约束
 
-**退回修改：**
-```
-⚠️ REQ-YYYYMMDD-NNN 验收未通过
-问题：[具体列表]
-请修复后重新回报。
-```
-
-**验收通过：**
-```
-🎉 REQ-YYYYMMDD-NNN 验收通过
-本轮迭代完成。
-```
-
-### 5. 写工作日志
-每轮协作后，在 `_系统/工作日志/` 下追加记录，行格式：
-`[HH:MM] [动作] REQ-ID — 涉及内容 — 结果`
-
----
-
-## 角色说明
-
-### 产品经理（线程 `019eea61`）
-完整指令见 `.agents/产品经理/AGENTS.md`
-核心职责：审批候选 → 写分析 → 维护 PRD → 派发任务 → 验收
-
-### 产品研发（线程 `019eea72`）
-完整指令见 `.agents/产品研发/AGENTS.md`
-核心职责：收到任务 → 读 PRD → 实现 → commit → **`send_message_to_thread` 回报**
-
-### 采集Agent（线程待创建）
-完整指令见 `.agents/采集Agent/AGENTS.md`
-核心职责：运行 fetch_all.py → 接收手动链接 → 初筛排序 → 产出候选清单 → 通知 PM
+- PM 不写代码，研发不审批，采集不分析
+- 验收只看浏览器实际效果，不认「代码已改」
+- config.json 永不上传，API Key 不泄露
+- 语言风格：平实直白讲因果，禁止 PPT 黑话
