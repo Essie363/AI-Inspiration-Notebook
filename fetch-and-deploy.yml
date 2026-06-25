@@ -1,0 +1,50 @@
+﻿name: Fetch & Deploy
+
+on:
+  schedule:
+    - cron: "0 0 */2 * *"   # every 48 hours at UTC midnight
+  workflow_dispatch: {}
+
+jobs:
+  fetch-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Python dependencies
+        run: pip install requests
+
+      - name: Run data collection
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/fetch_all.py
+
+      - name: Generate page
+        run: node scripts/generate_page.js
+
+      - name: Force-add deployable files
+        run: |
+          git add -f index.html
+          git add -f data/projects.json
+          git add -f data/raw/$(date +%Y-%m-%d)/ 2>/dev/null || true
+          git add -f README.md
+          git add -f assets/
+
+      - name: Commit and push
+        run: |
+          git config user.name "ai-inspiration-bot"
+          git config user.email "bot@ai-inspiration.dev"
+          git diff --cached --quiet || git commit -m "Auto deploy: $(date +%Y-%m-%d)"
+          git push
