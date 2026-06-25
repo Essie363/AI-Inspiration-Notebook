@@ -864,9 +864,9 @@ em { font-style: italic; }
     <div class="header-top">
       <h1>AI Inspiration Notebook</h1>
       <div class="header-meta">
-        <span>2026-06-23 11:07</span>
+        <span>2026-06-25 07:07</span>
         <span class="dot">&middot;</span>
-        <span>19 projects</span>
+        <span>27 projects</span>
       </div>
       <div class="header-right">
         <button class="fav-header-btn" onclick="openFavModal()" title="Your favorites">&#9825;</button>
@@ -883,400 +883,367 @@ em { font-style: italic; }
 
   <div id="channel-inspiration" class="channel-content" style="display:none">
     <div class="tabs" id="categoryTabs">
-      <button class="tab active" onclick="filterCategory(this, 'all')">All (9)</button>
-      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (4)</button>
-      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (1)</button>
-      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (4)</button>
+      <button class="tab active" onclick="filterCategory(this, 'all')">All (8)</button>
+      <button class="tab" onclick="filterCategory(this, 'extension')">Extensions (2)</button>
+      <button class="tab" onclick="filterCategory(this, 'creative')">Creative (3)</button>
+      <button class="tab" onclick="filterCategory(this, 'workflow')">Workflow (3)</button>
     </div>
     <div class="card-grid">
-<div class="card" data-category="creative" data-pid="builderpulse-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
+<div class="card" data-category="extension" data-pid="obsidian-yolo-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.06s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="extension">Extension</span>
+    <span class="card-date">2026-06-25</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">Obsidian YOLO</h2>
+  <p class="card-desc">Obsidian笔记的AI插件，1.2k stars——在笔记里直接调AI写东西、总结、提问，不用离开Obsidian</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    1.2k stars，小而美的插件思路。
+1. 不做独立笔记App，做现有工具的插件——Obsidian已有忠实用户群，插件降低了获客成本
+2. 这类产品...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">Obsidian</span><span class="tag">笔记</span><span class="tag">AI插件</span><span class="tag">开源</span><span class="tag">To C</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>Obsidian是知识管理工具，但写作和思考过程中遇到卡点时，要切到ChatGPT窗口、复制粘贴、再切回来。<mark>上下文切换打断心流</mark>。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM最适合嵌入<mark>已有的工作流</mark>——不是在AI工具里写笔记，而是在笔记工具里用AI。Obsidian YOLO把AI能力嵌入编辑器，选中文字就能让AI续写、改写、翻译、总结。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>1.2k stars，小而美的插件思路。
+1. 不做独立笔记App，<mark>做现有工具的插件</mark>——Obsidian已有忠实用户群，插件降低了获客成本
+2. 这类产品核心不是AI能力多强，是<mark>交互多自然</mark>——一个快捷键调出AI，比打开ChatGPT快十倍
+3. Obsidian生态里的AI插件是蓝海——Notion AI做了但锁在Notion里</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>不要重新发明笔记软件。找已有大量用户的效率工具（Obsidian、Logseq、VSCode、Figma），<mark>给它们加AI</mark>。用户不需要换工具，只需要工具里多一个AI按钮。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/Lapis0x0/obsidian-yolo" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="creative" data-pid="molio-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
-    <span class="card-date">2026-06-23</span>
+    <span class="card-date">2026-06-25</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">BuilderPulse</h2>
-  <p class="card-desc">独立开发者的AI日报——20个问题+10多个数据源，AI帮你盯行业动态，1.4k stars</p>
+  <h2 class="card-title">Molio</h2>
+  <p class="card-desc">本地知识库×AI桌面助手，32 stars——把你的Obsidian笔记、本地文件变成AI可对话的知识库，Claude Code GUI+Web Clipper</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    1.4k stars但产品思路值得关注。
-1. &quot;20个问题+10多个数据源&quot;的框架设计是亮点——不是被动推送，是主动按项目需求拉取
-2. 工具类产品的天...
+    32 stars但产品定位清晰。
+1. 本地知识库×AI是一个正在形成的品类——用户不想把笔记传到云端AI
+2. Claude Code GUI说明目标用...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span><span class="tag">资讯</span></div>
+    <div class="card-full-tags"><span class="tag">知识库</span><span class="tag">本地优先</span><span class="tag">开源</span><span class="tag">Claude</span><span class="tag">Obsidian</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>独立开发者需要关注行业动态但没时间——每天要扫GitHub trending、X、Hacker News、Reddit多个信息源。<mark>信息分散，筛选耗时</mark>。</p>
+  <p>你的知识散布在Obsidian笔记、本地Markdown文件、网页剪藏里——GPT看不到它们。你想跟自己的笔记对话，但<mark>没有工具能把本地知识库接上AI</mark>。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM擅长<mark>信息聚合和摘要</mark>——可以同时监控多个数据源，用预设的<mark>20个问题框架</mark>筛选和总结。不是简单的RSS聚合，而是有筛选逻辑的智能资讯。</p>
+  <p>LLM+本地向量检索=你可以用自然语言<mark>跟自己的笔记对话</mark>。Molio不只做检索，还做了Claude Code GUI和Web Clipper——形成一个完整的「个人知识AI」闭环。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>1.4k stars但产品思路值得关注。
-1. <mark>"20个问题+10多个数据源"</mark>的框架设计是亮点——不是被动推送，是主动按项目需求拉取
-2. 工具类产品的天花板在这里：<mark>你自己就是独立开发者</mark>，你为自己做工具，然后发现别人也需要
-3. 资讯类产品的核心不是"信息多"，是<mark>"不需要我看的信息不要出现"</mark></p>
+  <p>32 stars但产品定位清晰。
+1. <mark>本地知识库×AI</mark>是一个正在形成的品类——用户不想把笔记传到云端AI
+2. Claude Code GUI说明目标用户是技术人员——先在懂AI的人群里验证再出圈
+3. Web Clipper说明他们在解决知识<mark>摄入→检索→对话</mark>的完整链路</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>为自己做一个工具。你每天重复做的<mark>信息处理工作</mark>，大概率别人也需要。从自己的需求出发做产品——你不是在做市场调研，你就是在解决自己的问题，顺便产品化。</p>
+  <p>个人AI的下一个战场是<mark>本地知识库</mark>。你的笔记、文件、书签、PDF——这些都是AI最好的上下文。做一个产品让AI能读你的知识库，比做一个通用聊天机器人更有粘性。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/BuilderPulse/BuilderPulse" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/zhuzhaoyun/Molio" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="extension" data-pid="browser-use-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.14s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">Browser Use</h2>
-  <p class="card-desc">让网站对AI Agent可访问——100k stars，为AI Agent提供浏览器自动化API，让Agent能像人一样操作网页</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    100k stars说明了一个被忽视的刚需：AI Agent的&quot;手&quot;和&quot;眼睛&quot;。
-1. 它是基础设施型产品——不面向终端用户，面向所有做AI Agent的...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">基础设施</span><span class="tag">To B</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>AI Agent想操作网页但<mark>缺乏统一接口</mark>——每个网站有不同的DOM结构和交互逻辑。开发者要为每个网站写定制脚本，Agent的<mark>网页交互层</mark>没有标准化。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>LLM的<mark>视觉理解和推理能力</mark>让Agent可以"看懂"网页——不是解析DOM，而是像人一样理解布局、按钮、表单。Browser Use把这种能力封装成<mark>简单API</mark>。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>100k stars说明了一个被忽视的刚需：AI Agent的<mark>"手"和"眼睛"</mark>。
-1. 它是<mark>基础设施型产品</mark>——不面向终端用户，面向所有做AI Agent的开发者
-2. 基础设施的价值不在功能多，在于<mark>接口简单</mark>。提供精简API让任何Agent都能操作浏览器，而不是做一个大而全的自动化框架</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>AI时代产生了大量<mark>新基础设施需求</mark>——Agent的浏览器层、记忆层、工具调用层、安全层。每一个都是独立的产品机会。观察你用的Agent框架，里面哪些模块可以独立出来做产品？</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/browser-use/browser-use" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="odoopilot-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
+<div class="card" data-category="workflow" data-pid="ragflow-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.22s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
+    <span class="card-date">2026-06-25</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">OdooPilot</h2>
-  <p class="card-desc">ERP通过聊天使用——免登录Odoo，Telegram/WhatsApp上AI助手，请假、审批、CRM更新、库存校验全用自然语言，15种语言，15 stars</p>
+  <h2 class="card-title">RAGFlow</h2>
+  <p class="card-desc">开源RAG+Agent引擎，83k stars，把LLM和你的数据真正连起来——不只是搜索，是让AI理解你的文档并执行任务</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    15 stars但场景极准。
-1. 它不做通用AI助手——只做Odoo的AI前端。定位越窄，替代意愿越强
-2. 用即时通讯工具（Telegram/What...
+    83k stars说明企业级RAG需求真实且庞大。
+1. RAGFlow不只是RAG库——它做了一整套引擎：从文档摄入到Agent执行
+2. 开源+企业版...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">To B</span><span class="tag">AI Agent</span><span class="tag">ERP</span></div>
+    <div class="card-full-tags"><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">开源</span><span class="tag">To B</span><span class="tag">知识库</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>ERP系统功能强大但<mark>学习成本极高</mark>——Odoo有上千个模块和菜单，普通员工要记住请假在哪个入口、报销怎么填、库存怎么查。对非技术人员，ERP就是<mark>一个迷宫</mark>。</p>
+  <p>企业有海量内部文档——合同、手册、技术规范——但LLM看不到它们。传统搜索只能找到关键词，不能让AI理解文档内容并基于它做判断。需要一个把<mark>私有数据</mark>和<mark>LLM推理</mark>真正连起来的引擎。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM可以理解"我想请三天年假"这样的自然语言请求并映射到Odoo的<mark>具体操作</mark>——创建请假单、检测余额、发给审批人。Telegram/WhatsApp作为入口，员工不需要登录ERP。</p>
+  <p>RAG（检索增强生成）让LLM在回答前先检索相关文档再生成答案。RAGFlow把这个流程产品化了——不是简单的向量搜索+LLM拼接，而是做了<mark>文档解析、分块策略、混合检索、Agent编排</mark>一整层。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>15 stars但场景极准。
-1. 它不做通用AI助手——<mark>只做Odoo的AI前端</mark>。定位越窄，替代意愿越强
-2. 用即时通讯工具（Telegram/WhatsApp）当入口——不改变员工的工作习惯
-3. "Your team uses Odoo — without logging in to Odoo" 这句产品描述就是<mark>价值主张本身</mark></p>
+  <p>83k stars说明企业级RAG需求真实且庞大。
+1. RAGFlow不只是RAG库——它做了一整套<mark>引擎</mark>：从文档摄入到Agent执行
+2. 开源+企业版双轨是这类基础设施产品的成熟模式
+3. 关键判断：RAG正在从「技术方案」变成「产品品类」——用户不需要懂向量数据库，只要拖文档进去就能用</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>找一个复杂的企业软件（SAP、Salesforce、Jira），把它<mark>最常用的20%功能</mark>用聊天界面重新包装。不需要替换系统——只替换交互层。员工不需要学系统，只需要会说话。</p>
+  <p>做B端AI产品时，不要把LLM当产品卖——把<mark>LLM+客户的数据</mark>当产品卖。用户不关心你用的什么模型，关心的是「我的合同库里有没有这条免责条款」能被AI回答出来。RAG是桥梁，产品化才是价值。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/arunrajiah/odoopilot" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/infiniflow/ragflow" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="workflow" data-pid="147-agents-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
+<div class="card" data-category="creative" data-pid="project-nova-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.3s">
   <div class="card-header">
-    <span class="source-badge">&#9654; YouTube</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
+    <span class="card-date">2026-06-25</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">147 Pre-Built AI Agents</h2>
-  <p class="card-desc">开源仓库147+预构建AI Agent——金融、营销、产品等领域的专业Agent，可直接用于Claude Code，Agent专业化趋势</p>
+  <h2 class="card-title">Project NOVA</h2>
+  <p class="card-desc">25+个专业Agent联邦协作，34 stars——n8n+MCP串联多个AI Agent像团队一样分工协作，一个任务拆给多个专业Agent执行</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    Agent正在从&quot;通用助手&quot;走向&quot;专业化分工&quot;。
-1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领...
+    34 stars但概念超前。
+1. 多Agent协作是2025-2026最热的研究方向之一——从单Agent走向Agent联邦
+2. n8n+MCP的组合...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To B</span><span class="tag">开源</span></div>
+    <div class="card-full-tags"><span class="tag">Agent</span><span class="tag">联邦</span><span class="tag">MCP</span><span class="tag">开源</span><span class="tag">自动化</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>AI Agent很强大但<mark>不会写prompt</mark>的人用不起来。每个领域需要不同的Agent配置——金融分析师要财报解读能力，营销人要文案和数据分析。普通用户<mark>不知道Agent该怎么配</mark>。</p>
+  <p>单个AI Agent能力有限——一个Agent既要会写代码又要会做数据分析还要会回复邮件，结果哪样都不精。像公司一样，<mark>专业化分工</mark>比全栈更高效。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM的能力可以通过<mark>专业化的system prompt + 工具集</mark>变成垂直Agent。不是训练新模型，而是给同一个模型不同的"角色卡"和工具包。147个预构建Agent就是147套经过验证的角色配置。</p>
+  <p>LLM可以通过<mark>不同的system prompt+工具集</mark>变成不同的专业角色。n8n做任务编排，MCP做Agent间通信，25+个Agent像团队一样协作——这是Agent从「个人助理」走向「AI团队」的关键一步。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>Agent正在从<mark>"通用助手"走向"专业化分工"</mark>。
-1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领域会有专属Agent
-2. 开源预构建的Agent让"不会写prompt"不再是障碍——直接用别人调好的
-3. Sebastian Hardy频道从AI营销视角推荐，目标受众明确</p>
+  <p>34 stars但概念超前。
+1. 多Agent协作是2025-2026最热的研究方向之一——从单Agent走向Agent联邦
+2. n8n+MCP的组合拳很聪明：n8n管流程，MCP管通信，各自做最擅长的事
+3. 风险：概念很好但实现复杂度极高，小团队维护压力大</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>你的产品可以考虑做<mark>Agent模板市场</mark>——不是让用户从头配置Agent，而是给他们一套开箱即用的分类Agent。像Notion模板市场一样，不同场景不同模板，用户只需选+微调。</p>
+  <p>未来的AI产品不只是「一个Agent做所有事」，而是<mark>一群专业Agent协作</mark>。如果你的产品涉及多步骤复杂任务，考虑拆成多个专业Agent而不是一个超级Agent。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://www.youtube.com/watch?v=XpRnyqxM3Jk" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/PradeepaRW/project-nova" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="extension" data-pid="claude-mem-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
+<div class="card" data-category="extension" data-pid="arxiv-mcp-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.38s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-23</span>
+    <span class="card-date">2026-06-25</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">Claude Mem</h2>
-  <p class="card-desc">跨会话持久上下文——83k stars，捕获Agent的一切记忆，任何LLM Agent通用的记忆层</p>
+  <h2 class="card-title">arXiv MCP Server</h2>
+  <p class="card-desc">AI论文助手——arXiv的MCP Server，17 stars，让Claude/Codex直接搜论文、读摘要、追踪最新研究</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    83k stars，Agent&quot;记忆&quot;是基础设施级需求。
-1. 它不做Agent本身——只做记忆层。任何Agent都可以接入
-2. 类似浏览器cookie...
+    17 stars但场景精准。
+1. MCP Server是最轻量的AI产品形态——一个API包装就是产品
+2. 学术界是AI的高价值场景：研究者付费意愿强...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">基础设施</span><span class="tag">To C &amp; To B</span></div>
+    <div class="card-full-tags"><span class="tag">MCP</span><span class="tag">学术</span><span class="tag">论文</span><span class="tag">Claude</span><span class="tag">知识工具</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>Agent每次新会话都是空白——不记得你昨天的偏好、上周解决的问题、上个月的上下文。用户需要反复重复背景信息。LLM的上下文窗口虽然越来越大，但<mark>会话间的记忆是断裂</mark>的。</p>
+  <p>研究者需要追踪arXiv上的最新论文，但每天新论文上百篇，<mark>手动筛选耗时</mark>。现有的arXiv工具只能搜标题关键词，无法理解论文内容做智能推荐。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM本身<mark>没有持久记忆</mark>——这是架构设计决定的。但LLM可以理解、压缩、检索历史上下文。Claude Mem在LLM外面加了一层<mark>记忆管理</mark>：自动捕获关键决策、总结历史、跨会话注入上下文。</p>
+  <p>MCP协议让AI可以直接调用arXiv搜索API。不只是搜论文——AI可以<mark>读摘要、判断相关性、总结关键发现</mark>、按你的研究兴趣筛选。不是RSS订阅，是AI替你读论文。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>83k stars，Agent<mark>"记忆"</mark>是基础设施级需求。
-1. 它不做Agent本身——只做<mark>记忆层</mark>。任何Agent都可以接入
-2. 类似<mark>浏览器cookie</mark>之于Web开发：不是产品核心，但没有它产品体验不完整
-3. 记忆越积累越有价值——<mark>用户迁移成本</mark>随使用增加而上升</p>
+  <p>17 stars但场景精准。
+1. MCP Server是最轻量的AI产品形态——一个API包装就是产品
+2. 学术界是AI的高价值场景：研究者付费意愿强，且论文是结构化高质量数据
+3. 可以扩展：不只arXiv，PubMed、Semantic Scholar、Google Scholar都可以做成MCP</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>不从正面做AI Agent——从侧面做Agent的<mark>配套设施</mark>。Agent生态里最缺的不一定是新Agent，可能是记忆、安全、监控、测试这些模块。挑一个功能把它做到<mark>通用、独立、可插拔</mark>。</p>
+  <p><mark>MCP Server即产品</mark>是一个被低估的思路。不需要做完整App，一个MCP工具让AI能访问某个数据源，就是一个可分发、可盈利的产品。挑一个垂直数据源（论文、法律、医疗、金融），做它的MCP接口。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/thedotmack/claude-mem" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/1Dark134/arxiv-mcp-server" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="extension" data-pid="openclaw-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
+<div class="card" data-category="creative" data-pid="mira-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.46s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-23</span>
+    <span class="card-cat-badge" data-cat="creative">Creative Tools</span>
+    <span class="card-date">2026-06-25</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">OpenClaw</h2>
-  <p class="card-desc">跨平台个人AI助手——&quot;The lobster way&quot;品牌叙事，379k stars，任何OS任何平台都能用的AI agent，不走平台绑定路线</p>
+  <h2 class="card-title">MIRA</h2>
+  <p class="card-desc">医学AI研究助手，11 stars——帮医生和研究人员做文献检索、证据评估、临床试验分析，医疗领域的专业AI Agent</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    379k stars说明需求成立。OpenClaw把AI助手从&quot;平台附属功能&quot;变成了&quot;独立OS层&quot;——不是另一个ChatGPT客户端，而是AI时代的操作系...
+    11 stars但踩中了AI×医疗的黄金交叉点。
+1. 医疗是AI最高价值场景之一——医生时间是极度稀缺资源
+2. 垂直领域AI比通用AI更有商业化前景：...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">To C</span><span class="tag">跨平台</span></div>
+    <div class="card-full-tags"><span class="tag">医疗AI</span><span class="tag">研究助手</span><span class="tag">专业Agent</span><span class="tag">Agent</span><span class="tag">开源</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>AI助手大多<mark>绑定特定平台</mark>——ChatGPT有独立App、Claude在网页里、Copilot在IDE里。用户想要一个<mark>跨OS、跨平台</mark>的统一入口：在Windows、macOS、Linux任何地方，同一个AI助手随时在。</p>
+  <p>医生和医学研究人员要在海量文献中找到循证依据——PubMed有几千万篇论文，<mark>找到相关且高质量的证据</mark>需要专业训练和大量时间。不是简单的关键词搜索，需要评估研究质量。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM的推理和生成能力已成熟到可以作为<mark>独立平台层</mark>存在——不需要依附于特定IDE或操作系统。<mark>REST API + WebSocket</mark>让AI助手可以在任何环境运行，平台不再是瓶颈。</p>
+  <p>LLM可以理解医学文献的结构（摘要、方法、结果、结论），并按<mark>循证医学等级</mark>评估证据强度。MIRA不是通用AI+医学提示词——它专为医学文献检索和证据评估设计。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>379k stars说明需求成立。OpenClaw把AI助手从<mark>"平台附属功能"</mark>变成了<mark>"独立OS层"</mark>——不是另一个ChatGPT客户端，而是AI时代的操作系统级入口。
-1. 不绑定编辑器、不绑定终端、不绑定OS——与Copilot和Warp走完全相反的路
-2. "The lobster way"的品牌调性说明他们有<mark>产品叙事意识</mark>，不是纯技术项目</p>
+  <p>11 stars但踩中了AI×医疗的黄金交叉点。
+1. 医疗是AI最高价值场景之一——医生时间是极度稀缺资源
+2. <mark>垂直领域AI</mark>比通用AI更有商业化前景：医学AI助手如果说错一句话就出大事，所以专业化比通用化有价值
+3. 开源策略对医疗场景很重要——医院和研究者需要审计AI的推理过程</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>你的产品不一定非要绑定某个生态。当竞争对手都在绑定平台时，做<mark>"跨平台统一层"</mark>本身就是差异。观察哪些AI工具只在单一平台存在——把它们拉到跨平台就是你的机会。</p>
+  <p>找一个<mark>专业知识密集</mark>的垂直领域（医疗、法律、金融、科研），做AI助手。通用AI在这些领域不够可靠——不是因为模型不够好，是因为缺乏领域知识框架。垂直AI的核心不是模型，是<mark>领域知识的结构化</mark>。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/openclaw/openclaw" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/MIRA-Intelligence/mira" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
 </div>
-<div class="card" data-category="extension" data-pid="trvl-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
-  <div class="card-header">
-    <span class="source-badge">&#128187; GitHub</span>
-    <span class="card-cat-badge" data-cat="extension">Extension</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">trvl</h2>
-  <p class="card-desc">1个MCP工具包揽66种旅行搜索——航班、酒店、火车、租车、轮渡、价格提醒，无API key依赖，单个Go二进制，41 stars</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    41 stars，但产品思路精炼。
-1. &quot;1 tool + 66 aliases&quot;的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）
-...
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">To C</span><span class="tag">MCP</span><span class="tag">旅行</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>规划旅行要在多个App间跳转——机票在Skyscanner、酒店在Booking、火车在Rail Europe。每个平台不同界面，<mark>信息分散</mark>，反复切换。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>LLM可以理解自然语言的旅行需求（"下周五去东京，预算5000，找最便宜的航班+酒店组合"），但缺一个统一的<mark>搜索执行层</mark>。trvl提供了这个层——1个MCP工具，66个别名，AI助手一次调用覆盖所有旅行搜索。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>41 stars，但产品思路精炼。
-1. <mark>"1 tool + 66 aliases"</mark>的设计极聪明——对用户简单（一个工具），对AI丰富（66个语义入口）
-2. 98.9% smaller tools/list 说明他们在做<mark>接口精简</mark>，而不是堆功能
-3. 无API key的纯抓取方案让用户零配置即可用——降低了MCP的使用门槛</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>做MCP工具时，考虑<mark>"单工具多别名"</mark>模式——不要为每个功能做一个tool，用别名覆盖语义变体让AI更灵活调用。另外，无API key方案虽然稳定性不如官方API，但<mark>零配置</mark>体验适合个人用户场景。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/MikkoParkkola/trvl" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="ai-clip-skill-20260623" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
-  <div class="card-header">
-    <span class="source-badge">&#128279; 小红书</span>
-    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
-    <span class="fav-btn">&#9829;</span>
-  </div>
-  <h2 class="card-title">AI 自动剪辑 Skill</h2>
-  <p class="card-desc">以 REDSkill 形态分发的 AI 剪辑 Skill，嵌入 Claude Code / Codex 使用。自动剪口误、口癖、静音，越用越懂你的剪辑习惯。</p>
-  <div class="key-insight">
-    <span class="key-insight-label">KEY INSIGHT</span>
-    没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。
-  </div>
-  <div class="expand-hint">click to expand</div>
-  <div class="card-full">
-    <div class="card-full-tags"><span class="tag">剪辑</span><span class="tag">To C</span><span class="tag">AI Agent</span></div>
-    <div class="card-full-grid">
-<div class="analysis-block">
-  <span class="analysis-label">Pain Point</span>
-  <p>口播创作者反复手动剪口误/口癖/静音——有特定、高频的痛点用户群。做了三年口播的人清楚自己的习惯模式，但剪辑软件不会记住任何一个人的偏好，每期视频都从零开始。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Why AI</span>
-  <p>规则方案用阈值和正则匹配来识别口癖，通用的词能抓到，个性化的长短语抓不到。更根本的问题是：剪辑不止是找到多余的——删掉之后节奏对不对？规则完全判断不了，因为节奏感因人而异。%%AI 把剪辑从"写死规则"变成了"学习个人偏好"，这是规则做不到的。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Product Insight</span>
-  <p>没做剪映插件——用户的快捷键、模板、字体全在剪映里，插件很难在别人的主场站稳。%%也没做独立 App——口播创作者已经在 Agent 里写逐字稿了，录完视频的下一步是回到 Agent，不是打开另一个软件。产品形态的选择依据是：用户正在走的那条心理路径在哪里，就在哪里接住。用上二十条视频之后，用户积累的口癖列表和节奏偏好都存在这个 skill 里，换回去意味着丢掉这些数据。</p>
-</div>
-<div class="analysis-block">
-  <span class="analysis-label">Transfer</span>
-  <p>观察用户每天必须手动重复的具体操作；判断现有规则方案为什么盖不住它（个体差异就是 AI 的切入口）；看用户做这件事的前一个动作在什么工具里——产品就从那里接住。</p>
-</div>
-    </div>
-    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="http://xhslink.com/o/947lQCYSOgA" target="_blank" class="ext-link">&#128279; View Original</a>
-      <button class="close-btn">&#10005; Collapse</button>
-    </div>
-  </div>
-</div>
-<div class="card" data-category="workflow" data-pid="n8n-2026-06-23" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.7s">
+<div class="card" data-category="workflow" data-pid="qwenpaw-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.54s">
   <div class="card-header">
     <span class="source-badge">&#128187; GitHub</span>
     <span class="card-cat-badge" data-cat="workflow">Workflow</span>
-    <span class="card-date">2026-06-23</span>
+    <span class="card-date">2026-06-25</span>
     <span class="fav-btn">&#9829;</span>
   </div>
-  <h2 class="card-title">n8n</h2>
-  <p class="card-desc">公平代码的工作流自动化平台，193k stars，原生AI能力——可视化拖拽+代码双模式，把if-this-then-that升级为AI驱动</p>
+  <h2 class="card-title">QwenPaw</h2>
+  <p class="card-desc">个人AI助手框架，20k stars，基于Qwen模型——你的私人Chat App，能操作电脑、管理文件、执行任务的AI伙伴</p>
   <div class="key-insight">
     <span class="key-insight-label">KEY INSIGHT</span>
-    193k stars，体量巨大。n8n的核心策略是&quot;公平代码&quot;（fair-code）：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。
-1...
+    20k stars，个人AI助手赛道在快速升温。
+1. QwenPaw的定位不是「另一个Chat客户端」，而是AI操作系统层——类似OpenClaw的思路...
   </div>
   <div class="expand-hint">click to expand</div>
   <div class="card-full">
-    <div class="card-full-tags"><span class="tag">AI Agent</span><span class="tag">工作流</span><span class="tag">To B</span></div>
+    <div class="card-full-tags"><span class="tag">Agent</span><span class="tag">个人助手</span><span class="tag">开源</span><span class="tag">To C</span><span class="tag">CLI</span></div>
     <div class="card-full-grid">
 <div class="analysis-block">
   <span class="analysis-label">Pain Point</span>
-  <p>Zapier/Make等自动化工具在很多场景下<mark>锁数据和限制复杂度</mark>——你要么忍受，要么写代码自己搭。企业需要既能让<mark>非技术人员可视化操作</mark>、又能让工程师写代码定制的统一平台。</p>
+  <p>ChatGPT和Claude很强，但都在云端。你的文件、你的应用、你的桌面——它们碰不到。<mark>个人AI应该能操作你的电脑</mark>，不只是跟你聊天。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Why AI</span>
-  <p>LLM让工作流从<mark>"规则驱动"</mark>升级为<mark>"语义驱动"</mark>——n8n原生集成了AI节点，用户可以在可视工作流中直接调用LLM做分类、提取、生成，不再需要单独搭AI pipeline。</p>
+  <p>Qwen模型的端侧能力（本地推理）+ Agent框架（文件操作、应用调用、浏览器控制）= <mark>个人AI操作系统</mark>。不是在云端回答你，而是在你的机器上帮你做事。</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Product Insight</span>
-  <p>193k stars，体量巨大。n8n的核心策略是<mark>"公平代码"（fair-code）</mark>：开源可用但不允许你fork后直接卖SaaS。这比纯开源更可持续。
-1. <mark>可视化+代码双模式</mark>覆盖了两类完全不同的用户——非技术操作者和工程师
-2. <mark>原生AI节点</mark>是真正的差异化——不是插件，是内置的一等公民</p>
+  <p>20k stars，个人AI助手赛道在快速升温。
+1. QwenPaw的定位不是「另一个Chat客户端」，而是<mark>AI操作系统层</mark>——类似OpenClaw的思路
+2. CLI入口说明目标用户是技术人员，这是正确的冷启动策略
+3. 基于阿里的Qwen模型，有国产模型生态的加持</p>
 </div>
 <div class="analysis-block">
   <span class="analysis-label">Transfer</span>
-  <p>做平台型产品时，考虑<mark>"双模式"</mark>——可视化入门降低门槛，代码出口保证天花板。不要只做其中之一。另外，<mark>fair-code</mark>是一个值得研究的商业模式：比MIT更保护创作者，比SaaS更开放。</p>
+  <p>做个人AI产品时，<mark>本地>云端</mark>是一个正在形成的趋势。不是所有任务都需要云端大模型——文件管理、日程安排、本地搜索这些场景，端侧模型足够好用，且隐私无顾虑。</p>
 </div>
     </div>
     <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
-      <a href="https://github.com/n8n-io/n8n" target="_blank" class="ext-link">&#128279; View Original</a>
+      <a href="https://github.com/agentscope-ai/QwenPaw" target="_blank" class="ext-link">&#128279; View Original</a>
+      <button class="close-btn">&#10005; Collapse</button>
+    </div>
+  </div>
+</div>
+<div class="card" data-category="workflow" data-pid="openmetadata-20260625" style="animation: cardEnter 0.45s ease-out both; animation-delay: 0.62s">
+  <div class="card-header">
+    <span class="source-badge">&#128187; GitHub</span>
+    <span class="card-cat-badge" data-cat="workflow">Workflow</span>
+    <span class="card-date">2026-06-25</span>
+    <span class="fav-btn">&#9829;</span>
+  </div>
+  <h2 class="card-title">OpenMetadata</h2>
+  <p class="card-desc">给AI Agent做数据上下文层，14k stars——让Agent知道你的数据库里有什么、数据从哪来、质量如何，打通AI与数据治理</p>
+  <div class="key-insight">
+    <span class="key-insight-label">KEY INSIGHT</span>
+    14k stars，数据治理×AI是个被低估的方向。
+1. 它不是AI产品本身，而是AI产品的底座——让Agent可信任地访问企业数据
+2. 「元数据」这...
+  </div>
+  <div class="expand-hint">click to expand</div>
+  <div class="card-full">
+    <div class="card-full-tags"><span class="tag">数据治理</span><span class="tag">Agent</span><span class="tag">开源</span><span class="tag">To B</span><span class="tag">MCP</span></div>
+    <div class="card-full-grid">
+<div class="analysis-block">
+  <span class="analysis-label">Pain Point</span>
+  <p>AI Agent很聪明，但对企业数据库一无所知——不知道哪张表是核心数据、哪个字段已经废弃、数据什么时候更新的。Agent<mark>缺乏数据上下文</mark>，做出的判断可能基于过期或错误的数据。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Why AI</span>
+  <p>LLM可以理解元数据——表名、字段注释、数据血缘、更新频率。OpenMetadata把这些信息组织成<mark>Agent可查询的上下文层</mark>：Agent动手前先查元数据，知道自己在操作什么。</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Product Insight</span>
+  <p>14k stars，数据治理×AI是个被低估的方向。
+1. 它不是AI产品本身，而是<mark>AI产品的底座</mark>——让Agent可信任地访问企业数据
+2. 「元数据」这个词太技术化，产品化翻译是：「让AI知道你的数据靠不靠谱」
+3. 和MCP协议天然互补——MCP让Agent调工具，OpenMetadata让Agent理解数据</p>
+</div>
+<div class="analysis-block">
+  <span class="analysis-label">Transfer</span>
+  <p>AI时代产生了新的基础设施需求——不只是模型和算力，<mark>数据上下文层</mark>是Agent可靠性的前提。如果你的产品涉及企业数据，考虑先做一层元数据让AI理解数据来源和质量。</p>
+</div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center;margin-top:18px;">
+      <a href="https://github.com/open-metadata/OpenMetadata" target="_blank" class="ext-link">&#128279; View Original</a>
       <button class="close-btn">&#10005; Collapse</button>
     </div>
   </div>
@@ -1312,10 +1279,7 @@ em { font-style: italic; }
     <span class="timeline-builder-handle">@thsottiaux</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">已修复。你知道接下来会发生什么 🤫
-
-给我们 24 小时，重置所有套餐的 Codex 速率限制。</p>
-    <p class="timeline-text timeline-text-en">This was fixed. You know what&#39;s coming 👀
+    <p class="timeline-text">This was fixed. You know what&#39;s coming 👀
 
 Give us 24 hours to reset the Codex rate limits across all plans.</p>
     <div class="timeline-meta">
@@ -1325,8 +1289,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">收到。我们注意到部分 Codex 用户遇到了较高的「模型满载」错误率，正在努力恢复稳定。</p>
-    <p class="timeline-text timeline-text-en">Oy. We are aware that some Codex users are experiencing high error rates with &quot;model at capacity&quot; and are working to bring things back to being stable.</p>
+    <p class="timeline-text">Oy. We are aware that some Codex users are experiencing high error rates with &quot;model at capacity&quot; and are working to bring things back to being stable.</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 3628</span>
@@ -1334,8 +1297,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Bim bada boum。这周我在法国，正在全欧洲推出所有最令人兴奋的 Codex 功能。是巧合，还是团队觉得我不在就没法好好干活？</p>
-    <p class="timeline-text timeline-text-en">Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn&#39;t able to be productive otherwise?</p>
+    <p class="timeline-text">Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn&#39;t able to be productive otherwise?</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 1223</span>
@@ -1350,8 +1312,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
     <span class="timeline-builder-handle">@trq212</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Slack 现在直接渲染 HTML 附件，不再只显示纯文本了 🤶🙏</p>
-    <p class="timeline-text timeline-text-en">Slack now renders HTML attachments instead of just showing it as text 😭🙏</p>
+    <p class="timeline-text">Slack now renders HTML attachments instead of just showing it as text 😭🙏</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 2513</span>
@@ -1366,8 +1327,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
     <span class="timeline-builder-handle">@ryolu_</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">疑惑的想法：如果 X 和 Cursor 是同一个东西会怎样？</p>
-    <p class="timeline-text timeline-text-en">crazy idea: what if X, Cursor, were the same thing?</p>
+    <p class="timeline-text">crazy idea: what if X, Cursor, were the same thing?</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 2195</span>
@@ -1375,10 +1335,7 @@ Give us 24 hours to reset the Codex rate limits across all plans.</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Cursor 移动版最疯狂的是 @rikcreation 以「设计师」的身份，用 Cursor 编码出了大部分实际产品。
-
-头衔一文不值。你只管动手构建就行。</p>
-    <p class="timeline-text timeline-text-en">the crazy thing about Cursor mobile
+    <p class="timeline-text">the crazy thing about Cursor mobile
 is @rikcreation coded most of the real thing with Cursor, as a “designer”
 
 titles don’t mean shit.
@@ -1397,12 +1354,7 @@ you can just build.</p>
     <span class="timeline-builder-handle">@levie</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Cursor 交易在象征意义上非常重要。它实际上是 AI 应用层第一个大获成功的案例。
-
-他们坚实证明了深度领域聚焦的价值主张、作为模型路由器的角色、何时依赖前沿模型 vs. 何时自己训练、以及应用层 AI 的 GTM 和分发如何确保你真正抓住市场机会。
-
-他们业务的每一个层面都经过精心调校，在一个高度竞争的空间里不断开拓阵地并加倍投入。这真正是第一个规模化执行这套打法的方法论模板。</p>
-    <p class="timeline-text timeline-text-en">The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI. 
+    <p class="timeline-text">The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI. 
 
 They firmly proved out the value proposition of having a deep domain focus, the role you play as a model router, when to lean into frontier models vs. when to train your own, and the role of applied AI GTM and distribution to make sure you’re actually taking advantage of the market opportunity. 
 
@@ -1414,8 +1366,7 @@ Every aspect of their business was tuned to carve out ground and keep doubling d
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">AI 领域最大的问题之一是：开源权重模型离前沿模型到底还有多远。关键问题不是「开源能赶上吗？」而是「开源能离得够近，让大多数应用场景都可以用吗？」——这个答案正在快速变成「是的」。这也正是应用层创业者应该兴奋的地方。</p>
-    <p class="timeline-text timeline-text-en">One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years. 
+    <p class="timeline-text">One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years. 
 
 The answer to this will determine how the chip stack plays out, where inference can be run, what sovereign AI looks like, what happens at the applied AI layer, what the margin structure looks like in AI, how much companies can afford to spend on AI, and more.
 
@@ -1434,10 +1385,7 @@ At the moment the open weights players appear to be holding up at keeping close 
     <span class="timeline-builder-handle">@garrytan</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">如果你害怕出丑，永远不会成就任何事。
-
-不过说这话的人正试图靠 looksmaxxing 获取超额回报，祝他好运。</p>
-    <p class="timeline-text timeline-text-en">You’ll never achieve anything if you are afraid of being cringe
+    <p class="timeline-text">You’ll never achieve anything if you are afraid of being cringe
 
 Then again this is from someone trying to use looksmaxxing to achieve outsize return, good luck with that</p>
     <div class="timeline-meta">
@@ -1447,8 +1395,7 @@ Then again this is from someone trying to use looksmaxxing to achieve outsize re
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Mothers 是那种对战斗人员来说影响立竿见影的技术。</p>
-    <p class="timeline-text timeline-text-en">9Mothers is one of those technologies whose impact is immediately obvious to warfighters</p>
+    <p class="timeline-text">9Mothers is one of those technologies whose impact is immediately obvious to warfighters</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-17</span>
       <span class="timeline-likes">&#9825; 74</span>
@@ -1456,14 +1403,7 @@ Then again this is from someone trying to use looksmaxxing to achieve outsize re
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">从而导致……Bowen 的「自我分化」理论
-
-低分化 = 对他人的情绪信号高度反应，在关系中失去自我，在压力下无法守住边界——坍缩为「我们一体感」（每个人必须感受一致，否则关系就受到威胁）。
-
-同一种病症的两种表现：变色龙（调整自己讨好，融合模式）和霸凌者（强迫他人服从，混蛋模式）。两者都是未分化的。自我放弃者和混蛋是同一个人。
-
-解方相同：降低慢性焦虑，提高在关系中保持独立自我的能力。</p>
-    <p class="timeline-text timeline-text-en">Which leads to… Bowen’s differentiation of self
+    <p class="timeline-text">Which leads to… Bowen’s differentiation of self
 
 Low differentiation = highly reactive to others&#39; emotional cues, loses self in relationships, can&#39;t hold boundaries under pressure — collapses into &quot;we-ness&quot; (everyone must feel the same or the bond feels threatened).
 
@@ -1484,19 +1424,7 @@ The fix is the same: lower the chronic anxiety, raise the capacity to stay a sep
     <span class="timeline-builder-handle">@joshwoodward</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">🌍🌎改变世界的 AI 公司正从巴西涌现。
-
-这就是为什么我们正式将 Google AI Futures Fund 扩展至巴西，与风投领导者 Monashees 合作推出 Gama Fund。
-
-我们正在寻找一群精英级别的前沿技术创始人，将提供：
-
-- 提前访问 Google DeepMind 模型
-- 最高 200 万美元的联合投资
-- 35 万美元的 Google Cloud 和 Gemini 额度
-- 在我们新的 IPT Open 园区与 Google 工程师直接联合开发
-
-立即申请：</p>
-    <p class="timeline-text timeline-text-en">🇧🇷World-changing AI companies are coming from Brazil.
+    <p class="timeline-text">🇧🇷World-changing AI companies are coming from Brazil.
 
 That’s why we’ve officially expanded our Google AI Futures Fund to Brazil, partnering with venture capital leader Monashees to launch the Gama Fund.
 
@@ -1522,10 +1450,7 @@ Apply today:</p>
     <span class="timeline-builder-handle">@petergyang</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">老实说我不想当黑子，但我觉得这就是公司内部没人敢跟 CEO 说不的结果。
-
-也许这东西会让我们惊艳？</p>
-    <p class="timeline-text timeline-text-en">Honestly I don&#39;t want to be a hater but I feel like this is what happens when nobody internally wants to tell the CEO no. 
+    <p class="timeline-text">Honestly I don&#39;t want to be a hater but I feel like this is what happens when nobody internally wants to tell the CEO no. 
 
 Maybe this thing will blow our socks off?</p>
     <div class="timeline-meta">
@@ -1535,8 +1460,7 @@ Maybe this thing will blow our socks off?</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">又一次。是不是每个超过 1000 人的公司都要来这一出 🤶</p>
-    <p class="timeline-text timeline-text-en">Damn not again. Is every company with 1,000+ people going to do this 😭</p>
+    <p class="timeline-text">Damn not again. Is every company with 1,000+ people going to do this 😭</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 204</span>
@@ -1544,10 +1468,7 @@ Maybe this thing will blow our socks off?</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">发布一个新教程：如何用 4 个文件将 Codex 或 Claude Code 变成你的个人顾问。另外，我在 Fable 被封之前成功保存了它的建议 🗠️
-
-👉 订阅获取明天的教程：https://t.co/MbOfeFUJbn</p>
-    <p class="timeline-text timeline-text-en">Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable&#39;s advice too before it got restricted 🥲
+    <p class="timeline-text">Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable&#39;s advice too before it got restricted 🥲
 
 📌 Subscribe to get the tutorial tmr: https://t.co/MbOfeFUJbn</p>
     <div class="timeline-meta">
@@ -1564,10 +1485,7 @@ Maybe this thing will blow our socks off?</p>
     <span class="timeline-builder-handle">@zarazhangrui</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">你不用追逐最酷的东西。把你已经在做的事情做到极致，它就变成了最酷的东西。
-
-最酷的东西在起步时往往一点都不酷。它变酷是因为有人在所有人都觉得太小的领域里走得更深。</p>
-    <p class="timeline-text timeline-text-en">You don’t have to chase the cool thing. Do whatever you’re already doing so well that it becomes the cool thing.
+    <p class="timeline-text">You don’t have to chase the cool thing. Do whatever you’re already doing so well that it becomes the cool thing.
 
 The cool thing is rarely cool when it starts. It becomes cool because someone went deep on something everyone else thought was too small.</p>
     <div class="timeline-meta">
@@ -1577,14 +1495,7 @@ The cool thing is rarely cool when it starts. It becomes cool because someone we
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">现在市面上每个产品都在说「一个 AI Agent 能搞定你的工作和生活，跟一切集成。」
-
-挺好的，但那不就是 Claude / Codex 本身吗。
-
-如果你想让我换用你的产品，它得有观点、有灵魂。做得小而锋利，不要大而空洞。
-
-什么都能做等于什么都做不好。对所有人说话等于对谁都没说。</p>
-    <p class="timeline-text timeline-text-en">Every other product right now is &quot;an AI agent that does everything in your work &amp; life &amp; integrates with everything.&quot; 
+    <p class="timeline-text">Every other product right now is &quot;an AI agent that does everything in your work &amp; life &amp; integrates with everything.&quot; 
 
 Cool, that&#39;s just Claude/Codex. 
 
@@ -1605,8 +1516,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     <span class="timeline-builder-handle">@nikunj</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">Cursor Compile 的氛围绝了。拿到定制机械键盘作为会议周边，简直是新天花板 ⌔︎</p>
-    <p class="timeline-text timeline-text-en">Vibes at Cursor Compile were immaculate. Also getting a custom mechanical keyboard is a new kind of swag ceiling for conferences ⌨️</p>
+    <p class="timeline-text">Vibes at Cursor Compile were immaculate. Also getting a custom mechanical keyboard is a new kind of swag ceiling for conferences ⌨️</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 139</span>
@@ -1614,8 +1524,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">判断自己是在数据路径里还是 token 路径里。今天 @cursor_ai 的收购为更多应用层公司指明了方向。恭喜我的朋友们 🥥</p>
-    <p class="timeline-text timeline-text-en">Be in the judgement (data) path or the token path. Today’s @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends 🥳</p>
+    <p class="timeline-text">Be in the judgement (data) path or the token path. Today’s @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends 🥳</p>
     <div class="timeline-meta">
       <span class="timeline-date">2026-06-16</span>
       <span class="timeline-likes">&#9825; 23</span>
@@ -1630,8 +1539,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     <span class="timeline-builder-handle">@rauchg</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">快速铺垫一下：☑️ 30 分钟的函数调用 🆕 24 小时沙箱 ☑️ 无限后台任务 🆕 响应式 UI 渲染。这不仅仅是扩展限制了——我们正在改变你能构建的东西的范畴。</p>
-    <p class="timeline-text timeline-text-en">Quick one to set the stage:
+    <p class="timeline-text">Quick one to set the stage:
 
 ☑️ 30 minute function invocations
 🆕 24 hour sandbox lifetimes</p>
@@ -1649,10 +1557,7 @@ Doing everything means doing nothing. Speaking to everybody means speaking to no
     <span class="timeline-builder-handle">@danshipper</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">刚从 Atlas 浏览器换回 Dia。
-
-Atlas 各种奇怪的 bug，感觉也没什么改进。</p>
-    <p class="timeline-text timeline-text-en">just switched off of Atlas Browser and back onto Dia
+    <p class="timeline-text">just switched off of Atlas Browser and back onto Dia
 
 i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it&#39;s improving</p>
     <div class="timeline-meta">
@@ -1692,18 +1597,7 @@ i&#39;ve been having so many weird bugs with atlas, and doesn&#39;t feel like it
     <span class="timeline-builder-handle">@realmadhuguru</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">SpaceX-Cursor 交易中真正的奖品是 agentic harness——它将成为规模化自动化所有知识工作的核心。
-
-以下是 SpaceX 拿到的东西：
-
-1. 生产级的 agentic harness——规划、上下文管理、工具使用、迭代、验证、记忆、错误恢复。任何产品体验都可以基于这个 harness 以 AI 原生的方式重新设计。
-
-2. 全 AI 栈的专业能力——模型、评估、harness、应用层。
-
-3. 端到端的产品生命周期聚焦：产品战略 → 用户旅程 → GTM。一切为一件事优化：帮助软件工程师构建。
-
-很少有公司能在其中任何一项做好。Cursor 三者兼备。</p>
-    <p class="timeline-text timeline-text-en">The real prize in the SpaceX-Cursor deal is the agentic harness that will become the core for automating all knowledge work at scale.
+    <p class="timeline-text">The real prize in the SpaceX-Cursor deal is the agentic harness that will become the core for automating all knowledge work at scale.
 
 Here’s what SpaceX is getting:
 
@@ -1722,10 +1616,7 @@ Very few companies do even one of these well. Cursor brings all three.</p>
     </div>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">过去一个世纪，我们把智力视为人类的标志性特质，却在自我意识、直觉、同情心和善良等其他使我们成为人类的方面投入不足。
-
-未来几年会迫使我们重新思考这一点。</p>
-    <p class="timeline-text timeline-text-en">over the last century, we’ve treated the intellect as a defining human trait and under-invested   in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. 
+    <p class="timeline-text">over the last century, we’ve treated the intellect as a defining human trait and under-invested   in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. 
 
 the next few years will force us to rethink this.</p>
     <div class="timeline-meta">
@@ -1742,12 +1633,7 @@ the next few years will force us to rethink this.</p>
     <span class="timeline-builder-handle">@adityaag</span>
   </div>
   <div class="timeline-item">
-    <p class="timeline-text timeline-text-zh">你没看错。@RamaswmySridhar 下周要来 @southpkcommons。
-
-他将 Google 的广告收入从 15 亿做到了 1000 亿+。
-
-现在他正带领 Snowflake 经历 AI 转型。</p>
-    <p class="timeline-text timeline-text-en">You didn&#39;t miss this one. @RamaswmySridhar is dropping by @southpkcommons next week.
+    <p class="timeline-text">You didn&#39;t miss this one. @RamaswmySridhar is dropping by @southpkcommons next week.
 
 He grew Google&#39;s ad business from $1.5B to $ 100B+. 
 
