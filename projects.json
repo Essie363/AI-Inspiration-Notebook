@@ -373,5 +373,181 @@
       "insight": "Agent正在从<mark>\"通用助手\"走向\"专业化分工\"</mark>。\n1. 147个不是数量炫耀——它说明了一个趋势：像App Store里不同App做不同事一样，未来每个领域会有专属Agent\n2. 开源预构建的Agent让\"不会写prompt\"不再是障碍——直接用别人调好的\n3. Sebastian Hardy频道从AI营销视角推荐，目标受众明确",
       "transfer": "你的产品可以考虑做<mark>Agent模板市场</mark>——不是让用户从头配置Agent，而是给他们一套开箱即用的分类Agent。像Notion模板市场一样，不同场景不同模板，用户只需选+微调。"
     }
+  },
+  {
+    "id": "ragflow-20260625",
+    "title": "RAGFlow",
+    "url": "https://github.com/infiniflow/ragflow",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "开源RAG+Agent引擎，83k stars，把LLM和你的数据真正连起来——不只是搜索，是让AI理解你的文档并执行任务",
+    "tags": [
+      "RAG",
+      "Agent",
+      "开源",
+      "To B",
+      "知识库"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "企业有海量内部文档——合同、手册、技术规范——但LLM看不到它们。传统搜索只能找到关键词，不能让AI理解文档内容并基于它做判断。需要一个把<mark>私有数据</mark>和<mark>LLM推理</mark>真正连起来的引擎。",
+      "why_ai": "RAG（检索增强生成）让LLM在回答前先检索相关文档再生成答案。RAGFlow把这个流程产品化了——不是简单的向量搜索+LLM拼接，而是做了<mark>文档解析、分块策略、混合检索、Agent编排</mark>一整层。",
+      "insight": "83k stars说明企业级RAG需求真实且庞大。\n1. RAGFlow不只是RAG库——它做了一整套<mark>引擎</mark>：从文档摄入到Agent执行\n2. 开源+企业版双轨是这类基础设施产品的成熟模式\n3. 关键判断：RAG正在从「技术方案」变成「产品品类」——用户不需要懂向量数据库，只要拖文档进去就能用",
+      "transfer": "做B端AI产品时，不要把LLM当产品卖——把<mark>LLM+客户的数据</mark>当产品卖。用户不关心你用的什么模型，关心的是「我的合同库里有没有这条免责条款」能被AI回答出来。RAG是桥梁，产品化才是价值。"
+    }
+  },
+  {
+    "id": "qwenpaw-20260625",
+    "title": "QwenPaw",
+    "url": "https://github.com/agentscope-ai/QwenPaw",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "个人AI助手框架，20k stars，基于Qwen模型——你的私人Chat App，能操作电脑、管理文件、执行任务的AI伙伴",
+    "tags": [
+      "Agent",
+      "个人助手",
+      "开源",
+      "To C",
+      "CLI"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "ChatGPT和Claude很强，但都在云端。你的文件、你的应用、你的桌面——它们碰不到。<mark>个人AI应该能操作你的电脑</mark>，不只是跟你聊天。",
+      "why_ai": "Qwen模型的端侧能力（本地推理）+ Agent框架（文件操作、应用调用、浏览器控制）= <mark>个人AI操作系统</mark>。不是在云端回答你，而是在你的机器上帮你做事。",
+      "insight": "20k stars，个人AI助手赛道在快速升温。\n1. QwenPaw的定位不是「另一个Chat客户端」，而是<mark>AI操作系统层</mark>——类似OpenClaw的思路\n2. CLI入口说明目标用户是技术人员，这是正确的冷启动策略\n3. 基于阿里的Qwen模型，有国产模型生态的加持",
+      "transfer": "做个人AI产品时，<mark>本地>云端</mark>是一个正在形成的趋势。不是所有任务都需要云端大模型——文件管理、日程安排、本地搜索这些场景，端侧模型足够好用，且隐私无顾虑。"
+    }
+  },
+  {
+    "id": "openmetadata-20260625",
+    "title": "OpenMetadata",
+    "url": "https://github.com/open-metadata/OpenMetadata",
+    "source": "GitHub",
+    "category": "workflow",
+    "description": "给AI Agent做数据上下文层，14k stars——让Agent知道你的数据库里有什么、数据从哪来、质量如何，打通AI与数据治理",
+    "tags": [
+      "数据治理",
+      "Agent",
+      "开源",
+      "To B",
+      "MCP"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "AI Agent很聪明，但对企业数据库一无所知——不知道哪张表是核心数据、哪个字段已经废弃、数据什么时候更新的。Agent<mark>缺乏数据上下文</mark>，做出的判断可能基于过期或错误的数据。",
+      "why_ai": "LLM可以理解元数据——表名、字段注释、数据血缘、更新频率。OpenMetadata把这些信息组织成<mark>Agent可查询的上下文层</mark>：Agent动手前先查元数据，知道自己在操作什么。",
+      "insight": "14k stars，数据治理×AI是个被低估的方向。\n1. 它不是AI产品本身，而是<mark>AI产品的底座</mark>——让Agent可信任地访问企业数据\n2. 「元数据」这个词太技术化，产品化翻译是：「让AI知道你的数据靠不靠谱」\n3. 和MCP协议天然互补——MCP让Agent调工具，OpenMetadata让Agent理解数据",
+      "transfer": "AI时代产生了新的基础设施需求——不只是模型和算力，<mark>数据上下文层</mark>是Agent可靠性的前提。如果你的产品涉及企业数据，考虑先做一层元数据让AI理解数据来源和质量。"
+    }
+  },
+  {
+    "id": "obsidian-yolo-20260625",
+    "title": "Obsidian YOLO",
+    "url": "https://github.com/Lapis0x0/obsidian-yolo",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "Obsidian笔记的AI插件，1.2k stars——在笔记里直接调AI写东西、总结、提问，不用离开Obsidian",
+    "tags": [
+      "Obsidian",
+      "笔记",
+      "AI插件",
+      "开源",
+      "To C"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "Obsidian是知识管理工具，但写作和思考过程中遇到卡点时，要切到ChatGPT窗口、复制粘贴、再切回来。<mark>上下文切换打断心流</mark>。",
+      "why_ai": "LLM最适合嵌入<mark>已有的工作流</mark>——不是在AI工具里写笔记，而是在笔记工具里用AI。Obsidian YOLO把AI能力嵌入编辑器，选中文字就能让AI续写、改写、翻译、总结。",
+      "insight": "1.2k stars，小而美的插件思路。\n1. 不做独立笔记App，<mark>做现有工具的插件</mark>——Obsidian已有忠实用户群，插件降低了获客成本\n2. 这类产品核心不是AI能力多强，是<mark>交互多自然</mark>——一个快捷键调出AI，比打开ChatGPT快十倍\n3. Obsidian生态里的AI插件是蓝海——Notion AI做了但锁在Notion里",
+      "transfer": "不要重新发明笔记软件。找已有大量用户的效率工具（Obsidian、Logseq、VSCode、Figma），<mark>给它们加AI</mark>。用户不需要换工具，只需要工具里多一个AI按钮。"
+    }
+  },
+  {
+    "id": "project-nova-20260625",
+    "title": "Project NOVA",
+    "url": "https://github.com/PradeepaRW/project-nova",
+    "source": "GitHub",
+    "category": "creative",
+    "description": "25+个专业Agent联邦协作，34 stars——n8n+MCP串联多个AI Agent像团队一样分工协作，一个任务拆给多个专业Agent执行",
+    "tags": [
+      "Agent",
+      "联邦",
+      "MCP",
+      "开源",
+      "自动化"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "单个AI Agent能力有限——一个Agent既要会写代码又要会做数据分析还要会回复邮件，结果哪样都不精。像公司一样，<mark>专业化分工</mark>比全栈更高效。",
+      "why_ai": "LLM可以通过<mark>不同的system prompt+工具集</mark>变成不同的专业角色。n8n做任务编排，MCP做Agent间通信，25+个Agent像团队一样协作——这是Agent从「个人助理」走向「AI团队」的关键一步。",
+      "insight": "34 stars但概念超前。\n1. 多Agent协作是2025-2026最热的研究方向之一——从单Agent走向Agent联邦\n2. n8n+MCP的组合拳很聪明：n8n管流程，MCP管通信，各自做最擅长的事\n3. 风险：概念很好但实现复杂度极高，小团队维护压力大",
+      "transfer": "未来的AI产品不只是「一个Agent做所有事」，而是<mark>一群专业Agent协作</mark>。如果你的产品涉及多步骤复杂任务，考虑拆成多个专业Agent而不是一个超级Agent。"
+    }
+  },
+  {
+    "id": "molio-20260625",
+    "title": "Molio",
+    "url": "https://github.com/zhuzhaoyun/Molio",
+    "source": "GitHub",
+    "category": "creative",
+    "description": "本地知识库×AI桌面助手，32 stars——把你的Obsidian笔记、本地文件变成AI可对话的知识库，Claude Code GUI+Web Clipper",
+    "tags": [
+      "知识库",
+      "本地优先",
+      "开源",
+      "Claude",
+      "Obsidian"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "你的知识散布在Obsidian笔记、本地Markdown文件、网页剪藏里——GPT看不到它们。你想跟自己的笔记对话，但<mark>没有工具能把本地知识库接上AI</mark>。",
+      "why_ai": "LLM+本地向量检索=你可以用自然语言<mark>跟自己的笔记对话</mark>。Molio不只做检索，还做了Claude Code GUI和Web Clipper——形成一个完整的「个人知识AI」闭环。",
+      "insight": "32 stars但产品定位清晰。\n1. <mark>本地知识库×AI</mark>是一个正在形成的品类——用户不想把笔记传到云端AI\n2. Claude Code GUI说明目标用户是技术人员——先在懂AI的人群里验证再出圈\n3. Web Clipper说明他们在解决知识<mark>摄入→检索→对话</mark>的完整链路",
+      "transfer": "个人AI的下一个战场是<mark>本地知识库</mark>。你的笔记、文件、书签、PDF——这些都是AI最好的上下文。做一个产品让AI能读你的知识库，比做一个通用聊天机器人更有粘性。"
+    }
+  },
+  {
+    "id": "arxiv-mcp-20260625",
+    "title": "arXiv MCP Server",
+    "url": "https://github.com/1Dark134/arxiv-mcp-server",
+    "source": "GitHub",
+    "category": "chrome-extension",
+    "description": "AI论文助手——arXiv的MCP Server，17 stars，让Claude/Codex直接搜论文、读摘要、追踪最新研究",
+    "tags": [
+      "MCP",
+      "学术",
+      "论文",
+      "Claude",
+      "知识工具"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "研究者需要追踪arXiv上的最新论文，但每天新论文上百篇，<mark>手动筛选耗时</mark>。现有的arXiv工具只能搜标题关键词，无法理解论文内容做智能推荐。",
+      "why_ai": "MCP协议让AI可以直接调用arXiv搜索API。不只是搜论文——AI可以<mark>读摘要、判断相关性、总结关键发现</mark>、按你的研究兴趣筛选。不是RSS订阅，是AI替你读论文。",
+      "insight": "17 stars但场景精准。\n1. MCP Server是最轻量的AI产品形态——一个API包装就是产品\n2. 学术界是AI的高价值场景：研究者付费意愿强，且论文是结构化高质量数据\n3. 可以扩展：不只arXiv，PubMed、Semantic Scholar、Google Scholar都可以做成MCP",
+      "transfer": "<mark>MCP Server即产品</mark>是一个被低估的思路。不需要做完整App，一个MCP工具让AI能访问某个数据源，就是一个可分发、可盈利的产品。挑一个垂直数据源（论文、法律、医疗、金融），做它的MCP接口。"
+    }
+  },
+  {
+    "id": "mira-20260625",
+    "title": "MIRA",
+    "url": "https://github.com/MIRA-Intelligence/mira",
+    "source": "GitHub",
+    "category": "creative",
+    "description": "医学AI研究助手，11 stars——帮医生和研究人员做文献检索、证据评估、临床试验分析，医疗领域的专业AI Agent",
+    "tags": [
+      "医疗AI",
+      "研究助手",
+      "专业Agent",
+      "Agent",
+      "开源"
+    ],
+    "date": "2026-06-25",
+    "analysis": {
+      "pain_point": "医生和医学研究人员要在海量文献中找到循证依据——PubMed有几千万篇论文，<mark>找到相关且高质量的证据</mark>需要专业训练和大量时间。不是简单的关键词搜索，需要评估研究质量。",
+      "why_ai": "LLM可以理解医学文献的结构（摘要、方法、结果、结论），并按<mark>循证医学等级</mark>评估证据强度。MIRA不是通用AI+医学提示词——它专为医学文献检索和证据评估设计。",
+      "insight": "11 stars但踩中了AI×医疗的黄金交叉点。\n1. 医疗是AI最高价值场景之一——医生时间是极度稀缺资源\n2. <mark>垂直领域AI</mark>比通用AI更有商业化前景：医学AI助手如果说错一句话就出大事，所以专业化比通用化有价值\n3. 开源策略对医疗场景很重要——医院和研究者需要审计AI的推理过程",
+      "transfer": "找一个<mark>专业知识密集</mark>的垂直领域（医疗、法律、金融、科研），做AI助手。通用AI在这些领域不够可靠——不是因为模型不够好，是因为缺乏领域知识框架。垂直AI的核心不是模型，是<mark>领域知识的结构化</mark>。"
+    }
   }
 ]
